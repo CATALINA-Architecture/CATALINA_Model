@@ -1,0 +1,4 @@
+TBelief_Destination_Station: it is used to define the belief for a Dastination Station in a Functional Goal
+
+Prediate: Visited Station:
+Stations - visited - array of station

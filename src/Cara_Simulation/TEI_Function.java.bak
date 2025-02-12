@@ -1,0 +1,316 @@
+package Gioco;
+
+import java.util.ArrayList;
+
+public class TEI_Function {
+	
+	private TShift_Attention_module SA;
+	private TAgent Agent;
+	
+	public TEI_Function(TAgent agent)
+	{
+		//Creo un riferimento Circolare con l'Agente, ovvero se stesso
+		this.Agent = agent;
+		this.SA = new TShift_Attention_module(this);
+	}
+
+	public TShift_Attention_module get_SA() {
+		return SA;
+	}
+	
+
+	public TAgent get_Agent() {
+		return Agent;
+	}
+
+	public void AM_Endogenous_Module()
+	{
+		TGlobalWorkspace GW = this.Agent.get_GW();
+		while(this.Agent.Get_Status() == TAgent_Status.Active)
+		{
+			ArrayList<TAttentional_Goal> Goals = GW.get_Goals();
+											
+			ArrayList<TAttentional_Goal> Inhibited_Goals = GW.get_Inhibited_Goals();
+			//Un goal è inibito quando non sono verificate le sue condizioni, oppure quando la sua Saliency è
+			//più bassa della saliency o attention threshold (vedi figura 3 del journal) 
+			
+			ArrayList<TAttentional_Goal> Uninhibited_Goals = new ArrayList<TAttentional_Goal>() ;//GW.Get_UnInhibited_Goals();
+			Uninhibited_Goals.addAll(Goals);
+			Uninhibited_Goals.removeAll(Inhibited_Goals);
+	
+			ArrayList<TDesire> Desideri = GW.Get_Desires();
+			
+			// for all d in current_Desires
+			for (TDesire Desiderio: Desideri) 
+			{
+				//if d. goal in List_goals - Inhibited_goals
+				if (Uninhibited_Goals.contains(Desiderio.get_Attentional_Goal()) ) 
+				{
+					//if d.saliency < SA. Saliency_Threshold
+					if (Desiderio.get_Attentional_Goal().get_Saliency() < SA.get_Saliency_Threshold())
+	//						if (Goal_Desire.getSaliency() < SA.getSaliency_Threshold())
+							{
+								//GW. delete_Desire (d)
+								GW.Delete_desire(Desiderio);
+							}
+				}
+				else
+				{
+					//if (Goal_Desire.getSaliency() < SA.getAttention_Threshold())
+					if (Desiderio.get_Attentional_Goal().get_Saliency() < SA.get_Attention_Threshold())
+					{
+						//GW. delete_Desire (d)
+						GW.Delete_desire(Desiderio);
+					}
+				}
+			}			
+			//for all g in List_goals - Inhibited_goals
+			for (TAttentional_Goal goal : Uninhibited_Goals) 
+			{
+				//if verify (g. precondiction ) then
+				// THIS is TO BE MADE and should use the Trie, now it always returns true waiting to discuss
+				// when to use Trie or not
+				// TODO DEVELOPMENT --goal.Verify_Precondition--
+				if(goal.Verify_Precondition())
+				{
+					//if g. saliency >= SA. Saliency_Threshold then
+					if (goal.get_Saliency() >= SA.get_Saliency_Threshold())
+					{
+						// I promote g as a desire
+						Game.Print("we are in Function Endogenous Module, in section: Uninhibited_Goals.");
+						Game.Print("I enter in Function: Insert_new_desire");
+						GW.Insert_new_desire(goal); 
+						Game.Print("I created the new Desire from Function Endogenous Module, in section: Uninhibited_Goals");
+					}
+				}
+			}
+			
+			for (TAttentional_Goal goal : Inhibited_Goals) 
+			{
+				//if verify (g. precondiction ) then
+				// THIS is TO BE MADE and should use the Trie, now it always returns true waiting to discuss
+				// when to use Trie or not
+				if(goal.Verify_Precondition())
+				{
+					//if g. saliency >= SA. Saliency_Threshold then
+					if (goal.get_Saliency() >= SA.get_Attention_Threshold())
+					{
+						// I promote g as a desire
+						System.out.println("siamo in Inhibited_Goals inside the Endogenous Module");
+						GW.Insert_new_desire(goal);
+						System.out.println("Ho creato il nuovo Desire da Inhibited_Goals,  inside the Endogenous Module");
+					}
+					
+				}
+			}
+			
+			System.out.println("This is the end of the Endogenous Module");
+		}
+			
+	}
+
+	// TODO DEVELOPMENT
+	public void AM_Exogenous_Module(TSalient_Belief belief)
+	{
+		System.out.println("We entered in AM_Exogenous_Module");
+		TGlobalWorkspace GW = this.Agent.get_GW();
+		TAttentional_Goal Active_Goal =  GW.Get_Selected_Intentions().getFirst().get_Desire().get_Attentional_Goal();
+				
+		//-----------
+		
+		//saliency_exogenous := GW. get_saliency ( Stimulus )
+		TAttentional_Goal relevant_Stimulus = null;
+		
+		// DA DISCUTERE e DA IMPLEMENTARE:
+		// Lo stimolo dovrebbe dipendere dal tipo di stimolo esogeno. Tendenzialmente, ritengo che la saliency_exogenous
+		// dovrebbe avere lo stesso valore dei possibili goal epistemici che creo	
+		double saliency_exogenous = GW.get_Saliency(belief);
+		
+		// DA DISCUTERE e DA IMPLEMENTARE (CI VOGLIONO 2 MINUTI PER IMPLEMENTARLO): GIA' FATTO
+		// Le Inhibition_Regions dovrebbero essere tutte le tratte che NON appartengono al percorso
+		// che sto facendo.
+		// VEDERE ANCHE I COMMENTI DENTRO LA FUNZIONE
+		//-----------------------------
+		// IN REALTà GIà LE INHIBITION REGIONS SONO STATE CREATE DAL FOCUS, QUINDI QUI
+		// NON è IMPORANTE IL TIPO DI BELIEF, MA PRENDERE TUTTE LE INHIBITIED REGIONS PERCHè QUESTO SIGNIFICA CHE L'AGENTE è GIà FOCALIZZATO
+		// OPPURE NON LO è, E LE INHIBITED REGIONS SONO NULLE
+		ArrayList<Route> Inhi_regions = GW.get_Inhibition_Regions ( belief );
+		TEpistemic_Goal ep_goal_from_stimulus = null;
+		
+		if (Inhi_regions != null)
+		{
+			// Secondo me, Apply_Filter DEVE restituire un goal epistemico, spiegare il perchè
+			ep_goal_from_stimulus = Apply_Filter(belief, Inhi_regions);
+		}
+		
+		if (ep_goal_from_stimulus != null)
+		{
+			if (ep_goal_from_stimulus.Saliency > SA.get_Saliency_Threshold())
+			{
+				GW.Insert_new_desire(ep_goal_from_stimulus);
+			}
+		}
+		else
+		{
+			//if (ep_goal_from_stimulus.get_Saliency() > SA.get_Attention_Threshold())
+			//It's better use this below, indeed I cannot create a 
+			if (saliency_exogenous > SA.get_Attention_Threshold())			
+			{
+				
+				
+				ep_goal_from_stimulus = this.Create_Epistemic_Goal_From_Salient_Belief(belief, saliency_exogenous);
+				
+				// DA DISCUTERE 
+				//qui però, in questo momento, il relevant_Stimulus sarebbe nullo e ci sarebbe un bug!
+				//quindi mi creo prima un epistemic goal e gli associo una saliency, 
+				//magari uguale a quella di saliency_exogenous
+				GW.Insert_new_desire(ep_goal_from_stimulus);
+			}
+		}
+	}
+	
+	// TODO DEVELOPMENT
+	public TEpistemic_Goal Apply_Filter(TSalient_Belief Stimulus, ArrayList<Route> Inhi_regions )
+	{
+		TEpistemic_Goal Epistemic_Goal = null;
+		TGlobalWorkspace GW = this.Agent.get_GW();
+		double Saliency = 0;
+		double Reward = 0;
+		double Relax_Preference  = 0;
+		
+		//se le regioni di inibizione NON contengono la tratta da cui viene lo stimolo
+		//significa che la tratta da cui proviene lo stimolo è da attenzionare
+		//TAttentional_Goal Active_Goal =  GW.Get_Selected_Intentions().getFirst().get_Desire().get_Attentional_Goal();
+		switch (Stimulus.get_Type_Belief())
+		{
+
+		case TType_Beliefs.Stimulus_Closed_Route:
+		case TType_Beliefs.Stimulus_Busy_Route:
+		case TType_Beliefs.Stimulus_Temporary_Closed_Route:
+			/**
+			 * Protocol Predicate:
+			 * Subject => Route Number (Integer)
+			 * Relationship => is_Busy | is_Closed | is_Temporary_Closed
+			 *  if Relationship = is_Temporary_Closed
+			 * 		Object = => Time amount (Integer)
+			 */
+			{
+				Integer Route_Number = (Integer) Stimulus.get_Predicate().get_Subject();
+				Route route = GW.get_Map_Known().get_Route(Route_Number); 
+				if (!Inhi_regions.contains(route))
+				{
+					if (Stimulus.get_Type_Belief() == TType_Beliefs.Stimulus_Closed_Route)
+					{
+						Saliency = 0.9;
+						Reward = 1;
+						Relax_Preference = 1;
+					}
+					else if (Stimulus.get_Type_Belief() == TType_Beliefs.Stimulus_Busy_Route)
+					{
+						Saliency = 0.9;
+						Reward = 1;
+						Relax_Preference = 1;
+					}
+					else if (Stimulus.get_Type_Belief() == TType_Beliefs.Stimulus_Temporary_Closed_Route)
+					{
+						Saliency = 0.8;
+						Reward = 1;
+						Relax_Preference = 1;
+					}
+					
+					Epistemic_Goal = this.Create_Epistemic_Goal_From_Salient_Belief(Stimulus, Saliency);
+					Epistemic_Goal.set_Reward(Reward);
+					Epistemic_Goal.set_Relax_Preference(Relax_Preference);
+					
+//					Epistemic_Goal = new TEpistemic_Goal(Stimulus, Saliency, Reward, Relax_Preference,
+//							null, null);
+					
+				}
+//				int i=0;
+//				while (i<GW.get_Beliefs().size())
+//				{
+//					if (GW.get_Beliefs().get(i).get_Type_Belief() == TType_Beliefs.Belief_Current_Route)
+//					{
+//						
+//					}
+//
+//				}
+				
+				
+			};
+			break;
+		case TType_Beliefs.Stimulus_Too_Close_To_The_Train:
+			/**
+			 * Protocol Predicate:
+			 * Subject => Player Number
+			 * Relationship => is_Too_Close_To_The_Train
+			 * Object => Coords := (Route, Step)
+			 */
+			{
+				//Integer Player = (Integer) Stimulus.get_Predicate().get_Subject();			
+				TDouble_Object Coords = (TDouble_Object) Stimulus.get_Predicate().get_Object_Complement();
+				Integer Route_Number = (Integer) Coords.Object_First;
+				
+				Route route = GW.get_Map_Known().get_Route(Route_Number); 
+				if (!Inhi_regions.contains(route))
+				{
+					Saliency = 0.9;
+					Reward = 1;
+					Relax_Preference = 1;
+					
+					Epistemic_Goal = new TEpistemic_Goal(Stimulus, Saliency, Reward, Relax_Preference,
+							null, null);
+				}
+			}
+			break;
+		}
+
+		return Epistemic_Goal;
+	}
+	
+	public TEpistemic_Goal Create_Epistemic_Goal_From_Salient_Belief(TSalient_Belief Belief, double saliency_exogenous)
+	{
+		
+		TEpistemic_Goal ep_goal_from_stimulus = null;
+		
+		/***
+		 * TODO Caso in cui l'attentional goal è EPISTEMIC: 
+		 * - il goal deve inserirsi tra gli attentional goal?
+		 * - E anche la sua belief deve essere inserita nelle belief?
+		 */
+		
+		//TODO da dove prendo questi valori???
+		double reward = 0;			//da dove lo prendo?
+		double relax_preference = 0;//da dove lo prendo?
+		//List green goals?			//da dove lo prendo?
+		//List quality goals?		//da dove lo prendo?
+		
+		//The correct name for the epistemic goal is setted below, in Add_Attentional_Goal.
+		ep_goal_from_stimulus =new TEpistemic_Goal("", Belief, 
+				saliency_exogenous, reward, relax_preference, null, null);
+		
+		this.Agent.get_GW().Add_Attentional_Goal(ep_goal_from_stimulus);
+		
+		/***
+		 * FINE TODO
+		 */
+		
+		return ep_goal_from_stimulus;
+	}
+	
+//	protected TAttentional_Goal Create_Epistemic_Goal(Belief Stimulus, double Saliency,
+//			double Reward, double Saliency)
+//	{
+//		//creare un Epistemic goal specifico per ogni tipo di stimolo:
+//		//-Goal epistemico per investigare l'opponent strategy
+//		//Func_Epis_Goal Goal = new Func_Epis_Goal();
+//		
+//		TEpistemic_Goal Goal = new TEpistemic_Goal(Saliency,  null, null, null, null)
+//		Goal.Tipo_Goal = TTipi_Goals.TTG_Epistemic_Goal;
+//		Goal.Destination = Stimulus.get_Prossima_Citta();
+//		Goal.Type_Epistemic_Goal = Stimulus.getType_Epistemic_Goal();
+//		Goal.Saliency = Saliency;
+//		return Goal;
+//	}
+
+}
