@@ -171,6 +171,8 @@ public class TGlobalWorkspace {
 		this.Updated_Inhibited_Regions = false;
 		
 		this.Update_Intentions = false;
+		
+		
 	}
 	
 	public void Set_Map_Know(Environment Map)
@@ -590,6 +592,8 @@ public class TGlobalWorkspace {
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
 	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
 	    }
 	}
 	
@@ -603,6 +607,10 @@ public class TGlobalWorkspace {
 	}
 
 	public Environment Get_Map_Known() {
+		if (this.Map_Known == null)
+		{
+			this.Map_Known = this.Agent.Get_WMM().Get_Map();
+		}
 		return this.Map_Known;
 	}
 
@@ -863,7 +871,12 @@ public class TGlobalWorkspace {
 	{
 		Game.Scenario_Number++;
 		this.Get_Agent().get_GW().Print_Data(0, 0);
-		this.Beliefs.add(Salient_Belief);
+		
+		if(this.Beliefs.contains(Salient_Belief) == false)
+		{
+			this.Beliefs.add(Salient_Belief);			
+		}
+		
 		
 		//the following lines of code are to use the iterator way in the Start Agent method
 		this.Updated_Beliefs = true;

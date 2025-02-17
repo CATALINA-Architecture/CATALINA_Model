@@ -2,3 +2,6 @@ TBelief_Destination_Station: it is used to define the belief for a Dastination S
 
 Prediate: Visited Station:
 Stations - visited - array of station
+
+Funtion_To_Invoke by agent:
+GO_TO

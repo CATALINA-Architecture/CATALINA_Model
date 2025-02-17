@@ -51,6 +51,7 @@ public class TE_Inhibition_function {
 			{
 				//For our purpose we pursue only the first Intention
 				TIntention Intention = this.Agent.get_GW().Get_Intentions().getFirst();
+				Game.Print("Intention selected to pursue: "+Intention.get_Desire().get_Attentional_Goal().get_Name());
 				
 				this.Saliency_Threshold = Intention.get_Desire().get_Attentional_Goal().get_Saliency();
 				this.Agent.get_GW().Update_Saliency_Threshold(this.Saliency_Threshold);
@@ -94,8 +95,10 @@ public class TE_Inhibition_function {
 			
 		}
 		catch (Exception e) {
-	      Game.Print("Something went wrongin method: Insert_New_Desires.");
+	      Game.Print("Something went wrongin method: Focus_Attention.");
 	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
 	      result = false;
 	    }
 	    return result;
@@ -179,16 +182,20 @@ public class TE_Inhibition_function {
 					int Index_Option = Intention.get_Seleted_Option_Id();
 					TDesire Desire = Intention.get_Desire();
 					TOption Option = Desire.get_Option_List().get(Index_Option);
-					//Use_Route
+					//GO_TO
 					//I get integer_Route from the selected Option only if "Action_Name" is
-					// "Use_Route"
+					// "GO_TO"
 					ArrayList<Integer> Integer_Routes_to_Remove = new ArrayList<Integer>();
 					ArrayList<Route> Routes_to_Remove = new ArrayList<Route>();
 					for(TAction Action: Option.get_Plan_Actions())
 					{
-						if(Action.get_Action_Name() == "Use_Route")
+						if(Action.get_Action_Name() == "GO_TO_Route")
 						{
-							int Integer_Route = (int) Action.get_Params().get(0);
+							//Game.Print(Action.get_Params().get(0).getClass());
+							TPosition_Train_Coords Postcondition_Train_Coords = (TPosition_Train_Coords) Action.get_Params().get(0);
+							
+//							int Integer_Route = (int) Action.get_Params().get(0);
+							int Integer_Route = (int) Postcondition_Train_Coords.Get_Route();
 							
 							
 							int Specular_Integer_Route = 0;
@@ -567,6 +574,12 @@ public class TE_Inhibition_function {
 				{
 					New_All_related_Beliefs_Of_Goal.add(Belief);
 				}
+				break;
+			//I insert also All Stimulus
+			case Stimulus_Ok_Correct_Movement, Stimulus_Too_Close_To_The_Train, 
+				Stimulus_Closed_Route, Stimulus_Busy_Route, Stimulus_Temporary_Closed_Route, 
+				Stimulus_Crowded_Route:
+					New_All_related_Beliefs_Of_Goal.add(Belief);
 				break;	
 				
 			

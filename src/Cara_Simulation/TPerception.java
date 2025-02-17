@@ -5,14 +5,13 @@ import java.time.LocalDateTime;
 
 public class TPerception {
 	
-	private TPredicate Predicate;
+	private TTriple_Object Perceived_Data;
 	private Object Source;
 	private LocalDateTime Time_Stamp;
 	
-	public TPredicate get_Predicate() {
-		//TPredicate Temp_Predicate = new TPredicate(Predicate.get_Subject(), Predicate.get_Relationship(), 
-		//		Predicate.get_Object_Complement());
-		return this.Predicate;
+	public TTriple_Object get_Perceived_Data() {
+
+		return this.Perceived_Data;
 	}
 
 	public Object get_Source() {
@@ -23,13 +22,10 @@ public class TPerception {
 		return Time_Stamp;
 	}
 	
-	public TPerception(TPredicate predicate, Object source)
+	public TPerception(TTriple_Object perceived_Data, Object source)
 	{
 		this.Time_Stamp = LocalDateTime.now();
-		this.Predicate = predicate;
+		this.Perceived_Data = perceived_Data;
 		this.Source = source;
-//		this.Predicate = new TPredicate(predicate.get_Subject(), predicate.get_Relationship(), 
-//				predicate.get_Object_Complement());
-		
 	}
 }

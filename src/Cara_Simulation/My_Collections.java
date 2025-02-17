@@ -35,9 +35,9 @@ public class My_Collections {
 	
 	private void Initialize_Panorama_Values() {
 
-		this.Panorama_Values.put(Panorama.Small,  0.3f);
-		this.Panorama_Values.put(Panorama.Medium, 0.6f);	
-		this.Panorama_Values.put(Panorama.High,   0.9f);	
+		this.Panorama_Values.put(Panorama.Limited,  0.3f);
+		this.Panorama_Values.put(Panorama.Fair, 0.6f);	
+		this.Panorama_Values.put(Panorama.Spectacular,   0.9f);	
 	}
 	
 	private void Initialize_Velocity_Values() {
@@ -60,44 +60,44 @@ public class My_Collections {
 	private void Initialize_Color_Ruotes() {
 
 		//Red
-		Color_Route Route_Red = new Color_Route(Color.Red, Panorama.Small, Speed.High);
+		Color_Route Route_Red = new Color_Route(Color.Red, Panorama.Limited, Speed.High);
 		Route_Red.Locomotives.add(Locomotive.Diesel);
 		this.Color_Ruotes.put(Color.Red, Route_Red);	
 		
 		//Green
-		Color_Route Route_Green = new Color_Route(Color.Green, Panorama.Medium, Speed.Medium);
+		Color_Route Route_Green = new Color_Route(Color.Green, Panorama.Fair, Speed.Medium);
 		Route_Green.Locomotives.add(Locomotive.Electric);
 		Route_Green.Locomotives.add(Locomotive.Hybrid);
 		this.Color_Ruotes.put(Color.Green, Route_Green);
 		
 		//Yellow
-		Color_Route Route_Yellow = new Color_Route(Color.Yellow, Panorama.High, Speed.Small);
+		Color_Route Route_Yellow = new Color_Route(Color.Yellow, Panorama.Spectacular, Speed.Small);
 		Route_Yellow.Locomotives.add(Locomotive.Electric);
 		Route_Yellow.Locomotives.add(Locomotive.Hybrid);
 		this.Color_Ruotes.put(Color.Yellow, Route_Yellow);
 		
 		//Orange
-		Color_Route Route_Orange = new Color_Route(Color.Orange, Panorama.Medium, Speed.Medium);
+		Color_Route Route_Orange = new Color_Route(Color.Orange, Panorama.Fair, Speed.Medium);
 		Route_Orange.Locomotives.add(Locomotive.Diesel);
 		this.Color_Ruotes.put(Color.Orange, Route_Orange);
 		
 		//Black
-		Color_Route Route_Black = new Color_Route(Color.Black, Panorama.Small, Speed.Small);
+		Color_Route Route_Black = new Color_Route(Color.Black, Panorama.Limited, Speed.Small);
 		Route_Black.Locomotives.add(Locomotive.Diesel);
 		this.Color_Ruotes.put(Color.Black, Route_Black);
 		
 		//Blue
-		Color_Route Route_Blue = new Color_Route(Color.Blue, Panorama.Small, Speed.Medium);
+		Color_Route Route_Blue = new Color_Route(Color.Blue, Panorama.Limited, Speed.Medium);
 		Route_Blue.Locomotives.add(Locomotive.Electric);
 		this.Color_Ruotes.put(Color.Blue, Route_Blue);
 		
 		//Violet
-		Color_Route Route_Violet = new Color_Route(Color.Violet, Panorama.Medium, Speed.High);
+		Color_Route Route_Violet = new Color_Route(Color.Violet, Panorama.Fair, Speed.High);
 		Route_Violet.Locomotives.add(Locomotive.Hybrid);
 		this.Color_Ruotes.put(Color.Violet, Route_Violet);
 		
 		//White
-		Color_Route Route_White = new Color_Route(Color.White, Panorama.Medium, Speed.Medium);
+		Color_Route Route_White = new Color_Route(Color.White, Panorama.Fair, Speed.Medium);
 //		Route_White.Locomotiva.add(Locomotive.Hybrid);
 		Route_White.Locomotives.add(Locomotive.Electric);
 		this.Color_Ruotes.put(Color.White, Route_White);

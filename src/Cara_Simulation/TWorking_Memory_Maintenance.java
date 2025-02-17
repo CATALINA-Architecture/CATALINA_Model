@@ -452,9 +452,9 @@ public class TWorking_Memory_Maintenance {
 		//First Object is a String for asking something
 		Request.Object_First = "Status Route";
 		//Second Object is the route's integer id
-		Request.Object_Second = Position_Train_Coords.get_Route();
+		Request.Object_Second = Position_Train_Coords.Get_Route();
 		//Third Object is the route's step id
-		Request.Object_Third = Position_Train_Coords.get_Step();
+		Request.Object_Third = Position_Train_Coords.Get_Step();
 		TTriple_Object Response = this.Agent.Get_TCS().Response(Request);
 		String Response_String = (String) Response.Object_First;
 		switch(Response_String)
@@ -623,10 +623,13 @@ public class TWorking_Memory_Maintenance {
 		return Epistemic_Goal;
 	}
 	
-	public boolean  Perception_Processing(int i)
+	public boolean Perception_Processing(int i)
 	{
 		Game.Print("Perception_Processing: "+i);
 		boolean result = true;
+		TPerception Perception = this.Get_Perception();
+		Information_Selection(Perception);
+		
 		if(i>0)
 		{
 			result = true;
@@ -646,29 +649,120 @@ public class TWorking_Memory_Maintenance {
 			Game.Print("***********************************");
 			Game.Print("***********************************");
 			
+			
+			
+			/*
 			TPosition_Train_Coords Position_Train_Coords = new TPosition_Train_Coords(128, 0);
 			
 			TSalient_Belief Salient_Belief = (TSalient_Belief) this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).getFirst();
 			//Game.Print(this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).size());
 			TPredicate Predicate = Salient_Belief.get_Predicate();
-			Predicate.Set_Subject(Position_Train_Coords.get_Route());
+			Predicate.Set_Subject(Position_Train_Coords.Get_Route());
 			//This is the Saslient_Belief for Epistemic_Goal
 			Salient_Belief.Update_Saliency(0.9);
 			
+			
+//			TTriple_Object Request = new TTriple_Object();
+//			Request.Object_First = "Status Route";
+//			TPredicate 
+////			Request.
+//			
+//			TTCS Tcs = this.Agent.Get_TCS();
+//			
+//			Tcs.Get_Response(null)
+			
+			
+			
 			this.Agent.get_GW().Update_Belief_by_Stimulus(Salient_Belief);
+			*/
 		}
-		try 
+		else
 		{
+			try 
+			{
+				
+			}
+			catch (Exception e) {
+		      Game.Print("Something went wrongin method: Insert_New_Desires.");
+		      Game.Print("Message Error: "+e.getMessage());
+		      result = false;
+		    }
 			
 		}
-		catch (Exception e) {
-	      Game.Print("Something went wrongin method: Insert_New_Desires.");
-	      Game.Print("Message Error: "+e.getMessage());
-	      result = false;
-	    }
 		return result;
-		
 	}
+	
+	public TPerception Get_Perception()
+	{
+		return this.Sensor.Get_Last_Acquired_Perception();
+	}
+	
+	public TSensor_Managment Get_Sensor()
+	{
+		return this.Sensor;
+	}
+	
+	private boolean Information_Selection(TPerception Perception)
+	{
+		boolean result = true;
+		if(Perception == null)
+		{
+			return result;
+				
+		}
+		else
+		{
+			TRegion Inhibition_Regions = this.Agent.get_GW().Get_Inhibition_Regions();
+			ArrayList<TBelief_Base> Unhinibited_Beliefs = this.Agent.get_GW().Get_UnInhibited_Beliefs();
+			
+			TTriple_Object Preceived_Data = Perception.get_Perceived_Data();
+			String String_TVS_Answer = (String) Preceived_Data.Object_First;
+			
+			TSalient_Belief Salient_Belief;// = (TSalient_Belief) this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).getFirst();
+			
+			switch(String_TVS_Answer)
+			{
+			case "Correct move!":
+				
+				ArrayList<TBelief_Base> Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Ok_Correct_Movement);
+				Salient_Belief = (TSalient_Belief) Beliefs2.getFirst();
+				
+				TPosition_Train_Coords Train_Coords = (TPosition_Train_Coords) Preceived_Data.Object_Second; 
+				
+				TBelief_Base Current_Route;
+				TBelief_Base Current_Step;
+				TBelief_Base Current_Station;
+				
+				//I update Current_Route Beliefs
+				Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Route);
+				Current_Route = Beliefs2.getFirst();
+				Current_Route.Predicate.set_Object_Complement(Train_Coords.Get_Route());
+				
+				//I update Current_Step Beliefs
+				Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Step);
+				Current_Step = Beliefs2.getFirst();
+				Current_Step.Predicate.set_Object_Complement(Train_Coords.Get_Step());
+				
+				//I update Current_Stationv Beliefs
+				Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Station);
+				Current_Station = Beliefs2.getFirst();
+				Current_Station.Predicate.set_Object_Complement(Train_Coords.Get_Station());
+				
+						
+				//Game.Print(this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).size());
+				TPredicate Predicate = Salient_Belief.get_Predicate();
+				
+				//This is the Saslient_Belief for Epistemic_Goal
+				Salient_Belief.Update_Saliency(0.1);
+				
+				this.Agent.get_GW().Update_Belief_by_Stimulus(Salient_Belief);
+				
+			}
 
+		
+		
+		}
+		return result;
+	}
 
 }

@@ -139,9 +139,9 @@ public class Environment {
             for (Route arco : Neighbors.get(citta1)) {
                 if (arco.getDestination() == citta2) {
                 	;
-                	Peso_Locomotiva += arco.getPeso_Locomotiva();
-                	Peso_Panorama += arco.getPeso_Panorama();
-                	Peso_Velocita += arco.getPeso_Velocita();
+                	Peso_Locomotiva += arco.get_Locomotive_Route();
+                	Peso_Panorama += arco.get_Panorama_Route();
+                	Peso_Velocita += arco.get_Speed_Route();
                     break;
                 }
             }
@@ -170,16 +170,16 @@ public class Environment {
         {
             indice= percorso_tratte.get(i);
             tratta = this.All_Routes.get(indice);
-        	Peso_Locomotiva += tratta.getPeso_Locomotiva();
-        	Peso_Panorama += tratta.getPeso_Panorama();
-        	Peso_Velocita += tratta.getPeso_Velocita();
+        	Peso_Locomotiva += tratta.get_Locomotive_Route();
+        	Peso_Panorama += tratta.get_Panorama_Route();
+        	Peso_Velocita += tratta.get_Speed_Route();
         	path_Time += tratta.Get_Path_Time();
         }
 //        Totale_Pesi.put(TType_Quality_Goal.TGQ_Locomotive, Peso_Locomotiva);
 //        Totale_Pesi.put(TType_Quality_Goal.TGQ_Panorama, Peso_Panorama);
 //        Totale_Pesi.put(TType_Quality_Goal.TGQ_Velocity, Peso_Velocita);
 //        Totale_Pesi.put(TType_Quality_Goal.TGQ_Locomotive, Peso_Locomotiva/Routes_Number);
-        Totale_Pesi.put(TType_Quality_Goal.TGQ_Locomotive, Peso_Locomotiva*Routes_Number);
+        Totale_Pesi.put(TType_Quality_Goal.TGQ_Locomotive, Peso_Locomotiva/Routes_Number);
         Totale_Pesi.put(TType_Quality_Goal.TGQ_Panorama, Peso_Panorama/Routes_Number);
         Totale_Pesi.put(TType_Quality_Goal.TGQ_Velocity, Peso_Velocita/Routes_Number);
         
@@ -216,9 +216,9 @@ public class Environment {
         for (int i = 0; i < percorso.size() - 1; i++) {
         	int indice_tratta_del_percorso = percorso.get(i);
         	arco = this.All_Routes.get( indice_tratta_del_percorso );
-        	Peso_Locomotiva += arco.getPeso_Locomotiva();
-        	Peso_Panorama += arco.getPeso_Panorama();
-        	Peso_Velocita += arco.getPeso_Velocita();
+        	Peso_Locomotiva += arco.get_Locomotive_Route();
+        	Peso_Panorama += arco.get_Panorama_Route();
+        	Peso_Velocita += arco.get_Speed_Route();
         }
         Totale_Pesi.put(TType_Quality_Goal.TGQ_Locomotive, Peso_Locomotiva);
         Totale_Pesi.put(TType_Quality_Goal.TGQ_Panorama, Peso_Panorama);
@@ -262,7 +262,7 @@ public class Environment {
             for (Route arco : Neighbors.getOrDefault(nodoAttuale, Collections.emptyList())) {
                 if (!visitati.contains(arco.getDestination())) {
                 	
-                	Indice_Arco = arco.Numero_Rotta;
+                	Indice_Arco = arco.Route_Number;
                     dfs2(arco.getDestination(), destinazione, visitati, percorsoCorrente, tuttiPercorsi,
                     		percorsoCorrente_tratte, tuttiPercorsi_tratte, Indice_Arco);
                     if (Indice_Arco>-1)

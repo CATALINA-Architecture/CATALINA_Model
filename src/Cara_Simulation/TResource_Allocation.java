@@ -269,26 +269,92 @@ public class TResource_Allocation {
 		boolean result = true;
 		try 
 		{
+			this.get_Agent().get_GW().Print_Data(0, 0);
+			ArrayList<TIntention> Intentions = this.Agent.get_GW().Get_Intentions();
+			TIntention Intention = Intentions.getFirst();
+			TDesire Desire = Intention.get_Desire();
+
+			TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
+			
+			int Current_Action_Id = Selected_Option.Get_Action_To_Do_ID();
+			
+			ArrayList<TAction> Actions = new ArrayList<TAction>();
+			Actions.addAll(Selected_Option.get_Plan_Actions());
+			if(Actions.size()>0)
+			{
+
+				TAction Action = Actions.get(Current_Action_Id);
+				
+				TPredicate Precondition =  Action.get_Precondition();
+				TPosition_Train_Coords Precondition_Position = 
+									(TPosition_Train_Coords) Precondition.get_Object_Complement();
+
+				TBelief_Base Current_Route;
+				TBelief_Base Current_Step;
+				TBelief_Base Current_Station;
+				
+				ArrayList<TBelief_Base> Unhibited_Beliefs;
+				//I update Current_Route Beliefs
+				Unhibited_Beliefs = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Route);
+				Current_Route = Unhibited_Beliefs.getFirst();
+
+				//I update Current_Step Beliefs
+				Unhibited_Beliefs = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Step);
+				Current_Step = Unhibited_Beliefs.getFirst();
+
+				//I update Current_Stationv Beliefs
+				Unhibited_Beliefs = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Station);
+				Current_Station = Unhibited_Beliefs.getFirst();
+				if((int)Current_Route.Predicate.get_Object_Complement() == (int)Precondition_Position.Get_Route() &&
+						(int)Current_Step.Predicate.get_Object_Complement() == (int)Precondition_Position.Get_Step() &&
+					Current_Station.Predicate.get_Object_Complement() == Precondition_Position.Get_Station())
+				{
+					Game.Print("I execute the action");
+					this.Plan_Exec(Action);
+				}
+				else
+				{
+					Game.Print(Current_Route.Predicate.get_Object_Complement());
+					Game.Print(Precondition_Position.Get_Route());
+					Game.Print(Current_Step.Predicate.get_Object_Complement());
+					Game.Print(Precondition_Position.Get_Step());
+					Game.Print(Current_Station.Predicate.get_Object_Complement());
+					Game.Print(Precondition_Position.Get_Station());
+				}
+			}
+			this.get_Agent().get_GW().Print_Data(1, 0);
 			
 		}
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Plan_Advanc_Eval.");
 	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
 	      result = false;
 	    }
 	    return result;
 	}
 	
-	private boolean Plan_Exec()
+	private boolean Plan_Exec(TAction Action)
 	{
 		boolean result = true;
 		try 
 		{
-			
+			this.get_Agent().get_GW().Print_Data(0, 0);
+			Game.Print("I execute an action");
+			TTriple_Object Request = new TTriple_Object();
+			//FUNCTION TO DO
+			Request.Object_First = Action.get_Action_Name();
+			//PostCondition Train Coords
+			Request.Object_Second = Action.get_Params().getFirst();
+			this.Agent.Get_TCS().Execute_Player_Action(Request, this.Agent);
+			this.get_Agent().get_GW().Print_Data(1, 0);
 		}
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Plan_Advanc_Eval.");
 	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
 	      result = false;
 	    }
 	    return result;

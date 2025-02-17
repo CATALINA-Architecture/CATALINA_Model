@@ -40,7 +40,6 @@ class TGreen_Compare implements Comparator<TOption> {
 
     	double w0 = Option0.Path.Total_Weights.get(TType_Quality_Goal.TGQ_Locomotive);
     	double w1 = Option1.Path.Total_Weights.get(TType_Quality_Goal.TGQ_Locomotive);        
-    	
         return (w0 > w1? -1 : (w0 == w1) ? 0 : 1);
     }
 }
@@ -203,6 +202,8 @@ public class TReasoner_Function {
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
 	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
 	      result = false;
 	    }
 	    return result;
@@ -225,12 +226,20 @@ public class TReasoner_Function {
 			ArrayList<TDesire> Desires =  this.Agent.get_GW().Get_Desires();
 			
 			ArrayList<TIntention> Intentions = new ArrayList<TIntention>();
+			Game.Print("Desires data after Update_Desire_with_Options");
+//			for(TDesire Desire: desires)
+//			{
+//				Game.Print("Desire Functional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
+//				Game.Print("Desire Options: " + Desire.get_Option_List().size());
+//			}
 			for(TDesire Desire: Desires)
 			{
-				//I create an Intention for any Desire and the first option of this Desire is the Option
+				// I create an Intention for any Desire and the first option of this Desire is the Option
 				// selected to pursue
 				TIntention An_Intention = new TIntention(Desire, 0);
 				Intentions.add(An_Intention);
+				Game.Print("Desire Functional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
+				Game.Print("Desire Options: " + Desire.get_Option_List().size());
 			}
 			this.Agent.get_GW().Update_Intentions(Intentions);
 			this.Agent.get_GW().Print_Data(1, 0);
@@ -239,6 +248,8 @@ public class TReasoner_Function {
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
 	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
 	      result = false;
 	    }
 		return result;
@@ -265,6 +276,7 @@ public class TReasoner_Function {
 			TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
 			
 			Game.PrintLn();
+			Game.Print("The Functional_Belief Name is: "+Functional_Goal.get_Name());
 			Game.Print("The Functional_Belief is a:  Belief_Destination_Station");
 			Station Destination_Station = (Station) Functional_Belief.Predicate.get_Subject();
 			Station Current_Station = null;
@@ -335,6 +347,9 @@ public class TReasoner_Function {
 			ArrayList<TAction> plans = new ArrayList<TAction>();
 			Boolean Print_PAth = true;
 			Game.Print("Agent inserts actions to do (go to in some routes)");
+			Environment Map = this.Agent.get_GW().Get_Map_Known();
+			//For any path
+			Game.Print("**** Path Steps ********");
 			for (Plan path: Paths)
 			{	
 			//	if (Print_PAth)
@@ -344,23 +359,124 @@ public class TReasoner_Function {
 			//		Game.Print(path.Lista_Tratte_numerate.size()+": "+path.Lista_Tratte_numerate);	
 			//	}
 			
+				i++;
+				Game.PrintLn();
+				Game.Print("****** Path: "+i);
+				Game.Print(path.Routes);
 				ArrayList<TAction> Actions = new ArrayList<TAction>();
 				
-				for (Integer A_Route: path.Routes )
+				
+				//I Create plans for any options
+				//For Any Route
+				;
+				for (Integer Route_Number: path.Routes )
 				{
 					//Now, Action stores only a Route at a time
 					// An Action => A Route
-					if(i==0)
+//					if(i==0)
+//					{
+//			//			Game.Print(path.Destinazioni);					
+//					}
+					
+					//Now, I create any action in plan option
+					
+					//I get the rounds time to go from Station A to Station B
+					Route A_Route = Map.All_Routes.get(Route_Number);
+					Game.PrintLn();	
+					Game.Print("******** New Route: "+Route_Number+ " - Departure: "+A_Route.getDeparture()+
+							" - Destination: "+A_Route.getDestination());
+					
+					int Rounds_Time = A_Route.Get_Total_Rounds();
+					
+					//I get the correct Station
+					Station A_Departure_Station;
+					Station A_Destination_Station;
+					Station A_Destination_Station_in_PostCondition;
+//					if (Route_Number % 2 == 0)
+//					{
+//						//this is the outward way route (from Departure to Destination)
+//						A_Departure_Station = A_Route.getDeparture();
+//						A_Destination_Station = A_Route.getDestination();
+//					}
+//					else
+//					{
+//						//this is the back route (from Destination to Departure)
+//						A_Departure_Station = A_Route.getDestination();
+//						A_Destination_Station = A_Route.getDeparture();
+//					}
+					A_Departure_Station = A_Route.getDeparture();
+					A_Destination_Station = A_Route.getDestination();
+					int step_position = 0;
+					int Start_route_position = Route_Number;
+					int End_route_position = Route_Number;
+					//For Any Step in Route
+					Game.Print("Start creating Path Plan:");
+					for(Integer Step = 1; Step <= Rounds_Time; Step++)
 					{
-			//			Game.Print(path.Destinazioni);					
+						TPosition_Train_Coords Precondition_Position_Train_Coords;
+						TPosition_Train_Coords Postcondition_Position_Train_Coords;
+						TPredicate Precondition;
+						TPredicate Postcondition;
+						
+						String Function_To_Invoke;
+						
+						//I set starting precondition data
+						if (Step == 1)
+						{
+							Function_To_Invoke = "GO_TO_Route";
+							Start_route_position = -1;
+							End_route_position = Route_Number;
+						}
+						else 
+						{
+							Function_To_Invoke = "GO_TO_Step";
+							Start_route_position = Route_Number;
+						}
+						Precondition_Position_Train_Coords = new TPosition_Train_Coords(A_Departure_Station, 
+								Start_route_position, step_position);
+						
+						step_position = step_position + A_Route.get_Speed_Route();
+						
+						//I set ending precondition data
+						A_Destination_Station_in_PostCondition = A_Departure_Station;
+//						End_route_position = Start_route_position;
+						
+						if (step_position > A_Route.get_Steps_Number())
+						{
+							A_Destination_Station_in_PostCondition = A_Destination_Station;
+							//If I arrive in next Station, I set the Route to -1 and the
+							//step_position to 0
+							End_route_position = -1;
+							step_position = 0;
+						}
+
+						Postcondition_Position_Train_Coords = new TPosition_Train_Coords(
+								A_Destination_Station_in_PostCondition, End_route_position, step_position);
+
+						
+						
+						Precondition = new TPredicate(null, TType_Subject.Me, 
+								TType_Relationship.is_in, Precondition_Position_Train_Coords);
+						
+						Postcondition = new TPredicate(null, TType_Subject.Me, 
+								TType_Relationship.is_in, Postcondition_Position_Train_Coords);
+						
+						
+						TAction An_Action = new TAction(null, Precondition, Postcondition);
+						An_Action.get_Params().add(Postcondition_Position_Train_Coords);
+						
+						// I define "Use_Route" as a function to go from a departure to a destination station
+						An_Action.set_Action_Name(Function_To_Invoke);
+						Actions.add(An_Action);
+						
+						Game.Print("Precondition.  Station: "+Precondition_Position_Train_Coords.Get_Station()+
+								" - Route: "+Precondition_Position_Train_Coords.Get_Route()+
+								" - Step: "+Precondition_Position_Train_Coords.Get_Step());
+						Game.Print("Postcondition.  Station: "+Postcondition_Position_Train_Coords.Get_Station()+
+								" - Route: "+Postcondition_Position_Train_Coords.Get_Route()+
+								" - Step: "+Postcondition_Position_Train_Coords.Get_Step());
+						Game.Print("-------------- Next Step --------------");
 					}
-					
-					TAction An_Action = new TAction(null, null, null);
-					An_Action.get_Params().add(A_Route);
-					
-					// I define "Use_Route" as a function to go from a departure to a destination station
-					An_Action.set_Action_Name("Use_Route");
-					Actions.add(An_Action);
 				}
 				
 				TOption An_Option = new TOption(Actions, null, 0.0, path.Total_Weights);
@@ -399,7 +515,7 @@ public class TReasoner_Function {
 				Game.Print("Routes Numbers: "+Path.Routes);
 				Game.Print("Agent Start Time: "+Current_Time+ " - Finally Operator Data: Start_Interval: "+Start_Time+ " - End_Interval: "+End_Time);
 				Game.Print("Panorama average: "+Path.Total_Weights.get(TType_Quality_Goal.TGQ_Panorama));
-				Game.Print("Locomotive average ( CO2/Step ): "+Path.Total_Weights.get(TType_Quality_Goal.TGQ_Locomotive));
+				Game.Print("Locomotive average ( CO2/Route ): "+Path.Total_Weights.get(TType_Quality_Goal.TGQ_Locomotive));
 				Game.Print("Speed average: "+Path.Total_Weights.get(TType_Quality_Goal.TGQ_Velocity));
 				
 				Game.Print("Path Time: "+Path.Path_Time+" - Arrive time: "+Temp_Time);
@@ -410,12 +526,15 @@ public class TReasoner_Function {
 				{
 					Route rotta = this.Agent.Get_WMM().Get_Map().get_Route(ind);
 					//Game.Print(New_Paths);
+					Game.Print("Route Number: "+rotta.Route_Number + " - Route_Time: "+rotta.Get_Path_Time());
+					Game.Print("Route Color: "+rotta.getColor());
+					Game.Print("Total Rounds Route: "+rotta.Get_Total_Rounds());
 					Game.Print("Departure/Destination: "+ rotta.getDeparture()+"-"+rotta.getDestination()+
 							" - Locomotive: "+rotta.getLocomotiva() + " - Panorama: "+rotta.getPanorama_()+
-							" - Speed: "+rotta.getVelocita()+ " - N.pieces: "+rotta.getPieces_Number());
-					Game.Print("Route Color: "+rotta.getColor());
-					Game.Print("Route Number: "+rotta.Numero_Rotta + " - Route_Time: "+rotta.Get_Path_Time());
+							" - Speed: "+rotta.getVelocita()+ " - N.pieces: "+rotta.get_Steps_Number());
+					Game.Print("Step Number: "+rotta.get_Steps_Number());
 					Game.Print("Locomotive value: "+rotta.getLocomotiva().Get_Value(rotta.getLocomotiva()));
+					Game.Print("Locomotive Route value: "+rotta.get_Locomotive_Route());
 					Game.Print("Panorama value: "+rotta.getPanorama_().Get_Value(rotta.getPanorama_()));
 					Game.Print("Speed value: "+rotta.getVelocita().Get_Value(rotta.getVelocita()));
 					Game.Print("**********************");
@@ -435,6 +554,8 @@ public class TReasoner_Function {
 	catch (Exception e) {
       Game.Print("Something went wrongin method: Insert_New_Desires.");
       Game.Print("Message Error: "+e.getMessage());
+      Game.PrintLn();
+      e.printStackTrace();
       result = false;
     }
     return result;
@@ -487,6 +608,8 @@ public class TReasoner_Function {
 						
 				}
 				Game.Print("I found paths (options) After Quality_Filter: " + Filtered_Options.size());
+				Game.Print("Desire Functional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
+				Game.Print("Desire Options: " + Desire.get_Option_List().size());
 				
 				Instant end = Instant.now();
 				Duration timeElapsed = Duration.between(start, end);
@@ -496,11 +619,19 @@ public class TReasoner_Function {
 			}
 		
 			this.Agent.get_GW().Update_Desire_with_Options(desires);
+//			Game.Print("Desires data after Update_Desire_with_Options");
+//			for(TDesire Desire: desires)
+//			{
+//				Game.Print("Desire Functional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
+//				Game.Print("Desire Options: " + Desire.get_Option_List().size());
+//			}
 			this.Agent.get_GW().Print_Data(1, 0);
 		}
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
-	      Game.Print("Message Error: "+e.getMessage());
+	      Game.Print("Line§(s) Error: "+e.getStackTrace());
+	      Game.PrintLn();
+	      e.printStackTrace();
 	      result = false;
 	    }
 	    return result;
@@ -567,33 +698,42 @@ public class TReasoner_Function {
 	private ArrayList<TOption> Green_Filter(ArrayList<TOption> Options, TGreen_Goal Green_Goal)
 	{
 		ArrayList<TOption> New_Options = new ArrayList<TOption>();
-		String Value_Green_Goal = (String) Green_Goal.get_Constraint().get_Object_Complement();
-		
-		Game.Print("Value_Green_Goal Value_Green_Goal Value_Green_Goal");
-		switch (Value_Green_Goal)
+//		Game.Print(Green_Goal.get_Constraint().get_Object_Complement().getClass());
+//		Game.Print(Green_Goal.get_Constraint().get_Name());
+//		Game.Print(Green_Goal.get_Constraint().get_Subject());
+//		Game.Print(Green_Goal.get_Constraint().get_Relationship());
+//		Game.Print(Green_Goal.get_Constraint().get_Object_Complement());
+		Double Double_Value_Green_Goal;
+		 
+		//String Value_Green_Goal = Green_Goal.get_Constraint().get_Object_Complement();
+		switch (Green_Goal.get_Constraint().get_Relationship())
 		{
-		case "slow":
-			Collections.sort(Options, new TGreen_Compare());
-			int start =0;
-			int end =0;	
-			//If the size list is > of 2 elements so I divide the list in 3 groups 
-			//Otherwise, I get the first element,
-			//	because "end" value is equal to 0 at this moment
-			if(Options.size()>2)
-			{
-				end = (int) Options.size()/3;
-			}
-			int i=0;
-			for(i=0;i<end;i++)
-			{
-				New_Options.add(Options.get(i));
-			}
-			Game.Print("I divided the list of elements. New size is: "+New_Options.size());
-			break;			
-		default:
-			Game.Print("I cannot handle Green_Goal Complement_Objecy: "+Green_Goal.get_Constraint().get_Object_Complement());
+			case TType_Relationship.minor_equal:
+				
+				Game.Print("Before resizing: "+Options.size());
+				Double_Value_Green_Goal = (Double) Green_Goal.get_Constraint().get_Object_Complement();
+				Options.removeIf( n -> n.Path.Total_Weights.get(TType_Quality_Goal.TGQ_Locomotive) > Double_Value_Green_Goal );
+				Game.Print("After resizing: "+Options.size());
+				Collections.sort(Options, new TGreen_Compare());
+				
+				break;
+			case TType_Relationship.minor:
+				
+				Game.Print("Before resizing: "+Options.size());
+				Double_Value_Green_Goal = (Double) Green_Goal.get_Constraint().get_Object_Complement();
+				Options.removeIf( n -> n.Path.Total_Weights.get(TType_Quality_Goal.TGQ_Locomotive) >= Double_Value_Green_Goal );
+				Game.Print("After resizing: "+Options.size());
+				Collections.sort(Options, new TGreen_Compare());
+//				New_Options.addAll(Options);
+				break;
+			default:
+				Game.Print("I cannot handle Green_Goal Complement_Object: "+Green_Goal.get_Constraint().get_Object_Complement());
 		}
 		
+		for(int i=0;i<Options.size();i++)
+		{
+			New_Options.add(Options.get(i));
+		}
 		return New_Options;
 	}
 	
@@ -618,17 +758,17 @@ public class TReasoner_Function {
 			{
 			case "great":
 				Collections.sort(Options, new TQuality_Panorama_Compare());
-				int start =0;
-				int end =0;	
-				//If the size list is > of 2 elements so I divide the list in 3 groups 
-				//Otherwise, I get the first element,
-				//	because "end" value is equal to 0 at this moment
-				if(Options.size()>2)
-				{
-					end = (int) Options.size()/3;
-				}
-				int i=0;
-				for(i=0;i<end;i++)
+//				int start =0;
+//				int end =0;	
+//				//If the size list is > of 2 elements so I divide the list in 3 groups 
+//				//Otherwise, I get the first element,
+//				//	because "end" value is equal to 0 at this moment
+//				if(Options.size()>2)
+//				{
+//					end = (int) Options.size()/3;
+//				}
+//				int i=0;
+				for(int i=0;i<Options.size();i++)
 				{
 					New_Options.add(Options.get(i));
 				}
@@ -637,7 +777,6 @@ public class TReasoner_Function {
 			default:
 				Game.Print("I cannot handle Quality_Goal Complement_Objecy: "+Quality_Goal.get_Constraint().get_Object_Complement());
 			}
-
 			
 			break;
 		case TType_Quality_Goal.TGQ_Velocity:
@@ -698,6 +837,8 @@ public class TReasoner_Function {
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
 	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
 	      result = false;
 	    }
 	    return result;

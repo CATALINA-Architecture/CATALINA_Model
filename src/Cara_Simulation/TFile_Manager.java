@@ -251,8 +251,8 @@ public class TFile_Manager {
 		this.Init_Creation_Green_Goals_Predicates = Predicates.size();//5;
 		this.Initial_Number_Green_Goals = 1;
 		int i = this.Init_Creation_Green_Goals_Predicates;
-		Predicates.add(new TPredicate( "p"+i, TType_Green_Goal.TGG_Locomotive,TType_Relationship.is, 
-				Locomotive.Hybrid));
+		Predicates.add(new TPredicate( "p"+i, TType_Green_Goal.TGG_Locomotive,TType_Relationship.minor_equal, 
+				0.8));
 		
 		/////////////////
 		//Create Quality predicates: Starting by 6
@@ -287,13 +287,15 @@ public class TFile_Manager {
 				TPredicate( "p"+i++, TType_Subject.Me, TType_Relationship.is_in, 
 						Station.Lisboa));
 		//Route
+		//Route is -1 when Agent is in a station, otherwise the value is > 0 when Agent is in Route
 		Predicates.add(new 
 				TPredicate( "p"+i++, TType_Subject.Me, TType_Relationship.is_in, 
 						-1));
 		//Step
+		//Step is 0 when Agent is in a station, otherwise the value is > 0 when Agent is in Route 
 		Predicates.add(new 
 				TPredicate( "p"+i++, TType_Subject.Me, TType_Relationship.is_in, 
-						-1));
+						0));
 		
 		/////////////////
 		//Create Belief_Temporary_Closed_Route, Belief_Closed_Route, Belief_Busy_Route	
@@ -316,6 +318,8 @@ public class TFile_Manager {
 		/////////////////
 		//Create Stimulus_Beliefs,	
 		/////////////////
+		Predicates.add(new 
+				TPredicate( "p"+i++, TType_Subject.Me, TType_Relationship.is_in, 0));
 		Predicates.add(new 
 				TPredicate( "p"+i++, TType_Subject.Me, TType_Relationship.is_Too_Close_To_The_Train, 0));
 		Predicates.add(new 
@@ -420,8 +424,12 @@ public class TFile_Manager {
 //				null, TType_Beliefs.Stimulus_Too_Close_To_The_Train);
 
 		Beliefs.add(new TSalient_Belief("b"+i, "p"+i, 0.0, false, TType_Object_Complement.Developer, 
+				null, TType_Beliefs.Stimulus_Ok_Correct_Movement));
+		i++;
+		
+		Beliefs.add(new TSalient_Belief("b"+i, "p"+i, 0.0, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Stimulus_Too_Close_To_The_Train));
-		i++;		
+		i++;
 //		
 		Beliefs.add(new TSalient_Belief("b"+i, "p"+i, 0.0, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Stimulus_Closed_Route));
@@ -488,7 +496,7 @@ public class TFile_Manager {
 		LocalDateTime Irrelevant_Time = LocalDateTime.parse("2024-10-01 21:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		
 		LocalDateTime Fs1 = LocalDateTime.parse("2024-10-01 18:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		LocalDateTime Fe1 = LocalDateTime.parse("2024-10-01 21:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		LocalDateTime Fe1 = LocalDateTime.parse("2024-10-01 22:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		Functional_Goals.add(new TFunctional_Goal("Visit_Paris", "b1", null,  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List,
 				Fs1, Fe1, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
 		

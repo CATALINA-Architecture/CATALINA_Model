@@ -1,20 +1,20 @@
 package Cara_Simulation;
 
 public enum Panorama {
-	Small,
-	Medium,
-	High;
+	Limited,
+	Fair,
+	Spectacular;
 	
 	public double Get_Value(Panorama Panorama_) { 
 		double risultato = 0.0;
 		switch (Panorama_) {
-		case Small:
+		case Limited:
 			risultato = 0.3;
 				break;
-		case Medium:
+		case Fair:
 			risultato = 0.6;
 				break;
-		case High:
+		case Spectacular:
 			risultato = 0.9;
 				break;
 

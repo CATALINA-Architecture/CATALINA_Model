@@ -44,6 +44,7 @@ public class TAgent {
 	//		this.GW.set_Map_Know(Mappa.clona());
 			this.TCS = TCS;
 			this.WMM.Set_Map(Map);
+			
 			this.WMM.Set_Regions();
 			//System.out.println("Routes number = "+Map.Tutte_Le_Rotte.size());
 			final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
@@ -128,6 +129,8 @@ public class TAgent {
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
 	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
 	      result = false;
 	    }
 		return result;
@@ -170,6 +173,7 @@ public class TAgent {
 			if(Res)
 			{
 				this.GW.Broadcast();
+				Game.Print("Scenario_Cycle; "+ Scenario_Cycle);
 				Res = this.E_Switching_Function.AM_Exogenous_Module();
 				if( Res && !this.GW.Get_Updated_Desires())
 				{
@@ -190,8 +194,9 @@ public class TAgent {
 							Res = this.E_Inhibition_function.Focus_Attention();
 							if( Res )
 							{
+								Game.Print("Scenario_Cycle++: "+Scenario_Cycle);
 								GW.Broadcast();
-								Post_OK = true;
+								Post_OK = this.RA.Plan_Advanc_Eval();
 								Game.Scenario_Number++;
 								Scenario_Cycle++;
 							}

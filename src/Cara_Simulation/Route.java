@@ -8,10 +8,10 @@ public class Route{
 		return this.Path_Time;
 	}
 	
-	protected int Numero_Rotta;
+	protected int Route_Number;
 	public int getNumero_Rotta() 
 	{
-		return this.Numero_Rotta;
+		return this.Route_Number;
 	}
 	
 	private Station Departure;
@@ -34,10 +34,10 @@ public class Route{
 	}
 	
 	
-	private int Pieces_Number;
-	public int getPieces_Number() 
+	private int Steps_Number;
+	public int get_Steps_Number() 
 	{
-		return this.Pieces_Number;
+		return this.Steps_Number;
 	}
 	
 	
@@ -60,16 +60,16 @@ public class Route{
 	public Boolean getFredned() {
 		return this.Fredned;
 	}
-	public void setFredned(Boolean fredned) {
+	public void set_Fredned(Boolean fredned) {
 		this.Fredned = fredned;
 	}
 
-	private int Pieces_Interrupted;
-	public int getPieces_Interrupted() {
-		return this.Pieces_Interrupted;
+	private int Step_Interrupted;
+	public int get_Pieces_Interrupted() {
+		return this.Step_Interrupted;
 	}
-	public void setPieces_Interrupted(int pieces_Interrupted) {
-		this.Pieces_Interrupted = pieces_Interrupted;
+	public void set_Pieces_Interrupted(int pieces_Interrupted) {
+		this.Step_Interrupted = pieces_Interrupted;
 	}
 	
 	private Locomotive Locomotiva;
@@ -77,42 +77,44 @@ public class Route{
 		return this.Locomotiva;
 	}
 	
-	private Panorama Panorama_;
+	private Panorama The_Panorama;
 	public Panorama getPanorama_() {
-		return this.Panorama_;
+		return this.The_Panorama;
 	}
-	private Speed Velocita;
+	private Speed Speed;
 	public Speed getVelocita() {
-		return this.Velocita;
+		return this.Speed;
 	}
 	
-	private double Peso_Locomotiva;
-	public double getPeso_Locomotiva() {
-		return this.Peso_Locomotiva;
+	private double Locomotive_Route;
+	public double get_Locomotive_Route() {
+		return this.Locomotive_Route;
 	}
-	private double Peso_Panorama;
-	public double getPeso_Panorama() {
-		return this.Peso_Panorama;
-	}
-	
-	private double Peso_Velocita;
-	public double getPeso_Velocita() {
-		return this.Peso_Velocita;
+	private double Panorama_Route;
+	public double get_Panorama_Route() {
+		return this.Panorama_Route;
 	}
 	
-	private double Peso_Velocita_per_rettangolo;
-	public double getPeso_Velocita_per_rettangolo() {
-		return this.Peso_Velocita_per_rettangolo;
+	private int Speed_Route;
+	public int get_Speed_Route() {
+		return this.Speed_Route;
 	}
 	
-	private int Tratta_Usata_da_Agente;
+	private int Route_used_by_agent;
 
 
-	public int getTratta_Usata_da_Agente() {
-		return Tratta_Usata_da_Agente;
+	public int get_Route_used_by_agent() {
+		return Route_used_by_agent;
 	}
-	public void setTratta_Usata_da_Agente(int tratta_Usata_da_Agente) {
-		Tratta_Usata_da_Agente = tratta_Usata_da_Agente;
+	
+	private int Total_Rounds;
+	public int Get_Total_Rounds()
+	{
+		return this.Total_Rounds;
+	}
+	
+	public void set_Route_used_by_agent(int route_used_by_agent) {
+		Route_used_by_agent = route_used_by_agent;
 	}
 	public Route(Station Departure, Station Destination, Color Color, int Pieces_Number, Locomotive Locomotiva,
 			Panorama Panorama_, Speed Velocita, int Numero_rotta)
@@ -120,14 +122,14 @@ public class Route{
 		this.Departure = Departure;
 		this.Destination = Destination;
 		this.Color = Color;
-		this.Pieces_Number = Pieces_Number;
-		this.Pieces_Interrupted = 0;
+		this.Steps_Number = Pieces_Number;
+		this.Step_Interrupted = 0;
 		this.Interrupted = false;
 		this.Busy = false;
 		this.Locomotiva = Locomotiva;
-		this.Panorama_ = Panorama_;
-		this.Velocita = Velocita;
-		this.Numero_Rotta = Numero_rotta;
+		this.The_Panorama = Panorama_;
+		this.Speed = Velocita;
+		this.Route_Number = Numero_rotta;
 		
 //		int moltiplicatore = Pieces_Number;
 		//Per ora impongo che a prescindere dal numero dei pezzi, i pesi siano calcolati singolarmente
@@ -135,12 +137,26 @@ public class Route{
 		int moltiplicatore = 1;
 		
 		
-		this.Peso_Locomotiva =  this.Locomotiva.Get_Value(this.Locomotiva) * moltiplicatore;
-		this.Peso_Panorama =  this.Panorama_.Get_Value(this.Panorama_) * moltiplicatore;
-		this.Peso_Velocita_per_rettangolo = this.Velocita.Get_Value(this.Velocita);
-		this.Peso_Velocita =  this.Peso_Velocita_per_rettangolo * moltiplicatore;
-		//this.Path_Time = this.Peso_Velocita_per_rettangolo / this.Pieces_Number;
-		this.Path_Time = this.Pieces_Number / this.Peso_Velocita;
+		this.Locomotive_Route =  this.Locomotiva.Get_Value(this.Locomotiva) * this.Steps_Number;
+		this.Panorama_Route =  this.The_Panorama.Get_Value(this.The_Panorama);
+		this.Speed_Route = this.Speed.Get_Value(Velocita);
+		//I MUST TO INSERT "+1" because "this.Steps_Number / this.Speed_Route" is the time
+		//to go to the last step, but to go in next station I have to do another action!
+		//CAMBIAMENTO!!
+		this.Path_Time = (double) ((double)(this.Steps_Number+1) / this.Speed_Route);
+		this.Total_Rounds = (int) Math.ceil(this.Path_Time);
+		if(Route_Number == 128)
+		{
+			Game.Print("Data for Route: 128");
+			Game.Print("this.Steps_Number :"+this.Steps_Number );
+			Game.Print("this.Speed_Route :"+this.Speed_Route );
+			Game.Print("this.Steps_Number+1 :"+(this.Steps_Number+1) );
+			Game.Print("((this.Steps_Number+1) / this.Speed_Route) :="+((this.Steps_Number+1) / this.Speed_Route));
+			Game.Print("((this.Steps_Number+1) / this.Speed_Route) :="+((double)(this.Steps_Number+1) / this.Speed_Route));
+			Game.Print("this.Path_Time :"+this.Path_Time );
+			Game.Print("this.Total_Rounds :"+this.Total_Rounds );
+			Game.Print("this.Total_Rounds :"+Math.floor(this.Path_Time ));
+		}
 		
 		
 				//Collezione.Locomotive_Values.get(Colore_rotta.Locomotiva.get(i)) * Numero_Pezzi;

@@ -49,7 +49,8 @@ public class TDesire {
 
 
 	public void set_Option_List(ArrayList<TOption> option_List) {
-		Option_List = option_List;
+		this.Option_List.clear();
+		Option_List.addAll(option_List);
 	}
 
 

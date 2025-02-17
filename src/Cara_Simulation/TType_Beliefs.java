@@ -26,6 +26,7 @@ public enum TType_Beliefs {
 	Belief_Number_Players, 			    //[String "Number Players", is, integer all player number, Agent included]
 	
 	//Types for Stimulus
+	Stimulus_Ok_Correct_Movement,		// The done move is correct, saliency is low inthis case
 	Stimulus_Too_Close_To_The_Train, 	// ahead train is too close to the agent: [Me, is_Too_Close_To_The_Train, (to) integer step]		
 	Stimulus_Closed_Route,				// Permanently Closed Route: [int route, is_Closed, null]
 	Stimulus_Busy_Route,				// Busy Route: [int route, is_Busy, ...]
