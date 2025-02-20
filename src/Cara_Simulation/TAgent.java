@@ -166,14 +166,14 @@ public class TAgent {
 		Game.Print("Now Agent Status is "+this.Status);
 		boolean Res;
 		boolean Post_OK;
-		int Scenario_Cycle = 0;
+		int Working_Cycle = 0;
 		while(this.Status == TAgent_Status.Active)
 		{
-			Res = this.WMM.Perception_Processing(Scenario_Cycle);
+			Res = this.WMM.Perception_Processing(Working_Cycle);
 			if(Res)
 			{
 				this.GW.Broadcast();
-				Game.Print("Scenario_Cycle; "+ Scenario_Cycle);
+				Game.Print("Working_Cycle; "+ Working_Cycle);
 				Res = this.E_Switching_Function.AM_Exogenous_Module();
 				if( Res && !this.GW.Get_Updated_Desires())
 				{
@@ -194,20 +194,18 @@ public class TAgent {
 							Res = this.E_Inhibition_function.Focus_Attention();
 							if( Res )
 							{
-								Game.Print("Scenario_Cycle++: "+Scenario_Cycle);
+								Game.Print("Working_Cycle: "+Working_Cycle);
 								GW.Broadcast();
 								Post_OK = this.RA.Plan_Advanc_Eval();
-								Game.Scenario_Number++;
-								Scenario_Cycle++;
+								//Game.Scenario_Number++;
+								Working_Cycle++;
 							}
 						}
-							
 					}
-						
 				}
 			}
 			
-			if(Scenario_Cycle == 2)
+			if(Working_Cycle == 7)
 			{
 				Game.End_Game();				
 			}

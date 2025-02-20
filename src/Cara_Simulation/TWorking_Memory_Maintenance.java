@@ -630,51 +630,37 @@ public class TWorking_Memory_Maintenance {
 		TPerception Perception = this.Get_Perception();
 		Information_Selection(Perception);
 		
-		if(i>0)
+		//for demonstration purposes
+		if (Perception != null)
 		{
-			result = true;
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("*************  CHANGE OF SCENARIO  **********************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
-			Game.Print("***********************************");
 			
+		
+			TTriple_Object Preceived_Data = Perception.get_Perceived_Data();
+			String String_TVS_Answer = (String) Preceived_Data.Object_First;
 			
-			
-			/*
-			TPosition_Train_Coords Position_Train_Coords = new TPosition_Train_Coords(128, 0);
-			
-			TSalient_Belief Salient_Belief = (TSalient_Belief) this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).getFirst();
-			//Game.Print(this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).size());
-			TPredicate Predicate = Salient_Belief.get_Predicate();
-			Predicate.Set_Subject(Position_Train_Coords.Get_Route());
-			//This is the Saslient_Belief for Epistemic_Goal
-			Salient_Belief.Update_Saliency(0.9);
-			
-			
-//			TTriple_Object Request = new TTriple_Object();
-//			Request.Object_First = "Status Route";
-//			TPredicate 
-////			Request.
-//			
-//			TTCS Tcs = this.Agent.Get_TCS();
-//			
-//			Tcs.Get_Response(null)
-			
-			
-			
-			this.Agent.get_GW().Update_Belief_by_Stimulus(Salient_Belief);
-			*/
+			if(String_TVS_Answer != "Correct move!")
+	//		if(i>3)
+			{
+				Game.Scenario_Number++;
+				result = true;
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("*************  CHANGE OF SCENARIO  **********************");
+				Game.Print("*************  SCENARIO Number "+ Game.Scenario_Number +" **********************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				Game.Print("***********************************");
+				
+			}
 		}
 		else
 		{
@@ -724,6 +710,7 @@ public class TWorking_Memory_Maintenance {
 			{
 			case "Correct move!":
 				
+				Game.Print("I update any information in Beliefs");
 				ArrayList<TBelief_Base> Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Ok_Correct_Movement);
 				Salient_Belief = (TSalient_Belief) Beliefs2.getFirst();
 				
@@ -736,17 +723,36 @@ public class TWorking_Memory_Maintenance {
 				//I update Current_Route Beliefs
 				Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Route);
 				Current_Route = Beliefs2.getFirst();
+				Game.Print("Prev Current_Route: "+Current_Route.Predicate.get_Object_Complement());
 				Current_Route.Predicate.set_Object_Complement(Train_Coords.Get_Route());
+				Game.Print("Updated Current_Route: "+Current_Route.Predicate.get_Object_Complement());
 				
 				//I update Current_Step Beliefs
 				Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Step);
 				Current_Step = Beliefs2.getFirst();
+				Game.Print("Prev Current_Step: "+Current_Step.Predicate.get_Object_Complement());
 				Current_Step.Predicate.set_Object_Complement(Train_Coords.Get_Step());
+				Game.Print("Updated Current_Step: "+Current_Step.Predicate.get_Object_Complement());
 				
 				//I update Current_Stationv Beliefs
 				Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Station);
 				Current_Station = Beliefs2.getFirst();
+				Game.Print("Prev Current_Station: "+Current_Station.Predicate.get_Object_Complement());
 				Current_Station.Predicate.set_Object_Complement(Train_Coords.Get_Station());
+				Game.Print("Updated Current_Station: "+Current_Station.Predicate.get_Object_Complement());
+				
+				//Now I Update next action 
+				ArrayList<TIntention> Intentions = this.Agent.get_GW().Get_Intentions();
+				TIntention Intention = Intentions.getFirst();
+				TDesire Desire = Intention.get_Desire();
+	
+				TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
+				
+				Game.Print("Prev Action_To_Do_ID: "+Selected_Option.Get_Action_To_Do_ID());
+				Selected_Option.Inc_Action_To_Do_ID();
+				Game.Print("Updated Action_To_Do_ID: "+Selected_Option.Get_Action_To_Do_ID());
+	
+				
 				
 						
 				//Game.Print(this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).size());

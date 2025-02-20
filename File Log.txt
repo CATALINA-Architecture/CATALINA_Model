@@ -1,0 +1,2096 @@
+Game starts at: 2024-10-01T16:00
+Creating Map
+I created the map in Time: 4 milliseconds
+
+************  Method:  Initialization *********: imulation.TAgent
+******* Scenario_Number:    --0-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 0
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 0
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 0
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 0
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 0
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+Loaded Goals : [Visit_Paris, Visit_Frankfurt, Visit_Rome]
+
+************  Method:  Initialization *********: imulation.TAgent
+******* Scenario_Number:    --0-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 0
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+************  Method:  Start *********: imulation.TAgent
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 0
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+Now Agent Status is Active
+Perception_Processing: 0
+this.Acquired_Perceptions.getLast() []
+Working_Cycle; 0
+
+************  Method:  AM_Endogenous_Module *********: imulation.TE_Switching_Function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 0
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+I'm promoting the goal to Desire, inside --(List_goals - Inhibited_goals)-- section (see Listing 1). Goal Name: Visit_Paris
+not Promoted Goal Name: Visit_Rome because the precondition Functional Goal is not true
+I'm promoting the goal to Desire, inside --(List_goals - Inhibited_goals)-- section (see Listing 1). Goal Name: Visit_Frankfurt
+I promoted the goal: Visit_Paris to the Desire: D1
+I promoted the goal: Visit_Frankfurt to the Desire: D2
+
+************  Method:  Insert_New_Desires *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 0
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+I inserted Desires: 2
+
+************  Method:  Insert_New_Desires *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+************  Method:  AM_Endogenous_Module *********: imulation.TE_Switching_Function
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+************   This is the end of the Endogenous Module
+
+************  Method:  MeansEnd *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+The agent tries to find some options
+
+************  Method:  MeansEnd *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+************  Method:  Means_End_For_Belief_Destination_Station *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+The Functional_Goal Name is: Visit_Paris
+The Functional_Belief is a:  Belief_Destination_Station
+I search for a plan for the Desire
+I created/found some plan in Time: 1574 milliseconds
+I found paths: 964968
+I found paths Before Finally_Formula: 964968
+I Apply the Finally Operator
+Start time in simulation: 2024-10-01T16:00
+Range time in Finally Operator - 2024-10-01T18:00 - 2024-10-01T22:00
+I found paths After Finally_Formula: 3
+Agent inserts actions to do (go to in some routes)
+**** Path Steps ********
+
+****** Path: 1
+[128, 144, 16]
+
+******** New Route: 128 - Departure: Lisboa - Destination: Madrid
+Start creating Path Plan:
+Precondition.  Station: Lisboa - Route: -1 - Step: 0
+Postcondition.  Station: Lisboa - Route: 128 - Step: 3
+-------------- Next Step --------------
+Precondition.  Station: Lisboa - Route: 128 - Step: 3
+Postcondition.  Station: Madrid - Route: -1 - Step: 0
+-------------- Next Step --------------
+
+******** New Route: 144 - Departure: Madrid - Destination: Pamplona
+Start creating Path Plan:
+Precondition.  Station: Madrid - Route: -1 - Step: 0
+Postcondition.  Station: Madrid - Route: 144 - Step: 2
+-------------- Next Step --------------
+Precondition.  Station: Madrid - Route: 144 - Step: 2
+Postcondition.  Station: Pamplona - Route: -1 - Step: 0
+-------------- Next Step --------------
+
+******** New Route: 16 - Departure: Pamplona - Destination: Paris
+Start creating Path Plan:
+Precondition.  Station: Pamplona - Route: -1 - Step: 0
+Postcondition.  Station: Pamplona - Route: 16 - Step: 2
+-------------- Next Step --------------
+Precondition.  Station: Pamplona - Route: 16 - Step: 2
+Postcondition.  Station: Pamplona - Route: 16 - Step: 4
+-------------- Next Step --------------
+Precondition.  Station: Pamplona - Route: 16 - Step: 4
+Postcondition.  Station: Paris - Route: -1 - Step: 0
+-------------- Next Step --------------
+
+****** Path: 3
+[128, 144, 18]
+
+******** New Route: 128 - Departure: Lisboa - Destination: Madrid
+Start creating Path Plan:
+Precondition.  Station: Lisboa - Route: -1 - Step: 0
+Postcondition.  Station: Lisboa - Route: 128 - Step: 3
+-------------- Next Step --------------
+Precondition.  Station: Lisboa - Route: 128 - Step: 3
+Postcondition.  Station: Madrid - Route: -1 - Step: 0
+-------------- Next Step --------------
+
+******** New Route: 144 - Departure: Madrid - Destination: Pamplona
+Start creating Path Plan:
+Precondition.  Station: Madrid - Route: -1 - Step: 0
+Postcondition.  Station: Madrid - Route: 144 - Step: 2
+-------------- Next Step --------------
+Precondition.  Station: Madrid - Route: 144 - Step: 2
+Postcondition.  Station: Pamplona - Route: -1 - Step: 0
+-------------- Next Step --------------
+
+******** New Route: 18 - Departure: Pamplona - Destination: Paris
+Start creating Path Plan:
+Precondition.  Station: Pamplona - Route: -1 - Step: 0
+Postcondition.  Station: Pamplona - Route: 18 - Step: 2
+-------------- Next Step --------------
+Precondition.  Station: Pamplona - Route: 18 - Step: 2
+Postcondition.  Station: Pamplona - Route: 18 - Step: 4
+-------------- Next Step --------------
+Precondition.  Station: Pamplona - Route: 18 - Step: 4
+Postcondition.  Station: Paris - Route: -1 - Step: 0
+-------------- Next Step --------------
+
+****** Path: 5
+[128, 144, 114]
+
+******** New Route: 128 - Departure: Lisboa - Destination: Madrid
+Start creating Path Plan:
+Precondition.  Station: Lisboa - Route: -1 - Step: 0
+Postcondition.  Station: Lisboa - Route: 128 - Step: 3
+-------------- Next Step --------------
+Precondition.  Station: Lisboa - Route: 128 - Step: 3
+Postcondition.  Station: Madrid - Route: -1 - Step: 0
+-------------- Next Step --------------
+
+******** New Route: 144 - Departure: Madrid - Destination: Pamplona
+Start creating Path Plan:
+Precondition.  Station: Madrid - Route: -1 - Step: 0
+Postcondition.  Station: Madrid - Route: 144 - Step: 2
+-------------- Next Step --------------
+Precondition.  Station: Madrid - Route: 144 - Step: 2
+Postcondition.  Station: Pamplona - Route: -1 - Step: 0
+-------------- Next Step --------------
+
+******** New Route: 114 - Departure: Pamplona - Destination: Paris
+Start creating Path Plan:
+Precondition.  Station: Pamplona - Route: -1 - Step: 0
+Postcondition.  Station: Pamplona - Route: 114 - Step: 2
+-------------- Next Step --------------
+Precondition.  Station: Pamplona - Route: 114 - Step: 2
+Postcondition.  Station: Pamplona - Route: 114 - Step: 4
+-------------- Next Step --------------
+Precondition.  Station: Pamplona - Route: 114 - Step: 4
+Postcondition.  Station: Paris - Route: -1 - Step: 0
+-------------- Next Step --------------
+Agent inserts options in the desire. Theese can be null
+Agent found at least an option and it can deliberate
+[Cara_Simulation.TPosition_Train_Coords@27ae2fd0]
+******************** Selected Path **********************: TReasoner_Function
+********* PAth: 0
+Stations: [Lisboa, Madrid, Pamplona, Paris]
+Routes Numbers: [128, 144, 16]
+Agent Start Time: 2024-10-01T16:00 - Finally Operator Data: Start_Interval: 2024-10-01T18:00 - End_Interval: 2024-10-01T22:00
+Panorama average: 0.6
+Locomotive average ( CO2/Route ): 0.7333333333333334
+Speed average: 2.3333333333333335
+Path Time: 5.833333333333333 - Arrive time: 2024-10-01T21:49
+Path Data:
+----------------------------
+Route Number: 128 - Route_Time: 1.3333333333333333
+Route Color: Violet
+Total Rounds Route: 2
+Departure/Destination: Lisboa-Madrid - Locomotive: Hybrid - Panorama: Fair - Speed: High - N.pieces: 3
+Step Number: 3
+Locomotive value: 0.5
+Locomotive Route value: 1.5
+Panorama value: 0.6
+Speed value: 3
+**********************
+Route Number: 144 - Route_Time: 2.0
+Route Color: White
+Total Rounds Route: 2
+Departure/Destination: Madrid-Pamplona - Locomotive: Electric - Panorama: Fair - Speed: Medium - N.pieces: 3
+Step Number: 3
+Locomotive value: 0.1
+Locomotive Route value: 0.30000000000000004
+Panorama value: 0.6
+Speed value: 2
+**********************
+Route Number: 16 - Route_Time: 2.5
+Route Color: Green
+Total Rounds Route: 3
+Departure/Destination: Pamplona-Paris - Locomotive: Electric - Panorama: Fair - Speed: Medium - N.pieces: 4
+Step Number: 4
+Locomotive value: 0.1
+Locomotive Route value: 0.4
+Panorama value: 0.6
+Speed value: 2
+**********************
+
+************  Method:  Means_End_For_Belief_Destination_Station *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+************  Method:  MeansEnd *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+************  Method:  Means_End_For_Belief_Destination_Station *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+The Functional_Goal Name is: Visit_Frankfurt
+The Functional_Belief is a:  Belief_Destination_Station
+I search for a plan for the Desire
+I created/found some plan in Time: 5759 milliseconds
+I found paths: 2376804
+I found paths Before Finally_Formula: 2376804
+I Apply the Finally Operator
+Start time in simulation: 2024-10-01T16:00
+Range time in Finally Operator - 2024-10-01T21:00 - 2024-10-01T23:00
+I found paths After Finally_Formula: 0
+Agent inserts actions to do (go to in some routes)
+**** Path Steps ********
+Agent inserts options in the desire. Theese can be null
+
+************  Method:  Means_End_For_Belief_Destination_Station *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+************  Method:  Filtering_Process *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+Now I apply Green and Quality Goal filters
+
+I apply Green filters
+Green Goal list: 1
+Before resizing: 3
+After resizing: 2
+I found paths (options) After Green_Filter: 2
+
+I apply Quality filters
+Agent has A number of quality filter for this desire: 1
+--- I apply quality name: qg1
+--- Value_Quality_Goal: great
+I divided the list of elements. New size is: 2
+I found paths (options) After Quality_Filter: 2
+Desire Functional Goal Name: Visit_Paris
+Desire Options: 2
+I filtered and ordered found options ( 2 )in Time: 2 milliseconds
+
+Now I apply Green and Quality Goal filters
+
+I apply Green filters
+Green Goal list: 1
+Before resizing: 0
+After resizing: 0
+I found paths (options) After Green_Filter: 0
+
+I apply Quality filters
+Agent has A number of quality filter for this desire: 1
+--- I apply quality name: qg1
+--- Value_Quality_Goal: great
+I divided the list of elements. New size is: 0
+I found paths (options) After Quality_Filter: 0
+Desire Functional Goal Name: Visit_Frankfurt
+Desire Options: 0
+I filtered and ordered found options ( 0 )in Time: 1 milliseconds
+
+************  Method:  Filtering_Process *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+************  Method:  Deliberate_Process *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+Desires data after Update_Desire_with_Options
+Desire Functional Goal Name: Visit_Paris
+Desire Options: 2
+Desire Functional Goal Name: Visit_Frankfurt
+Desire Options: 0
+
+************  Method:  Update_Intentions *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 0
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+Update_Intentions in TGlobalWorskspace --Before-- the call this.Agent.get_EI().get_SA().Updated_Intentions();
+
+************  Method:  Update_Intentions *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+Update_Intentions in TGlobalWorskspace --Before-- the call this.Agent.get_RA().Updated_Intentions(this.Selected_Intentions, this.Beliefs)();
+
+************  Method:  Update_Intentions *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+
+************  Method:  Deliberate_Process *********: imulation.TReasoner_Function
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+The Agent updated its intentions correctly
+
+************  Method:  Focus_Attention *********: imulation.TE_Inhibition_function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 0
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 0
+N. UnInhibited Station Region in GW: 0
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 0
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 0
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 0
+
+*************** Work flow in Method ***************
+Intention selected to pursue: Visit_Paris
+
+[Cara_Simulation.TBelief_Base@6ac13091, Cara_Simulation.TBelief_Base@5e316c74, Cara_Simulation.TBelief_Base@6d2a209c, Cara_Simulation.TBelief_Base@75329a49, Cara_Simulation.TBelief_Base@161479c6, Cara_Simulation.TBelief_Base@4313f5bc, Cara_Simulation.TSalient_Belief@7f010382, Cara_Simulation.TSalient_Belief@1e802ef9, Cara_Simulation.TSalient_Belief@2b6faea6, Cara_Simulation.TSalient_Belief@778d1062, Cara_Simulation.TSalient_Belief@670002, Cara_Simulation.TSalient_Belief@1f0f1111, Cara_Simulation.TBelief_Base@49c386c8]
+[Cara_Simulation.TBelief_Base@56528192, Cara_Simulation.TBelief_Base@5e316c74, Cara_Simulation.TBelief_Base@6d2a209c, Cara_Simulation.TBelief_Base@75329a49, Cara_Simulation.TBelief_Base@161479c6, Cara_Simulation.TBelief_Base@4313f5bc, Cara_Simulation.TSalient_Belief@7f010382, Cara_Simulation.TSalient_Belief@1e802ef9, Cara_Simulation.TSalient_Belief@2b6faea6, Cara_Simulation.TSalient_Belief@778d1062, Cara_Simulation.TSalient_Belief@670002, Cara_Simulation.TSalient_Belief@1f0f1111, Cara_Simulation.TBelief_Base@6e0dec4a]
+
+************  Method:  Focus_Attention *********: imulation.TE_Inhibition_function
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle: 0
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute an action
+Response_Number: 0
+ TTriple_Object Request(T): GO_TO_Route
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute the action
+Desire name: D1
+-1
+-1
+0
+0
+Lisboa
+Lisboa
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Perception_Processing: 1
+this.Acquired_Perceptions.getLast() [Cara_Simulation.TPerception@5ccddd20]
+I update several information in Beliefs and in plan actions
+I Update Position Beliefs:
+Previous Current_Station: Lisboa
+Previous Current_Route: -1
+Previous Current_Step: 0
+
+Updated Current_Station:Lisboa
+Updated Current_Route: 128
+Updated Current_Step: 3
+
+************  Method:  Update_Belief_by_Stimulus *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Update_Belief_by_Stimulus *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle; 1
+
+************  Method:  AM_Exogenous_Module *********: imulation.TE_Switching_Function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle: 1
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute an action
+Response_Number: 1
+ TTriple_Object Request(T): GO_TO_Step
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute the action
+Desire name: D1
+128
+128
+3
+3
+Lisboa
+Lisboa
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Perception_Processing: 2
+this.Acquired_Perceptions.getLast() [Cara_Simulation.TPerception@5ccddd20, Cara_Simulation.TPerception@1ed1993a]
+I update several information in Beliefs and in plan actions
+I Update Position Beliefs:
+Previous Current_Station: Lisboa
+Previous Current_Route: 128
+Previous Current_Step: 3
+
+Updated Current_Station:Madrid
+Updated Current_Route: -1
+Updated Current_Step: 0
+
+************  Method:  Update_Belief_by_Stimulus *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Update_Belief_by_Stimulus *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle; 2
+
+************  Method:  AM_Exogenous_Module *********: imulation.TE_Switching_Function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle: 2
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute an action
+Response_Number: 2
+ TTriple_Object Request(T): GO_TO_Route
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute the action
+Desire name: D1
+-1
+-1
+0
+0
+Madrid
+Madrid
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Perception_Processing: 3
+this.Acquired_Perceptions.getLast() [Cara_Simulation.TPerception@5ccddd20, Cara_Simulation.TPerception@1ed1993a, Cara_Simulation.TPerception@1f3f4916]
+I update several information in Beliefs and in plan actions
+I Update Position Beliefs:
+Previous Current_Station: Madrid
+Previous Current_Route: -1
+Previous Current_Step: 0
+
+Updated Current_Station:Madrid
+Updated Current_Route: 144
+Updated Current_Step: 2
+
+************  Method:  Update_Belief_by_Stimulus *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Update_Belief_by_Stimulus *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle; 3
+
+************  Method:  AM_Exogenous_Module *********: imulation.TE_Switching_Function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle: 3
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute an action
+Response_Number: 3
+ TTriple_Object Request(T): GO_TO_Step
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute the action
+Desire name: D1
+144
+144
+2
+2
+Madrid
+Madrid
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Perception_Processing: 4
+this.Acquired_Perceptions.getLast() [Cara_Simulation.TPerception@5ccddd20, Cara_Simulation.TPerception@1ed1993a, Cara_Simulation.TPerception@1f3f4916, Cara_Simulation.TPerception@794cb805]
+I update several information in Beliefs and in plan actions
+I Update Position Beliefs:
+Previous Current_Station: Madrid
+Previous Current_Route: 144
+Previous Current_Step: 2
+
+Updated Current_Station:Pamplona
+Updated Current_Route: -1
+Updated Current_Step: 0
+
+************  Method:  Update_Belief_by_Stimulus *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Update_Belief_by_Stimulus *********: imulation.TGlobalWorkspace
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle; 4
+
+************  Method:  AM_Exogenous_Module *********: imulation.TE_Switching_Function
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle: 4
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute an action
+Response_Number: 4
+ TTriple_Object Request(T): GO_TO_Route
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute the action
+Desire name: D1
+-1
+-1
+0
+0
+Pamplona
+Pamplona
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --1-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Perception_Processing: 5
+this.Acquired_Perceptions.getLast() [Cara_Simulation.TPerception@5ccddd20, Cara_Simulation.TPerception@1ed1993a, Cara_Simulation.TPerception@1f3f4916, Cara_Simulation.TPerception@794cb805, Cara_Simulation.TPerception@4b5a5ed1]
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+*************  CHANGE OF SCENARIO  **********************
+*************  SCENARIO Number 2 **********************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+Working_Cycle; 5
+
+************  Method:  AM_Exogenous_Module *********: imulation.TE_Switching_Function
+******* Scenario_Number:    --2-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle: 5
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --2-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --2-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute an action
+Response_Number: 5
+ TTriple_Object Request(T): GO_TO_Route
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --2-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute the action
+Desire name: D1
+-1
+-1
+0
+0
+Pamplona
+Pamplona
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --2-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Perception_Processing: 6
+this.Acquired_Perceptions.getLast() [Cara_Simulation.TPerception@5ccddd20, Cara_Simulation.TPerception@1ed1993a, Cara_Simulation.TPerception@1f3f4916, Cara_Simulation.TPerception@794cb805, Cara_Simulation.TPerception@4b5a5ed1, Cara_Simulation.TPerception@59d016c9]
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+*************  CHANGE OF SCENARIO  **********************
+*************  SCENARIO Number 3 **********************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+Working_Cycle; 6
+
+************  Method:  AM_Exogenous_Module *********: imulation.TE_Switching_Function
+******* Scenario_Number:    --3-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+Working_Cycle: 6
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --3-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --3-- *******
+Data at the BEGINNING of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute an action
+Response_Number: 6
+ TTriple_Object Request(T): GO_TO_Route
+
+************  Method:  Plan_Exec *********: imulation.TResource_Allocation
+******* Scenario_Number:    --3-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+I execute the action
+Desire name: D1
+-1
+-1
+0
+0
+Pamplona
+Pamplona
+
+************  Method:  Plan_Advanc_Eval *********: imulation.TResource_Allocation
+******* Scenario_Number:    --3-- *******
+Data at the END of the method:
+Data in GW:
+
+N. UnInhibited Goals in GW: 2
+
+N. Desires in GW: 2
+N. Intentions in GW: 2
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+N. Data in LONG MEMORY:
+N. Belief in LONG MEMORY: 67
+N. Inhibited Beliefs in LONG MEMORY: 52
+
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 1
+
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+*************** Work flow in Method ***************
+End Simulation.

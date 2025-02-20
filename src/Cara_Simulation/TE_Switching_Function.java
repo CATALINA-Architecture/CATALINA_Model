@@ -7,6 +7,7 @@ public class TE_Switching_Function {
 	private TAgent Agent;
 	private Boolean Updated_Belief;
 	private Boolean Updated_Goals;
+	private Boolean Updated_Desires;
 	
 	public TE_Switching_Function(TAgent agent)
 	{
@@ -14,6 +15,7 @@ public class TE_Switching_Function {
 		this.Updated_Belief = true;
 		//this property is only for ALL FUNCTIONAL GOAL (both inhibited and uninhibited goals)
 		this.Updated_Goals = true;
+		this.Updated_Desires = true;
 	}
 
 	public TAgent get_Agent() {
@@ -29,6 +31,8 @@ public class TE_Switching_Function {
 			//I a Functional Goal is inserted or deleted
 			if (this.Updated_Goals == true)
 			{
+				this.Updated_Goals = false;
+				
 				TGlobalWorkspace GW = this.Agent.get_GW();
 				ArrayList<TAttentional_Goal> Goals_To_Promote = new ArrayList<TAttentional_Goal>();
 		
@@ -78,39 +82,69 @@ public class TE_Switching_Function {
 		
 				for (TFunctional_Goal goal : Uninhibited_Functional_Goals) 
 				{
-					if(Verify_Precondition(goal))
+					boolean pass=true;
+					for(TDesire Desire: Desires)
 					{
-						if (goal.get_Saliency() >= this.Agent.Get_E_Inhibition_function().get_Saliency_Threshold())
+						if(goal == Desire.get_Attentional_Goal())
 						{
-							// I promote g as a desire
-							Game.Print("I'm promoting the goal to Desire, inside --(List_goals - Inhibited_goals)-- section (see Listing 1). Goal Name: "+goal.get_Name());
-							Goals_To_Promote.add(goal);
+							pass = false;
+						}
+					}
+					if(pass)
+					{
+						if(Verify_Precondition(goal) )
+						{
+							if (goal.get_Saliency() >= this.Agent.Get_E_Inhibition_function().get_Saliency_Threshold())
+							{
+								// I promote g as a desire
+								Game.Print("I'm promoting the goal to Desire, inside --(List_goals - Inhibited_goals)-- section (see Listing 1). Goal Name: "+goal.get_Name());
+								Goals_To_Promote.add(goal);
+							}
+							else
+							{
+								Game.Print("not Promoted Goal Name: "+goal.get_Name()+ " because the Saliency Functional Goal is minor then the Saliency threshold of the Agent");
+							}
 						}
 						else
 						{
-							Game.Print("not Promoted Goal Name: "+goal.get_Name()+ " because the Saliency Functional Goal is minor then the Saliency threshold of the Agent");
+							Game.Print("not Promoted Goal Name: "+goal.get_Name()+ " because the precondition Functional Goal is not true");
 						}
 					}
 					else
 					{
-						Game.Print("not Promoted Goal Name: "+goal.get_Name()+ " because the precondition Functional Goal is not true");
+						Game.Print("not Promoted Goal Name: "+goal.get_Name()+ " because it is already Desire");
 					}
 				}
 				
 				for (TFunctional_Goal goal : Inhibited_Functional_Goals) 
 				{
-					if(Verify_Precondition(goal))
+					boolean pass=true;
+					for(TDesire Desire: Desires)
 					{
-						if (goal.get_Saliency() >= this.Agent.Get_E_Inhibition_function().get_Attention_Threshold())
+						if(goal == Desire.get_Attentional_Goal())
 						{
-							Game.Print("I'm inserting a goal to promote, inside --Inhibited_Goals-- section");
-							Goals_To_Promote.add(goal);
+							pass = false;
 						}
-							
+					}
+					if(pass)
+					{
+						if(Verify_Precondition(goal))
+						{
+							if (goal.get_Saliency() >= this.Agent.Get_E_Inhibition_function().get_Attention_Threshold())
+							{
+								Game.Print("I'm inserting a goal to promote, inside --Inhibited_Goals-- section");
+								Goals_To_Promote.add(goal);
+							}
+								
+						}
+					}
+					else
+					{
+						Game.Print("not Promoted Goal Name: "+goal.get_Name()+ " because it is already Desire");
 					}
 				}
 				
-				this.Agent.get_GW().Print_Data(1, 0);
+				
 				
 				//Now I promote all goal (in Goals_To_Promote) to Desire
 				ArrayList<TDesire> New_Desires = new ArrayList<TDesire>();
@@ -128,6 +162,12 @@ public class TE_Switching_Function {
 				}
 				
 				GW.Insert_New_Desires(New_Desires);
+				
+				this.Agent.get_GW().Print_Data(1, 0);
+				
+//				//I delete Promoted Goal from Functional Goals List
+//				this.Agent.Get_WMM().de
+				
 				
 				System.out.println("************   This is the end of the Endogenous Module");
 			}
@@ -376,6 +416,11 @@ public class TE_Switching_Function {
 	}
 	
 	public void Update_Goals()
+	{
+		this.Updated_Goals = true;
+	}
+	
+	public void Update_Desires()
 	{
 		this.Updated_Goals = true;
 	}

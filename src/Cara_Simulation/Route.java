@@ -145,18 +145,18 @@ public class Route{
 		//CAMBIAMENTO!!
 		this.Path_Time = (double) ((double)(this.Steps_Number+1) / this.Speed_Route);
 		this.Total_Rounds = (int) Math.ceil(this.Path_Time);
-		if(Route_Number == 128)
-		{
-			Game.Print("Data for Route: 128");
-			Game.Print("this.Steps_Number :"+this.Steps_Number );
-			Game.Print("this.Speed_Route :"+this.Speed_Route );
-			Game.Print("this.Steps_Number+1 :"+(this.Steps_Number+1) );
-			Game.Print("((this.Steps_Number+1) / this.Speed_Route) :="+((this.Steps_Number+1) / this.Speed_Route));
-			Game.Print("((this.Steps_Number+1) / this.Speed_Route) :="+((double)(this.Steps_Number+1) / this.Speed_Route));
-			Game.Print("this.Path_Time :"+this.Path_Time );
-			Game.Print("this.Total_Rounds :"+this.Total_Rounds );
-			Game.Print("this.Total_Rounds :"+Math.floor(this.Path_Time ));
-		}
+//		if(Route_Number == 128)
+//		{
+//			Game.Print("Data for Route: 128");
+//			Game.Print("this.Steps_Number :"+this.Steps_Number );
+//			Game.Print("this.Speed_Route :"+this.Speed_Route );
+//			Game.Print("this.Steps_Number+1 :"+(this.Steps_Number+1) );
+//			Game.Print("((this.Steps_Number+1) / this.Speed_Route) :="+((this.Steps_Number+1) / this.Speed_Route));
+//			Game.Print("((this.Steps_Number+1) / this.Speed_Route) :="+((double)(this.Steps_Number+1) / this.Speed_Route));
+//			Game.Print("this.Path_Time :"+this.Path_Time );
+//			Game.Print("this.Total_Rounds :"+this.Total_Rounds );
+//			Game.Print("this.Total_Rounds :"+Math.floor(this.Path_Time ));
+//		}
 		
 		
 				//Collezione.Locomotive_Values.get(Colore_rotta.Locomotiva.get(i)) * Numero_Pezzi;

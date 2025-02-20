@@ -21,14 +21,17 @@ public class TGlobalWorkspace {
 	private Integer Desire_Number = 0;
 	private TAgent Agent;
 	private Environment Map_Known;
+	private HashMap<TType_Update_Contract, ArrayList<Object>> Update_Contracts;
 	
 	//Data Types Change:
 	private boolean Updated_Desires = false;
+	private boolean Updated_Desires_with_options = false;
 	private boolean Updated_Goals = false;
 	private boolean Updated_UnInhibited_Goals = false;
 	private boolean Updated_Inhibited_Goals = false;
 	
 	private boolean Updated_Beliefs = false;
+	private boolean Updated_Salient_Beliefs = false;
 	private boolean Updated_UnInhibited_Beliefs = false;
 	private boolean Updated_Inhibited_Beliefs = false;
 	
@@ -36,8 +39,7 @@ public class TGlobalWorkspace {
 	private boolean Updated_UnInhibited_Regions = false;
 	private boolean Updated_Inhibited_Regions = false;
 	
-	private boolean Update_Intentions = false;
-	
+	private boolean Updated_Intentions = false;
 	
 	
 	//Goal Properties
@@ -170,9 +172,14 @@ public class TGlobalWorkspace {
 		this.Updated_UnInhibited_Regions = false;
 		this.Updated_Inhibited_Regions = false;
 		
-		this.Update_Intentions = false;
+		this.Updated_Intentions = false;
 		
-		
+		this.Update_Contracts = new HashMap<TType_Update_Contract, ArrayList<Object>>();
+		for(TType_Update_Contract Type: TType_Update_Contract.values())
+		{
+			ArrayList<Object> Objects = new ArrayList<Object>();
+			this.Update_Contracts.put(Type, Objects);
+		}
 	}
 	
 	public void Set_Map_Know(Environment Map)
@@ -182,9 +189,13 @@ public class TGlobalWorkspace {
 	
 	public Boolean Delete_Desire(TDesire desire)					
 	{
+//		TAttentional_Goal Goal = desire.get_Attentional_Goal();
+//		this.Goals.add(Goal);
+//		desire.set_Attentional_Goal(null);
 		
-		desire.get_Attentional_Goal().Clear();
+		//desire.get_Attentional_Goal().Clear();
 		desire.get_Option_List().clear();
+		this.Updated_Desires = true;
 		return this.Desires.remove(desire);
 	}
 	
@@ -519,7 +530,7 @@ public class TGlobalWorkspace {
 		this.Agent.get_GW().Print_Data(0, 0);
 //		this.Selected_Intentions.clear();
 		this.Intentions.addAll(Intentions);
-		this.Update_Intentions = true;
+		this.Updated_Intentions = true;
 		
 		
 		//Update Intentions (in Shift Attention) permits to agent to focus its attentions
@@ -582,7 +593,10 @@ public class TGlobalWorkspace {
 //				Temp_Beliefs.addAll(this.UnInhibited_Beliefs);
 //			}
 	
+			
 			this.Agent.get_GW().Print_Data(1, 0);
+			
+			
 			//I send Desires and Beliefs to Reasoner for deliberation
 //			ArrayList<TDesire> Desires_to_Delete = this.Agent.get_Reasoner().Deliberate(this.Desires, Temp_Beliefs, this.Selected_Intentions);
 			
@@ -869,7 +883,7 @@ public class TGlobalWorkspace {
 	
 	public void Update_Belief_by_Stimulus(TSalient_Belief Salient_Belief)
 	{
-		Game.Scenario_Number++;
+//		Game.Scenario_Number++;
 		this.Get_Agent().get_GW().Print_Data(0, 0);
 		
 		if(this.Beliefs.contains(Salient_Belief) == false)
@@ -971,7 +985,7 @@ public class TGlobalWorkspace {
 		}
 		Game.PrintLn();
 //		Game.Print("Goals in GW: "+this.get_Goals().size());
-		Game.Print("UnInhibited Goals in GW: "+this.UnInhibited_Goals.size());
+		Game.Print("N. UnInhibited Goals in GW: "+this.UnInhibited_Goals.size());
 		if (Synthesis==1)
 		{
 			Game.Print("Goal Names and Types:");
@@ -982,18 +996,18 @@ public class TGlobalWorkspace {
 		}
 		
 		Game.PrintLn();
-		Game.Print("Desires in GW: "+this.Desires.size());
-		Game.Print("Intentions in GW: "+this.Intentions.size());
-		Game.Print("UnInhibited Routes Region in GW: "+this.UnInhibition_Regions.Routes.size()/2);
-		Game.Print("UnInhibited Station Region in GW: "+this.UnInhibition_Regions.Destinations.size());
+		Game.Print("N. Desires in GW: "+this.Desires.size());
+		Game.Print("N. Intentions in GW: "+this.Intentions.size());
+		Game.Print("N. UnInhibited Routes Region in GW: "+this.UnInhibition_Regions.Routes.size()/2);
+		Game.Print("N. UnInhibited Station Region in GW: "+this.UnInhibition_Regions.Destinations.size());
 
 		Game.PrintLn();
-		Game.Print("Data in WMM:");
-		Game.Print("Belief in WMM: "+this.Agent.Get_WMM().Get_Beliefs().size());
-		Game.Print("Inhibited Beliefs in WMM: "+this.Agent.Get_WMM().Get_Inhibited_Beliefs().size());
+		Game.Print("N. Data in LONG MEMORY:");
+		Game.Print("N. Belief in LONG MEMORY: "+this.Agent.Get_WMM().Get_Beliefs().size());
+		Game.Print("N. Inhibited Beliefs in LONG MEMORY: "+this.Agent.Get_WMM().Get_Inhibited_Beliefs().size());
 		if (Synthesis==1)
 		{
-			Game.Print("Inhibited Beliefs Types:");
+			Game.Print("N. Inhibited Beliefs Types:");
 			for(TBelief_Base Belief: this.UnInhibited_Beliefs)
 			{
 				Game.Print(Belief.get_Type_Belief());
@@ -1001,8 +1015,8 @@ public class TGlobalWorkspace {
 		}
 		
 		Game.PrintLn();		
-		Game.Print("Goals in WMM: "+this.Agent.Get_WMM().Get_Attentional_Goals().size());
-		Game.Print("Inhibited Goals in WMM: "+this.Agent.Get_WMM().Get_Inhibited_Goals().size());
+		Game.Print("N. Goals in LONG MEMORY: "+this.Agent.Get_WMM().Get_Attentional_Goals().size());
+		Game.Print("N. Inhibited Goals in LONG MEMORY: "+this.Agent.Get_WMM().Get_Inhibited_Goals().size());
 		if (Synthesis==1)
 		{
 			Game.Print("Inhibited Goal Names and Types:");
@@ -1013,11 +1027,11 @@ public class TGlobalWorkspace {
 		}
 		
 		Game.PrintLn();
-		Game.Print("All Route Region in WMM: "+this.Agent.Get_WMM().Get_Regions().Routes.size());
-		Game.Print("Inhibited Route Region in WMM: "+this.Agent.Get_WMM().Get_Inhibition_Regions().Routes.size());
+		Game.Print("N. All Route Region in LONG MEMORY: "+this.Agent.Get_WMM().Get_Regions().Routes.size());
+		Game.Print("N. Inhibited Route Region in LONG MEMORY: "+this.Agent.Get_WMM().Get_Inhibition_Regions().Routes.size());
 		
-		Game.Print("Station in WMM: "+this.Agent.Get_WMM().Get_Regions().Destinations.size());
-		Game.Print("Inhibited Station Region in WMM: "+this.Agent.Get_WMM().Get_Inhibition_Regions().Destinations.size());
+		Game.Print("N. Station in LONG MEMORY: "+this.Agent.Get_WMM().Get_Regions().Destinations.size());
+		Game.Print("N. Inhibited Station Region in LONG MEMORY: "+this.Agent.Get_WMM().Get_Inhibition_Regions().Destinations.size());
 		
 		Game.PrintLn();
 		Game.Print("*************** Work flow in Method ***************");
@@ -1044,6 +1058,93 @@ public class TGlobalWorkspace {
 	
 	public void Broadcast()
 	{
+		/* 	Predicate,
+			Beliefs,				***
+			Desires,				***
+			Desires_with_Option,	***
+			Intentions,
+			Stimuli
+		 */
+		if (this.Updated_Beliefs)
+		{
+			this.Updated_Beliefs = false;
+			ArrayList<Object> Beliefs = this.Update_Contracts.get(TType_Update_Contract.Beliefs);
+			if(Beliefs.size()>0)
+			{
+				for(Object who: Beliefs)
+				{
+					if(who instanceof TE_Switching_Function)
+					{
+						this.Agent.get_E_Switching_Function().Updated_Beliefs();
+					}
+					if(who instanceof TReasoner_Function)
+					{
+						this.Agent.get_Reasoner().Updated_Beliefs();
+					}
+					if(who instanceof TE_Inhibition_function)
+					{
+						this.Agent.Get_E_Inhibition_function().Updated_Beliefs();
+					}
+					if(who instanceof TResource_Allocation )
+					{
+						this.Agent.get_RA().Updated_Beliefs();
+					}
+				}
+			}
+		}
+		
+		if (this.Updated_Desires)
+		{
+			this.Updated_Desires = false;
+			ArrayList<Object> Desires = this.Update_Contracts.get(TType_Update_Contract.Desires);
+			if(Desires.size()>0)
+			{
+				for(Object who: Desires)
+				{
+					if(who instanceof TReasoner_Function)
+					{
+						this.Agent.get_Reasoner().Updated_Desires();;
+					}
+				}
+			}
+		}
+		if (this.Updated_Desires_with_options)
+		{
+			this.Updated_Desires_with_options = false;
+			ArrayList<Object> Desires_with_Option = this.Update_Contracts.get(TType_Update_Contract.Desires_with_Option);
+			if(Desires_with_Option.size()>0)
+			{
+				for(Object who: Desires_with_Option)
+				{
+					if(who instanceof TReasoner_Function)
+					{
+						this.Agent.get_Reasoner().Updated_Desires_with_Options();;
+					}
+				}
+			}
+		}
+		if (this.Updated_Intentions)
+		{
+			this.Updated_Intentions = false;
+			ArrayList<Object> Intentions = this.Update_Contracts.get(TType_Update_Contract.Intentions);
+			if(Intentions.size()>0)
+			{
+				for(Object who: Intentions)
+				{
+					if(who instanceof TReasoner_Function)
+					{
+						this.Agent.get_Reasoner().Updated_Intentions();
+					}
+					if(who instanceof TResource_Allocation)
+					{
+						this.Agent.get_RA().Updated_Intentions(null, Beliefs);
+					}
+				}
+			}
+		}
+		
+		
+		
 		
 	}
 	
@@ -1100,7 +1201,7 @@ public class TGlobalWorkspace {
 	
 	public boolean Get_Update_Intentions()
 	{
-		return this.Update_Intentions;
+		return this.Updated_Intentions;
 	}
 	
 	public ArrayList<TBelief_Base> Get_UnInhibited_Beliefs()
@@ -1162,10 +1263,30 @@ public class TGlobalWorkspace {
 
 	public Boolean Delete_Intention(TIntention intention)					
 	{
+		TDesire Desire = intention.get_Desire();
 		
-		intention.get_Desire().get_Attentional_Goal().Clear();
-		intention.get_Desire().get_Option_List().clear();
+		this.Delete_Desire(Desire);
+		//intention.get_Desire().get_Attentional_Goal().Clear();
+		//intention.get_Desire().get_Option_List().clear();
+		intention.set_Desire(null);
+		this.Updated_Intentions = true;
 		return this.Intentions.remove(intention);
+	}
+	
+	public void Insert_for_Update_Contract(TType_Update_Contract Type_Update_Contract, Object Who )
+	{
+		ArrayList<Object> Objects;
+		Objects = this.Update_Contracts.get(Type_Update_Contract);
+		if(Objects == null)
+		{
+			Objects = new ArrayList<Object>();
+		}
+		if(Objects.contains(Who) == false)
+		{
+			Objects.add(Who);
+		}
+		this.Update_Contracts.put(Type_Update_Contract, Objects);
+		
 	}
 	
 }

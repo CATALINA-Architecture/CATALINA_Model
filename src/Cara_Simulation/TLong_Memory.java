@@ -584,6 +584,11 @@ public class TLong_Memory {
 	{
 		return this.Inhibited_Beliefs;
 	}
+	
+	public void Delete_Goal(TAttentional_Goal Goal)
+	{
+		this.Goals.remove(Goal);
+	}
 
 	
 	

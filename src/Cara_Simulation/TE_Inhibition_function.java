@@ -10,6 +10,8 @@ public class TE_Inhibition_function {
 	private Double Attention_Threshold;
 	private Double Saliency_Threshold;
 	private TRegion Region;
+	private boolean Updated_Beliefs;
+	private boolean Updated_Intentions;
 	
 	private Double Default_Saliency_Threshold = 0.3;
 	private Double Default_Attention_Threshold = Default_Saliency_Threshold;
@@ -21,6 +23,8 @@ public class TE_Inhibition_function {
 		this.Saliency_Threshold =Default_Saliency_Threshold;
 		this.Attention_Threshold = this.Saliency_Threshold;
 		this.Region = new TRegion();
+		this.Updated_Beliefs = true;
+		this.Updated_Intentions = true;
 	}
 	
 	/***
@@ -44,40 +48,49 @@ public class TE_Inhibition_function {
 		boolean result = true;
 		try 
 		{
-			this.Agent.get_GW().Print_Data(0, 0);
+			
 
 			//For our purpose we pursue only the first Intention
 			if(this.Agent.get_GW().Get_Intentions().size() > 0)
 			{
-				//For our purpose we pursue only the first Intention
-				TIntention Intention = this.Agent.get_GW().Get_Intentions().getFirst();
-				Game.Print("Intention selected to pursue: "+Intention.get_Desire().get_Attentional_Goal().get_Name());
+				if(this.Updated_Intentions)
+				{
+					this.Updated_Intentions = false;
+					
+					this.Agent.get_GW().Print_Data(0, 0);
 				
-				this.Saliency_Threshold = Intention.get_Desire().get_Attentional_Goal().get_Saliency();
-				this.Agent.get_GW().Update_Saliency_Threshold(this.Saliency_Threshold);
-				
-				this.Attention_Threshold = Intention.get_Desire().get_Attentional_Goal().Saliency + 
-						( (1-Intention.get_Desire().get_Attentional_Goal().Saliency) /2); //to avoid to exceed 1.00 unit
-				this.Agent.get_GW().Update_Attention_Threshold(this.Attention_Threshold);
-				
-				///
-				/// CREATE INHIBITION REGIONS, INHIBITED GOALS AND BELIEFS
-				///
-				TRegion Inhibition_Regions = this.Create_Inhibition_Regions();
-				this.Agent.get_GW().Update_Inhibition_Regions(Inhibition_Regions);
-				
-				ArrayList<TAttentional_Goal> Inhibited_Goals = this.Create_Inhibited_Goals();
-				this.Agent.get_GW().Update_Inhibited_Goals(Inhibited_Goals);
-				
-				//TODO development update inhibited belief
-				ArrayList<TBelief_Base> Inhibited_Beliefs = this.Create_Inhibited_Beliefs(); 
-	//			this.EI.get_Agent().get_GW().Update_Inhibited_Goals(Inhibited_Goals);
-				this.Agent.get_GW().Update_Inhibited_Beliefs(Inhibited_Beliefs);
-				this.Agent.get_GW().Print_Data(1, 0);
-				
+					//For our purpose we pursue only the first Intention
+					TIntention Intention = this.Agent.get_GW().Get_Intentions().getFirst();
+					Game.Print("Intention selected to pursue: "+Intention.get_Desire().get_Attentional_Goal().get_Name());
+					
+					this.Saliency_Threshold = Intention.get_Desire().get_Attentional_Goal().get_Saliency();
+					this.Agent.get_GW().Update_Saliency_Threshold(this.Saliency_Threshold);
+					
+					this.Attention_Threshold = Intention.get_Desire().get_Attentional_Goal().Saliency + 
+							( (1-Intention.get_Desire().get_Attentional_Goal().Saliency) /2); //to avoid to exceed 1.00 unit
+					this.Agent.get_GW().Update_Attention_Threshold(this.Attention_Threshold);
+					
+					///
+					/// CREATE INHIBITION REGIONS, INHIBITED GOALS AND BELIEFS-
+					///
+					TRegion Inhibition_Regions = this.Create_Inhibition_Regions();
+					this.Agent.get_GW().Update_Inhibition_Regions(Inhibition_Regions);
+					
+					ArrayList<TAttentional_Goal> Inhibited_Goals = this.Create_Inhibited_Goals();
+					this.Agent.get_GW().Update_Inhibited_Goals(Inhibited_Goals);
+					
+					//TODO development update inhibited belief
+					ArrayList<TBelief_Base> Inhibited_Beliefs = this.Create_Inhibited_Beliefs(); 
+		//			this.EI.get_Agent().get_GW().Update_Inhibited_Goals(Inhibited_Goals);
+					this.Agent.get_GW().Update_Inhibited_Beliefs(Inhibited_Beliefs);
+					this.Agent.get_GW().Print_Data(1, 0);
+				}
 			}
 			else
 			{
+				
+				this.Agent.get_GW().Print_Data(0, 0);
+				
 				this.UnFocus();
 				this.Saliency_Threshold = this.Default_Saliency_Threshold;
 				this.Agent.get_GW().Update_Saliency_Threshold(this.Saliency_Threshold);
@@ -559,27 +572,40 @@ public class TE_Inhibition_function {
 			case Belief_Destination_Station:
 				if(Functional_Goal.get_Final_State_Name() == Belief.get_Name())
 				{
-					New_All_related_Beliefs_Of_Goal.add(Belief);
+					if(!New_All_related_Beliefs_Of_Goal.contains(Belief))
+					{
+						New_All_related_Beliefs_Of_Goal.add(Belief);
+					}
+					
 				}
 				break;
 			case 	Belief_Current_Time, Belief_Current_Station, Belief_Current_Route, Belief_Current_Step,
 				 	Belief_Number_Players, Belief_Next_Route, Belief_Next_Station, Belief_Next_Step,
 				 	Belief_Prev_Route, Belief_Prev_Station, Belief_Prev_Step:
 				 	
-				 	New_All_related_Beliefs_Of_Goal.add(Belief);
+					if(!New_All_related_Beliefs_Of_Goal.contains(Belief))
+					{
+						New_All_related_Beliefs_Of_Goal.add(Belief);
+					}
 //			Game.Print("Aggiunte multiple");
 				break;
 			case Belief_Path_Taken_For_Belief:
 				if(Functional_Goal.get_Name() == (String) Belief.get_Predicate().get_Subject())
 				{
-					New_All_related_Beliefs_Of_Goal.add(Belief);
+					if(!New_All_related_Beliefs_Of_Goal.contains(Belief))
+					{
+						New_All_related_Beliefs_Of_Goal.add(Belief);
+					}
 				}
 				break;
 			//I insert also All Stimulus
 			case Stimulus_Ok_Correct_Movement, Stimulus_Too_Close_To_The_Train, 
 				Stimulus_Closed_Route, Stimulus_Busy_Route, Stimulus_Temporary_Closed_Route, 
 				Stimulus_Crowded_Route:
-					New_All_related_Beliefs_Of_Goal.add(Belief);
+					if(!New_All_related_Beliefs_Of_Goal.contains(Belief))
+					{
+						New_All_related_Beliefs_Of_Goal.add(Belief);
+					}
 				break;	
 				
 			
@@ -624,6 +650,11 @@ public class TE_Inhibition_function {
 //		New_All_related_Beliefs_Of_Goal.forEach(n -> Game.Print(n.get_Type_Belief()));
 //		Game.Print("end Create_List_of_Belief__for_Stimulus_Temporary_Closed_Route");
 		return New_All_related_Beliefs_Of_Goal;
+	}
+	
+	public void Updated_Beliefs()
+	{
+		this.Updated_Beliefs = true;
 	}
 	
 }

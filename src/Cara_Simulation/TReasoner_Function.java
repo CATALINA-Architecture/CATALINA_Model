@@ -92,7 +92,7 @@ public class TReasoner_Function {
 	
 	private TAgent Agent;
 	private boolean Updated_Desires;
-//	private boolean Updated_Desires_with_Options;
+	private boolean Updated_Desires_with_Options;
 	private boolean Updated_Intentions;
 	private boolean Updated_Beliefs;
 	
@@ -100,9 +100,10 @@ public class TReasoner_Function {
 	public TReasoner_Function(TAgent agent)
 	{
 		this.Agent = agent;
-		this.Updated_Desires = false;
-		this.Updated_Intentions = false;
-		this.Updated_Beliefs = false;
+		this.Updated_Desires = true;
+		this.Updated_Desires_with_Options = true;
+		this.Updated_Intentions = true;
+		this.Updated_Beliefs = true;
 	}
 
 	public TAgent get_Agent() {
@@ -115,89 +116,94 @@ public class TReasoner_Function {
 		boolean result = true;
 		try 
 		{
-			///the following lines of code are to use the iterator way in the Start Agent method
-			//I get beliefs from Long Memory to send to Reasoner
-			ArrayList<TDesire> Desires = this.Agent.get_GW().Get_Desires();
-			
-			ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
-			Beliefs.addAll(this.Agent.get_GW().Get_UnInhibited_Beliefs());
-			//When the Agent is not focused UnInhibited_Beliefs is empty so I have to get any beliefs
-			if(Beliefs.isEmpty())
+			if(this.Updated_Desires)
 			{
-				Beliefs.addAll(this.Agent.get_GW().Get_Beliefs());
-			}
-
-			ArrayList<TIntention> Intentions = this.Agent.get_GW().Get_Intentions();
+				this.Updated_Desires = false;
 			
-			//the previous lines of code are to use the iterator way in the Start Agent method
-			
-			
-			//In this time, I order goals to saliency order in higher order and In deliberation process
-			//For our purpose, I select the first desire as selected intention.
-			//So:
-			this.Agent.get_GW().Print_Data(0, 0);
-			
-			Collections.sort(Desires, new TDesire_Compare());
-			Game.PrintLn();
-			Game.Print("The agent tries to find some intentions");
-			int Des_Num = 0;
-			for(TDesire Desire: Desires)
-			{
-				Des_Num++;
-				TAttentional_Goal Goal = Desire.get_Attentional_Goal();
-				Game.Print("Fore the Desire --"+Des_Num+"-- The Attentional Goal is a:  "+Goal.getClass());
-				//if the attentional_goal is a TFunctional_Goal
-				if (Goal instanceof TFunctional_Goal) 
+				///the following lines of code are to use the iterator way in the Start Agent method
+				//I get beliefs from Long Memory to send to Reasoner
+				ArrayList<TDesire> Desires = this.Agent.get_GW().Get_Desires();
+				
+				ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
+				Beliefs.addAll(this.Agent.get_GW().Get_UnInhibited_Beliefs());
+				//When the Agent is not focused UnInhibited_Beliefs is empty so I have to get any beliefs
+				if(Beliefs.isEmpty())
 				{
-					TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
-					TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
-					switch(Functional_Belief.get_Type_Belief())
-					{
-							///
-							///		Belief_Destination_Station
-							///		
-							///     It means The Agent have to create a plan to go to its destination
-							///
-						case TType_Beliefs.Belief_Destination_Station:
-							this.Agent.get_GW().Print_Data(1, 0);
-							Means_End_For_Belief_Destination_Station(Desire, Beliefs);
-							break;
-						default:
-							Game.Print("I cannot to handle the Type of Belief: "+Functional_Belief.get_Type_Belief());
-							Game.End_Game();
-					}		
-	
+					Beliefs.addAll(this.Agent.get_GW().Get_Beliefs());
 				}
-			
-				//the attentional_goal is an TEpistemic_Goal
-				//TO DO DEVELOPMENT
-				else if (Goal instanceof TEpistemic_Goal) 
+	
+				ArrayList<TIntention> Intentions = this.Agent.get_GW().Get_Intentions();
+				
+				//the previous lines of code are to use the iterator way in the Start Agent method
+				
+				
+				//In this time, I order goals to saliency order in higher order and In deliberation process
+				//For our purpose, I select the first desire as selected intention.
+				//So:
+				this.Agent.get_GW().Print_Data(0, 0);
+				
+				Collections.sort(Desires, new TDesire_Compare());
+				Game.PrintLn();
+				Game.Print("The agent tries to find some options");
+				int Des_Num = 0;
+				for(TDesire Desire: Desires)
 				{
-					Game.Print("The Attentional Goal is an:  TEpistemic_Goal");
-					TEpistemic_Goal Epistemic_Goal = (TEpistemic_Goal) Goal;
-					TBelief_Base Epistemic_Belief = Epistemic_Goal.get_Belief();
-					Game.Print("-- Type of Epistemic Belief: : "+Epistemic_Belief.get_Type_Belief());
-	
-					switch(Epistemic_Belief.get_Type_Belief())
+					Des_Num++;
+					TAttentional_Goal Goal = Desire.get_Attentional_Goal();
+	//				Game.Print("For the Desire --"+Des_Num+"-- The Attentional Goal is a:  "+Goal.getClass());
+					//if the attentional_goal is a TFunctional_Goal
+					if (Goal instanceof TFunctional_Goal) 
 					{
-							///
-							///		Belief_Destination_Station
-							///		
-							///     It means The Agent have to create a plan to go to its destination
-							///
-						case TType_Beliefs.Stimulus_Temporary_Closed_Route:
-							//if (Functional_Belief instanceof TBelief_Destination_Station)
-							this.Agent.get_GW().Print_Data(1, 0);
-							Deliberate_from_Stimulus_Temporary_Closed_Route(Desire);
-							
-							break;
-						default:
-							Game.Print("I cannot to handle the Type of Epistemic Salient Belief: "+Epistemic_Belief.get_Type_Belief());
-							Game.End_Game();
-					}		
+						TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
+						TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
+						switch(Functional_Belief.get_Type_Belief())
+						{
+								///
+								///		Belief_Destination_Station
+								///		
+								///     It means The Agent have to create a plan to go to its destination
+								///
+							case TType_Beliefs.Belief_Destination_Station:
+								this.Agent.get_GW().Print_Data(1, 0);
+								Means_End_For_Belief_Destination_Station(Desire, Beliefs);
+								break;
+							default:
+								Game.Print("I cannot to handle the Type of Belief: "+Functional_Belief.get_Type_Belief());
+								Game.End_Game();
+						}		
+		
+					}
+				
+					//the attentional_goal is an TEpistemic_Goal
+					//TO DO DEVELOPMENT
+					else if (Goal instanceof TEpistemic_Goal) 
+					{
+						Game.Print("The Attentional Goal is an:  TEpistemic_Goal");
+						TEpistemic_Goal Epistemic_Goal = (TEpistemic_Goal) Goal;
+						TBelief_Base Epistemic_Belief = Epistemic_Goal.get_Belief();
+						Game.Print("-- Type of Epistemic Belief: : "+Epistemic_Belief.get_Type_Belief());
+		
+						switch(Epistemic_Belief.get_Type_Belief())
+						{
+								///
+								///		Belief_Destination_Station
+								///		
+								///     It means The Agent have to create a plan to go to its destination
+								///
+							case TType_Beliefs.Stimulus_Temporary_Closed_Route:
+								//if (Functional_Belief instanceof TBelief_Destination_Station)
+								this.Agent.get_GW().Print_Data(1, 0);
+								Deliberate_from_Stimulus_Temporary_Closed_Route(Desire);
+								
+								break;
+							default:
+								Game.Print("I cannot to handle the Type of Epistemic Salient Belief: "+Epistemic_Belief.get_Type_Belief());
+								Game.End_Game();
+						}		
+					}
 				}
+				this.Filtering_Process(Desires);
 			}
-			this.Filtering_Process(Desires);
 		}
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
@@ -221,29 +227,33 @@ public class TReasoner_Function {
 		boolean result = true;
 		try 
 		{
-			this.Agent.get_GW().Print_Data(0, 0);
-			
-			ArrayList<TDesire> Desires =  this.Agent.get_GW().Get_Desires();
-			
-			ArrayList<TIntention> Intentions = new ArrayList<TIntention>();
-			Game.Print("Desires data after Update_Desire_with_Options");
-//			for(TDesire Desire: desires)
-//			{
-//				Game.Print("Desire Functional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
-//				Game.Print("Desire Options: " + Desire.get_Option_List().size());
-//			}
-			for(TDesire Desire: Desires)
+			if(this.Updated_Intentions)
 			{
-				// I create an Intention for any Desire and the first option of this Desire is the Option
-				// selected to pursue
-				TIntention An_Intention = new TIntention(Desire, 0);
-				Intentions.add(An_Intention);
-				Game.Print("Desire Functional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
-				Game.Print("Desire Options: " + Desire.get_Option_List().size());
+				this.Updated_Intentions = false;
+				this.Agent.get_GW().Print_Data(0, 0);
+				
+				ArrayList<TDesire> Desires =  this.Agent.get_GW().Get_Desires();
+				
+				ArrayList<TIntention> Intentions = new ArrayList<TIntention>();
+				Game.Print("Desires data after Update_Desire_with_Options");
+	//			for(TDesire Desire: desires)
+	//			{
+	//				Game.Print("Desire Functional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
+	//				Game.Print("Desire Options: " + Desire.get_Option_List().size());
+	//			}
+				for(TDesire Desire: Desires)
+				{
+					// I create an Intention for any Desire and the first option of this Desire is the Option
+					// selected to pursue
+					TIntention An_Intention = new TIntention(Desire, 0);
+					Intentions.add(An_Intention);
+					Game.Print("Desire Functional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
+					Game.Print("Desire Options: " + Desire.get_Option_List().size());
+				}
+				this.Agent.get_GW().Update_Intentions(Intentions);
+				this.Agent.get_GW().Print_Data(1, 0);
+				Game.Print("The Agent updated its intentions correctly");
 			}
-			this.Agent.get_GW().Update_Intentions(Intentions);
-			this.Agent.get_GW().Print_Data(1, 0);
-			Game.Print("The Agent updated its intentions correctly");
 		}
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
@@ -276,7 +286,7 @@ public class TReasoner_Function {
 			TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
 			
 			Game.PrintLn();
-			Game.Print("The Functional_Belief Name is: "+Functional_Goal.get_Name());
+			Game.Print("The Functional_Goal Name is: "+Functional_Goal.get_Name());
 			Game.Print("The Functional_Belief is a:  Belief_Destination_Station");
 			Station Destination_Station = (Station) Functional_Belief.Predicate.get_Subject();
 			Station Current_Station = null;
@@ -302,7 +312,7 @@ public class TReasoner_Function {
 		
 			Instant end = Instant.now();
 			Duration timeElapsed = Duration.between(start, end);
-			Game.Print("I created found some plan in Time: "+ timeElapsed.toMillis() +" milliseconds");
+			Game.Print("I created/found some plan in Time: "+ timeElapsed.toMillis() +" milliseconds");
 			
 			// Now, Agent must to sort the Plans in according to the Green Goal (We consider a green goal like a mandatory goal, but to avoid that the Agent
 			// can block we relax the green goal using a "sorting method"
@@ -842,6 +852,26 @@ public class TReasoner_Function {
 	      result = false;
 	    }
 	    return result;
+	}
+
+	public void Updated_Desires() 
+	{
+		this.Updated_Desires = true;
+	}
+	
+	public void Updated_Desires_with_Options() 
+	{
+		this.Updated_Desires_with_Options = true;
+	}
+	
+	public void Updated_Beliefs() 
+	{
+		this.Updated_Beliefs = true;
+	}
+	
+	public void Updated_Intentions() 
+	{
+		this.Updated_Intentions = true;
 	}
 	
 

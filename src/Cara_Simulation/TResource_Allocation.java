@@ -22,10 +22,15 @@ class TIntention_Compare implements Comparator<TIntention> {
 public class TResource_Allocation {
 	
 	private TAgent Agent;
+	private boolean Updated_Beliefs;
+	private boolean Updated_Intentions;
 	
 	public TResource_Allocation(TAgent agent)
 	{
 		this.Agent = agent;
+		this.Updated_Beliefs = true;
+		this.Updated_Intentions = true;
+		
 	}
 	
 	// TODO to DEVELOPMENT
@@ -271,55 +276,69 @@ public class TResource_Allocation {
 		{
 			this.get_Agent().get_GW().Print_Data(0, 0);
 			ArrayList<TIntention> Intentions = this.Agent.get_GW().Get_Intentions();
-			TIntention Intention = Intentions.getFirst();
-			TDesire Desire = Intention.get_Desire();
-
-			TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
-			
-			int Current_Action_Id = Selected_Option.Get_Action_To_Do_ID();
-			
-			ArrayList<TAction> Actions = new ArrayList<TAction>();
-			Actions.addAll(Selected_Option.get_Plan_Actions());
-			if(Actions.size()>0)
+			if(Intentions.size() > 0)
 			{
-
-				TAction Action = Actions.get(Current_Action_Id);
 				
-				TPredicate Precondition =  Action.get_Precondition();
-				TPosition_Train_Coords Precondition_Position = 
-									(TPosition_Train_Coords) Precondition.get_Object_Complement();
-
-				TBelief_Base Current_Route;
-				TBelief_Base Current_Step;
-				TBelief_Base Current_Station;
+				TIntention Intention = Intentions.getFirst();
+				TDesire Desire = Intention.get_Desire();
+	
+				TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
 				
-				ArrayList<TBelief_Base> Unhibited_Beliefs;
-				//I update Current_Route Beliefs
-				Unhibited_Beliefs = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Route);
-				Current_Route = Unhibited_Beliefs.getFirst();
-
-				//I update Current_Step Beliefs
-				Unhibited_Beliefs = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Step);
-				Current_Step = Unhibited_Beliefs.getFirst();
-
-				//I update Current_Stationv Beliefs
-				Unhibited_Beliefs = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Station);
-				Current_Station = Unhibited_Beliefs.getFirst();
-				if((int)Current_Route.Predicate.get_Object_Complement() == (int)Precondition_Position.Get_Route() &&
-						(int)Current_Step.Predicate.get_Object_Complement() == (int)Precondition_Position.Get_Step() &&
-					Current_Station.Predicate.get_Object_Complement() == Precondition_Position.Get_Station())
+				int Current_Action_Id = Selected_Option.Get_Action_To_Do_ID();
+				
+				ArrayList<TAction> Actions = new ArrayList<TAction>();
+				Actions.addAll(Selected_Option.get_Plan_Actions());
+				if(Actions.size()>0)
 				{
-					Game.Print("I execute the action");
-					this.Plan_Exec(Action);
-				}
-				else
-				{
+	
+					TAction Action = Actions.get(Current_Action_Id);
+					
+					TPredicate Precondition =  Action.get_Precondition();
+					TPosition_Train_Coords Precondition_Position = 
+										(TPosition_Train_Coords) Precondition.get_Object_Complement();
+	
+					TBelief_Base Current_Route;
+					TBelief_Base Current_Step;
+					TBelief_Base Current_Station;
+					
+					ArrayList<TBelief_Base> Unhibited_Beliefs;
+					//I update Current_Route Beliefs
+					Unhibited_Beliefs = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Route);
+					Current_Route = Unhibited_Beliefs.getFirst();
+	
+					//I update Current_Step Beliefs
+					Unhibited_Beliefs = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Step);
+					Current_Step = Unhibited_Beliefs.getFirst();
+	
+					//I update Current_Stationv Beliefs
+					Unhibited_Beliefs = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Station);
+					Current_Station = Unhibited_Beliefs.getFirst();
+					if((int)Current_Route.Predicate.get_Object_Complement() == (int)Precondition_Position.Get_Route() &&
+							(int)Current_Step.Predicate.get_Object_Complement() == (int)Precondition_Position.Get_Step() &&
+						Current_Station.Predicate.get_Object_Complement() == Precondition_Position.Get_Station())
+					{
+						this.Plan_Exec(Action);
+						Game.Print("I execute the action");
+						
+						
+					}
+					else
+					{
+						Game.Print("I cannot to execute the action");
+						
+					}
+					Game.Print("Desire name: "+Desire.Get_Name());
 					Game.Print(Current_Route.Predicate.get_Object_Complement());
 					Game.Print(Precondition_Position.Get_Route());
 					Game.Print(Current_Step.Predicate.get_Object_Complement());
 					Game.Print(Precondition_Position.Get_Step());
 					Game.Print(Current_Station.Predicate.get_Object_Complement());
 					Game.Print(Precondition_Position.Get_Station());
+				}
+				else
+				{
+					Game.Print("I haven't action for this Intention. Related Functional Name: "+
+							Desire.get_Attentional_Goal().get_Name());
 				}
 			}
 			this.get_Agent().get_GW().Print_Data(1, 0);
@@ -360,5 +379,14 @@ public class TResource_Allocation {
 	    return result;
 	}
 	
+	public void Updated_Beliefs() 
+	{
+		this.Updated_Beliefs = true;
+	}
+	
+	public void Updated_Intentions() 
+	{
+		this.Updated_Intentions() = true;
+	}
 
 }
