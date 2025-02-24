@@ -34,9 +34,9 @@ public class TE_Inhibition_function {
 	{
 //		Game.Print("************  Function:  Update_Intentions from Update_Intentions Function  *********: TShifting_Attention");
 		Game.Print("Agent start to focus its attention");
-		this.Agent.get_GW().Print_Data(0, 0);
+		this.Agent.Get_GW().Print_Data(0, 0);
 		this.Focus_Attention();
-		this.Agent.get_GW().Print_Data(1, 0);
+		this.Agent.Get_GW().Print_Data(1, 0);
 		Game.Print("Agent focused its attention");
 	}
 	
@@ -51,61 +51,62 @@ public class TE_Inhibition_function {
 			
 
 			//For our purpose we pursue only the first Intention
-			if(this.Agent.get_GW().Get_Intentions().size() > 0)
+			if(this.Agent.Get_GW().Get_Intentions().size() > 0)
 			{
 				if(this.Updated_Intentions)
 				{
 					this.Updated_Intentions = false;
 					
-					this.Agent.get_GW().Print_Data(0, 0);
+					this.Agent.Get_GW().Print_Data(0, 0);
 				
 					//For our purpose we pursue only the first Intention
-					TIntention Intention = this.Agent.get_GW().Get_Intentions().getFirst();
-					Game.Print("Intention selected to pursue: "+Intention.get_Desire().get_Attentional_Goal().get_Name());
+					TIntention Intention = this.Agent.Get_GW().Get_Intentions().getFirst();
+					Game.Print("Functional Name for the Intention selected to pursue: "+Intention.get_Desire().get_Attentional_Goal().get_Name());
 					
 					this.Saliency_Threshold = Intention.get_Desire().get_Attentional_Goal().get_Saliency();
-					this.Agent.get_GW().Update_Saliency_Threshold(this.Saliency_Threshold);
+					this.Agent.Get_GW().Update_Saliency_Threshold(this.Saliency_Threshold);
 					
 					this.Attention_Threshold = Intention.get_Desire().get_Attentional_Goal().Saliency + 
 							( (1-Intention.get_Desire().get_Attentional_Goal().Saliency) /2); //to avoid to exceed 1.00 unit
-					this.Agent.get_GW().Update_Attention_Threshold(this.Attention_Threshold);
+					this.Agent.Get_GW().Update_Attention_Threshold(this.Attention_Threshold);
 					
 					///
 					/// CREATE INHIBITION REGIONS, INHIBITED GOALS AND BELIEFS-
 					///
+					Game.Print("Agent creates the Inhibition Regions");
 					TRegion Inhibition_Regions = this.Create_Inhibition_Regions();
-					this.Agent.get_GW().Update_Inhibition_Regions(Inhibition_Regions);
+					this.Agent.Get_GW().Update_Inhibition_Regions(Inhibition_Regions);
 					
+					Game.Print("Agent creates the Inhibited Goals");
 					ArrayList<TAttentional_Goal> Inhibited_Goals = this.Create_Inhibited_Goals();
-					this.Agent.get_GW().Update_Inhibited_Goals(Inhibited_Goals);
+					this.Agent.Get_GW().Update_Inhibited_Goals(Inhibited_Goals);
 					
 					//TODO development update inhibited belief
+					Game.Print("Agent creates the Inhibited Beliefs");
 					ArrayList<TBelief_Base> Inhibited_Beliefs = this.Create_Inhibited_Beliefs(); 
-		//			this.EI.get_Agent().get_GW().Update_Inhibited_Goals(Inhibited_Goals);
-					this.Agent.get_GW().Update_Inhibited_Beliefs(Inhibited_Beliefs);
-					this.Agent.get_GW().Print_Data(1, 0);
+					this.Agent.Get_GW().Update_Inhibited_Beliefs(Inhibited_Beliefs);
+
+					this.Agent.Get_GW().Print_Data(1, 0);
 				}
 			}
 			else
 			{
 				
-				this.Agent.get_GW().Print_Data(0, 0);
+				this.Agent.Get_GW().Print_Data(0, 0);
 				
+				Game.Print("Agent unfocuses its attention and clear any inhibition regions.");
 				this.UnFocus();
 				this.Saliency_Threshold = this.Default_Saliency_Threshold;
-				this.Agent.get_GW().Update_Saliency_Threshold(this.Saliency_Threshold);
+				this.Agent.Get_GW().Update_Saliency_Threshold(this.Saliency_Threshold);
 				
 				this.Attention_Threshold = this.Default_Attention_Threshold;
-				this.Agent.get_GW().Update_Attention_Threshold(this.Attention_Threshold);
+				this.Agent.Get_GW().Update_Attention_Threshold(this.Attention_Threshold);
 				
 				///TO DO
 				///
 				
-				
-				this.Agent.get_GW().Print_Data(1, 0);
+				this.Agent.Get_GW().Print_Data(1, 0);
 			}
-
-			
 		}
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Focus_Attention.");
@@ -130,11 +131,11 @@ public class TE_Inhibition_function {
 		
 		this.Saliency_Threshold = Un_Focused_Saliency_Threshold;
 		this.Attention_Threshold = Un_Focused_Attention_Threshold;
-		this.Agent.get_GW().Update_Saliency_Threshold(Un_Focused_Saliency_Threshold);
-		this.Agent.get_GW().Update_Attention_Threshold(Un_Focused_Attention_Threshold);
-		this.Agent.get_GW().Empty_Inhibition_Region();
-		this.Agent.get_GW().Empty_Inhibited_Goals();
-		this.Agent.get_GW().Empty_Inhibited_Beliefs();
+		this.Agent.Get_GW().Update_Saliency_Threshold(Un_Focused_Saliency_Threshold);
+		this.Agent.Get_GW().Update_Attention_Threshold(Un_Focused_Attention_Threshold);
+		this.Agent.Get_GW().Empty_Inhibition_Region();
+		this.Agent.Get_GW().Empty_Inhibited_Goals();
+		this.Agent.Get_GW().Empty_Inhibited_Beliefs();
 	}
 	
 	/***
@@ -155,7 +156,7 @@ public class TE_Inhibition_function {
 		//I create All region
 		TRegion Inhibited_Regions = new TRegion();		
 	
-		TIntention Intention = this.Agent.get_GW().Get_Intentions().getFirst();
+		TIntention Intention = this.Agent.Get_GW().Get_Intentions().getFirst();
 		//TOption Option = Intention.get_Desire().get_Option_List().get(Intention.get_Seleted_Option_Id());
 		
 		if (Intention.get_Desire().get_Attentional_Goal() instanceof TFunctional_Goal)
@@ -188,7 +189,7 @@ public class TE_Inhibition_function {
 //						Inhibited_Regions.Destinations.add(Station.values()[i]);
 //					}
 					
-					Inhibited_Regions = this.Agent.get_GW().Compute_All_Regions();
+					Inhibited_Regions = this.Agent.Get_GW().Compute_All_Regions();
 					
 					//I Remove path of the Intention of the Desire of the Functional Goal 
 					//from Inhibited_Regions
@@ -202,10 +203,10 @@ public class TE_Inhibition_function {
 					ArrayList<Route> Routes_to_Remove = new ArrayList<Route>();
 					for(TAction Action: Option.get_Plan_Actions())
 					{
-						if(Action.get_Action_Name() == "GO_TO_Route")
+						if(Action.Get_Action_Name() == "GO_TO_Route")
 						{
 							//Game.Print(Action.get_Params().get(0).getClass());
-							TPosition_Train_Coords Postcondition_Train_Coords = (TPosition_Train_Coords) Action.get_Params().get(0);
+							TPosition_Train_Coords Postcondition_Train_Coords = (TPosition_Train_Coords) Action.Get_Params().get(0);
 							
 //							int Integer_Route = (int) Action.get_Params().get(0);
 							int Integer_Route = (int) Postcondition_Train_Coords.Get_Route();
@@ -226,13 +227,13 @@ public class TE_Inhibition_function {
 							Integer_Routes_to_Remove.add(Specular_Integer_Route);
 							
 							
-							Routes_to_Remove.add(Map.get_Route(Integer_Route));
-							Routes_to_Remove.add(Map.get_Route(Specular_Integer_Route));
+							Routes_to_Remove.add(Map.Get_Route(Integer_Route));
+							Routes_to_Remove.add(Map.Get_Route(Specular_Integer_Route));
 							
 							//I Remove all destinations form inhibition region that is in Path to pursue
-							Route The_Route = Map.get_Route(Integer_Route);
-							Inhibited_Regions.Destinations.remove(The_Route.getDeparture());
-							Inhibited_Regions.Destinations.remove(The_Route.getDestination());
+							Route The_Route = Map.Get_Route(Integer_Route);
+							Inhibited_Regions.Destinations.remove(The_Route.Get_Departure());
+							Inhibited_Regions.Destinations.remove(The_Route.Get_Destination());
 						}
 					}
 //					Inhibited_Regions.Integer_Routes.removeAll(Routes_to_Remove);
@@ -275,7 +276,7 @@ public class TE_Inhibition_function {
 //					{
 //						Inhibited_Regions.Destinations.add(Station.values()[i]);
 //					}
-					Inhibited_Regions = this.Agent.get_GW().Compute_All_Regions();
+					Inhibited_Regions = this.Agent.Get_GW().Compute_All_Regions();
 					
 					
 					
@@ -291,14 +292,14 @@ public class TE_Inhibition_function {
 					TAction Action = Option.get_Plan_Actions().getFirst();
 					//Ask_for_Temporary_Closed_Route
 					
-					if(Action.get_Action_Name() == "How long will the route be closed?")
+					if(Action.Get_Action_Name() == "How long will the route be closed?")
 					{
-						int Integer_Route = (int) Action.get_Params().getFirst();
+						int Integer_Route = (int) Action.Get_Params().getFirst();
 						int Specular_Integer_Route = Map.Get_Specular_Route(Integer_Route);
-						Route The_Route = Map.get_Route(Integer_Route);
-						Route Specular_Route = Map.get_Route(Specular_Integer_Route);
-						Inhibited_Regions.Destinations.remove(The_Route.getDeparture());
-						Inhibited_Regions.Destinations.remove(The_Route.getDestination());
+						Route The_Route = Map.Get_Route(Integer_Route);
+						Route Specular_Route = Map.Get_Route(Specular_Integer_Route);
+						Inhibited_Regions.Destinations.remove(The_Route.Get_Departure());
+						Inhibited_Regions.Destinations.remove(The_Route.Get_Destination());
 						
 						Inhibited_Regions.Integer_Routes.remove(Integer_Route);
 						Inhibited_Regions.Integer_Routes.remove(Specular_Integer_Route);
@@ -332,7 +333,7 @@ public class TE_Inhibition_function {
 		ArrayList<TBelief_Base> Inhibited_Beliefs = null;
 		
 		
-		TIntention Intention = this.Agent.get_GW().Get_Intentions().getFirst();
+		TIntention Intention = this.Agent.Get_GW().Get_Intentions().getFirst();
 		//TOption Option = Intention.get_Desire().get_Option_List().get(Intention.get_Seleted_Option_Id());
 		
 		if (Intention.get_Desire().get_Attentional_Goal() instanceof TFunctional_Goal)
@@ -387,8 +388,8 @@ public class TE_Inhibition_function {
 //	TIntention Intention = this.EI.get_Agent().get_GW().Get_Selected_Intentions().getFirst();
 		//TFunctional_Goal Functional_Goal = (TFunctional_Goal) Intention.get_Desire().get_Attentional_Goal();
 		
-		Inhibited_Goals.addAll(this.Agent.get_GW().Get_Goals());
-		for(TIntention Intention: this.Agent.get_GW().Get_Intentions())
+		Inhibited_Goals.addAll(this.Agent.Get_GW().Get_Goals());
+		for(TIntention Intention: this.Agent.Get_GW().Get_Intentions())
 		{
 			Inhibited_Goals.remove(Intention.get_Desire().get_Attentional_Goal());
 		}
@@ -401,7 +402,7 @@ public class TE_Inhibition_function {
 	{
 		ArrayList<TBelief_Base> Inhibited_Beliefs = new ArrayList<TBelief_Base>();
 		
-		Inhibited_Beliefs.addAll(this.Agent.get_GW().Get_Beliefs());
+		Inhibited_Beliefs.addAll(this.Agent.Get_GW().Get_Beliefs());
 		int i=0;
 		//Only three Beliefs can be saved: The current station, current route, current step, next station, next route, next step 
 		//int Saved_Beliefs = 0;
@@ -451,7 +452,7 @@ public class TE_Inhibition_function {
 //		Game.Print("************  Function:  Create_Inhibited_Beliefs form Focus  *********: TShifting_Attention");
 //		this.Agent.get_GW().Print_Data(0, 0);
 		ArrayList<TBelief_Base> Inhibited_Beliefs = new ArrayList<TBelief_Base>();
-		Inhibited_Beliefs.addAll(this.Agent.get_GW().Get_Beliefs());
+		Inhibited_Beliefs.addAll(this.Agent.Get_GW().Get_Beliefs());
 		
 		//HashMap<TAttentional_Goal, ArrayList<TBelief_Base>> Map_Attentional_Goal_and_Beliefs = null;
 		HashMap<String, ArrayList<TBelief_Base>> Map_Attentional_Goal_and_Beliefs = null;
@@ -462,7 +463,7 @@ public class TE_Inhibition_function {
 		//TIntention Intention = this.EI.get_Agent().get_GW().Get_Selected_Intentions().getFirst();
 		//TOption Option = Intention.get_Desire().get_Option_List().get(Intention.get_Seleted_Option_Id());
 		
-		for (TIntention Intention: this.Agent.get_GW().Get_Intentions())
+		for (TIntention Intention: this.Agent.Get_GW().Get_Intentions())
 		{
 			String Attentional_Name = Intention.get_Desire().get_Attentional_Goal().get_Name();
 			TAttentional_Goal Attentional_Goal =  Intention.get_Desire().get_Attentional_Goal();
@@ -562,7 +563,7 @@ public class TE_Inhibition_function {
 	{
 		ArrayList<TBelief_Base> New_All_related_Beliefs_Of_Goal = new ArrayList<TBelief_Base>();
 //		TBelief_Base Belief = null;
-		ArrayList<TBelief_Base> All_Beliefs = this.Agent.get_GW().Get_Beliefs_from_WMM();
+		ArrayList<TBelief_Base> All_Beliefs = this.Agent.Get_GW().Get_Beliefs_from_WMM();
 		New_All_related_Beliefs_Of_Goal.add(Functional_Goal.get_Final_State());
 		for(TBelief_Base Belief: All_Beliefs)
 		{
@@ -626,7 +627,7 @@ public class TE_Inhibition_function {
 	{
 		ArrayList<TBelief_Base> New_All_related_Beliefs_Of_Goal = new ArrayList<TBelief_Base>();
 //		TBelief_Base Belief = null;
-		ArrayList<TBelief_Base> All_Beliefs = this.Agent.get_GW().Get_Beliefs_from_WMM();
+		ArrayList<TBelief_Base> All_Beliefs = this.Agent.Get_GW().Get_Beliefs_from_WMM();
 		New_All_related_Beliefs_Of_Goal.add(Epistemic_Goal.get_Belief());
 		for(TBelief_Base Belief: All_Beliefs)
 		{

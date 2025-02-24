@@ -2,402 +2,318 @@ package Cara_Simulation;
 
 import java.util.*;
 
-
+/**
+ * It represents the environment in which the autonomous train moves during the simulation.
+ */
 public class Environment {
-	//the even number route is the inserted ruote and odd number route is the back route. 
+	// the even number route is the inserted ruote and odd number route is the back
+	// route.
 	private int Routes_Number;
 	protected My_Collections My_Collection;
-	
-    public Map<Station, List<Route>> Neighbors;
-    public ArrayList<Route> All_Routes; 
 
-    public Environment() {
-    	this.Routes_Number = -1;//So, the even number route is the inserted ruote and odd number route is the back route. 
-    	My_Collection = new My_Collections();
-    	
-        Neighbors = new HashMap<>();
-        All_Routes = new ArrayList<>();
-    }
-    
-    public Environment clone()
-    {
-    	Environment Map2 = new Environment();
-    	Map2.Routes_Number = this.Routes_Number;
-    	Map2.All_Routes.addAll(this.All_Routes);
-    	Map2.Neighbors.putAll(this.Neighbors);
-    	return Map2;
-    	
-    }
+	public Map<Station, List<Route>> Neighbors;
+	public ArrayList<Route> All_Routes;
 
-    public void Add_Arch(Station Departure, Station Destination, Color Assigned_Color, 
-    		int Steps) 
-    {
+	public Environment() {
+		this.Routes_Number = -1;// So, the even number route is the inserted ruote and odd number route is the
+								// back route.
+		My_Collection = new My_Collections();
 
-    	Color_Route Color_Route = My_Collection.Color_Ruotes.get(Assigned_Color);
+		Neighbors = new HashMap<>();
+		All_Routes = new ArrayList<>();
+	}
 
-    	
-        for(int i=0; i < Color_Route.Locomotives.size(); i++)
-    	{
-        	this.Routes_Number++;// increase the number of outbound routes
-	    	Route Rotta = new Route(Departure, Destination, Assigned_Color, Steps, Color_Route.Locomotives.get(i),
-					Color_Route.The_Panorama, Color_Route.The_Speed, this.Routes_Number);
+	/**
+	 * This Methid clones the Map, with all its data
+	 */
+	public Environment clone() {
+		Environment Cloned_Map = new Environment();
+		Cloned_Map.Routes_Number = this.Routes_Number;
+		Cloned_Map.All_Routes.addAll(this.All_Routes);
+		Cloned_Map.Neighbors.putAll(this.Neighbors);
+		return Cloned_Map;
 
-	    	this.Routes_Number++;// increase the number of return trips
-	    	Route Reverse_Route = new Route(Destination, Departure, Assigned_Color, Steps, Color_Route.Locomotives.get(i),
-					Color_Route.The_Panorama, Color_Route.The_Speed, this.Routes_Number);
-	    	Neighbors.computeIfAbsent(Departure, k -> new ArrayList<>()).add(Rotta);   	
-	    	Neighbors.computeIfAbsent(Destination, k -> new ArrayList<>()).add(Reverse_Route); // Non orientato
-	    	All_Routes.add(Rotta);
-	    	All_Routes.add(Reverse_Route);
-    	} 
-    }
+	}
 
-    public ArrayList<Plan> trovaTuttiIPercorsi(Station partenza, Station destinazione) {
-        Set<Station> visitati = new HashSet<>();
-        List<Station> percorsoCorrente = new ArrayList<>();
-        List<List<Station>> tuttiPercorsi = new ArrayList<>();
-        List<Integer> percorsoCorrente_tratte = new ArrayList<>();
-        List<List<Integer>> tuttiPercorsi_tratte = new ArrayList<>();
+	/**
+	 * This Method insert two arch between two stations (Departure and Destination),
+	 * any arch go in a different direction
+	 * 
+	 * @param Departure
+	 * @param Destination
+	 * @param Assigned_Color This parameter assigns any property information to
+	 *                       routes
+	 * @param Steps          The number of steps that make up any route
+	 */
+	public void Add_Arch(Station Departure, Station Destination, Color Assigned_Color, int Steps) {
+		Color_Route Color_Route = My_Collection.Color_Ruotes.get(Assigned_Color);
 
-        //dfs(partenza, destinazione, visitati, percorsoCorrente, tuttiPercorsi);
-        
-        dfs2(partenza, destinazione, visitati, percorsoCorrente, tuttiPercorsi, percorsoCorrente_tratte,
-        		tuttiPercorsi_tratte,-1);
-        
-        
-        ArrayList<Plan> Plans = new ArrayList<>();
-        int i=0;
-        /*for (List<Station> percorso : tuttiPercorsi) {
-        	i++;
-//        	System.out.println("Percorso: " +i);
-//        	System.out.println("Percorso: " +i +" - "+ percorso);
-            //double[] sommaPesi = calcolaSommaPesi(percorso);
-        	EnumMap<TGQ_Goal, Double> Totale_Pesi = calcolaSommaPesi(percorso);
-            Plans.add(new Plan());
-            Plans.getLast().Inserisci_Percorso(percorso, Totale_Pesi);
-        }*/
+		for (int i = 0; i < Color_Route.Locomotives.size(); i++) {
+			this.Routes_Number++;// increase the number of outbound routes
+			Route Outward_Route = new Route(Departure, Destination, Assigned_Color, Steps,
+					Color_Route.Locomotives.get(i), Color_Route.The_Panorama, Color_Route.The_Speed,
+					this.Routes_Number);
 
-        //for (List<Integer> percorso_tratte : tuttiPercorsi_tratte) {
-        for (i=0;i<tuttiPercorsi_tratte.size();i++) {
-        	List<Station> percorso = tuttiPercorsi.get(i);
-        	List<Integer> percorso_tratte = tuttiPercorsi_tratte.get(i);
-
-//        	System.out.println("Percorso: " +i);
-//        	System.out.println("Percorso: " +i +" - "+ percorso);
-            //double[] sommaPesi = calcolaSommaPesi(percorso);
-        	EnumMap<TType_Quality_Goal, Double> Totale_Pesi = calcolaSommaPesi_tratte(percorso_tratte);
-        	Double Path_Time = Compute_Path_Time_Routes(percorso_tratte);
-            Plans.add(new Plan());
-            Plans.getLast().Inserisci_Percorso(percorso, percorso_tratte, Totale_Pesi, Path_Time);
-        }
-//        int visitati1=3;
-        
-//        i=0;
-//        for (List<Integer> percorso2 : tuttiPercorsi_tratte) {        	
-//            //double[] sommaPesi = calcolaSommaPesi(percorso);
-//        	i++;
-////            System.out.println("Percorso: " +i +" - "+ percorso2);
-//        }
-        return Plans;
-    }
-    
-    /*public List<Plan> trovaTuttiIPercorsi_interi(Station partenza, Station destinazione) {
-        Set<Integer> visitati = new HashSet<>();
-        List<Integer> percorsoCorrente = new ArrayList<>();
-        List<List<Integer>> tuttiPercorsi = new ArrayList<>();
-
-        dfs_interi(partenza.ordinal(), destinazione.ordinal(), visitati, percorsoCorrente, tuttiPercorsi);
-//      dfs_interi(Integer ,           Integer ,               Set<Integer> , List<Integer> , List<List<Integer>> ) {
-//            visitati.add(nodoAttuale);
-        
-        List<Plan> Plans = new ArrayList<>();
-        System.out.println("Percorsi trovati:  "+tuttiPercorsi.size());
-        for (List<Integer> percorso : tuttiPercorsi) { 
-        	System.out.println("+++++++++:  "+percorso);
-            //double[] sommaPesi = calcolaSommaPesi(percorso);
-        	EnumMap<TGQ_Goal, Double> Totale_Pesi = calcolaSommaPesi_interi(percorso);
-            Plans.add(new Plan());
-            //Plans.getLast().Inserisci_Percorso(percorso, sommaPesi[0], sommaPesi[1], sommaPesi[2]);
-            Plans.getLast().Inserisci_Percorso_interi(Tutte_Le_Rotte, percorsoCorrente, Totale_Pesi);
-            //System.out.println("Percorso: " + percorso + ", Somma pesi: " + Totale_Pesi);
-        }
-        return Plans;
-    }*/
-
-    protected EnumMap<TType_Quality_Goal, Double> calcolaSommaPesi(List<Station> percorso) {
-        // Assumendo che il peso sia associato all'arco e non al nodo
-        //int somma = 0;
-    	EnumMap<TType_Quality_Goal, Double> Totale_Pesi = new EnumMap<>(TType_Quality_Goal.class); 
-        //double[] Totale_Pesi = new double[3];
-        double Peso_Locomotiva = 0;
-        double Peso_Panorama = 0;
-        double Peso_Velocita = 0;
-        
-        for (int i = 0; i < percorso.size() - 1; i++) {
-            Station citta1 = percorso.get(i);
-            Station citta2 = percorso.get(i + 1);
-            for (Route arco : Neighbors.get(citta1)) {
-                if (arco.getDestination() == citta2) {
-                	;
-                	Peso_Locomotiva += arco.get_Locomotive_Route();
-                	Peso_Panorama += arco.get_Panorama_Route();
-                	Peso_Velocita += arco.get_Speed_Route();
-                    break;
-                }
-            }
-        }
-        Totale_Pesi.put(TType_Quality_Goal.TGQ_Locomotive, Peso_Locomotiva);
-        Totale_Pesi.put(TType_Quality_Goal.TGQ_Panorama, Peso_Panorama);
-        Totale_Pesi.put(TType_Quality_Goal.TGQ_Velocity, Peso_Velocita);
-        return Totale_Pesi;
-    }
-    
-    protected EnumMap<TType_Quality_Goal, Double> calcolaSommaPesi_tratte(List<Integer> percorso_tratte) {
-        // Assumendo che il peso sia associato all'arco e non al nodo
-        //int somma = 0;
-    	EnumMap<TType_Quality_Goal, Double> Totale_Pesi = new EnumMap<>(TType_Quality_Goal.class); 
-        //double[] Totale_Pesi = new double[3];
-        double Peso_Locomotiva = 0;
-        double Peso_Panorama = 0;
-        double Peso_Velocita = 0;
-        Double path_Time = 0.0;
-        Route tratta;
-        int indice;
-        int Routes_Number = percorso_tratte.size();
-//        int i=0;
-//        for (int i = 0; i < Routes_Number - 1; i++)
-        for (int i = 0; i < Routes_Number ; i++)
-        {
-            indice= percorso_tratte.get(i);
-            tratta = this.All_Routes.get(indice);
-        	Peso_Locomotiva += tratta.get_Locomotive_Route();
-        	Peso_Panorama += tratta.get_Panorama_Route();
-        	Peso_Velocita += tratta.get_Speed_Route();
-        	path_Time += tratta.Get_Path_Time();
-        }
-//        Totale_Pesi.put(TType_Quality_Goal.TGQ_Locomotive, Peso_Locomotiva);
-//        Totale_Pesi.put(TType_Quality_Goal.TGQ_Panorama, Peso_Panorama);
-//        Totale_Pesi.put(TType_Quality_Goal.TGQ_Velocity, Peso_Velocita);
-//        Totale_Pesi.put(TType_Quality_Goal.TGQ_Locomotive, Peso_Locomotiva/Routes_Number);
-        Totale_Pesi.put(TType_Quality_Goal.TGQ_Locomotive, Peso_Locomotiva/Routes_Number);
-        Totale_Pesi.put(TType_Quality_Goal.TGQ_Panorama, Peso_Panorama/Routes_Number);
-        Totale_Pesi.put(TType_Quality_Goal.TGQ_Velocity, Peso_Velocita/Routes_Number);
-        
-        tratta = null;
-        return Totale_Pesi;
-    }
-    
-    protected Double Compute_Path_Time_Routes(List<Integer> percorso_tratte)
-    {
-        Double path_Time = 0.0;
-        Route tratta;
-//        int indice;
-        //for (int i = 0; i < percorso_tratte.size() - 1; i++)
-        for(int indice: percorso_tratte)
-        {
-//            indice= percorso_tratte.get(i);
-            tratta = this.All_Routes.get(indice);
-        	path_Time += tratta.Get_Path_Time();
-        }
-        tratta = null;
-        return path_Time;
-    }
-    
-    protected EnumMap<TType_Quality_Goal, Double> calcolaSommaPesi_interi(List<Integer> percorso) {
-        // Assumendo che il peso sia associato all'arco e non al nodo
-        //int somma = 0;
-    	EnumMap<TType_Quality_Goal, Double> Totale_Pesi = new EnumMap<>(TType_Quality_Goal.class); 
-    	Route arco;
-        //double[] Totale_Pesi = new double[3];
-        double Peso_Locomotiva = 0;
-        double Peso_Panorama = 0;
-        double Peso_Velocita = 0;
-        
-        for (int i = 0; i < percorso.size() - 1; i++) {
-        	int indice_tratta_del_percorso = percorso.get(i);
-        	arco = this.All_Routes.get( indice_tratta_del_percorso );
-        	Peso_Locomotiva += arco.get_Locomotive_Route();
-        	Peso_Panorama += arco.get_Panorama_Route();
-        	Peso_Velocita += arco.get_Speed_Route();
-        }
-        Totale_Pesi.put(TType_Quality_Goal.TGQ_Locomotive, Peso_Locomotiva);
-        Totale_Pesi.put(TType_Quality_Goal.TGQ_Panorama, Peso_Panorama);
-        Totale_Pesi.put(TType_Quality_Goal.TGQ_Velocity, Peso_Velocita);
-        return Totale_Pesi;
-    }
-
-    protected void dfs(Station nodoAttuale, Station destinazione, Set<Station> visitati, List<Station> percorsoCorrente, List<List<Station>> tuttiPercorsi) {
-        visitati.add(nodoAttuale);
-        percorsoCorrente.add(nodoAttuale);
-
-        if (nodoAttuale == destinazione) {
-            tuttiPercorsi.add(new ArrayList<>(percorsoCorrente));
-        } else {
-            for (Route arco : Neighbors.getOrDefault(nodoAttuale, Collections.emptyList())) {
-                if (!visitati.contains(arco.getDestination())) {
-                    dfs(arco.getDestination(), destinazione, visitati, percorsoCorrente, tuttiPercorsi);
-                }
-            }
-        }
-
-        percorsoCorrente.remove(percorsoCorrente.size() - 1);
-        visitati.remove(nodoAttuale);
-    }
-    
-    protected void dfs2(Station nodoAttuale, Station destinazione, Set<Station> visitati, List<Station> percorsoCorrente, List<List<Station>> tuttiPercorsi,
-    		List<Integer> percorsoCorrente_tratte, List<List<Integer>> tuttiPercorsi_tratte, Integer Indice_Arco) {
-        visitati.add(nodoAttuale);
-        percorsoCorrente.add(nodoAttuale);
-        if (Indice_Arco>-1)
-        {
-        	percorsoCorrente_tratte.add(Indice_Arco);
-        }
-        	
-        
-
-        if (nodoAttuale == destinazione) {
-            tuttiPercorsi.add(new ArrayList<>(percorsoCorrente));
-            tuttiPercorsi_tratte.add(new ArrayList<>(percorsoCorrente_tratte));
-        } else {
-            for (Route arco : Neighbors.getOrDefault(nodoAttuale, Collections.emptyList())) {
-                if (!visitati.contains(arco.getDestination())) {
-                	
-                	Indice_Arco = arco.Route_Number;
-                    dfs2(arco.getDestination(), destinazione, visitati, percorsoCorrente, tuttiPercorsi,
-                    		percorsoCorrente_tratte, tuttiPercorsi_tratte, Indice_Arco);
-                    if (Indice_Arco>-1)
-                    {
-                    	percorsoCorrente_tratte.remove(Indice_Arco);
-                    }
-                }
-            }
-        }
-
-//        if (Indice_Arco>-1)
-//        {
-//        	percorsoCorrente_tratte.remove(Indice_Arco);
-//        }
-        percorsoCorrente.remove(percorsoCorrente.size() - 1);
-        visitati.remove(nodoAttuale);
-    }
-    
-//    protected void dfs_interi(Station nodoAttuale, Station destinazione, Set<Station> visitati, List<Station> percorsoCorrente, List<List<Station>> tuttiPercorsi) {
-    	protected void dfs_interi(Integer nodoAttuale, Integer destinazione, Set<Integer> visitati, List<Integer> percorsoCorrente, List<List<Integer>> tuttiPercorsi) {
-        visitati.add(nodoAttuale);
-        
-        percorsoCorrente.add(nodoAttuale);
-
-        if (nodoAttuale == destinazione) {
-            tuttiPercorsi.add(new ArrayList<>(percorsoCorrente));
-        } else {
-            //for (Route arco : Vicini.getOrDefault(nodoAttuale, Collections.emptyList())) {
-        	for (Route arco : Neighbors.getOrDefault(Station.values()[nodoAttuale], Collections.emptyList())) {
-                if (!visitati.contains(arco.getDestination().ordinal())) {
-                	dfs_interi(arco.getDestination().ordinal(), destinazione, visitati, percorsoCorrente, tuttiPercorsi);
-                }
-            }
-        }
-
-        percorsoCorrente.remove(percorsoCorrente.size() - 1);
-        visitati.remove(nodoAttuale);
-    }
-    
-    public Route get_Route(Station nodoAttuale, Station destinazione)
-    {
-    	Route Tratta = null;
-    	
-    	if (nodoAttuale != destinazione)   		
-    	{
-    		
-    		List<Route> Tutti_i_Vicini = Neighbors.getOrDefault(nodoAttuale, Collections.emptyList());
-    		int i = 0;
-    		while ( i < Tutti_i_Vicini.size() )
-    		{
-    			Route Tratta_appoggio = Tutti_i_Vicini.get(i);
-    			if( Tratta_appoggio.getDestination() == destinazione)
-    			{
-    				Tratta = Tratta_appoggio;
-    				break;
-    			}
-    			i++;
-    		}
-    		/*
-    		List<Route> Tutti_i_Vicini = Vicini.getOrDefault(nodoAttuale, Collections.emptyList());
-    		while (int i=0;i<Tutti_i_Vicini.)
-        	
-        	System.out.println( "Numero vicini: "+Tutti_i_Vicini.size());
-        	System.out.println( Tutti_i_Vicini.getFirst().getDestination());*/
-    	}
-    	
-    	
-    	return Tratta;
-    }
-    
-    public Route get_Route(Integer index)
-    {
-    	Route route = null;
-    	if (index < this.All_Routes.size())
-    	{
-    		route = this.All_Routes.get(index);
-    	}
-    	
-    	return route;
-    }
-    
-    public List<Station> get_Lista_Città_Vicine(Station nodoAttuale)
-    {
-    	List<Station> I_Vicini = new ArrayList<>();
-
-		List<Route> Tutti_i_Vicini = Neighbors.getOrDefault(nodoAttuale, Collections.emptyList());
-		//while(Tutti_i_Vicini.hasNext()){
-		int i=0;
-		for (Route Tratta: Tutti_i_Vicini) {
-			/*System.out.println(i);
-			System.out.println( "getDestination: "+Tratta.getDestination());
-			System.out.println( "getPeso_Locomotiva: "+Tratta.getPeso_Locomotiva());
-			System.out.println( "getPeso_Panorama: "+Tratta.getPeso_Panorama());
-			System.out.println( "getPeso_Velocita: "+Tratta.getPeso_Velocita());
-			System.out.println( "getPeso_Velocita_per_rettangolo: "+Tratta.getPeso_Velocita_per_rettangolo());
-			System.out.println("---------------");*/
-			I_Vicini.add(Tratta.getDestination());
-			i++;
-    	}   	
-    	//System.out.println( "Numero vicini: "+Tutti_i_Vicini.size());
-    	//System.out.println( Tutti_i_Vicini.getFirst().getDestination());
-    	return I_Vicini;
-    }
-    
-    public List<Route> get_Tratte_Città_Vicine(Station nodoAttuale)
-    {
-		List<Route> Tutti_i_Vicini = Neighbors.getOrDefault(nodoAttuale, Collections.emptyList());
-    	return Tutti_i_Vicini;
-    }
-    
-    //this function return the routes number, in according to the index of route, and it is "minus 1" to size of all routes list
-    //because Numero_Tratte starts by "-1"
-    public Integer Get_Routes_Number()
-    {
-    	return Routes_Number;
-    }
-    
-    /**
-     * Get Back Route to a specific Route
-     * @param A_Route
-     * @return
-     */
-    public int Get_Specular_Route(int A_Route)
-    {
-    	int Specular_Integer_Route =0;
-		if (A_Route % 2 == 0)
-		{
-			Specular_Integer_Route = A_Route + 1;
-			
+			this.Routes_Number++;// increase the number of return trips
+			Route Reverse_Route = new Route(Destination, Departure, Assigned_Color, Steps,
+					Color_Route.Locomotives.get(i), Color_Route.The_Panorama, Color_Route.The_Speed,
+					this.Routes_Number);
+			Neighbors.computeIfAbsent(Departure, k -> new ArrayList<>()).add(Outward_Route);
+			Neighbors.computeIfAbsent(Destination, k -> new ArrayList<>()).add(Reverse_Route); // Non orientato
+			All_Routes.add(Outward_Route);
+			All_Routes.add(Reverse_Route);
 		}
-		else
-		{
+	}
+
+	/**
+	 * This Method finds all paths in the Environment (The Map) between two
+	 * stations: Departure and Destination
+	 * 
+	 * @param Departure   Departure Station
+	 * @param Destination Destination Station
+	 * @return A list of Plan
+	 */
+	public ArrayList<Plan> Find_All_Paths(Station Departure, Station Destination) {
+		Set<Station> Visited_Stations = new HashSet<>();
+		List<Station> Current_Path = new ArrayList<>();
+		List<List<Station>> All_Paths = new ArrayList<>();
+		List<Integer> Current_Route_Sections = new ArrayList<>();
+		List<List<Integer>> All_Routes_Sections = new ArrayList<>();
+
+		Dfs(Departure, Destination, Visited_Stations, Current_Path, All_Paths, Current_Route_Sections,
+				All_Routes_Sections, -1);
+
+		ArrayList<Plan> Plans = new ArrayList<>();
+		int i = 0;
+		for (i = 0; i < All_Routes_Sections.size(); i++) {
+			List<Station> Stations_Path = All_Paths.get(i);
+			List<Integer> Routes_Path = All_Routes_Sections.get(i);
+
+			EnumMap<TType_Quality_Goal, Double> Totale_Pesi = Compute_Sum_Weights_Routes(Routes_Path);
+			Double Path_Time = Compute_Path_Time_Routes(Routes_Path);
+			Plans.add(new Plan());
+			Plans.getLast().Insert_Path_by_Routes(Stations_Path, Routes_Path, Totale_Pesi, Path_Time);
+		}
+		return Plans;
+	}
+
+	/**
+	 * Compute All Weights for a Route
+	 * 
+	 * @param Path A list of Station
+	 * @return A record of Locomotive, Panorama and Speed average of all Routes of
+	 *         the path
+	 */
+	protected EnumMap<TType_Quality_Goal, Double> Compute_Sum_Weights(List<Station> Path) {
+		EnumMap<TType_Quality_Goal, Double> Total_Weights = new EnumMap<>(TType_Quality_Goal.class);
+
+		double Locomotive_Route = 0;
+		double Panorama_Route = 0;
+		double Speed__Route = 0;
+
+		for (int i = 0; i < Path.size() - 1; i++) {
+			Station Station1 = Path.get(i);
+			Station Station2 = Path.get(i + 1);
+			for (Route arch : Neighbors.get(Station1)) {
+				if (arch.Get_Destination() == Station2) {
+					;
+					Locomotive_Route += arch.Get_Route_Locomotive();
+					Panorama_Route += arch.get_Route_Panorama();
+					Speed__Route += arch.get_Route_Speed();
+					break;
+				}
+			}
+		}
+		Total_Weights.put(TType_Quality_Goal.TGQ_Locomotive, Locomotive_Route);
+		Total_Weights.put(TType_Quality_Goal.TGQ_Panorama, Panorama_Route);
+		Total_Weights.put(TType_Quality_Goal.TGQ_Velocity, Speed__Route);
+		return Total_Weights;
+	}
+
+	/**
+	 * Compute All Weights for a Route
+	 * 
+	 * @param Routes_Path A list of integer. Any integers represents a route
+	 * @return A record of Locomotive, Panorama and Speed average of all Routes of
+	 *         the path
+	 */
+	protected EnumMap<TType_Quality_Goal, Double> Compute_Sum_Weights_Routes(List<Integer> Routes_Path) {
+		EnumMap<TType_Quality_Goal, Double> Weights = new EnumMap<>(TType_Quality_Goal.class);
+
+		double Locomotive_Route = 0;
+		double Panorama_Route = 0;
+		double Speed_Route = 0;
+		Double Path_Time = 0.0;
+		Route route;
+		int index;
+		int Routes_Number = Routes_Path.size();
+
+		for (int i = 0; i < Routes_Number; i++) {
+			index = Routes_Path.get(i);
+			route = this.All_Routes.get(index);
+			Locomotive_Route += route.Get_Route_Locomotive();
+			Panorama_Route += route.get_Route_Panorama();
+			Speed_Route += route.get_Route_Speed();
+			Path_Time += route.Get_Path_Time();
+		}
+
+		Weights.put(TType_Quality_Goal.TGQ_Locomotive, Locomotive_Route / Routes_Number);
+		Weights.put(TType_Quality_Goal.TGQ_Panorama, Panorama_Route / Routes_Number);
+		Weights.put(TType_Quality_Goal.TGQ_Velocity, Speed_Route / Routes_Number);
+
+		route = null;
+		return Weights;
+	}
+
+	/**
+	 * Compute the average Path Time of a Path.
+	 * 
+	 * @param Routes_Path A list of integers. Any integer represents a route
+	 * @return A double value, represents the average Path time of the Path
+	 */
+	protected Double Compute_Path_Time_Routes(List<Integer> Routes_Path) {
+		Double Path_Time = 0.0;
+		Route route;
+
+		for (int index : Routes_Path) {
+			route = this.All_Routes.get(index);
+			Path_Time += route.Get_Path_Time();
+		}
+		route = null;
+		return Path_Time;
+	}
+
+	/**
+	 * A recursive Depth-First Search Algorithm version for search a path between
+	 * two Station.
+	 * 
+	 * @param Current_Node
+	 * @param Destination
+	 * @param Visited_Station
+	 * @param Current_Path
+	 * @param All_Paths
+	 * @param Current_Path_Integers
+	 * @param All_Paths_Integers
+	 * @param Arch_Index
+	 */
+	protected void Dfs(Station Current_Node, Station Destination, Set<Station> Visited_Station,
+			List<Station> Current_Path, List<List<Station>> All_Paths, List<Integer> Current_Path_Integers,
+			List<List<Integer>> All_Paths_Integers, Integer Arch_Index) {
+		Visited_Station.add(Current_Node);
+		Current_Path.add(Current_Node);
+		if (Arch_Index > -1) {
+			Current_Path_Integers.add(Arch_Index);
+		}
+
+		if (Current_Node == Destination) {
+			All_Paths.add(new ArrayList<>(Current_Path));
+			All_Paths_Integers.add(new ArrayList<>(Current_Path_Integers));
+		} else {
+			for (Route arco : Neighbors.getOrDefault(Current_Node, Collections.emptyList())) {
+				if (!Visited_Station.contains(arco.Get_Destination())) {
+
+					Arch_Index = arco.Route_Number;
+					Dfs(arco.Get_Destination(), Destination, Visited_Station, Current_Path, All_Paths,
+							Current_Path_Integers, All_Paths_Integers, Arch_Index);
+					if (Arch_Index > -1) {
+						Current_Path_Integers.remove(Arch_Index);
+					}
+				}
+			}
+		}
+
+		Current_Path.remove(Current_Path.size() - 1);
+		Visited_Station.remove(Current_Node);
+	}
+
+	/**
+	 * Get Routes all routes starting from a Departure Station to a Destination Station
+	 * 
+	 * @param Departure		The Departure Station
+	 * @param Destination	The Destination Station
+	 * @return 				A List of routes
+	 */
+	public ArrayList<Route> get_Routes(Station Departure, Station Destination) {
+		ArrayList<Route> Routes = new ArrayList<Route>();
+
+		if (Departure != Destination) {
+			List<Route> Neighbors_Station = Neighbors.getOrDefault(Departure, Collections.emptyList());
+			for (Route route : Neighbors_Station) {
+				if (route.Get_Destination() == Destination) {
+					Routes.add(route);
+				}
+			}
+		}
+
+		return Routes;
+	}
+
+	/**
+	 * Get a route from Map
+	 * @param index		An integer, represents the Route number index in Map 
+	 * @return			The route
+	 */
+	public Route Get_Route(Integer index) {
+		Route route = null;
+		if (index < this.All_Routes.size()) {
+			route = this.All_Routes.get(index);
+		}
+
+		return route;
+	}
+	/**
+	 * Get a list represents all Neighbor Stations to a specific Station 
+	 * @param A_Station		A specific Station  
+	 * @return				A list of Stations
+	 */
+	public List<Station> Get_Neighbor_Stations(Station A_Station) {
+		List<Station> Neighbor_Stations = new ArrayList<>();
+
+		List<Route> All_Neighbors = Neighbors.getOrDefault(A_Station, Collections.emptyList());
+
+		for (Route route : All_Neighbors) {
+			Neighbor_Stations.add(route.Get_Destination());
+		}
+		return Neighbor_Stations;
+	}
+
+	/**
+	 * Get a list of routes linked to A specific Station 
+	 * @param A_Station		A specific Station  
+	 * @return				A list of routes
+	 */
+	public List<Route> get_Tratte_Città_Vicine(Station A_Station) {
+		List<Route> Neighbor_Stations = Neighbors.getOrDefault(A_Station, Collections.emptyList());
+		return Neighbor_Stations;
+	}
+
+	// this function return the routes number, in according to the index of route,
+	// and it is "minus 1" to size of all routes list
+	// because Numero_Tratte starts by "-1"
+	/**
+	 *  this function return the routes number, in according to the index of route, 
+	 *  and it is "minus 1" to size of all routes list because Numero_Tratte starts by "-1"
+	 * @return 	An integer
+	 */
+	public Integer Get_Routes_Number() {
+		return Routes_Number;
+	}
+
+	/**
+	 * Get Back  Route to a specific Route. 
+	 * 
+	 * @param A_Route	A specific route
+	 * @return			An integer
+	 */
+	public int Get_Specular_Route(int A_Route) {
+		int Specular_Integer_Route = 0;
+		if (A_Route % 2 == 0) {
+			Specular_Integer_Route = A_Route + 1;
+
+		} else {
 			Specular_Integer_Route = A_Route - 1;
 		}
-    	return Specular_Integer_Route;
-    }
-    
+		return Specular_Integer_Route;
+	}
+
 }

@@ -33,14 +33,16 @@ public class TE_Switching_Function {
 			{
 				this.Updated_Goals = false;
 				
-				TGlobalWorkspace GW = this.Agent.get_GW();
+				Game.Print("Now, the agent checks if it has some goals to promote to desire");
+				
+				TGlobalWorkspace GW = this.Agent.Get_GW();
 				ArrayList<TAttentional_Goal> Goals_To_Promote = new ArrayList<TAttentional_Goal>();
 		
-				this.Agent.get_GW().Print_Data(0, 0);
-	//			if(this)
+				this.Agent.Get_GW().Print_Data(0, 0);
 				Goals_To_Promote.clear();
 		
 				//We said that these are only Functional Goals
+				
 				ArrayList<TFunctional_Goal> Functional_Goals = GW.Get_Functional_Goals();
 		
 				ArrayList<TFunctional_Goal> Inhibited_Functional_Goals = GW.Get_Inhibited_Functional_Goals();
@@ -60,21 +62,19 @@ public class TE_Switching_Function {
 				{
 					if (Uninhibited_Functional_Goals.contains(Desire.get_Attentional_Goal()) )
 					{
-						Game.Print("Desire.get_Attentional_Goal().get_Saliency() "+Desire.get_Attentional_Goal().get_Saliency());
 						if (Desire.get_Attentional_Goal().get_Saliency() < this.Agent.Get_E_Inhibition_function().get_Saliency_Threshold())
 						{
-							Game.Print("I Delete a Desire");
-		
-									GW.Delete_Desire(Desire);
-									Game.Print(" - - - - - - Saliency: "+Desire.get_Attentional_Goal().get_Saliency()+ " - Saliency_Threshold: "+this.Agent.Get_E_Inhibition_function().get_Saliency_Threshold());
+							Game.Print("I Delete a Desire. Desire name: "+Desire.Get_Name());
+							Game.Print("Desire Saliency is: "+Desire.get_Attentional_Goal().get_Saliency()+ " - while Saliency Threshold is: "+this.Agent.Get_E_Inhibition_function().get_Saliency_Threshold());
+							GW.Delete_Desire(Desire);
 						}
 					}
 					else
 					{
 						if (Desire.get_Attentional_Goal().get_Saliency() < this.Agent.Get_E_Inhibition_function().get_Attention_Threshold())
 						{
-							Game.Print("I Delete a Desire");
-							Game.Print(Desires+" - - - - - - Saliency: "+Desire.get_Attentional_Goal().get_Saliency()+ " - Saliency_Threshold: "+this.Agent.Get_E_Inhibition_function().get_Saliency_Threshold());
+							Game.Print("I Delete a Desire. Desire name: "+Desire.Get_Name());
+							Game.Print("Desire Saliency is: "+Desire.get_Attentional_Goal().get_Saliency()+ " - while Attention Threshold isis: "+this.Agent.Get_E_Inhibition_function().get_Attention_Threshold());
 							GW.Delete_Desire(Desire);
 						}
 					}
@@ -102,12 +102,12 @@ public class TE_Switching_Function {
 							}
 							else
 							{
-								Game.Print("not Promoted Goal Name: "+goal.get_Name()+ " because the Saliency Functional Goal is minor then the Saliency threshold of the Agent");
+								Game.Print("Not Promoted Goal Name: "+goal.get_Name()+ " because the Saliency Functional Goal is minor then the Saliency threshold of the Agent");
 							}
 						}
 						else
 						{
-							Game.Print("not Promoted Goal Name: "+goal.get_Name()+ " because the precondition Functional Goal is not true");
+							Game.Print("Not Promoted Goal Name: "+goal.get_Name()+ " because the precondition Functional Goal is not true");
 						}
 					}
 					else
@@ -132,10 +132,9 @@ public class TE_Switching_Function {
 						{
 							if (goal.get_Saliency() >= this.Agent.Get_E_Inhibition_function().get_Attention_Threshold())
 							{
-								Game.Print("I'm inserting a goal to promote, inside --Inhibited_Goals-- section");
+								Game.Print("I'm promoting the goal to Desire, inside --(Inhibited_goals)-- section (see Listing 1). Goal Name: "+goal.get_Name());
 								Goals_To_Promote.add(goal);
 							}
-								
 						}
 					}
 					else
@@ -144,11 +143,9 @@ public class TE_Switching_Function {
 					}
 				}
 				
-				
-				
 				//Now I promote all goal (in Goals_To_Promote) to Desire
 				ArrayList<TDesire> New_Desires = new ArrayList<TDesire>();
-				Integer Desire_Number = this.Agent.get_GW().Get_Desire_Number();
+				Integer Desire_Number = this.Agent.Get_GW().Get_Desire_Number();
 				for (TAttentional_Goal Goal: Goals_To_Promote)
 				{
 					Desire_Number++;
@@ -163,15 +160,10 @@ public class TE_Switching_Function {
 				
 				GW.Insert_New_Desires(New_Desires);
 				
-				this.Agent.get_GW().Print_Data(1, 0);
+				this.Agent.Get_GW().Updated_Beliefs_for_print = true;
 				
-//				//I delete Promoted Goal from Functional Goals List
-//				this.Agent.Get_WMM().de
-				
-				
-				System.out.println("************   This is the end of the Endogenous Module");
+				this.Agent.Get_GW().Print_Data(1, 0);
 			}
-			
 		}
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
@@ -191,9 +183,10 @@ public class TE_Switching_Function {
 		try
 		{
 			//the following lines of code are to use the iterator way in the Start Agent method
-			TSalient_Belief Stimulus = this.Agent.get_GW().Get_Temp_Salient_Belief();
+			TSalient_Belief Stimulus = this.Agent.Get_GW().Get_Temp_Salient_Belief();
 			if(Stimulus==null )
 			{
+				Game.Print("The Agent has NOT a stimulus.");
 				return result;
 			}
 //			else if (Stimulus.get_Type_Belief() == TType_Beliefs.Stimulus_Ok_Correct_Movement)
@@ -203,10 +196,12 @@ public class TE_Switching_Function {
 			
 			//the previous lines of code are to use the iterator way in the Start Agent method
 			
-			this.get_Agent().get_GW().Print_Data(0, 0);
-			TGlobalWorkspace GW = this.Agent.get_GW();
+			Game.Print("The Agent has a stimulus and checks if it has a saliency greater then "+
+						"Saliency/Attention threholds of the agent.");
+			this.get_Agent().Get_GW().Print_Data(0, 0);
+			TGlobalWorkspace GW = this.Agent.Get_GW();
 	
-			TRegion Inhi_regions = this.Agent.get_GW().Get_Inhibition_Regions();
+			TRegion Inhi_regions = this.Agent.Get_GW().Get_Inhibition_Regions();
 			
 			TSalient_Belief relevant_Stimulus = this.Apply_Filter( Stimulus , Inhi_regions );
 			
@@ -218,14 +213,13 @@ public class TE_Switching_Function {
 			    	// corresponding to the relevant_Stimulus ( if it exists )
 					TEpistemic_Goal New_Goal = GW.Stimulus_to_Goal(relevant_Stimulus);  
 					
-					Integer Desire_Number = this.Agent.get_GW().Get_Desire_Number();
+					Integer Desire_Number = this.Agent.Get_GW().Get_Desire_Number();
 					Desire_Number++;
 					TDesire Desire = this.Promote_to_Desire(Desire_Number, New_Goal, null);
 					ArrayList<TDesire> New_Desires = new ArrayList<TDesire>();
 					New_Desires.add(Desire);
 					
-					this.get_Agent().get_GW().Print_Data(1, 0);
-	//				GW.Insert_new_desire( Desire );
+					this.get_Agent().Get_GW().Print_Data(1, 0);
 					GW.Insert_New_Desires(New_Desires);
 				}
 			}
@@ -237,14 +231,13 @@ public class TE_Switching_Function {
 			    	// corresponding to the relevant_Stimulus ( if it exists )
 			    	TEpistemic_Goal New_Goal = GW.Stimulus_to_Goal(Stimulus);
 			    	
-			    	Integer Desire_Number = this.Agent.get_GW().Get_Desire_Number();
+			    	Integer Desire_Number = this.Agent.Get_GW().Get_Desire_Number();
 					Desire_Number++;
 					TDesire Desire = this.Promote_to_Desire(Desire_Number, New_Goal, null);
 					ArrayList<TDesire> New_Desires = new ArrayList<TDesire>();
 					New_Desires.add(Desire);
 			    	
-			    	this.get_Agent().get_GW().Print_Data(1, 0);
-	//		    	GW.Insert_new_desire( Desire );
+			    	this.get_Agent().Get_GW().Print_Data(1, 0);
 			    	GW.Insert_New_Desires(New_Desires);
 				}
 			}
@@ -383,7 +376,10 @@ public class TE_Switching_Function {
 		Boolean result = false;
 		TPredicate Predicate = Goal.get_Trigger_Condition();
 		Station Visited_Station_Goal = (Station) Predicate.get_Subject();
-		ArrayList<TBelief_Base> Beliefs = this.Agent.Get_WMM().Get_Beliefs();
+//		ArrayList<TBelief_Base> Beliefs = this.Agent.Get_WMM().Get_Beliefs();
+		
+		ArrayList<TBelief_Base> Beliefs = this.Agent.Get_GW().Get_Beliefs();
+		this.Agent.Get_GW().Get_UnInhibited_Beliefs();
 		for (TBelief_Base Belief: Beliefs)
 		{
 			if(Belief.get_Type_Belief() == TType_Beliefs.Belief_Visited_Station)

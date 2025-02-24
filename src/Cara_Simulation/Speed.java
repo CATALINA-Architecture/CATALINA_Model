@@ -5,6 +5,11 @@ public enum Speed {
 	Medium,
 	High;
 	
+	/**
+	 * It returns the integer value associated to the speed enumeration
+	 * @param Velocita
+	 * @return
+	 */
 	public int Get_Value(Speed Velocita) { 
 		int risultato = 0;
 		switch (Velocita) {

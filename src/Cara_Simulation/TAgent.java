@@ -4,53 +4,60 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/** 
+ * It represents the agent in according to the CATALINA Architecture 
+ */
 public class TAgent {
 	
 	private TE_Switching_Function E_Switching_Function;
 	private TE_Inhibition_function E_Inhibition_function;
 	private TGlobalWorkspace GW;
 	private TReasoner_Function Reasoner;
-	private TResource_Allocation RA;
+	private TResource_Allocation E_Resource_A;
 	private TAgent_Status Status;
 	private TWorking_Memory_Maintenance WMM;
 	private TTCS TCS;
 	
+	/**
+	 * Constructor class
+	 */
 	public TAgent()
 	{
 		this.E_Switching_Function = new TE_Switching_Function(this);
 		this.E_Inhibition_function = new TE_Inhibition_function(this);
 		this.GW = new TGlobalWorkspace(this);
 		this.Reasoner = new TReasoner_Function(this);
-		this.RA = new TResource_Allocation(this);
+		this.E_Resource_A = new TResource_Allocation(this);
 		this.WMM = new TWorking_Memory_Maintenance(this);
 
 		this.Status = TAgent_Status.Not_Active;
 	}
 	
+	/**
+	 * It initializes the agent. Following these params are for case study
+	 * @param TCS		The Traffic Control Station
+	 * @param Map		The environment of the case study
+	 * @param Init_Creation_Path_Travelled_for_Functional_Goal	
+	 * @return			A boolean value 
+	 */
 	public boolean Initialization(TTCS TCS, Environment Map, int Init_Creation_Path_Travelled_for_Functional_Goal)
 	{
 		boolean result = true;
 		try 
 		{
-			
-		
-		    
 			Game.Scenario_Number = 0;
 			this.GW.Print_Data(0, 0);
 			this.Status = TAgent_Status.Initializing;
 			this.GW.Update_Saliency_Threshold(this.Get_E_Inhibition_function().Get_Default_Saliency_Threshold());
 			this.GW.Update_Attention_Threshold(this.Get_E_Inhibition_function().Get_Default_Attention_Threshold());
 			
-	//		this.GW.set_Map_Know(Mappa.clona());
 			this.TCS = TCS;
 			this.WMM.Set_Map(Map);
 			
 			this.WMM.Set_Regions();
-			//System.out.println("Routes number = "+Map.Tutte_Le_Rotte.size());
-			final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
-	
-	
-			// TODO --Agent's Initialization--  
+			
+			Game.Print("I read predicates, beliefs, functional, green and quality goals");
+			// --Agent's Initialization--  
 			//This Section is to Create All Beliefs (Belief_Current_Station, Belief_Current_Route, etc...)
 			/***
 			 * Order to read data:
@@ -62,25 +69,19 @@ public class TAgent {
 			 * 6- Epistemic Goals
 			 */
 			
-			
-			//System.out.println("1 - Get All Predicate");
 			//1 - Get All Predicate
 			this.Read_Predicates_From_File();
 			
 			
-			//System.out.println("2 - Get All Beliefs (this normalize Beliefs with related Predicate");
 			//2 - Get All Beliefs (this normalize Beliefs with related Predicate
 			this.Read_Beliefs_From_File();
 			
-			//System.out.println("3 - Get All Green Goals (this normalize Green Goals with related data");
 			//2 - Get All Beliefs (this normalize Beliefs with related Predicate
 			this.Read_Green_Goals_From_File();
 			
-			//System.out.println("4 - Get All Quality Goals (this normalize Quality Goals with related data");
 			//2 - Get All Beliefs (this normalize Beliefs with related Predicate
 			this.Read_Quality_Goals_From_File();
 			
-			//System.out.println("5 - Get All Functional Goals (this normalize Functional Goals with related data");
 			//2 - Get All Beliefs (this normalize Beliefs with related Predicate
 			this.Read_Functional_Goals_From_File();
 			
@@ -90,18 +91,10 @@ public class TAgent {
 			//this.Read_Epistemic_Goals_From_File();
 			
 			
-			//Section to reading Predicate lists, Beliefs List, eetc..
-			//this.GW.
-		
-			// Create the plan Library
-	
 			// Create the Belief_Path_Taken_For_Belief linked to Functional Goal
 			this.Create_Belief_Path_Taken_For_Functional_Goal(Init_Creation_Path_Travelled_for_Functional_Goal);
 	
-			//Game.Print("sono Qua "+this.WMM.Get_Beliefs().size());
 			HashMap<String, TPredicate> Map_Predicates = this.WMM.Get_Map_Predicates();
-	//		Game.Print("All initial Belief Number in Agent WMM: "+this.WMM.Get_Beliefs().size());
-	//		Game.Print("All initial Belief Types in Agent WMM:");
 			
 			ArrayList<TType_Beliefs> Beliefs_Type_list = new ArrayList<TType_Beliefs>();
 			for(TBelief_Base belief: this.WMM.Get_Beliefs())
@@ -113,21 +106,15 @@ public class TAgent {
 				if (!Beliefs_Type_list.contains(belief.get_Type_Belief()))
 				{
 					Beliefs_Type_list.add(belief.get_Type_Belief());
-					//Game.Print("--- Belief Name: "+belief.get_Name()+" - related Predicate Name: "+Predicato.get_Name()+" - Belief Type: "+belief.get_Type_Belief());
-	//				Game.Print("--- Belief Type: "+belief.get_Type_Belief());
 				}
 				
-				
 				belief.set_Predicate(Predicato);
-				//Game.Print("Dopo- "+belief.get_Name()+" - "+Predicato.get_Name()+" - "+belief.get_Type_Belief());
-				
-	
 			}
 			
 			this.GW.Print_Data(1, 0);
 		}
 		catch (Exception e) {
-	      Game.Print("Something went wrongin method: Insert_New_Desires.");
+			Game.Print("Something went wrong in method: Insert_New_Desires.");
 	      Game.Print("Message Error: "+e.getMessage());
 	      Game.PrintLn();
 	      e.printStackTrace();
@@ -136,27 +123,50 @@ public class TAgent {
 		return result;
 	}
 
-	public TE_Switching_Function get_E_Switching_Function() {
+	/**
+	 * It returns the Executive Switching Function of the agent
+	 * @return
+	 */
+	public TE_Switching_Function Get_E_Switching_Function() {
 		return this.E_Switching_Function;
 	}
 	
+	/**
+	 * It returns the Executive Inhibition Function of the agent
+	 * @return
+	 */
 	public TE_Inhibition_function Get_E_Inhibition_function()
 	{
 		return this.E_Inhibition_function;
 	}
 
-	public TGlobalWorkspace get_GW() {
+	/**
+	 * It returns the Global Workspace of the agent
+	 * @return
+	 */
+	public TGlobalWorkspace Get_GW() {
 		return this.GW;
 	}
-
-	public TReasoner_Function get_Reasoner() {
+	
+	/**
+	 * It returns the Reasoner of the agent
+	 * @return
+	 */
+	public TReasoner_Function Get_Reasoner() {
 		return this.Reasoner;
 	}
 
-	public TResource_Allocation get_RA() {
-		return this.RA;
+	/**
+	 * It returns the Executive Resource Allocation Function of the agent
+	 * @return
+	 */
+	public TResource_Allocation Get_E_Resource_A() {
+		return this.E_Resource_A;
 	}
 	
+	/**
+	 * Starts the working cycles of the agent
+	 */
 	public void Start()
 	{
 		Game.Scenario_Number++;
@@ -169,11 +179,16 @@ public class TAgent {
 		int Working_Cycle = 0;
 		while(this.Status == TAgent_Status.Active)
 		{
+			Game.Print("Working_Cycle; "+ Working_Cycle);
 			Res = this.WMM.Perception_Processing(Working_Cycle);
+			// this is for case study only
+			if(Working_Cycle == 4)
+			{
+				Game.End_Game();				
+			}
 			if(Res)
 			{
 				this.GW.Broadcast();
-				Game.Print("Working_Cycle; "+ Working_Cycle);
 				Res = this.E_Switching_Function.AM_Exogenous_Module();
 				if( Res && !this.GW.Get_Updated_Desires())
 				{
@@ -194,100 +209,91 @@ public class TAgent {
 							Res = this.E_Inhibition_function.Focus_Attention();
 							if( Res )
 							{
-								Game.Print("Working_Cycle: "+Working_Cycle);
 								GW.Broadcast();
-								Post_OK = this.RA.Plan_Advanc_Eval();
-								//Game.Scenario_Number++;
+								Post_OK = this.E_Resource_A.Plan_Advanc_Eval();
 								Working_Cycle++;
 							}
 						}
 					}
 				}
 			}
-			
-			if(Working_Cycle == 7)
-			{
-				Game.End_Game();				
-			}
 		}
 	}
 	
+	/**
+	 * Reads the predicates file written by File_Manager in this project
+	 */
 	public void Read_Predicates_From_File()
 	{
 		TFile_Manager Manager = new TFile_Manager();
 
 		ArrayList<TPredicate> Predicates = null;
 		Predicates = Manager.Read_Predicates();
-		//this.GW.set_Predicates(Predicates);
 		this.WMM.Set_Predicates(Predicates);
-		
-//		this.Print_Predicates();
 	}
 	
+	/**
+	 * Reads the predicates file written by File_Manager in this project
+	 */
 	public void Read_Beliefs_From_File()
 	{
 		TFile_Manager Manager = new TFile_Manager();
 		
 		ArrayList<TBelief_Base> Beliefs = null;
 		Beliefs = Manager.Read_Beliefs();
-//		this.GW.set_Beliefs(Beliefs);
 		this.WMM.Set_Beliefs(Beliefs);
-
-//		this.Print_Beliefs();
 	}
 	
+	/**
+	 * Reads the Epistemic Goals file written by File_Manager in this project
+	 */
 	public void Read_Epistemic_Goals_From_File()
 	{
 		TFile_Manager Manager = new TFile_Manager();
 		
 		ArrayList<TEpistemic_Goal> Epistemic_Goals = null;
 		Epistemic_Goals = Manager.Read_Epistemic_Goals();
-//		this.GW.set_Epistemic_Goals(Epistemic_Goals);
 		this.WMM.Set_Epistemic_Goals(Epistemic_Goals);
-
-//		this.Print_Epistemic_Goals();
 	}
 	
+	/**
+	 * Reads the Functional Goals file written by File_Manager in this project
+	 */
 	public void Read_Functional_Goals_From_File()
 	{
 		TFile_Manager Manager = new TFile_Manager();
 		
 		ArrayList<TFunctional_Goal> Functional_Goals = null;
 		Functional_Goals = Manager.Read_Functional_Goals();
-//		this.GW.set_Functional_Goals(Functional_Goals);
 		this.WMM.Set_Functional_Goals(Functional_Goals);
-		
-//		this.Print_Functional_Goals();
 	}
 	
+	/**
+	 * Reads the Green Goals file written by File_Manager in this project
+	 */
 	public void Read_Green_Goals_From_File()
 	{
 		TFile_Manager Manager = new TFile_Manager();
 		
 		ArrayList<TGreen_Goal> Green_Goals = null;
 		Green_Goals = Manager.Read_Green_Goals();
-//		this.GW.set_Green_Goals(Green_Goals);
 		this.WMM.Set_Green_Goals(Green_Goals);
-		
-//		this.Print_Green_Goals();		
 	}
 	
+	/**
+	 * Reads the Quality Goals file written by File_Manager in this project
+	 */
 	public void Read_Quality_Goals_From_File()
 	{
 		TFile_Manager Manager = new TFile_Manager();
 		
 		ArrayList<TQuality_Goal> Quality_Goals = null;
 		Quality_Goals = Manager.Read_Quality_Goals();
-		
-//		this.GW.set_Quality_Goals(Quality_Goals);
 		this.WMM.Set_Quality_Goals(Quality_Goals);
-		
-//		this.Print_Quality_Goals();
 	}
 	
 	/** This Function creates, for each destination Station, a belief (linked to a Funtional Goal)
 	 * of the path of travelled routes to arrive to Destination Station 
-	 * 
 	 */
 	public void Create_Belief_Path_Taken_For_Functional_Goal(int Init_Creation_Path_Travelled_for_Functional_Goal)
 	{
@@ -298,45 +304,29 @@ public class TAgent {
 		
 		Game.Print("Loaded Goals : "+Map_Attentional_Goal_and_Beliefs.keySet());
 		
-		//for(TAttentional_Goal Goal: this.GW.get_Goals())
 		this.Get_WMM().Set_Beliefs_Number(Init_Creation_Path_Travelled_for_Functional_Goal);
 		for(TFunctional_Goal Functional_Goal: this.WMM.Get_Functional_Goals())
 		{
 //			if (Goal instanceof TFunctional_Goal)
 			{
-//				TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
 				if (Functional_Goal.get_Final_State().get_Type_Belief() == TType_Beliefs.Belief_Destination_Station)
 				{
-					
-
 					TPredicate Predicate = this.GW.Create_Predicate(Functional_Goal.get_Name(), TType_Relationship.has_traveled,
 							new ArrayList<Route>());
 					LocalDateTime now = LocalDateTime.now();
-					//With Rosental...
-					//Game.Print("Sono qui dentro per Rosenthal");
 
-					TBelief_Base Belief = this.get_GW().Create_Beliefs(Predicate, true, TType_Subject.Me, now, 
+					//With Rosental...
+					TBelief_Base Belief = this.Get_GW().Create_Beliefs(Predicate, true, TType_Subject.Me, now, 
 							TType_Beliefs.Belief_Path_Taken_For_Belief);
-					
-					
-					//I insert Belief, and its Predicate, in the List_Beliefs and List_Predicates of
-					//the Functional Goal
-//					Game.Print("Functional_Goal.get_Name(): "+Functional_Goal.get_Name());
-//					Game.Print("Functional_Goal.get_Name(): "+Functional_Goal.get_Final_State().get_Name());
-//					Game.Print("Belief_Path_Taken_For_Belief.get_Name(): "+Belief.get_Name());
-//					Game.Print("Belief_Path_Taken_For_Belief.get_Name(): "+Belief.get_Type_Belief());
-					
 					ArrayList<TBelief_Base> List_Beliefs = 
 							Map_Attentional_Goal_and_Beliefs.get(Functional_Goal.get_Name());
 					
 					ArrayList<TPredicate> List_Predicates = 
 							Map_Attentional_Goal_and_Predicates.get(Functional_Goal.get_Name());
-					//Game.Print("List_Beliefs Prima "+List_Beliefs);
 					if(!List_Beliefs.contains(Belief))
 					{
 						List_Beliefs.add(Belief);						
 					}
-					//Game.Print("List_Beliefs Dopo"+List_Beliefs);
 					if(!List_Predicates.contains(Predicate))
 					{
 						List_Predicates.add(Predicate);						
@@ -346,23 +336,32 @@ public class TAgent {
 		}
 	}
 	
+	/**
+	 * Returns the status of the Agent
+	 * @return A Status value
+	 */
 	public TAgent_Status Get_Status()
 	{
 		return this.Status;
 	}
 	
+	/**
+	 * Prints any Predicates in Long Memory. For this project only
+	 */
 	private void Print_Predicates()
 	{
-		int i=0;
-		for (TPredicate Predicato3: this.WMM.Get_Predicates())
+		for (TPredicate Predicate: this.WMM.Get_Predicates())
 		{
-			System.out.println("Predicato3.get_Name() "+Predicato3.get_Name());
-			System.out.println("Predicato3.get_Subject() "+Predicato3.get_Subject());
-			System.out.println("Predicato3.get_Relationship() "+Predicato3.get_Relationship());
-			System.out.println("Predicato3.get_Object_Complement() "+Predicato3.get_Object_Complement());			
+			Game.Print("Predicato3.get_Name() "+Predicate.get_Name());
+			Game.Print("Predicato3.get_Subject() "+Predicate.get_Subject());
+			Game.Print("Predicato3.get_Relationship() "+Predicate.get_Relationship());
+			Game.Print("Predicato3.get_Object_Complement() "+Predicate.get_Object_Complement());			
 		}
 	}
 	
+	/**
+	 * Prints any Beliefs in Long Memory. For this project only
+	 */
 	private void Print_Beliefs()
 	{
 		int i=0;
@@ -371,69 +370,79 @@ public class TAgent {
 			i++;
 			Game.Print("Beliefs "+i
 					);
-			TPredicate  Predicato3 = null;
-			Predicato3 = Bel.get_Predicate();
-			System.out.println("Bel.get_Name "+Bel.get_Name());
-			System.out.println("Bel.get_Predicate_name "+Bel.get_Predicate_name());
-			System.out.println("Bel.is_Truth() "+Bel.is_Truth());
-			System.out.println("Bel.get_Information_Source() "+ Bel.get_Information_Source());
-			System.out.println("Bel.get_Time_stamp() "+Bel.get_Time_stamp());
-			System.out.println("Bel.get_Type_Belief() "+Bel.get_Type_Belief());
-			System.out.println("Predicato3.get_Name() "+Predicato3.get_Name());
-			System.out.println("Predicato3.get_Subject() "+Predicato3.get_Subject());
-			System.out.println("Predicato3.get_Relationship() "+Predicato3.get_Relationship());
-			System.out.println("Predicato3.get_Object_Complement() "+Predicato3.get_Object_Complement());
-			System.out.println("-------------------");
+			TPredicate  Predicate = null;
+			Predicate = Bel.get_Predicate();
+			Game.Print("Bel.get_Name "+Bel.get_Name());
+			Game.Print("Bel.get_Predicate_name "+Bel.get_Predicate_name());
+			Game.Print("Bel.is_Truth() "+Bel.is_Truth());
+			Game.Print("Bel.get_Information_Source() "+ Bel.get_Information_Source());
+			Game.Print("Bel.get_Time_stamp() "+Bel.get_Time_stamp());
+			Game.Print("Bel.get_Type_Belief() "+Bel.get_Type_Belief());
+			Game.Print("Predicato3.get_Name() "+Predicate.get_Name());
+			Game.Print("Predicato3.get_Subject() "+Predicate.get_Subject());
+			Game.Print("Predicato3.get_Relationship() "+Predicate.get_Relationship());
+			Game.Print("Predicato3.get_Object_Complement() "+Predicate.get_Object_Complement());
+			Game.Print("-------------------");
 		}
 		
 	}
 	
+	/**
+	 * Prints any Green Goals in Long Memory. For this project only
+	 */
 	private void Print_Green_Goals()
 	{
 		for (TGreen_Goal Green: this.WMM.Get_Green_Goals())
 		{
-			TPredicate  Predicato3 = null;
-			Predicato3 = Green.get_Constraint();
-			System.out.println("Green.get_Name() "+Green.get_Name());
-			System.out.println("Green.get_Constraint_Name() "+Green.get_Constraint_Name());
-			System.out.println("Green.get_Type_Quality_Goal() "+Green.get_Type_Quality_Goal());
-			System.out.println("Green.get_TType_Green_Goal() "+Green.get_TType_Green_Goal());
-			System.out.println("Green.get_Fee() "+Green.get_Fee());
-			System.out.println("Green.get_Saliency() "+Green.get_Saliency());
-			System.out.println("Green.Check_Satisfation() "+Green.Check_Satisfation());
-			System.out.println("Green.get_Reward() "+Green.get_Reward());
-			System.out.println("Green.get_Relax_Preference() "+Green.get_Relax_Preference());
+			TPredicate  Predicate = null;
+			Predicate = Green.get_Constraint();
+			Game.Print("Green.get_Name() "+Green.get_Name());
+			Game.Print("Green.get_Constraint_Name() "+Green.get_Constraint_Name());
+			Game.Print("Green.get_Type_Quality_Goal() "+Green.get_Type_Quality_Goal());
+			Game.Print("Green.get_TType_Green_Goal() "+Green.get_TType_Green_Goal());
+			Game.Print("Green.get_Fee() "+Green.get_Fee());
+			Game.Print("Green.get_Saliency() "+Green.get_Saliency());
+			Game.Print("Green.Check_Satisfation() "+Green.Check_Satisfation());
+			Game.Print("Green.get_Reward() "+Green.get_Reward());
+			Game.Print("Green.get_Relax_Preference() "+Green.get_Relax_Preference());
 			
-			System.out.println("Predicato3.get_Name() "+Predicato3.get_Name());
-			System.out.println("Predicato3.get_Subject() "+Predicato3.get_Subject());
-			System.out.println("Predicato3.get_Relationship() "+Predicato3.get_Relationship());
-			System.out.println("Predicato3.get_Object_Complement() "+Predicato3.get_Object_Complement());
-			System.out.println("-------------------");
+			Game.Print("Predicato3.get_Name() "+Predicate.get_Name());
+			Game.Print("Predicato3.get_Subject() "+Predicate.get_Subject());
+			Game.Print("Predicato3.get_Relationship() "+Predicate.get_Relationship());
+			Game.Print("Predicato3.get_Object_Complement() "+Predicate.get_Object_Complement());
+			Game.Print("-------------------");
 		}
 	}
+	
+	/**
+	 * Prints any Quality Goals in Long Memory. For this project only
+	 */
 	private void Print_Quality_Goals()
 	{
 		for (TQuality_Goal Quality: this.WMM.Get_Quality_Goals())
 		{
 			 
-			TPredicate  Predicato3 = null;
-			Predicato3 = Quality.get_Constraint();
-			System.out.println("Quality.get_Name() "+Quality.get_Name());
-			System.out.println("Quality.get_Constraint_Name() "+Quality.get_Constraint_Name());
-			System.out.println("Quality.get_Type_Quality_Goal() "+Quality.get_Type_Quality_Goal());
-			System.out.println("Quality.get_Saliency() "+Quality.get_Saliency());
-			System.out.println("Quality.Check_Satisfation() "+Quality.Check_Satisfation());
-			System.out.println("Quality.get_Reward() "+Quality.get_Reward());
-			System.out.println("Quality.get_Relax_Preference() "+Quality.get_Relax_Preference());
+			TPredicate  Predicate = null;
+			Predicate = Quality.get_Constraint();
+			Game.Print("Quality.get_Name() "+Quality.get_Name());
+			Game.Print("Quality.get_Constraint_Name() "+Quality.get_Constraint_Name());
+			Game.Print("Quality.get_Type_Quality_Goal() "+Quality.get_Type_Quality_Goal());
+			Game.Print("Quality.get_Saliency() "+Quality.get_Saliency());
+			Game.Print("Quality.Check_Satisfation() "+Quality.Check_Satisfation());
+			Game.Print("Quality.get_Reward() "+Quality.get_Reward());
+			Game.Print("Quality.get_Relax_Preference() "+Quality.get_Relax_Preference());
 			
-			System.out.println("Predicato3.get_Name() "+Predicato3.get_Name());
-			System.out.println("Predicato3.get_Subject() "+Predicato3.get_Subject());
-			System.out.println("Predicato3.get_Relationship() "+Predicato3.get_Relationship());
-			System.out.println("Predicato3.get_Object_Complement() "+Predicato3.get_Object_Complement());
-			System.out.println("-------------------");
+			Game.Print("Predicato3.get_Name() "+Predicate.get_Name());
+			Game.Print("Predicato3.get_Subject() "+Predicate.get_Subject());
+			Game.Print("Predicato3.get_Relationship() "+Predicate.get_Relationship());
+			Game.Print("Predicato3.get_Object_Complement() "+Predicate.get_Object_Complement());
+			Game.Print("-------------------");
 		}
 	}
 	
+	/**
+	 * Prints any Functional Goals in Long Memory. For this project only
+	 */
 	private void Print_Functional_Goals()
 	{
 		int i =0;
@@ -492,22 +501,22 @@ public class TAgent {
 			for (TGreen_Goal Green: Functional_Goal.get_List_Green_Goal())
 			{
 				 
-				TPredicate Predicato3 = Green.get_Constraint();
-				System.out.println("- Green.get_Name() "+Green.get_Name());
-				System.out.println("- Green.get_Constraint_Name() "+Green.get_Constraint_Name());
-				System.out.println("- Green.get_Type_Quality_Goal() "+Green.get_Type_Quality_Goal());
-				System.out.println("- Green.get_TType_Green_Goal() "+Green.get_TType_Green_Goal());
-				System.out.println("- Green.get_Fee() "+Green.get_Fee());
-				System.out.println("- Green.get_Saliency() "+Green.get_Saliency());
-				System.out.println("- Green.Check_Satisfation() "+Green.Check_Satisfation());
-				System.out.println("- Green.get_Reward() "+Green.get_Reward());
-				System.out.println("- Green.get_Relax_Preference() "+Green.get_Relax_Preference());
+				TPredicate Predicate = Green.get_Constraint();
+				Game.Print("- Green.get_Name() "+Green.get_Name());
+				Game.Print("- Green.get_Constraint_Name() "+Green.get_Constraint_Name());
+				Game.Print("- Green.get_Type_Quality_Goal() "+Green.get_Type_Quality_Goal());
+				Game.Print("- Green.get_TType_Green_Goal() "+Green.get_TType_Green_Goal());
+				Game.Print("- Green.get_Fee() "+Green.get_Fee());
+				Game.Print("- Green.get_Saliency() "+Green.get_Saliency());
+				Game.Print("- Green.Check_Satisfation() "+Green.Check_Satisfation());
+				Game.Print("- Green.get_Reward() "+Green.get_Reward());
+				Game.Print("- Green.get_Relax_Preference() "+Green.get_Relax_Preference());
 				
-				System.out.println("- - Predicato3.get_Name() "+Predicato3.get_Name());
-				System.out.println("- - Predicato3.get_Subject() "+Predicato3.get_Subject());
-				System.out.println("- - Predicato3.get_Relationship() "+Predicato3.get_Relationship());
-				System.out.println("- - Predicato3.get_Object_Complement() "+Predicato3.get_Object_Complement());
-				System.out.println("-------------------");
+				Game.Print("- - Predicato3.get_Name() "+Predicate.get_Name());
+				Game.Print("- - Predicato3.get_Subject() "+Predicate.get_Subject());
+				Game.Print("- - Predicato3.get_Relationship() "+Predicate.get_Relationship());
+				Game.Print("- - Predicato3.get_Object_Complement() "+Predicate.get_Object_Complement());
+				Game.Print("-------------------");
 			}
 			if(Functional_Goal.get_List_Quality_Goal() == null)
 			{
@@ -518,25 +527,28 @@ public class TAgent {
 			for (TQuality_Goal Quality: Functional_Goal.get_List_Quality_Goal())
 			{
 				 
-				TPredicate  Predicato3 = null;
-				Predicato3 = Quality.get_Constraint();
-				System.out.println("Quality.get_Name() "+Quality.get_Name());
-				System.out.println("Quality.get_Constraint_Name() "+Quality.get_Constraint_Name());
-				System.out.println("Quality.get_Type_Quality_Goal() "+Quality.get_Type_Quality_Goal());
-				System.out.println("Quality.get_Saliency() "+Quality.get_Saliency());
-				System.out.println("Quality.Check_Satisfation() "+Quality.Check_Satisfation());
-				System.out.println("Quality.get_Reward() "+Quality.get_Reward());
-				System.out.println("Quality.get_Relax_Preference() "+Quality.get_Relax_Preference());
+				TPredicate  Predicate = null;
+				Predicate = Quality.get_Constraint();
+				Game.Print("Quality.get_Name() "+Quality.get_Name());
+				Game.Print("Quality.get_Constraint_Name() "+Quality.get_Constraint_Name());
+				Game.Print("Quality.get_Type_Quality_Goal() "+Quality.get_Type_Quality_Goal());
+				Game.Print("Quality.get_Saliency() "+Quality.get_Saliency());
+				Game.Print("Quality.Check_Satisfation() "+Quality.Check_Satisfation());
+				Game.Print("Quality.get_Reward() "+Quality.get_Reward());
+				Game.Print("Quality.get_Relax_Preference() "+Quality.get_Relax_Preference());
 				
-				System.out.println("Predicato3.get_Name() "+Predicato3.get_Name());
-				System.out.println("Predicato3.get_Subject() "+Predicato3.get_Subject());
-				System.out.println("Predicato3.get_Relationship() "+Predicato3.get_Relationship());
-				System.out.println("Predicato3.get_Object_Complement() "+Predicato3.get_Object_Complement());
-				System.out.println("-------------------");
+				Game.Print("Predicato3.get_Name() "+Predicate.get_Name());
+				Game.Print("Predicato3.get_Subject() "+Predicate.get_Subject());
+				Game.Print("Predicato3.get_Relationship() "+Predicate.get_Relationship());
+				Game.Print("Predicato3.get_Object_Complement() "+Predicate.get_Object_Complement());
+				Game.Print("-------------------");
 			}			
 		}
 	}
 	
+	/**
+	 * Prints any Epistemic Goals in Long Memory. For this project only
+	 */
 	private void Print_Epistemic_Goals()
 	{
 		int i =0;
@@ -583,7 +595,7 @@ public class TAgent {
 			for (TGreen_Goal Green: Functional_Goal.get_List_Green_Goal())
 			{
 				 
-				TPredicate Predicato3 = Green.get_Constraint();
+				TPredicate Predicate = Green.get_Constraint();
 				Game.Print("- Green.get_Name() "+Green.get_Name());
 				Game.Print("- Green.get_Constraint_Name() "+Green.get_Constraint_Name());
 				Game.Print("- Green.get_Type_Quality_Goal() "+Green.get_Type_Quality_Goal());
@@ -594,10 +606,10 @@ public class TAgent {
 				Game.Print("- Green.get_Reward() "+Green.get_Reward());
 				Game.Print("- Green.get_Relax_Preference() "+Green.get_Relax_Preference());
 				
-				Game.Print("- - Predicato3.get_Name() "+Predicato3.get_Name());
-				Game.Print("- - Predicato3.get_Subject() "+Predicato3.get_Subject());
-				Game.Print("- - Predicato3.get_Relationship() "+Predicato3.get_Relationship());
-				Game.Print("- - Predicato3.get_Object_Complement() "+Predicato3.get_Object_Complement());
+				Game.Print("- - Predicato3.get_Name() "+Predicate.get_Name());
+				Game.Print("- - Predicato3.get_Subject() "+Predicate.get_Subject());
+				Game.Print("- - Predicato3.get_Relationship() "+Predicate.get_Relationship());
+				Game.Print("- - Predicato3.get_Object_Complement() "+Predicate.get_Object_Complement());
 				Game.Print("-------------------");
 			}
 			if(Functional_Goal.get_List_Quality_Goal() == null)
@@ -609,8 +621,8 @@ public class TAgent {
 			for (TQuality_Goal Quality: Functional_Goal.get_List_Quality_Goal())
 			{
 				 
-				TPredicate  Predicato3 = null;
-				Predicato3 = Quality.get_Constraint();
+				TPredicate  Predicate = null;
+				Predicate = Quality.get_Constraint();
 				Game.Print("Quality.get_Name() "+Quality.get_Name());
 				Game.Print("Quality.get_Constraint_Name() "+Quality.get_Constraint_Name());
 				Game.Print("Quality.get_Type_Quality_Goal() "+Quality.get_Type_Quality_Goal());
@@ -619,25 +631,51 @@ public class TAgent {
 				Game.Print("Quality.get_Reward() "+Quality.get_Reward());
 				Game.Print("Quality.get_Relax_Preference() "+Quality.get_Relax_Preference());
 				
-				Game.Print("Predicato3.get_Name() "+Predicato3.get_Name());
-				Game.Print("Predicato3.get_Subject() "+Predicato3.get_Subject());
-				Game.Print("Predicato3.get_Relationship() "+Predicato3.get_Relationship());
-				Game.Print("Predicato3.get_Object_Complement() "+Predicato3.get_Object_Complement());
+				Game.Print("Predicato3.get_Name() "+Predicate.get_Name());
+				Game.Print("Predicato3.get_Subject() "+Predicate.get_Subject());
+				Game.Print("Predicato3.get_Relationship() "+Predicate.get_Relationship());
+				Game.Print("Predicato3.get_Object_Complement() "+Predicate.get_Object_Complement());
 				Game.Print("-------------------");
 			}			
 		}
 	}
 	
+	/**
+	 * Return Executive Working Memomry Maintenance of the agent
+	 * @return
+	 */
 	public TWorking_Memory_Maintenance Get_WMM()
 	{
 		return this.WMM;
 	}
 	
+	/**
+	 * Return Traffic Control Service of the agent
+	 * @return
+	 */
 	public TTCS Get_TCS()
 	{
 		return this.TCS;
 	}
 	
+	/**
+	 * Inserts a Functional Goal in the agent. The params are the same of the constructor that creates
+	 * the Functional Goal, and change the update_goals of Global workspace
+	 * @param name
+	 * @param final_state_Name
+	 * @param trigger_Condition_Name
+	 * @param saliency
+	 * @param reward
+	 * @param relax_Preference
+	 * @param list_Green_Goal_Name
+	 * @param list_Quality_Goal_Name
+	 * @param finally_Start
+	 * @param finally_End
+	 * @param global_Start
+	 * @param global_End
+	 * @param untill_Start
+	 * @param until_End
+	 */
 	public void Insert_Functional_Goal(String name, String final_state_Name, String trigger_Condition_Name,
 			Double saliency, Double reward, Double relax_Preference,
 			ArrayList<String> list_Green_Goal_Name, ArrayList<String> list_Quality_Goal_Name,
@@ -655,6 +693,17 @@ public class TAgent {
 		this.WMM.Set_Functional_Goals(Functional_Goals);
 	}
 	
+	/**
+	 * Inserts a Epistemic Goal in the agent. The params are the same of the constructor that creates
+	 * the Epistemic Goal, and change the update_goals of Global workspace
+	 * @param name
+	 * @param belief_Name
+	 * @param saliency
+	 * @param reward
+	 * @param relax_Preference
+	 * @param list_Green_Goal_Name
+	 * @param list_Quality_Goal_Name
+	 */
 	public void Insert_Epistemic_Goal(String name, String belief_Name, Double saliency, Double reward, 
 			Double relax_Preference, ArrayList<String> list_Green_Goal_Name, 
 			ArrayList<String> list_Quality_Goal_Name)
@@ -668,6 +717,16 @@ public class TAgent {
 		this.WMM.Set_Epistemic_Goals(Epistemic_Goals);
 	}
 	
+	/**
+	 * Inserts a Quality Goal in the agent. The params are the same of the constructor that creates
+	 * the Quality Goal
+	 * @param name
+	 * @param constraint_name
+	 * @param type_Quality_Goal
+	 * @param saliency
+	 * @param reward
+	 * @param relax_Preference
+	 */
 	public void Insert_Quality_Goal(String name, String constraint_name, 
 			TType_Quality_Goal type_Quality_Goal, Double saliency, Double reward,
 			Double relax_Preference)
@@ -682,6 +741,16 @@ public class TAgent {
 		this.WMM.Set_Quality_Goals(Quality_Goals);
 	}
 	
+	/**
+	 * Inserts a Green Goal in the agent. The params are the same of the constructor that creates
+	 * the Green Goal
+	 * @param name
+	 * @param constraint_name
+	 * @param type_Green_Goal
+	 * @param saliency
+	 * @param reward
+	 * @param fee
+	 */
 	public void Insert_Green_Goal(String name, String constraint_name, 
 			TType_Green_Goal type_Green_Goal, Double saliency, Double reward, Double fee)
 	{
@@ -694,6 +763,16 @@ public class TAgent {
 		this.WMM.Set_Green_Goals(Green_Goals);
 	}
 	
+	/**
+	 * Inserts a Belief in the agent. The params are the same of the constructor that creates
+	 * the Belief
+	 * @param name
+	 * @param predicate_Name
+	 * @param truth
+	 * @param information_Source
+	 * @param time_stamp
+	 * @param type_Belief
+	 */
 	public void Insert_Belief(String name, String predicate_Name, Boolean truth, 
 			Object information_Source, LocalDateTime time_stamp, TType_Beliefs type_Belief)
 	{
@@ -706,6 +785,14 @@ public class TAgent {
 		this.WMM.Set_Beliefs(Beliefs);
 	}
 	
+	/**
+	 * Inserts a Predicate in the agent. The params are the same of the constructor that creates
+	 * the Predicate
+	 * @param name
+	 * @param subject
+	 * @param relationship
+	 * @param object_complement
+	 */
 	public void Insert_Predicate(String name, Object subject, TType_Relationship relationship, 
 			Object object_complement)
 	{

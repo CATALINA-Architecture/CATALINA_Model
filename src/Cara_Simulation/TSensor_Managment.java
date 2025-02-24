@@ -21,9 +21,10 @@ public class TSensor_Managment {
 	
 	public TPerception Get_Last_Acquired_Perception()
 	{
-		Game.Print("this.Acquired_Perceptions.getLast() "+this.Acquired_Perceptions);
+		Game.Print("Sensor acquires last Perception (if it exists).");
 		if( this.Acquired_Perceptions.size() > 0)
 		{
+			Game.Print("Perception acquired correctly.");
 			return this.Acquired_Perceptions.getLast();
 		}
 		else

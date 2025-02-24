@@ -2,6 +2,9 @@ package Cara_Simulation;
 
 import java.util.ArrayList;
 
+/**
+ * It represents a single action to do by the agent
+ */
 public class TAction {
 	
 	private String Action_Name;
@@ -9,6 +12,9 @@ public class TAction {
 	private TPredicate Precondition;
 	private TPredicate Postcondition;
 	
+	/**
+	 * It clears any data in action
+	 */
 	public void Clear()
 	{
 		this.Action_Name = "";
@@ -17,6 +23,12 @@ public class TAction {
 		this.Postcondition.Clear();
 	}
 	
+	/**
+	 * Constructor of the class
+	 * @param params			Some information. If the belief associated to the Functional goal is Belief_Destination_Station, the first param is the position coords of the agent in Postcondition (after the executed action). This is useful to compare with Salient_belief in case it is a correct movement. 
+	 * @param precondition		Position coords before the executed action by agent
+	 * @param postcondition		Position coords before the executed action by agent
+	 */
 	public TAction(ArrayList<Object> params, TPredicate precondition, TPredicate postcondition)
 	{
 		if (params == null)
@@ -32,35 +44,67 @@ public class TAction {
 		this.Postcondition = postcondition;
 	}
 
-	public ArrayList<Object> get_Params() {
+	/**
+	 * It returns params of the action
+	 * @return	A list of objects
+	 */
+	public ArrayList<Object> Get_Params() {
 		return Params;
 	}
 
-	public void set_Params(ArrayList<Object> params) {
+	/**
+	 * It updates the the params of the action
+	 * @param params	A list of objects
+	 */
+	public void Set_Params(ArrayList<Object> params) {
 		Params = params;
 	}
 
-	public TPredicate get_Precondition() {
+	/**
+	 * It returns the precondition to execute the action
+	 * @return	A predicate
+	 */
+	public TPredicate Get_Precondition() {
 		return Precondition;
 	}
 
-	public void set_Precondition(TPredicate precondition) {
+	/**
+	 * It updates the precondition to execute the action
+	 * @param precondition		A predicate
+	 */
+	public void Set_Precondition(TPredicate precondition) {
 		Precondition = precondition;
 	}
 
-	public TPredicate get_Postcondition() {
+	/**
+	 * It returns the postcondition to execute the action
+	 * @return		A predicate
+	 */
+	public TPredicate Get_Postcondition() {
 		return Postcondition;
 	}
 
-	public void set_Postcondition(TPredicate postcondition) {
+	/**
+	 * It updates the postcondition to execute the action
+	 * @param postcondition		A predicate
+	 */
+	public void Set_Postcondition(TPredicate postcondition) {
 		Postcondition = postcondition;
 	}
 
-	public String get_Action_Name() {
+	/**
+	 * It returns the function to invoke to execute the action
+	 * @return		A String
+	 */
+	public String Get_Action_Name() {
 		return Action_Name;
 	}
 
-	public void set_Action_Name(String name) {
+	/**
+	 * It updates the function to invoke to execute the action
+	 * @param name	A string
+	 */
+	public void Set_Action_Name(String name) {
 		Action_Name = name;
 	}
 	

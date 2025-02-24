@@ -1,6 +1,10 @@
 package Cara_Simulation;
 import java.util.ArrayList;
 
+/**
+ * It represents the color of a route. This assigns many information to the route, in according to the
+ * number of step of the route
+ */
 public class Color_Route {
 	
     public Color The_Color;

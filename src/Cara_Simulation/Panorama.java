@@ -5,6 +5,11 @@ public enum Panorama {
 	Fair,
 	Spectacular;
 	
+	/**
+	 * Get corresponding value to a specific value of enumeration Panorama 
+	 * @param Locomotive	A specific Panorama value
+	 * @return				A double value
+	 */
 	public double Get_Value(Panorama Panorama_) { 
 		double risultato = 0.0;
 		switch (Panorama_) {

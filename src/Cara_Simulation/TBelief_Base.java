@@ -106,6 +106,16 @@ public class TBelief_Base implements Serializable{
 		return this.Information_Source;
 	}
 	
+	public void set_Information_Source(Object information_Source)
+	{
+		 this.Information_Source = information_Source;
+	}
+	
+	public void set_Time_stamp(LocalDateTime time_stamp)
+	{
+		 this.Time_stamp = time_stamp;
+	}
+	
 	public Object get_Truth()
 	{
 		return this.Truth;

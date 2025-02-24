@@ -1,7 +1,8 @@
 package Cara_Simulation;
 
 public class TPosition_Train_Coords {
-	
+	//If agent is in a station => station = a station, Route = -1, step = 0
+	//If agent is in a station => station = a station, Route => 0 , step => 0
 	private Station The_Station;
 	private Integer Route;
 	private Integer Step;

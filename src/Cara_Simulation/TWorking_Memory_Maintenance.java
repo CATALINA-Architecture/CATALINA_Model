@@ -63,16 +63,14 @@ public class TWorking_Memory_Maintenance {
 			Map_Beliefs.put(belief.get_Name(), belief);
 			TPredicate Predicato = null;
 			Predicato = Map_Predicates.get(belief.get_Predicate_name());
-			//Game.Print("Prima -"+belief.get_Name()+" - "+Predicato.get_Name()+" - "+belief.get_Type_Belief());
 			belief.set_Predicate(Predicato);
-			//Game.Print("Dopo- "+belief.get_Name()+" - "+Predicato.get_Name()+" - "+belief.get_Type_Belief());
 			
 			ArrayList<TPredicate> Predicates = new ArrayList<TPredicate>();
 			Predicates.add(Predicato);
 			Map_Beliefs_and_Predicates.put(belief.get_Name(), Predicates);
 		}
-//		Game.Print(this.Long_Memory.Get_Inc_Beliefs_Number()+" - I finished the set_Beliefs Function: "+Beliefs.size()+ " - "+Beliefs.getFirst().get_Name()
-//				+ " - "+Beliefs.getLast().get_Name());
+		
+		this.Agent.Get_GW().Changed_Beliefs();
 	}
 	
 	public void Set_Green_Goals(ArrayList<TGreen_Goal> green_Goals)
@@ -138,137 +136,137 @@ public class TWorking_Memory_Maintenance {
 		
 		for(TFunctional_Goal Functional_Goal: Functional_Goals)
 		{
-			//I create List of Beliefs and Predicates linked directly or indirectly to the Functional Goal
-			ArrayList<TBelief_Base> List_Beliefs = new ArrayList<TBelief_Base>();
-			ArrayList<TPredicate> List_Predicates = new ArrayList<TPredicate>();
-			
-			//Insert Final_State, it is a TBelief_Base type
-			TBelief_Base Final_State = this.Long_Memory.Get_Map_Beliefs().get(Functional_Goal.get_Final_State_Name());
-			Functional_Goal.set_Final_State(Final_State);
-			
-			//I insert Final_State, and its Predicate, in the List_Beliefs and List_Predicates
-			List_Beliefs.add(Final_State);
-			List_Predicates.add(Final_State.Predicate);
-						
-			//Insert Trigger_Condition, it is a TPredicate type
-			TPredicate Trigger_Condition = this.Long_Memory.Get_Map_Predicates().get(Functional_Goal.get_Trigger_Condition_Name());
-			Functional_Goal.set_Trigger_Condition(Trigger_Condition);
-			
-			//I insert a Trigger_Condition in the List_Predicates
-			if(Trigger_Condition != null)
+			if(Functional_Goals.size() > 0)
 			{
-				if(!List_Predicates.contains(Trigger_Condition))
-				{
-					List_Predicates.add(Trigger_Condition);				
-				}	
-			}
-			
-			
-			//Now, I normalize green and quality goals name woth correct goals.
-			//So, I must to insert green goals and later quality goals
-			// List Green and Quality Goals must to created before Attentional_Goal
-			if (Functional_Goal.get_List_Green_Goal() == null)
-			{
-				ArrayList<TGreen_Goal> List_Green_Goal = new ArrayList<TGreen_Goal>();
-				Functional_Goal.set_List_Green_Goal(List_Green_Goal);
-			}
-			for(String Green_Goal_Name: Functional_Goal.get_List_Green_Goal_Name())
-			{
-				TGreen_Goal Green_Goal = null;
-				Green_Goal = this.Long_Memory.Get_Map_Green_Goals().get(Green_Goal_Name);
-
-				Functional_Goal.get_List_Green_Goal().add(Green_Goal);
 				
-				//I insert a Green_Goal.get_Constraint in the List_Predicates				
-				if(!List_Predicates.contains(Green_Goal.get_Constraint()))
-				{
-					List_Predicates.add(Green_Goal.get_Constraint());				
-				}	
-			}
 			
-			if (Functional_Goal.get_List_Quality_Goal() == null)
-			{
-				ArrayList<TQuality_Goal> List_Quality_Goal = new ArrayList<TQuality_Goal>();
-				Functional_Goal.set_List_Quality_Goal(List_Quality_Goal);
-			}
-			for(String Quality_Goal_Name: Functional_Goal.get_List_Quality_Goal_Name())
-			{
-				TQuality_Goal Quality_Goal = this.Long_Memory.Get_Map_Quality_Goals().get(Quality_Goal_Name);
-				Functional_Goal.get_List_Quality_Goal().add(Quality_Goal);
+				//I create List of Beliefs and Predicates linked directly or indirectly to the Functional Goal
+				ArrayList<TBelief_Base> List_Beliefs = new ArrayList<TBelief_Base>();
+				ArrayList<TPredicate> List_Predicates = new ArrayList<TPredicate>();
 				
-				//I insert a Quality_Goal.get_Constraint in the List_Predicates	
-				if(!List_Predicates.contains(Quality_Goal.get_Constraint()))
+				//Insert Final_State, it is a TBelief_Base type
+				TBelief_Base Final_State = this.Long_Memory.Get_Map_Beliefs().get(Functional_Goal.get_Final_State_Name());
+				Functional_Goal.set_Final_State(Final_State);
+				
+				//I insert Final_State, and its Predicate, in the List_Beliefs and List_Predicates
+				List_Beliefs.add(Final_State);
+				List_Predicates.add(Final_State.Predicate);
+							
+				//Insert Trigger_Condition, it is a TPredicate type
+				TPredicate Trigger_Condition = this.Long_Memory.Get_Map_Predicates().get(Functional_Goal.get_Trigger_Condition_Name());
+				Functional_Goal.set_Trigger_Condition(Trigger_Condition);
+				
+				//I insert a Trigger_Condition in the List_Predicates
+				if(Trigger_Condition != null)
 				{
-					List_Predicates.add(Quality_Goal.get_Constraint());				
+					if(!List_Predicates.contains(Trigger_Condition))
+					{
+						List_Predicates.add(Trigger_Condition);				
+					}	
 				}
+				
+				
+				//Now, I normalize green and quality goals name woth correct goals.
+				//So, I must to insert green goals and later quality goals
+				// List Green and Quality Goals must to created before Attentional_Goal
+				if (Functional_Goal.get_List_Green_Goal() == null)
+				{
+					ArrayList<TGreen_Goal> List_Green_Goal = new ArrayList<TGreen_Goal>();
+					Functional_Goal.set_List_Green_Goal(List_Green_Goal);
+				}
+				for(String Green_Goal_Name: Functional_Goal.get_List_Green_Goal_Name())
+				{
+					TGreen_Goal Green_Goal = null;
+					Green_Goal = this.Long_Memory.Get_Map_Green_Goals().get(Green_Goal_Name);
+	
+					Functional_Goal.get_List_Green_Goal().add(Green_Goal);
+					
+					//I insert a Green_Goal.get_Constraint in the List_Predicates				
+					if(!List_Predicates.contains(Green_Goal.get_Constraint()))
+					{
+						List_Predicates.add(Green_Goal.get_Constraint());				
+					}	
+				}
+				
+				if (Functional_Goal.get_List_Quality_Goal() == null)
+				{
+					ArrayList<TQuality_Goal> List_Quality_Goal = new ArrayList<TQuality_Goal>();
+					Functional_Goal.set_List_Quality_Goal(List_Quality_Goal);
+				}
+				for(String Quality_Goal_Name: Functional_Goal.get_List_Quality_Goal_Name())
+				{
+					TQuality_Goal Quality_Goal = this.Long_Memory.Get_Map_Quality_Goals().get(Quality_Goal_Name);
+					Functional_Goal.get_List_Quality_Goal().add(Quality_Goal);
+					
+					//I insert a Quality_Goal.get_Constraint in the List_Predicates	
+					if(!List_Predicates.contains(Quality_Goal.get_Constraint()))
+					{
+						List_Predicates.add(Quality_Goal.get_Constraint());				
+					}
+				}
+				
+				Map_Attentional_Goal_and_Predicates.put(Functional_Goal.get_Name(), List_Predicates);
+				Map_Attentional_Goal_and_Beliefs.put(Functional_Goal.get_Name(), List_Beliefs);
 			}
-			
-			//
-			Map_Attentional_Goal_and_Predicates.put(Functional_Goal.get_Name(), List_Predicates);
-			Map_Attentional_Goal_and_Beliefs.put(Functional_Goal.get_Name(), List_Beliefs);
+			this.Agent.Get_GW().Changed_Goals();
 		}
 	}
 	
 	//TO DO: I must to check this method	
 	public void Set_Epistemic_Goals(ArrayList<TEpistemic_Goal> epistemic_Goals)
 	{
-		
-//		int epistemic_goals_nuber = Epistemic_Goals.size(); 
-//		this.Goals.addAll(Epistemic_Goals);
-//		//this.Goals_Number += epistemic_goals_nuber;
-//		this.Goals_Number = this.Goals.size();
-		
-		this.Long_Memory.AddAll_Epistemic_Goals(epistemic_Goals);
-		
-		ArrayList<TEpistemic_Goal> Epistemic_Goals = this.Get_Epistemic_Goals();
-		
-		HashMap<String, ArrayList<TPredicate>> Map_Attentional_Goal_and_Predicates = 
-								this.Long_Memory.Get_Map_Attentional_Goals_and_Predicates();
-		HashMap<String, ArrayList<TBelief_Base>> Map_Attentional_Goal_and_Beliefs = 
-								this.Long_Memory.Get_Map_Attentional_Goals_and_Beliefs();
-
-		
-		for(TEpistemic_Goal Epistemic_Goal: Epistemic_Goals)
+		if(epistemic_Goals.size() > 0)
 		{
-			ArrayList<TBelief_Base> List_Beliefs = new ArrayList<TBelief_Base>();
-			ArrayList<TPredicate> List_Predicates = new ArrayList<TPredicate>();
+			this.Long_Memory.AddAll_Epistemic_Goals(epistemic_Goals);
 			
-			TBelief_Base belief = this.Long_Memory.Get_Map_Beliefs().get(Epistemic_Goal.get_Belief_Name());
-			Epistemic_Goal.set_Belief(belief);
-						Game.Print("belief: "+belief.get_Name());
+			ArrayList<TEpistemic_Goal> Epistemic_Goals = this.Get_Epistemic_Goals();
 			
-			List_Beliefs.add(belief);
-			List_Predicates.add(belief.Predicate);
-			//Now, I normalize green and quality goals name woth correct goals.
-			//So, I must to insert green goals and later quality goals
-			// List Green and Quality Goals must to created before Attentional_Goal
+			HashMap<String, ArrayList<TPredicate>> Map_Attentional_Goal_and_Predicates = 
+									this.Long_Memory.Get_Map_Attentional_Goals_and_Predicates();
+			HashMap<String, ArrayList<TBelief_Base>> Map_Attentional_Goal_and_Beliefs = 
+									this.Long_Memory.Get_Map_Attentional_Goals_and_Beliefs();
+	
 			
-			if (Epistemic_Goal.get_List_Green_Goal() == null)
+			for(TEpistemic_Goal Epistemic_Goal: Epistemic_Goals)
 			{
-				ArrayList<TGreen_Goal> List_Green_Goal = new ArrayList<TGreen_Goal>();
-				Epistemic_Goal.set_List_Green_Goal(List_Green_Goal);
+				ArrayList<TBelief_Base> List_Beliefs = new ArrayList<TBelief_Base>();
+				ArrayList<TPredicate> List_Predicates = new ArrayList<TPredicate>();
+				
+				TBelief_Base belief = this.Long_Memory.Get_Map_Beliefs().get(Epistemic_Goal.get_Belief_Name());
+				Epistemic_Goal.set_Belief(belief);
+							Game.Print("belief: "+belief.get_Name());
+				
+				List_Beliefs.add(belief);
+				List_Predicates.add(belief.Predicate);
+				//Now, I normalize green and quality goals name woth correct goals.
+				//So, I must to insert green goals and later quality goals
+				// List Green and Quality Goals must to created before Attentional_Goal
+				
+				if (Epistemic_Goal.get_List_Green_Goal() == null)
+				{
+					ArrayList<TGreen_Goal> List_Green_Goal = new ArrayList<TGreen_Goal>();
+					Epistemic_Goal.set_List_Green_Goal(List_Green_Goal);
+				}
+				
+				for(String Green_Goal_Name: Epistemic_Goal.get_List_Green_Goal_Name())
+				{
+					TGreen_Goal Green_Goal = this.Long_Memory.Get_Map_Green_Goals().get(Green_Goal_Name);
+					Epistemic_Goal.get_List_Green_Goal().add(Green_Goal);
+				}
+				
+				if (Epistemic_Goal.get_List_Quality_Goal() == null)
+				{
+					ArrayList<TQuality_Goal> List_Quality_Goal = new ArrayList<TQuality_Goal>();
+					Epistemic_Goal.set_List_Quality_Goal(List_Quality_Goal);
+				}
+				for(String Quality_Goal_Name: Epistemic_Goal.get_List_Quality_Goal_Name())
+				{
+					TQuality_Goal Quality_Goal = this.Long_Memory.Get_Map_Quality_Goals().get(Quality_Goal_Name);
+					Epistemic_Goal.get_List_Quality_Goal().add(Quality_Goal);
+				}
 			}
 			
-			for(String Green_Goal_Name: Epistemic_Goal.get_List_Green_Goal_Name())
-			{
-				TGreen_Goal Green_Goal = this.Long_Memory.Get_Map_Green_Goals().get(Green_Goal_Name);
-				Epistemic_Goal.get_List_Green_Goal().add(Green_Goal);
-			}
-			
-			if (Epistemic_Goal.get_List_Quality_Goal() == null)
-			{
-				ArrayList<TQuality_Goal> List_Quality_Goal = new ArrayList<TQuality_Goal>();
-				Epistemic_Goal.set_List_Quality_Goal(List_Quality_Goal);
-			}
-			for(String Quality_Goal_Name: Epistemic_Goal.get_List_Quality_Goal_Name())
-			{
-				TQuality_Goal Quality_Goal = this.Long_Memory.Get_Map_Quality_Goals().get(Quality_Goal_Name);
-				Epistemic_Goal.get_List_Quality_Goal().add(Quality_Goal);
-			}
-//			this.Belief_List.Add_Belief(belief);
-//			TPredicate Predicato = null;
-//			Predicato = this.Map_Predicates.get(belief.get_Predicate_name());
-//			belief.set_Predicate(Predicato);
+			this.Agent.Get_GW().Changed_Goals();
 		}
 	}
 	
@@ -444,72 +442,6 @@ public class TWorking_Memory_Maintenance {
 		this.Long_Memory.Set_Beliefs_Number(value);
 	}
 	
-	public Boolean Get_Status_Route(TPosition_Train_Coords Position_Train_Coords)
-	{
-		Boolean Result = false;
-	
-		TTriple_Object Request = new TTriple_Object();
-		//First Object is a String for asking something
-		Request.Object_First = "Status Route";
-		//Second Object is the route's integer id
-		Request.Object_Second = Position_Train_Coords.Get_Route();
-		//Third Object is the route's step id
-		Request.Object_Third = Position_Train_Coords.Get_Step();
-		TTriple_Object Response = this.Agent.Get_TCS().Response(Request);
-		String Response_String = (String) Response.Object_First;
-		switch(Response_String)
-		{
-		case "Route is Temporary Closed":
-			
-			Game.Print("Route is Temporary Closed");
-			
-			TSalient_Belief Salient_Belief = (TSalient_Belief) this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).getFirst();
-			//Game.Print(this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).size());
-			TPredicate Predicate = Salient_Belief.get_Predicate();
-			Predicate.Set_Subject(Response.Object_Second);
-			//This is the Saslient_Belief for Epistemic_Goal
-			Salient_Belief.Update_Saliency(0.9);
-			
-			this.Agent.get_GW().Update_Belief_by_Stimulus(Salient_Belief);
-			
-			//Game.Print(Belief_Base);
-			Result = false;
-			break;
-		default:
-			Game.Print("I cannot to handle Response in WWM at function Get_Status_Route: "+Response_String);
-		}
-		return Result;
-	}
-	
-	public Boolean Get_Time_for_Temporary_Closed_Route(Integer Route_Number)
-	{
-		Boolean Result = false;
-		
-		TTriple_Object Request = new TTriple_Object();
-		//First Object is a String for asking something
-		Request.Object_First = "How long will the route be closed?";
-		//Second Object is the route's integer id
-		Request.Object_Second = Route_Number;
-		//Third Object is the route's step id
-		Request.Object_Third = null;
-		TTriple_Object Response = this.Agent.Get_TCS().Response(Request);
-		String Response_String = (String) Response.Object_First;
-		
-		switch(Response_String)
-		{
-		case "Time for Temporary Closed Route":
-			int time = (int) Response.Object_Second;
-			Game.Print("Time Temporary Closed Route is: "+time);
-			Game.Print("Scenario 1 & 2 finished!");
-			Game.End_Game();
-			Result = false;
-			break;
-		default:
-			Game.Print("I cannot to handle Response in WWM at function Get_Status_Route: "+Response_String);
-		}
-		return Result;
-	}
-	
 	public ArrayList<TBelief_Base> Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs Type_Beliefs)
 	{
 		ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
@@ -625,7 +557,9 @@ public class TWorking_Memory_Maintenance {
 	
 	public boolean Perception_Processing(int i)
 	{
-		Game.Print("Perception_Processing: "+i);
+		this.Agent.Get_GW().Print_Data(0, 0);
+		Game.Print("Perception Processing number: "+i);
+		Game.Print("I'm feeling some stimulus");
 		boolean result = true;
 		TPerception Perception = this.Get_Perception();
 		Information_Selection(Perception);
@@ -633,16 +567,13 @@ public class TWorking_Memory_Maintenance {
 		//for demonstration purposes
 		if (Perception != null)
 		{
-			
-		
 			TTriple_Object Preceived_Data = Perception.get_Perceived_Data();
-			String String_TVS_Answer = (String) Preceived_Data.Object_First;
+			String String_TVS_Answer = (String) Preceived_Data.Get_Object_First();
 			
 			if(String_TVS_Answer != "Correct move!")
 	//		if(i>3)
 			{
 				Game.Scenario_Number++;
-				result = true;
 				Game.Print("***********************************");
 				Game.Print("***********************************");
 				Game.Print("***********************************");
@@ -669,7 +600,7 @@ public class TWorking_Memory_Maintenance {
 				
 			}
 			catch (Exception e) {
-		      Game.Print("Something went wrongin method: Insert_New_Desires.");
+				Game.Print("Something went wrong in method: Insert_New_Desires.");
 		      Game.Print("Message Error: "+e.getMessage());
 		      result = false;
 		    }
@@ -698,77 +629,96 @@ public class TWorking_Memory_Maintenance {
 		}
 		else
 		{
-			TRegion Inhibition_Regions = this.Agent.get_GW().Get_Inhibition_Regions();
-			ArrayList<TBelief_Base> Unhinibited_Beliefs = this.Agent.get_GW().Get_UnInhibited_Beliefs();
-			
+			Game.Print("WMM analyzes perception.");
 			TTriple_Object Preceived_Data = Perception.get_Perceived_Data();
-			String String_TVS_Answer = (String) Preceived_Data.Object_First;
+			String String_TVS_Answer = (String) Preceived_Data.Get_Object_First();
 			
-			TSalient_Belief Salient_Belief;// = (TSalient_Belief) this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).getFirst();
+			this.Agent.Get_GW().Updated_Salient_Beliefs_for_print = true;
 			
 			switch(String_TVS_Answer)
 			{
-			case "Correct move!":
-				
-				Game.Print("I update any information in Beliefs");
-				ArrayList<TBelief_Base> Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Ok_Correct_Movement);
-				Salient_Belief = (TSalient_Belief) Beliefs2.getFirst();
-				
-				TPosition_Train_Coords Train_Coords = (TPosition_Train_Coords) Preceived_Data.Object_Second; 
-				
-				TBelief_Base Current_Route;
-				TBelief_Base Current_Step;
-				TBelief_Base Current_Station;
-				
-				//I update Current_Route Beliefs
-				Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Route);
-				Current_Route = Beliefs2.getFirst();
-				Game.Print("Prev Current_Route: "+Current_Route.Predicate.get_Object_Complement());
-				Current_Route.Predicate.set_Object_Complement(Train_Coords.Get_Route());
-				Game.Print("Updated Current_Route: "+Current_Route.Predicate.get_Object_Complement());
-				
-				//I update Current_Step Beliefs
-				Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Step);
-				Current_Step = Beliefs2.getFirst();
-				Game.Print("Prev Current_Step: "+Current_Step.Predicate.get_Object_Complement());
-				Current_Step.Predicate.set_Object_Complement(Train_Coords.Get_Step());
-				Game.Print("Updated Current_Step: "+Current_Step.Predicate.get_Object_Complement());
-				
-				//I update Current_Stationv Beliefs
-				Beliefs2 = this.Agent.get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Station);
-				Current_Station = Beliefs2.getFirst();
-				Game.Print("Prev Current_Station: "+Current_Station.Predicate.get_Object_Complement());
-				Current_Station.Predicate.set_Object_Complement(Train_Coords.Get_Station());
-				Game.Print("Updated Current_Station: "+Current_Station.Predicate.get_Object_Complement());
-				
-				//Now I Update next action 
-				ArrayList<TIntention> Intentions = this.Agent.get_GW().Get_Intentions();
-				TIntention Intention = Intentions.getFirst();
-				TDesire Desire = Intention.get_Desire();
-	
-				TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
-				
-				Game.Print("Prev Action_To_Do_ID: "+Selected_Option.Get_Action_To_Do_ID());
-				Selected_Option.Inc_Action_To_Do_ID();
-				Game.Print("Updated Action_To_Do_ID: "+Selected_Option.Get_Action_To_Do_ID());
-	
-				
-				
-						
-				//Game.Print(this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).size());
-				TPredicate Predicate = Salient_Belief.get_Predicate();
-				
-				//This is the Saslient_Belief for Epistemic_Goal
-				Salient_Belief.Update_Saliency(0.1);
-				
-				this.Agent.get_GW().Update_Belief_by_Stimulus(Salient_Belief);
-				
+				case "Correct move!":
+					
+					this.Manage_Correct_Movement(Perception);
+					//In this case, I ahve a salient belief with saliency lower then 
+					//the saliency/attention thresholds, so I don't print this
+					this.Agent.Get_GW().Updated_Salient_Beliefs_for_print = false;
+					break;
 			}
-
-		
-		
 		}
 		return result;
+	}
+	
+	public void Manage_Correct_Movement(TPerception Perception)
+	{
+		
+		TRegion Inhibition_Regions = this.Agent.Get_GW().Get_Inhibition_Regions();
+		ArrayList<TBelief_Base> Unhinibited_Beliefs = this.Agent.Get_GW().Get_UnInhibited_Beliefs();
+		TSalient_Belief Salient_Belief;// = (TSalient_Belief) this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).getFirst();
+		
+		TTriple_Object Preceived_Data = Perception.get_Perceived_Data();
+		
+		Game.Print("I update several information in Beliefs and in plan actions");
+		ArrayList<TBelief_Base> Beliefs2 = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Ok_Correct_Movement);
+		Salient_Belief = (TSalient_Belief) Beliefs2.getFirst();
+		
+		TPosition_Train_Coords Train_Coords = (TPosition_Train_Coords) Preceived_Data.Get_Object_Second(); 
+		
+		TBelief_Base Current_Route;
+		TBelief_Base Current_Step;
+		TBelief_Base Current_Station;
+		
+		ArrayList<TBelief_Base> Beliefs_Route = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Route);
+		ArrayList<TBelief_Base> Beliefs_Step = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Step);
+		ArrayList<TBelief_Base> Beliefs_Station = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Station);
+		Current_Route = Beliefs_Route.getFirst();
+		Current_Step = Beliefs_Step.getFirst();
+		Current_Station = Beliefs_Station.getFirst();
+		Game.Print("I Update Position Beliefs:");
+		Boolean Neet_to_Change_Visited_Station_Belief = false;
+		Game.Print("from Previous Current_Station: "+Current_Station.Predicate.get_Object_Complement());
+		Game.Print("from Previous Current_Route: "+Current_Route.Predicate.get_Object_Complement());
+		Game.Print("from Previous Current_Step: "+Current_Step.Predicate.get_Object_Complement());
+		
+		//I update Current_Route Beliefs
+		Current_Route.Predicate.set_Object_Complement(Train_Coords.Get_Route());
+		
+		//I update Current_Step Beliefs
+		Current_Step.Predicate.set_Object_Complement(Train_Coords.Get_Step());
+		
+		// I update Current_Stationv Beliefs and, if it is necessary, also the Belief_Visited_Station
+		// in case it visited another Station
+		if(Current_Station.Predicate.get_Object_Complement() != Train_Coords.Get_Station())
+		{
+			Neet_to_Change_Visited_Station_Belief = true;
+			ArrayList<TBelief_Base> Visited_Station = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Visited_Station);
+			TBelief_Base Belief_Visite_Station = this.Agent.Get_GW().Get_Belief_From_Type_Belief_and_Object_complement(
+					TType_Beliefs.Belief_Visited_Station, TType_Object_Complement.Me);
+			Belief_Visite_Station.set_Truth(true);
+			Belief_Visite_Station.set_Time_stamp(LocalDateTime.now());
+			Belief_Visite_Station.set_Information_Source(TType_Object_Complement.TCS);
+		}
+
+		Current_Station.Predicate.set_Object_Complement(Train_Coords.Get_Station());
+		
+		Game.PrintLn();
+		Game.Print("to Updated Current_Station: "+Current_Station.Predicate.get_Object_Complement());
+		Game.Print("to Updated Current_Route: "+Current_Route.Predicate.get_Object_Complement());
+		Game.Print("to Updated Current_Step: "+Current_Step.Predicate.get_Object_Complement());
+		
+		//Now I Update next action 
+		ArrayList<TIntention> Intentions = this.Agent.Get_GW().Get_Intentions();
+		TIntention Intention = Intentions.getFirst();
+		TDesire Desire = Intention.get_Desire();
+
+		TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
+		Selected_Option.Inc_Action_To_Do_ID();
+		TPredicate Predicate = Salient_Belief.get_Predicate();
+		
+		//This is the Saslient_Belief for Epistemic_Goal
+		Salient_Belief.Update_Saliency(0.1);
+		
+		this.Agent.Get_GW().Update_Belief_by_Stimulus(Salient_Belief);		
 	}
 
 }

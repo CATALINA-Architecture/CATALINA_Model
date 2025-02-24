@@ -1,12 +1,13 @@
 package Cara_Simulation;
 
 import java.util.HashMap;
-//import java.util.ArrayList;
 
+/**
+ * 	It represents a collection of the values ​​of each property that the routes can have
+ */
+public class My_Collections 
+{
 	
-public class My_Collections {
-	
-
 	public HashMap<Color, Color_Route> Color_Ruotes = new HashMap<Color, Color_Route>();
 	public HashMap<Locomotive, Float> Locomotive_Values = new HashMap<Locomotive, Float>();
 	public HashMap<Panorama, Float> Panorama_Values = new HashMap<Panorama, Float>();
@@ -15,50 +16,61 @@ public class My_Collections {
 	
 	public My_Collections()
 	{
-		//HashMap<Color, Color_Route> Color_Ruotes = new HashMap<Color, Color_Route>();
 		this.Initialize_Color_Ruotes();
 		this.Initialize_Locomotive_Values();
 		this.Initialize_Panorama_Values();
-		this.Initialize_Velocity_Values();
+		this.Initialize_Speed_Values();
 		this.Initialize_Station_Values();
 	}
 	
-	private void Initialize_Locomotive_Values() {
-
-//		this.Locomotive_Values.put(Locomotive.Electric,  0.3f);
-//		this.Locomotive_Values.put(Locomotive.Hybrid,  0.6f);
-//		this.Locomotive_Values.put(Locomotive.Diesel,  0.9f);
+	/**
+	 * It initializes Locomotive Values
+	 */
+	private void Initialize_Locomotive_Values() 
+	{
 		this.Locomotive_Values.put(Locomotive.Electric,  0.1f);
 		this.Locomotive_Values.put(Locomotive.Hybrid,  0.5f);
 		this.Locomotive_Values.put(Locomotive.Diesel,  1.0f);
 	}
 	
-	private void Initialize_Panorama_Values() {
-
+	/**
+	 * It initializes Panorama Values
+	 */
+	private void Initialize_Panorama_Values() 
+	{
 		this.Panorama_Values.put(Panorama.Limited,  0.3f);
 		this.Panorama_Values.put(Panorama.Fair, 0.6f);	
 		this.Panorama_Values.put(Panorama.Spectacular,   0.9f);	
 	}
 	
-	private void Initialize_Velocity_Values() {
-
+	/**
+	 * It initializes Speed Values
+	 */
+	private void Initialize_Speed_Values() 
+	{
 		this.Velocity_Values.put(Speed.Small,  0.3f);
 		this.Velocity_Values.put(Speed.Medium, 0.6f);	
 		this.Velocity_Values.put(Speed.High,   0.9f);
 	}	
 	
-	private void Initialize_Station_Values() {
-		
+	/**
+	 * It initializes Station Values
+	 */
+	private void Initialize_Station_Values() 
+	{
 		int i = 0;
-		for (Station Stazione : Station.values()) {
-            this.Station_Values.put(Stazione, i);
+		for (Station A_Station : Station.values())
+		{
+            this.Station_Values.put(A_Station, i);
             i++;
-            
 		}
 	}	
 
-	private void Initialize_Color_Ruotes() {
-
+	/**
+	 * It initializes Color Ruotes for determining any property for any route
+	 */
+	private void Initialize_Color_Ruotes() 
+	{
 		//Red
 		Color_Route Route_Red = new Color_Route(Color.Red, Panorama.Limited, Speed.High);
 		Route_Red.Locomotives.add(Locomotive.Diesel);
@@ -101,8 +113,6 @@ public class My_Collections {
 //		Route_White.Locomotiva.add(Locomotive.Hybrid);
 		Route_White.Locomotives.add(Locomotive.Electric);
 		this.Color_Ruotes.put(Color.White, Route_White);
-
 	}
 			
-
 }

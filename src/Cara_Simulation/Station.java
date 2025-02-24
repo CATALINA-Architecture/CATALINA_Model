@@ -1,5 +1,8 @@
 package Cara_Simulation;
 
+/**
+ * It represents the stations (node city) of the environment map
+ */
 public enum Station {
 	Lisboa,
 	Madrid,
