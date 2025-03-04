@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -13,6 +14,8 @@ public class Game {
 	
 	public static Environment Map;
 	public static Integer Scenario_Number;
+	public static TTCS TCS;
+	public static int Init_Creation_Path_Travelled_for_Functional_Goal;
 	
 	/**
 	 * Start Simulation
@@ -23,27 +26,32 @@ public class Game {
 		Scenario_Number = 0;
 		
 		// I create a list of Predicates, Beliefs, Functional, Epistemic, Green and Quality Goals.
+		Map = new Environment();
+		Create_Map();
 		TFile_Manager mana = new TFile_Manager();
+		mana.Set_Map(Map);
 		mana.Create_Predicates();
 		mana.Create_Beliefs();
-		int Init_Creation_Path_Travelled_for_Functional_Goal = mana.Init_Creation_Path_Travelled_for_Functional_Goal;
+		Init_Creation_Path_Travelled_for_Functional_Goal = mana.Init_Creation_Path_Travelled_for_Functional_Goal;
 		mana.Create_Green_Goals();
 		mana.Create_Quality_Goals();
 		mana.Create_Functional_Goals();
 		mana.Create_Epistemic_Goals();
 		
 		Game.Print("Creating Map");
+		
 		Instant start = Instant.now();
-		Map = new Environment();
-		Create_Map();
+//		Map = new Environment();
+//		Create_Map();
 		Instant end = Instant.now();
 		Duration timeElapsed = Duration.between(start, end);
 		Game.Print("I created the map in Time: "+ timeElapsed.toMillis() +" milliseconds");
 		
-		TTCS TCS = new TTCS(Map);
+		TCS = new TTCS(Map);
 
 		TAgent Agent = new TAgent();
-		// Agent Initialization
+		
+		Game.Print("Agent initialization...");
 		Agent.Initialization(TCS, Map, Init_Creation_Path_Travelled_for_Functional_Goal);
 		
 		// The Working Cycle of the Agent starts
@@ -207,6 +215,77 @@ public class Game {
 	public static void Print_Scenario()
 	{
 		Game.Print("******* Scenario_Number:    --"+Scenario_Number+"-- *******");
+	}
+	
+	/**
+	 * It gets some input from user. It is used to stop the flow of the agent while it works. 
+	 */
+	public static String Get_Input(String Text)
+	{
+		 String ANSI_RESET = "\u001B[0m";
+		 String ANSI_RED = "\u001B[31m";
+		 
+		 
+		 
+		 if(Text == null)
+		 {
+			 Text = "";
+		 }
+		 
+		 Game.Print(ANSI_RED + Text + ANSI_RESET);
+		 Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+		 Game.Print("Enter an input");
+		 String result = myObj.nextLine();  // Read user input
+		 return result;
+	}
+	
+	public static void Print_Colored_Text(String Text, int color)
+	{
+		String ANSI_RESET = "\u001B[0m";	//0
+		String ANSI_BOLD = "\u001B[1m";	//0
+		String ANSI_BLACK = "\u001B[30m";	//1
+		String ANSI_RED = "\u001B[31m";		//2
+		String ANSI_GREEN = "\u001B[32m";	//3
+		String ANSI_YELLOW = "\u001B[33m";	//4
+		String ANSI_BLUE = "\u001B[34m";	//5
+		String ANSI_PURPLE = "\u001B[35m";	//6
+		String ANSI_CYAN = "\u001B[36m";	//7
+		String ANSI_WHITE = "\u001B[37m";	//8
+		
+		String Color = ANSI_BLACK;
+		if(Text == null)
+		{
+			Text = "";
+		}
+		switch(color)
+		{
+		case 1:
+			Color = ANSI_BLACK;
+			break;
+		case 2:
+			Color = ANSI_RED;
+			break;
+		case 3:
+			Color = ANSI_GREEN;
+			break;
+		case 4:
+			Color = ANSI_YELLOW;
+			break;
+		case 5:
+			Color = ANSI_BLUE;
+			break;
+		case 6:
+			Color = ANSI_PURPLE;
+			break;
+		case 7:
+			Color = ANSI_CYAN;
+			break;
+		case 8:
+			Color = ANSI_WHITE;
+			break;
+		}
+		 
+		Game.Print(ANSI_BOLD + Color + Text + ANSI_RESET);
 	}
 }
 	

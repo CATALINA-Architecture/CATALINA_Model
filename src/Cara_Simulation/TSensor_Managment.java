@@ -13,9 +13,9 @@ public class TSensor_Managment {
 		this.Acquired_Perceptions = new ArrayList<TPerception>();
 	}
 	
-	public void Insert_Perception(TTriple_Object Data)
+	public void Insert_Perception(TTriple_Object Data, Object source)
 	{
-		TPerception Perception= new TPerception(Data, "TCS");
+		TPerception Perception= new TPerception(Data, source);
 		this.Acquired_Perceptions.add(Perception);
 	}
 	
@@ -24,14 +24,14 @@ public class TSensor_Managment {
 		Game.Print("Sensor acquires last Perception (if it exists).");
 		if( this.Acquired_Perceptions.size() > 0)
 		{
-			Game.Print("Perception acquired correctly.");
+			Game.Print("I'm feeling some stimulus");
+			Game.Print("Perception acquired a Perception correctly.");
 			return this.Acquired_Perceptions.getLast();
 		}
 		else
 		{
+			Game.Print("The Agent did not perceive any stimulus");
 			return null;			
 		}
-		
 	}
-	
 }

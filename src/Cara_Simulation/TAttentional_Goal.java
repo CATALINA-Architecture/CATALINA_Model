@@ -2,17 +2,24 @@ package Cara_Simulation;
 
 import java.util.ArrayList;
 
+/**
+ * It represents the base class of Goals
+ */
 public class TAttentional_Goal extends TGoal{
 	
-	
-	//private ??? Precondition//Questo è da implementare
+	//Green Goal List
 	private transient ArrayList<TGreen_Goal> Green_Goals;
+	//Quality Goal List
 	private transient ArrayList<TQuality_Goal> Quality_Goals;
+	
 	private ArrayList<String> List_Green_Goal_Names;
 	private ArrayList<String> List_Quality_Goal_Names;
-//	ArrayList<String> list_Green_Goal_Name, ArrayList<String> list_Quality_Goal_Name
+	//not used
 	protected double Sum_for_Attention_Treshold = 0.15;
-	
+
+	/**
+	 * Cleans any data
+	 */
 	public void Clear()
 	{
 		this.Green_Goals.clear();
@@ -22,7 +29,15 @@ public class TAttentional_Goal extends TGoal{
 	
 	
 	
-	
+	/**
+	 * Constructor
+	 * @param name
+	 * @param saliency
+	 * @param reward
+	 * @param relax_Preference
+	 * @param list_Green_Goal
+	 * @param list_Quality_Goal
+	 */
 	public TAttentional_Goal(String name, Double saliency, Double reward, Double relax_Preference, ArrayList<TGreen_Goal> list_Green_Goal,
 			ArrayList<TQuality_Goal> list_Quality_Goal )
 	{

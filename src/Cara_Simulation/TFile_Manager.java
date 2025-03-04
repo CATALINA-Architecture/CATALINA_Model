@@ -21,6 +21,16 @@ public class TFile_Manager {
 	int Initial_Number_Quality_Goals;
 	int Init_Creation_Path_Travelled_for_Functional_Goal;
 	
+	private Environment Map;
+	
+	public void Set_Map(Environment map)
+	{
+		if(this.Map == null)
+		{
+			this.Map = map.clone();
+		}
+	}
+	
 	public void Write_Predicates(ArrayList<TPredicate> Predicates)
 	{
 		String File_name = "Predicates.cara";
@@ -330,6 +340,22 @@ public class TFile_Manager {
 				TPredicate( "p"+i++, -1, TType_Relationship.is_Temporary_Closed, Temp_Stations));
 		Predicates.add(new 
 				TPredicate( "p"+i++, -1, TType_Relationship.is_Crowded, 0));
+		//Stimulus_Status_Route
+		Predicates.add(new 
+				TPredicate( "p"+i++, -1, TType_Relationship.is, TType_Route_Status.Unknown));
+		
+		
+		
+		/////////////////
+		//Create Predicates for Beliefs: Status_Route (one for any route)	
+		/////////////////
+		for(Route route: Map.All_Routes)
+		{
+			Predicates.add(new 
+					TPredicate( "p"+i, route.Get_Numered_Route(), TType_Relationship.is, 
+							TType_Route_Status.Unknown));
+			i++;
+		}
 		
 		this.Write_Predicates(Predicates);
 	}
@@ -446,6 +472,19 @@ public class TFile_Manager {
 		Beliefs.add(new TSalient_Belief("b"+i, "p"+i, 0.0, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Stimulus_Crowded_Route));
 		i++;
+		Beliefs.add(new TSalient_Belief("b"+i, "p"+i, 0.0, false, TType_Object_Complement.Developer, 
+				null, TType_Beliefs.Stimulus_Route_Status));
+		i++;
+		
+		/////////////////
+		//Create Predicates for Status_Route (one for any route)	
+		/////////////////
+		for(Route route: Map.All_Routes)
+		{
+			Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+					null, TType_Beliefs.Belief_Route_Status));
+			i++;
+		}
 
 		this.Init_Creation_Path_Travelled_for_Functional_Goal = i;
 		this.Write_Beliefs(Beliefs);
@@ -502,12 +541,12 @@ public class TFile_Manager {
 		
 		LocalDateTime Fs2 = LocalDateTime.parse("2024-10-01 10:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		LocalDateTime Fe2 = LocalDateTime.parse("2024-10-01 15:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		Functional_Goals.add(new TFunctional_Goal("Visit_Rome", "b2", "p4",  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List,
+		Functional_Goals.add(new TFunctional_Goal("Visit_Rome", "b2", "p4",  0.8, 40.0, 0.1, Green_Goals_List, Quality_Goals_List,
 				Fs2, Fe2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
 		
 		LocalDateTime Fs3 = LocalDateTime.parse("2024-10-01 21:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		LocalDateTime Fe3 = LocalDateTime.parse("2024-10-01 23:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		Functional_Goals.add(new TFunctional_Goal("Visit_Frankfurt", "b3", null,  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List,
+		Functional_Goals.add(new TFunctional_Goal("Visit_Frankfurt", "b3", null,  0.4, 40.0, 0.1, Green_Goals_List, Quality_Goals_List,
 				Fs3, Fe3, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
 		
 		//TFunctional_Goal func1 = new TFunctional_Goal("g1", "b1", null,  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List);

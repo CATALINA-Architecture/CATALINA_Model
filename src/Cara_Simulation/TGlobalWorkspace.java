@@ -517,9 +517,6 @@ public class TGlobalWorkspace {
 		
 		this.Set_Inhibition_Regions(inhibition_Regions);
 		
-		
-		Game.PrintLn();
-		
 		this.UnInhibition_Regions = this.Compute_All_Regions();
 
 		this.UnInhibition_Regions.Routes.removeAll(inhibition_Regions.Routes);
@@ -563,7 +560,10 @@ public class TGlobalWorkspace {
 		this.UnInhibited_Beliefs.clear();
 		for(TBelief_Base Belief: this.Agent.Get_WMM().Get_Beliefs())
 		{
-			this.UnInhibited_Beliefs.add(Belief);
+			if(!this.UnInhibited_Beliefs.contains(Belief))
+			{
+				this.UnInhibited_Beliefs.add(Belief);	
+			}
 		}
 		
 		this.UnInhibited_Beliefs.removeAll(inhibited_Beliefs);
@@ -576,7 +576,7 @@ public class TGlobalWorkspace {
 	public void Update_Intentions(ArrayList<TIntention> Intentions)
 	{
 //		Game.Print("************  Function:  Update_Intentions from Deliberate Function  *********: TGlobalWorkspace");
-		this.Agent.Get_GW().Print_Data(0, 0);
+//		this.Agent.Get_GW().Print_Data(0, 0);
 //		this.Selected_Intentions.clear();
 		this.Intentions.addAll(Intentions);
 		this.Updated_Intentions = true;
@@ -592,7 +592,7 @@ public class TGlobalWorkspace {
 		
 		//Update Intentions (in Resource Allocator) permits to agent to execute its actions
 //		Game.Print("Update_Intentions in TGlobalWorskspace --Before-- the call this.Agent.get_RA().Updated_Intentions(this.Selected_Intentions, this.Beliefs)();");
-		this.Agent.Get_GW().Print_Data(1, 0);
+//		this.Agent.Get_GW().Print_Data(1, 0);
 //		this.Agent.get_RA().Updated_Intentions(this.Selected_Intentions, this.Beliefs);
 	}
 	
@@ -706,12 +706,13 @@ public class TGlobalWorkspace {
 		return this.Quality_Goals;
 	}	
 	
-	public TRegion Get_Inhibition_Regions() {
-//		return this.Inhibition_Regions;
+	public TRegion Get_Inhibition_Regions() 
+	{
 		return this.Agent.Get_WMM().Get_Inhibition_Regions();
 	}
 
-	public HashMap<TAttentional_Goal, ArrayList<TBelief_Base>> Get_List_Beliefs() {
+	public HashMap<TAttentional_Goal, ArrayList<TBelief_Base>> Get_List_Beliefs() 
+	{
 		return this.Map_Attentional_Goal_and_Beliefs;
 	}
 
@@ -902,10 +903,11 @@ public class TGlobalWorkspace {
 		return Beliefs;
 	}
 	
-	public TBelief_Base Get_Belief_From_Type_Belief_and_Subject(TType_Beliefs Type_Beliefs, Object Subject)
+	public TBelief_Base Get_UnInhibited_Beliefs_From_Type_Belief_and_Subject(TType_Beliefs Type_Beliefs, Object Subject)
 	{
 		TBelief_Base Belief = null;
-		for(TBelief_Base Temp_Belief: this.Agent.Get_WMM().Get_Beliefs())
+//		for(TBelief_Base Temp_Belief: this.Agent.Get_WMM().Get_Beliefs())
+		for(TBelief_Base Temp_Belief: this.Agent.Get_GW().Get_UnInhibited_Beliefs())
 		{
 			if(Temp_Belief.get_Type_Belief() == Type_Beliefs && Temp_Belief.get_Predicate().get_Subject() == Subject)
 			{
@@ -1023,23 +1025,15 @@ public class TGlobalWorkspace {
 		switch(Start)
 		{
 		case 0://Start of the method
-			Game.Print("Changed data at the BEGINNING of the method:");
+			Game.Print("Data changed at the BEGINNING of the method:");
 			break;
 		case 1://End of the method
-			Game.Print("Changed data at the END of the method:");
+			Game.Print("Data changed at the END of the method:");
 			break;
 		case 2://Continue in work flow of the method
-			Game.Print("data changed in continuing the method workflow:");
+			Game.Print("Data changed in Continuing the method workflow:");
 			break;
 		}
-//		if(Start==0)
-//		{
-//			
-//		}
-//		else
-//		{
-//			
-//		}
 		Game.PrintLn();
 
 		//BELIEFS
@@ -1055,19 +1049,33 @@ public class TGlobalWorkspace {
 				Game.Print("UnInhibited Belief Types:");
 				for(TBelief_Base Belief: this.UnInhibited_Beliefs)
 				{
-					Game.Print(Belief.get_Type_Belief());
+					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" - "+Belief.get_Predicate().get_Subject());//+
+//					" "+Belief.get_Predicate().get_Relationship()+ " "+Belief.get_Predicate().get_Object_Complement());
 				}
+				Game.PrintLn();
 			}
-			Game.PrintLn();
+
 			Game.Print("Beliefs in LONG MEMORY:");
 			Game.Print("N. Belief in LONG MEMORY: "+this.Agent.Get_WMM().Get_Beliefs().size());
+			if (Synthesis==1)
+			{
+				Game.Print("Beliefs Types:");
+				for(TBelief_Base Belief: this.Agent.Get_WMM().Get_Beliefs())
+				{
+					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" - "+Belief.get_Predicate().get_Subject());//+
+//					" "+Belief.get_Predicate().get_Relationship()+ " "+Belief.get_Predicate().get_Object_Complement());
+				}
+				Game.PrintLn();
+			}
 			Game.Print("N. Inhibited Beliefs in LONG MEMORY: "+this.Agent.Get_WMM().Get_Inhibited_Beliefs().size());
 			if (Synthesis==1)
 			{
 				Game.Print("Inhibited Beliefs Types:");
-				for(TBelief_Base Belief: this.UnInhibited_Beliefs)
+				for(TBelief_Base Belief: this.Agent.Get_WMM().Get_Inhibited_Beliefs())
 				{
-					Game.Print(Belief.get_Type_Belief());
+//					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief());
+					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" - "+Belief.get_Predicate().get_Subject());//+
+//							" "+Belief.get_Predicate().get_Relationship()+ " "+Belief.get_Predicate().get_Object_Complement());
 				}
 			}
 			Game.PrintLn();
@@ -1088,20 +1096,31 @@ public class TGlobalWorkspace {
 				Game.Print("Goal Names:");
 				for(TAttentional_Goal Goal: this.UnInhibited_Goals)
 				{
-					Game.Print(Goal.get_Name()+ ": "+Goal.getClass());
+					Game.Print(Goal.get_Name());
 				}
+				Game.PrintLn();
 			}
-			Game.PrintLn();
+
 			//LONG MEMORY
 			Game.Print("Goals in LONG MEMORY");
 			Game.Print("N. Goals in LONG MEMORY: "+this.Agent.Get_WMM().Get_Attentional_Goals().size());
+			if (Synthesis==1)
+			{
+				Game.Print("Goal Names:");
+				for(TAttentional_Goal Goal: this.Agent.Get_WMM().Get_Attentional_Goals())
+				{
+					Game.Print(Goal.get_Name());
+				}
+				Game.PrintLn();
+			}
+			
 			Game.Print("N. Inhibited Goals in LONG MEMORY: "+this.Agent.Get_WMM().Get_Inhibited_Goals().size());
 			if (Synthesis==1)
 			{
-				Game.Print("Inhibited Goal Names and Types:");
-				for(TAttentional_Goal Goal: this.UnInhibited_Goals)
+				Game.Print("Inhibited Goal Names:");
+				for(TAttentional_Goal Goal: this.Agent.Get_WMM().Get_Inhibited_Functional_Goals())
 				{
-					Game.Print(Goal.get_Name()+ ": "+Goal.getClass());
+					Game.Print(Goal.get_Name());
 				}
 			}
 			Game.PrintLn();
@@ -1120,7 +1139,8 @@ public class TGlobalWorkspace {
 			for(TDesire Desire: this.Desires)
 			{
 				i++;
-				Game.Print("Desire N. -"+i+" - Named: "+Desire.Get_Name());
+				Game.Print("Desire N. -"+i+" - Named: "+Desire.Get_Name()+" - Saliency: "+
+						Desire.get_Attentional_Goal().Saliency);
 			}
 			Game.PrintLn();
 		}
@@ -1177,7 +1197,7 @@ public class TGlobalWorkspace {
 		}
 		if(!changed)
 		{
-			Game.Print("No data is changed.");
+			Game.Print("No data has changed.");
 		}
 		if(Start==0)
 		{
@@ -1226,7 +1246,7 @@ public class TGlobalWorkspace {
 			{
 				for(Object who: Beliefs)
 				{
-					if(who instanceof TE_Switching_Function)
+					if(who instanceof TExecutive_Switching_Function)
 					{
 						this.Agent.Get_E_Switching_Function().Updated_Beliefs();
 					}
@@ -1234,11 +1254,11 @@ public class TGlobalWorkspace {
 					{
 						this.Agent.Get_Reasoner().Updated_Beliefs();
 					}
-					if(who instanceof TE_Inhibition_function)
+					if(who instanceof TExecutive_Inhibition_function)
 					{
 						this.Agent.Get_E_Inhibition_function().Updated_Beliefs();
 					}
-					if(who instanceof TResource_Allocation )
+					if(who instanceof TExecutive_Resource_Allocation )
 					{
 						this.Agent.Get_E_Resource_A().Updated_Beliefs();
 					}
@@ -1258,7 +1278,8 @@ public class TGlobalWorkspace {
 				{
 					if(who instanceof TReasoner_Function)
 					{
-						this.Agent.Get_Reasoner().Updated_Desires();;
+						//Game.Print("I invoke this.Agent.Get_Reasoner().Updated_Desires()");
+						this.Agent.Get_Reasoner().Updated_Desires();
 					}
 				}
 			}
@@ -1295,7 +1316,7 @@ public class TGlobalWorkspace {
 					{
 						this.Agent.Get_Reasoner().Updated_Intentions();
 					}
-					if(who instanceof TResource_Allocation)
+					if(who instanceof TExecutive_Resource_Allocation)
 					{
 						//this.Agent.get_RA().Updated_Intentions(null, Beliefs);
 						this.Agent.Get_E_Resource_A().Updated_Intentions();
@@ -1465,5 +1486,19 @@ public class TGlobalWorkspace {
 	public void Changed_Goals()
 	{
 		this.Updated_Goals = true;
+	}
+	
+	public TIntention Get_Intention_By_Name(String Name)
+	{
+		TIntention Intention = null;
+		for(TIntention Temp_Intention: this.Intentions)
+		{
+			if(Temp_Intention.Get_Name() == Name)
+			{
+				Intention = Temp_Intention;
+			}
+		}
+	
+		return Intention;
 	}
 }

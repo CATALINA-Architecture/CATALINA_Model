@@ -18,7 +18,9 @@ public enum TType_Beliefs {
 	Belief_Temporary_Closed_Route,		//[ArrayList<Station>, is_Temporary_Closed, ArrayList<integer> round number));
 	Belief_Closed_Route,				//[ArrayList<Station>, is_Closed, null));
 	Belief_Busy_Route,					//[ArrayList<Station>, is_Busy, ArrayList<integer> round number));
+	Belief_Route_Status,				//this is a belief of status of a Route [int Route, is, TType_Route_Status]
 	Belief_Visited_Station,				//[Station, visited_by, [Player, TimeStamp]]
+	
 	Belief_Map,
 	Belief_Path_Taken_For_Belief,     	//[String Functional_Goal_name, has_traveled, [ArrayList<TDouble>, ArrayList<TimeStamp>]: 
 										//TDouble as 2 object: 1-a Route; 2-a LocalDateTime
@@ -31,7 +33,8 @@ public enum TType_Beliefs {
 	Stimulus_Closed_Route,				// Permanently Closed Route: [int route, is_Closed, null]
 	Stimulus_Busy_Route,				// Busy Route: [int route, is_Busy, ...]
 	Stimulus_Temporary_Closed_Route, 	// A route damaged: [int route, is_Temporary_Closed, integer round]
-	Stimulus_Crowded_Route				//A crowded route by many trains [Integer Route, is_Crowded, (integer) number train)
+	Stimulus_Crowded_Route,				// A crowded route by many trains [Integer Route, is_Crowded, (integer) number train)
+	Stimulus_Route_Status				//this is an epistemic (but endogenous) goal [Route, null, null]
 	
 
 }

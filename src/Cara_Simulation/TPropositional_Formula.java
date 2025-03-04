@@ -39,7 +39,4 @@ public class TPropositional_Formula {
 		
 		return result;
 	}
-	
-	
-
 }

@@ -4,6 +4,7 @@ public class TIntention {
 	
 	private TDesire Desire;
 	private Integer Seleted_Option_Id;
+	private String Name;
 	
 	public TIntention(TDesire desire, Integer seleted_Option_Id )
 	{
@@ -25,6 +26,21 @@ public class TIntention {
 
 	public void set_Seleted_Option_Id(Integer seleted_Option_Id) {
 		Seleted_Option_Id = seleted_Option_Id;
+	}
+	
+	public void Clear()
+	{
+		Desire = null;
+	}
+	
+	public void Set_Name(String name)
+	{
+		this.Name = name;
+	}
+	
+	public String Get_Name()
+	{
+		return this.Name;
 	}
 
 	

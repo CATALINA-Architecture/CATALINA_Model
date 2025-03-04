@@ -13,6 +13,16 @@ public class TDesire {
 		return this.Name;
 	}
 	
+	public void Clear()
+	{
+		Attentional_Goal = null;
+		for(TOption Option: Option_List)
+		{
+			Option.Clear();
+		}
+		Option_List.clear();
+	}
+	
 
 	public TDesire(String Name, TAttentional_Goal attentional_Goal, ArrayList<TOption> option_List )
 	{

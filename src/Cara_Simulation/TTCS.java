@@ -103,7 +103,7 @@ public class TTCS {
 		}
 
 		//I insert a Perception in Sensor of the player (Agent)
-		Player.Get_WMM().Get_Sensor().Insert_Perception(Response);
+		Player.Get_WMM().Get_Sensor().Insert_Perception(Response, "TCS");
 		
 		//I force Agent to rise an Epistemic Goal
 		}

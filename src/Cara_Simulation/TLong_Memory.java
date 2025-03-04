@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class TLong_Memory {
 	
-	TWorking_Memory_Maintenance WMM;
+	TExecutive_Working_Memory_Maintenance WMM;
 	private Environment Map_Known;
 	
 	private Integer Inc_Goals_Number = 0;
@@ -23,6 +23,7 @@ public class TLong_Memory {
 	private ArrayList<TAttentional_Goal> Goals;
 	private ArrayList<TAttentional_Goal> Inhibited_Goals;
 	private HashMap<String, TAttentional_Goal> Map_Goals;
+	private ArrayList<TAttentional_Goal>  Attentional_Goals_Satisfied;
 	
 	//Green and Quality Goals
 	private ArrayList<TGreen_Goal> Green_Goals;
@@ -57,7 +58,7 @@ public class TLong_Memory {
 	//Desires
 	private ArrayList<TDesire> Desires;
 	
-	public TLong_Memory(TWorking_Memory_Maintenance wmm)
+	public TLong_Memory(TExecutive_Working_Memory_Maintenance wmm)
 	{
 		this.WMM = wmm;
 		
@@ -73,6 +74,8 @@ public class TLong_Memory {
 		this.Goals = new ArrayList<TAttentional_Goal>();
 		this.Inhibited_Goals = new ArrayList<TAttentional_Goal>();
 		this.Map_Goals = new HashMap<String, TAttentional_Goal>();
+		
+		this.Attentional_Goals_Satisfied = new ArrayList<TAttentional_Goal>();
 
 		//Green and Quality Goals
 		this.Green_Goals = new ArrayList<TGreen_Goal>();
@@ -588,6 +591,11 @@ public class TLong_Memory {
 	public void Delete_Goal(TAttentional_Goal Goal)
 	{
 		this.Goals.remove(Goal);
+	}
+	
+	public void Insert_Attentional_Goals_Satisfied(TAttentional_Goal Goal)
+	{
+		this.Attentional_Goals_Satisfied.add(Goal);
 	}
 
 	

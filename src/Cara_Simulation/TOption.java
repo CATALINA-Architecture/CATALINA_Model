@@ -30,7 +30,6 @@ public class TOption{
 		this.Quality_List = quality_List;
 		this.Path = new Plan();
 		this.Action_To_Do_ID = 0;
-		
 	}
 	
 	
@@ -77,8 +76,6 @@ public class TOption{
 		return Quality_List;
 	}
 
-
-
 	public void set_Quality_List(EnumMap<TType_Quality_Goal, Double> quality_List) {
 		Quality_List = quality_List;
 	}
@@ -92,7 +89,4 @@ public class TOption{
 	{
 		this.Action_To_Do_ID++;
 	}
-	
-	
-
 }

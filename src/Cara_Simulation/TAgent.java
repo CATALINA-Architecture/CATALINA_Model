@@ -9,13 +9,13 @@ import java.util.HashMap;
  */
 public class TAgent {
 	
-	private TE_Switching_Function E_Switching_Function;
-	private TE_Inhibition_function E_Inhibition_function;
+	private TExecutive_Switching_Function E_Switching_Function;
+	private TExecutive_Inhibition_function E_Inhibition_function;
 	private TGlobalWorkspace GW;
 	private TReasoner_Function Reasoner;
-	private TResource_Allocation E_Resource_A;
+	private TExecutive_Resource_Allocation E_Resource_A;
 	private TAgent_Status Status;
-	private TWorking_Memory_Maintenance WMM;
+	private TExecutive_Working_Memory_Maintenance WMM;
 	private TTCS TCS;
 	
 	/**
@@ -23,12 +23,12 @@ public class TAgent {
 	 */
 	public TAgent()
 	{
-		this.E_Switching_Function = new TE_Switching_Function(this);
-		this.E_Inhibition_function = new TE_Inhibition_function(this);
+		this.E_Switching_Function = new TExecutive_Switching_Function(this);
+		this.E_Inhibition_function = new TExecutive_Inhibition_function(this);
 		this.GW = new TGlobalWorkspace(this);
 		this.Reasoner = new TReasoner_Function(this);
-		this.E_Resource_A = new TResource_Allocation(this);
-		this.WMM = new TWorking_Memory_Maintenance(this);
+		this.E_Resource_A = new TExecutive_Resource_Allocation(this);
+		this.WMM = new TExecutive_Working_Memory_Maintenance(this);
 
 		this.Status = TAgent_Status.Not_Active;
 	}
@@ -56,7 +56,7 @@ public class TAgent {
 			
 			this.WMM.Set_Regions();
 			
-			Game.Print("I read predicates, beliefs, functional, green and quality goals");
+			Game.Print("I read predicates, beliefs, green, quality and functional goals.");
 			// --Agent's Initialization--  
 			//This Section is to Create All Beliefs (Belief_Current_Station, Belief_Current_Route, etc...)
 			/***
@@ -111,6 +111,15 @@ public class TAgent {
 				belief.set_Predicate(Predicato);
 			}
 			
+			
+			this.GW.Updated_Beliefs_for_print = true;
+			this.GW.Updated_Goals_for_print = true;
+			this.GW.Updated_Desires_for_print = true;
+			this.GW.Updated_Desires_with_options_for_print = true;
+			this.GW.Updated_Intentions_for_print = true;
+			this.GW.Updated_Regions_for_print = true;
+
+			
 			this.GW.Print_Data(1, 0);
 		}
 		catch (Exception e) {
@@ -127,7 +136,7 @@ public class TAgent {
 	 * It returns the Executive Switching Function of the agent
 	 * @return
 	 */
-	public TE_Switching_Function Get_E_Switching_Function() {
+	public TExecutive_Switching_Function Get_E_Switching_Function() {
 		return this.E_Switching_Function;
 	}
 	
@@ -135,7 +144,7 @@ public class TAgent {
 	 * It returns the Executive Inhibition Function of the agent
 	 * @return
 	 */
-	public TE_Inhibition_function Get_E_Inhibition_function()
+	public TExecutive_Inhibition_function Get_E_Inhibition_function()
 	{
 		return this.E_Inhibition_function;
 	}
@@ -160,7 +169,7 @@ public class TAgent {
 	 * It returns the Executive Resource Allocation Function of the agent
 	 * @return
 	 */
-	public TResource_Allocation Get_E_Resource_A() {
+	public TExecutive_Resource_Allocation Get_E_Resource_A() {
 		return this.E_Resource_A;
 	}
 	
@@ -169,6 +178,9 @@ public class TAgent {
 	 */
 	public void Start()
 	{
+		// Agent Initialization
+		
+				
 		Game.Scenario_Number++;
 
 		this.GW.Print_Data(0, 0);
@@ -177,41 +189,53 @@ public class TAgent {
 		boolean Res;
 		boolean Post_OK;
 		int Working_Cycle = 0;
+		Game.Print("Agent Work Cycle start...");
+		Game.Print("*************************");
+		Game.PrintLn();
 		while(this.Status == TAgent_Status.Active)
 		{
-			Game.Print("Working_Cycle; "+ Working_Cycle);
+			Game.Print("Working Cycle number: "+ Working_Cycle);
+//			Game.Get_Input("Stop before calling Perception_Processing method");
 			Res = this.WMM.Perception_Processing(Working_Cycle);
 			// this is for case study only
-			if(Working_Cycle == 4)
+			if(Working_Cycle == 9)
 			{
 				Game.End_Game();				
 			}
 			if(Res)
 			{
 				this.GW.Broadcast();
+//				Game.Get_Input("Stop before calling AM_Exogenous_Module method");
 				Res = this.E_Switching_Function.AM_Exogenous_Module();
 				if( Res && !this.GW.Get_Updated_Desires())
 				{
+//					Game.Get_Input("Stop before calling AM_Endogenous_Module method");
 					Res = this.E_Switching_Function.AM_Endogenous_Module();
-					if( Res )
-						GW.Broadcast();
+//					if( Res )
+//						GW.Broadcast();
 				}
 				if( Res )
 				{
+					GW.Broadcast();
+//					Game.Get_Input("Stop before calling MeansEnd method");
 					Res = this.Reasoner.MeansEnd();
 					if( Res )
 					{
 						GW.Broadcast();
+//						Game.Get_Input("Stop before calling Deliberate_Process method");
 						Res = this.Reasoner.Deliberate_Process();
 						if( Res )
 						{
 							GW.Broadcast();
+//							Game.Get_Input("Stop before calling Focus_Attention method");
 							Res = this.E_Inhibition_function.Focus_Attention();
 							if( Res )
 							{
 								GW.Broadcast();
+//								Game.Get_Input("Stop before calling Plan_Advanc_Eval method");
 								Post_OK = this.E_Resource_A.Plan_Advanc_Eval();
 								Working_Cycle++;
+								Game.Get_Input("Stop before starting again...");
 							}
 						}
 					}
@@ -302,12 +326,11 @@ public class TAgent {
 		HashMap<String, ArrayList<TBelief_Base>> Map_Attentional_Goal_and_Beliefs = 
 						this.WMM.Get_Map_Attentional_Goals_and_Beliefs();
 		
-		Game.Print("Loaded Goals : "+Map_Attentional_Goal_and_Beliefs.keySet());
+		Game.Print("Loaded Functional Goals : "+Map_Attentional_Goal_and_Beliefs.keySet());
 		
 		this.Get_WMM().Set_Beliefs_Number(Init_Creation_Path_Travelled_for_Functional_Goal);
 		for(TFunctional_Goal Functional_Goal: this.WMM.Get_Functional_Goals())
 		{
-//			if (Goal instanceof TFunctional_Goal)
 			{
 				if (Functional_Goal.get_Final_State().get_Type_Belief() == TType_Beliefs.Belief_Destination_Station)
 				{
@@ -644,7 +667,7 @@ public class TAgent {
 	 * Return Executive Working Memomry Maintenance of the agent
 	 * @return
 	 */
-	public TWorking_Memory_Maintenance Get_WMM()
+	public TExecutive_Working_Memory_Maintenance Get_WMM()
 	{
 		return this.WMM;
 	}
