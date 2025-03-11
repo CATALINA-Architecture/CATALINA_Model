@@ -19,6 +19,7 @@ public class TExecutive_Working_Memory_Maintenance {
 		this.Long_Memory = new TLong_Memory(this);
 		this.Sensor = new TSensor_Managment();
 	}
+	
 	/**
 	 * This Function is used only in Agent's initialization 
 	 * @param predicates: ArrayList<TPredicate>
@@ -558,7 +559,8 @@ public class TExecutive_Working_Memory_Maintenance {
 	
 	public boolean Perception_Processing(int i)
 	{
-		this.Agent.Get_GW().Print_Data(0, 0);
+//		this.Agent.Get_GW().Print_Data(0, 0);
+		this.Agent.Get_GW().Print_Data(2, 0);
 		Game.Print("Perception Processing number: "+i);
 		
 		boolean result = true;
@@ -570,10 +572,11 @@ public class TExecutive_Working_Memory_Maintenance {
 		{
 			TTriple_Object Preceived_Data = Perception.get_Perceived_Data();
 			String String_TVS_Answer = (String) Preceived_Data.Get_Object_First();
-			
-			if(String_TVS_Answer != "Correct move!")
-	//		if(i>3)
+			switch(String_TVS_Answer)
 			{
+			case "Correct move!", "See Semaphore for Route Status" :
+				break;
+			default:
 				Game.Scenario_Number++;
 				Game.Print("***********************************");
 				Game.Print("***********************************");
@@ -582,8 +585,9 @@ public class TExecutive_Working_Memory_Maintenance {
 				Game.Print("***********************************");
 				Game.Print("***********************************");
 				Game.Print("***********************************");
-				Game.Print("*************  CHANGE OF SCENARIO  **********************");
-				Game.Print("*************  SCENARIO Number "+ Game.Scenario_Number +" **********************");
+//				Game.Print("*********************************** "+ String_TVS_Answer);
+				Game.Print("*******  CHANGE OF SCENARIO  ******");
+				Game.Print("*******  SCENARIO Number "+ Game.Scenario_Number +" ********");
 				Game.Print("***********************************");
 				Game.Print("***********************************");
 				Game.Print("***********************************");
@@ -591,8 +595,31 @@ public class TExecutive_Working_Memory_Maintenance {
 				Game.Print("***********************************");
 				Game.Print("***********************************");
 				Game.Print("***********************************");
-				
 			}
+			
+//			if(String_TVS_Answer != "Correct move!" || )
+//	//		if(i>3)
+//			{
+//				Game.Scenario_Number++;
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("*********************************** "+ String_TVS_Answer);
+//				Game.Print("*******  CHANGE OF SCENARIO  ******");
+//				Game.Print("*******  SCENARIO Number "+ Game.Scenario_Number +" ********");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				Game.Print("***********************************");
+//				
+//			}
 		}
 		else
 		{
@@ -631,7 +658,8 @@ public class TExecutive_Working_Memory_Maintenance {
 		}
 		else
 		{
-			Game.Print("WMM analyzes perception.");
+			
+			Game.Print("My WMM's \"Information Selection\" analyzes the Stimulus.");
 			TTriple_Object Preceived_Data = Perception.get_Perceived_Data();
 			String String_TVS_Answer = (String) Preceived_Data.Get_Object_First();
 			
@@ -678,7 +706,7 @@ public class TExecutive_Working_Memory_Maintenance {
 		Predicate.Set_Subject(Integer_Route);
 		Salient_Belief.Update_Saliency(0.9);
 		
-		Game.Print("I want to see the semaphore for get the route status for route: "+Integer_Route);
+		Game.Print_Colored_Text("I want to see the semaphore for get the route status for route: "+Integer_Route, 5);
 		this.Agent.Get_GW().Update_Belief_by_Stimulus(Salient_Belief);	
 	}
 	
@@ -690,8 +718,8 @@ public class TExecutive_Working_Memory_Maintenance {
 		TSalient_Belief Salient_Belief;// = (TSalient_Belief) this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).getFirst();
 		
 		TTriple_Object Preceived_Data = Perception.get_Perceived_Data();
-		
-		Game.Print("I update several information in Beliefs and in plan actions");
+		Game.Print("I moved correctly.");
+		Game.Print("Now, I update several information in my Beliefs and in plan actions.");
 		ArrayList<TBelief_Base> Beliefs2 = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Ok_Correct_Movement);
 		Salient_Belief = (TSalient_Belief) Beliefs2.getFirst();
 		
@@ -709,9 +737,9 @@ public class TExecutive_Working_Memory_Maintenance {
 		Current_Station = Beliefs_Station.getFirst();
 		Game.Print("I Update Position Beliefs:");
 		Boolean Neet_to_Change_Visited_Station_Belief = false;
-		Game.Print("from Previous Current_Station: "+Current_Station.Predicate.get_Object_Complement());
-		Game.Print("from Previous Current_Route: "+Current_Route.Predicate.get_Object_Complement());
-		Game.Print("from Previous Current_Step: "+Current_Step.Predicate.get_Object_Complement());
+		Game.Print("Before, the Previous Current Position Station was: "+Current_Station.Predicate.get_Object_Complement());
+		Game.Print("Before, the Previous Current Position Route was: "+Current_Route.Predicate.get_Object_Complement());
+		Game.Print("Before, the Previous Current Position Step was: "+Current_Step.Predicate.get_Object_Complement());
 		
 		//I update Current_Route Beliefs
 		Current_Route.Predicate.set_Object_Complement(Train_Coords.Get_Route());
@@ -719,27 +747,45 @@ public class TExecutive_Working_Memory_Maintenance {
 		//I update Current_Step Beliefs
 		Current_Step.Predicate.set_Object_Complement(Train_Coords.Get_Step());
 		
+		//I update the time for the Agent
+		ArrayList<TBelief_Base> Temp_Beliefs = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Time);
+		TBelief_Base Temp_Belief = Temp_Beliefs.getFirst();
+		
+		LocalDateTime Current_Time = (LocalDateTime) Temp_Belief.get_Predicate().get_Object_Complement();
+		int One_Hour = 60;
+		LocalDateTime Temp_Time = Current_Time.plusMinutes(One_Hour);
+		Temp_Belief.get_Predicate().set_Object_Complement(Temp_Time);
+				
+		
 		// I update Current_Stationv Beliefs and, if it is necessary, also the Belief_Visited_Station
 		// in case it visited another Station
 		if(Current_Station.Predicate.get_Object_Complement() != Train_Coords.Get_Station())
 		{
+			
 			Neet_to_Change_Visited_Station_Belief = true;
-			ArrayList<TBelief_Base> Visited_Station = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Visited_Station);
-			TBelief_Base Belief_Visite_Station = this.Agent.Get_GW().Get_Belief_From_Type_Belief_and_Object_complement(
-					TType_Beliefs.Belief_Visited_Station, TType_Object_Complement.Me);
-			Belief_Visite_Station.set_Truth(true);
-			Belief_Visite_Station.set_Time_stamp(LocalDateTime.now());
-			Belief_Visite_Station.set_Information_Source(TType_Object_Complement.TCS);
+			
+			ArrayList<TBelief_Base> Belief_Visited_Stations = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Visited_Station);
+			for(TBelief_Base Belief: Belief_Visited_Stations)
+			{
+				if((Station) Belief.get_Predicate().get_Subject() == Train_Coords.Get_Station() &&
+				   (TType_Object_Complement) Belief.get_Predicate().get_Object_Complement() == 	TType_Object_Complement.Me)
+				{
+					Belief.set_Truth(true);
+					Belief.set_Time_stamp(Temp_Time);
+					Belief.set_Information_Source(TType_Object_Complement.TCS);
+					this.Agent.Get_GW().Print_Belief(Belief);
+				}
+			}
 		}
 
 		Current_Station.Predicate.set_Object_Complement(Train_Coords.Get_Station());
 		
 		Game.PrintLn();
-		Game.Print("to Updated Current_Station: "+Current_Station.Predicate.get_Object_Complement());
-		Game.Print("to Updated Current_Route: "+Current_Route.Predicate.get_Object_Complement());
-		Game.Print("to Updated Current_Step: "+Current_Step.Predicate.get_Object_Complement());
+		Game.Print("Now, the Updated Current Position Station is: "+Current_Station.Predicate.get_Object_Complement());
+		Game.Print("Now, the Updated Current Position Route is: "+Current_Route.Predicate.get_Object_Complement());
+		Game.Print("Now, the Updated Current Position Step is: "+Current_Step.Predicate.get_Object_Complement());
 		
-		//Now I Update next action 
+		//Now I update the next action the agent should perform
 		ArrayList<TIntention> Intentions = this.Agent.Get_GW().Get_Intentions();
 		TIntention Intention = Intentions.getFirst();
 		TDesire Desire = Intention.get_Desire();
@@ -750,6 +796,28 @@ public class TExecutive_Working_Memory_Maintenance {
 		
 		//This is the Saslient_Belief for Epistemic_Goal
 		Salient_Belief.Update_Saliency(0.1);
+		
+		
+		
+		
+		//Temp_Beliefs = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Path_Taken_For_Belief);
+		Temp_Belief = this.Agent.Get_GW().Get_Belief_From_Type_Belief_and_Subject(TType_Beliefs.Belief_Path_Taken_For_Belief,
+				Desire.get_Attentional_Goal().get_Name());
+		
+		
+		
+//		this.Agent.Get_GW().Print_Belief(Temp_Belief);
+		TPredicate Predicate_Temp_Belief = Temp_Belief.get_Predicate();
+		ArrayList<Integer> Route_List = (ArrayList<Integer>) Predicate_Temp_Belief.get_Object_Complement();
+		
+		if((!Route_List.contains(Route_List)) && (Train_Coords.Get_Route()!=-1))
+		{
+			Route_List.add(Train_Coords.Get_Route());
+			Predicate_Temp_Belief.set_Object_Complement(Route_List);
+			Temp_Belief.set_Predicate(Predicate_Temp_Belief);
+			Temp_Belief.set_Time_stamp(Temp_Time);
+			Temp_Belief.set_Truth(true);;
+		}
 		
 		this.Agent.Get_GW().Update_Belief_by_Stimulus(Salient_Belief);		
 	}
@@ -765,16 +833,17 @@ public class TExecutive_Working_Memory_Maintenance {
 		
 		int Integer_Route = (int) Preceived_Data.Get_Object_Second();
 		Route_Status = (TType_Route_Status) Preceived_Data.Get_Object_Third();
-		Game.Print("Route_Status is: "+Route_Status);
+		Game.Print("The aquired Route_Status (by my virtual camera) is: "+Route_Status);
 		
 		ArrayList<TBelief_Base> Visited_Station = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Visited_Station);
 
 		//I update the belief for route status of route Integer_Route
 		TBelief_Base Belief = null;// = this.Agent.Get_GW().Get_UnInhibited_Beliefs_From_Type_Belief_and_Subject(TType_Beliefs.Belief_Route_Status, Integer_Route);
 		ArrayList<TBelief_Base> Belifs = this.Agent.Get_GW().Get_UnInhibited_Beliefs();
+		LocalDateTime A_Time = this.Agent.Get_GW().Get_Current_Time();
 		for(TBelief_Base Bel: Belifs)
 		{
-			Game.Print(Bel.get_Name()+": "+Bel.get_Type_Belief()+" - "+Bel.get_Predicate().get_Subject());
+//			Game.Print(Bel.get_Name()+": "+Bel.get_Type_Belief()+" - "+Bel.get_Predicate().get_Subject());
 			if(Bel.get_Type_Belief() == TType_Beliefs.Belief_Route_Status)
 			{
 				if( (int) Bel.Predicate.get_Subject() == Integer_Route)
@@ -782,6 +851,8 @@ public class TExecutive_Working_Memory_Maintenance {
 //					Game.Print("Trovata!! Eccola:");
 //					Game.Print(Bel.get_Name()+": "+Bel.get_Type_Belief()+" - "+Bel.get_Predicate().get_Subject());
 					Belief = Bel;
+					Belief.set_Truth(true);
+					Belief.set_Time_stamp(A_Time);
 				}
 			}
 		}
@@ -790,25 +861,28 @@ public class TExecutive_Working_Memory_Maintenance {
 		
 		//Now I Update next action 
 		ArrayList<TIntention> Intentions = this.Agent.Get_GW().Get_Intentions();
-		for(TIntention Intent: Intentions)
-		{
-			Game.Print(Intent.get_Desire().Get_Name()+": "+Intent.get_Desire().get_Attentional_Goal().get_Saliency());
-		}
+//		for(TIntention Intent: Intentions)
+//		{
+//			Game.Print(Intent.get_Desire().Get_Name()+": "+Intent.get_Desire().get_Attentional_Goal().get_Saliency());
+//		}
 		TIntention Intention = Intentions.getFirst();
 		TDesire Desire = Intention.get_Desire();
-		Game.Print("Selected Intention:");
-		Game.Print(Intention.get_Desire().Get_Name()+": "+Intention.get_Desire().get_Attentional_Goal().get_Saliency());
+//		Game.Print("Selected Intention:");
+//		Game.Print(Intention.get_Desire().Get_Name()+": "+Intention.get_Desire().get_Attentional_Goal().get_Saliency());
 		TAttentional_Goal Attentional_Goal = Desire.get_Attentional_Goal();
 		
 		TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
-		Game.Print("Old Selected_Option.Get_Action_To_Do_ID(): "+Selected_Option.Get_Action_To_Do_ID());
+//		Game.Print("	_To_Do_ID(): "+Selected_Option.Get_Action_To_Do_ID());
 		Selected_Option.Inc_Action_To_Do_ID();
-		Game.Print("New Selected_Option.Get_Action_To_Do_ID(): "+Selected_Option.Get_Action_To_Do_ID());
-		Game.Print("Selected_Option.get_Plan_Actions().size(): "+Selected_Option.get_Plan_Actions().size());
+//		Game.Print("New Selected_Option.Get_Action_To_Do_ID(): "+Selected_Option.Get_Action_To_Do_ID());
+//		Game.Print("Selected_Option.get_Plan_Actions().size(): "+Selected_Option.get_Plan_Actions().size());
 		if(Selected_Option.Get_Action_To_Do_ID() >= Selected_Option.get_Plan_Actions().size())
 		{
-			Game.Print("Now I delete the Selected Intention:");
-			Game.Print(Intention.get_Desire().Get_Name()+": "+Intention.get_Desire().get_Attentional_Goal().get_Saliency());
+			TDesire Desire_to_Delete = Intention.get_Desire();
+			Game.Print_Colored_Text("My intention to acquire the route status color has been fulfilled", 5);
+			Game.Print("Now I delete the Selected Intention, with its desire and I move the Epistemic Goal in my goal satisfied List");
+			Game.Print(Desire_to_Delete.Get_Name()+": "+Desire_to_Delete.get_Attentional_Goal().get_Saliency()+
+					" - Epistemic Goal: "+Desire_to_Delete.get_Attentional_Goal().get_Name());
 			this.Agent.Get_GW().Delete_Intention(Intention);
 			
 			this.Agent.Get_GW().Get_Goals().remove(Attentional_Goal);

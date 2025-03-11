@@ -243,9 +243,9 @@ public class TFile_Manager {
 		/////////////////
 		Predicates.add(new TPredicate( "p1", Station.Paris,TType_Relationship.visited_by, 
 				TType_Object_Complement.Me));
-		Predicates.add(new TPredicate( "p2", Station.Wien,TType_Relationship.visited_by, 
+		Predicates.add(new TPredicate( "p2", Station.Rome,TType_Relationship.visited_by, 
 				TType_Object_Complement.Me));
-		Predicates.add(new TPredicate( "p3", Station.Roma,TType_Relationship.visited_by, 
+		Predicates.add(new TPredicate( "p3", Station.Frankfurt,TType_Relationship.visited_by, 
 				TType_Object_Complement.Me));
 
 		/////////////////
@@ -421,6 +421,7 @@ public class TFile_Manager {
 		//Step
 		Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Current_Step));
+		
 		i++;
 		
 		/////////////////

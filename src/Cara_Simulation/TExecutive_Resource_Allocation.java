@@ -33,6 +33,12 @@ public class TExecutive_Resource_Allocation {
 		this.Updated_Intentions = true;
 	}
 	
+	public void Insert_in_List_Update_Contract()
+	{
+		this.Agent.Get_GW().Insert_for_Update_Contract(TType_Update_Contract.Beliefs, this);
+		this.Agent.Get_GW().Insert_for_Update_Contract(TType_Update_Contract.Intentions, this);
+	}
+	
 	public TAgent get_Agent() {
 		return Agent;
 	}
@@ -43,10 +49,12 @@ public class TExecutive_Resource_Allocation {
 		boolean result = true;
 		try 
 		{
-			this.get_Agent().Get_GW().Print_Data(0, 0);
+			this.get_Agent().Get_GW().Print_Data(2, 0);
 			ArrayList<TIntention> Intentions = this.Agent.Get_GW().Get_Intentions();
 			if(Intentions.size() > 0)
 			{
+				Game.Print_Colored_Text("Stop before calling Plan_Advanc_Eval method", 7);
+				Game.Press_Enter();
 				Collections.sort(Intentions, new TIntention_Compare());
 				
 				TIntention Intention = Intentions.getFirst();
@@ -61,7 +69,7 @@ public class TExecutive_Resource_Allocation {
 				
 				if (Attentional_Goal instanceof TFunctional_Goal) 
 				{
-					Game.Print("Agent acts an action for the intention with Functional Name: "+
+					Game.Print("I act an action for the intention with Functional Name: "+
 							Desire.get_Attentional_Goal().get_Name());
 					
 					TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
@@ -98,20 +106,21 @@ public class TExecutive_Resource_Allocation {
 						Unhibited_Beliefs = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Station);
 						Current_Station = Unhibited_Beliefs.getFirst();
 						
-						Game.Print("Agent checks if preconditions for the actions are correct:");
-						Game.Print("Current Station is: "+Current_Station.Predicate.get_Object_Complement());
-						Game.Print("Current Route is: "+Current_Route.Predicate.get_Object_Complement());
-						Game.Print("Current Step is: "+Current_Step.Predicate.get_Object_Complement());
+						Game.Print("I check if current positions and precondition positions for the act current action are congruent (equal):");
+						Game.Print("Current position Station is: "+Current_Station.Predicate.get_Object_Complement());
+						Game.Print("Current position Route is: "+Current_Route.Predicate.get_Object_Complement());
+						Game.Print("Current position Step is: "+Current_Step.Predicate.get_Object_Complement());
 						
-						Game.Print("Precondition Station is: "+Precondition_Position.Get_Station());
-						Game.Print("Precondition Route is: "+Precondition_Position.Get_Route());
-						Game.Print("Precondition Stepis: "+Precondition_Position.Get_Step());
+						Game.Print("Precondition position Station is: "+Precondition_Position.Get_Station());
+						Game.Print("Precondition position Route is: "+Precondition_Position.Get_Route());
+						Game.Print("Precondition position Stepis: "+Precondition_Position.Get_Step());
 						
 						if((int)Current_Route.Predicate.get_Object_Complement() == (int)Precondition_Position.Get_Route() &&
 								(int)Current_Step.Predicate.get_Object_Complement() == (int)Precondition_Position.Get_Step() &&
 							Current_Station.Predicate.get_Object_Complement() == Precondition_Position.Get_Station())
 						{
-							Game.Print("Yes, Position of Precondition of the action are correct!");
+//							Game.Print("Yes, Position of Precondition of the action are correct!");
+							Game.Print_Colored_Text("Yes, Position of Precondition of the action are correct!", 3);
 							Game.Print("Now, I check my knowledge of the route status");
 							
 							switch(Action.Get_Action_Name())
@@ -144,20 +153,23 @@ public class TExecutive_Resource_Allocation {
 									{
 									case TType_Route_Status.Green:
 										Game.Print_Colored_Text("Route status is Green! I can go to route: "+Integer_Route, 3);
-										Game.Print("I execute the action");
-										Game.Get_Input("Stop before calling Plan_Exec method");
+										Game.Print_Colored_Text("I execute the action", 3);
+//										Game.Get_Input("Stop before calling Plan_Exec method");
 										this.Plan_Exec(Action);
 										break;
 										
 									case TType_Route_Status.Red:
 										Game.Print_Colored_Text("Route status is Red! I cannot go to route: "+Integer_Route, 2);
-										Game.Print_Colored_Text("Agent aborts its work", 2);
+										Game.Print_Colored_Text("I need to check how long the route will be inaccessible.",2);
+										Game.Print_Colored_Text("At this time, this feature is not implemented.", 2);
+										Game.Print_Colored_Text("Agent aborts its work",2);
 										Game.End_Game();
 										break;
 										
 									case TType_Route_Status.Unknown:
 										Game.Print_Colored_Text("The route status is unknown.",5);
 										Game.Print_Colored_Text("I need to know if it is green or not.",5);
+										Game.Print_Colored_Text("I raise a stimulus to create an epistemic goal to turn on my virtual camera",2);
 										this.Insert_Stimulus_Get_Route_Status(Integer_Route);
 										//Game.End_Game();
 										break;
@@ -167,7 +179,7 @@ public class TExecutive_Resource_Allocation {
 								
 							case "GO_TO_Step":
 								Game.Print("I execute the action");
-								Game.Get_Input("Stop before calling Plan_Exec method");
+//								Game.Get_Input("Stop before calling Plan_Exec method");
 								this.Plan_Exec(Action);
 								break;
 //							if(Action.Get_Action_Name() == "GO_TO_Route")
@@ -191,7 +203,7 @@ public class TExecutive_Resource_Allocation {
 				else
 				//The Attentional Goal is an Epistemic Goal
 				{
-					Game.Print("Agent acts an action for the intention with Epistemic Goal Name: "+
+					Game.Print("I act an action for the intention with Epistemic Goal Name: "+
 							Desire.get_Attentional_Goal().get_Name());
 					
 					TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
@@ -225,10 +237,10 @@ public class TExecutive_Resource_Allocation {
 		boolean result = true;
 		try 
 		{
-			this.get_Agent().Get_GW().Print_Data(0, 0);
+			this.get_Agent().Get_GW().Print_Data(2, 0);
 			
 			String Invoked_Function = Action.Get_Action_Name();
-			Game.Print("Invoked Function for the Action: "+Invoked_Function );
+			Game.Print("I Invoke the method for execute the Action: "+Invoked_Function );
 			switch(Invoked_Function)
 			{
 			case "GO_TO_Route", "GO_TO_Step":
@@ -267,14 +279,15 @@ public class TExecutive_Resource_Allocation {
 		Stimulus.Set_Object_First("See Semaphore for Route Status");
 		Stimulus.Set_Object_Second(Integer_Route);
 		Stimulus.Set_Object_Third(null);
-		this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Stimulus, "ME");
+		LocalDateTime Time = this.Agent.Get_GW().Get_Current_Time();
+		this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Time, Stimulus, "ME");
 		
 		
 	}
 	
 	private void Execute_Movement(TAction Action)
 	{
-		Game.Print("Agent executes a movement:");
+		Game.Print("I execute a movement:");
 		TTriple_Object Request = new TTriple_Object();
 		//FUNCTION TO DO
 		Request.Set_Object_First(Action.Get_Action_Name()); 
@@ -285,7 +298,7 @@ public class TExecutive_Resource_Allocation {
 	
 	private void Acquire_Route_Status(TAction Action)
 	{
-		Game.Print("Agent executes a movement:");
+		Game.Print("I turn on my virtual camera to see the status of the route:");
 
 		int route_number = (int) Action.Get_Params().getFirst();
 		//Game.Print("What color should I see? 0 - Red, 1- Green...");
@@ -293,7 +306,8 @@ public class TExecutive_Resource_Allocation {
 		String result ;
 		do 
 		{
-			result = Game.Get_Input("What color should I see for route "+route_number+"? 0 - Red, 1- Green.");	
+			Game.Print_Colored_Text("What color should I see for route "+route_number+"?", 7);
+			result = Game.Get_Input("Give me a number: 0 - for Red, 1- for Green.");	
 			switch(result)
 			{
 			case "0":
@@ -309,7 +323,8 @@ public class TExecutive_Resource_Allocation {
 		Response.Set_Object_First("Acquired Route Status");
 		Response.Set_Object_Second(route_number);
 		Response.Set_Object_Third(Route_Status);
-		this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Response, "ME");
+		LocalDateTime Time = this.Agent.Get_GW().Get_Current_Time();
+		this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Time, Response, "ME");
 
 //		Game.End_Game();
 		

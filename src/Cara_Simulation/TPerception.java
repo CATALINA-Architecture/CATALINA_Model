@@ -22,9 +22,10 @@ public class TPerception {
 		return Time_Stamp;
 	}
 	
-	public TPerception(TTriple_Object perceived_Data, Object source)
+	public TPerception(LocalDateTime Time, TTriple_Object perceived_Data, Object source)
 	{
-		this.Time_Stamp = LocalDateTime.now();
+		//this.Time_Stamp = LocalDateTime.now();
+		this.Time_Stamp = Time;
 		this.Perceived_Data = perceived_Data;
 		this.Source = source;
 	}

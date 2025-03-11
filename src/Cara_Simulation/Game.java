@@ -78,7 +78,7 @@ public class Game {
 		Map.Add_Arch(Station.Pamplona, Station.Paris, Color.Green, 4);
 		Map.Add_Arch(Station.Dieppe, Station.Bruxelles, Color.Green, 2);
 		Map.Add_Arch(Station.Frankfurt, Station.Essen, Color.Green, 2);
-		Map.Add_Arch(Station.Zurich, Station.Venezia, Color.Green, 2);
+		Map.Add_Arch(Station.Zurich, Station.Venice, Color.Green, 2);
 		Map.Add_Arch(Station.Berlin, Station.Wien, Color.Green, 3);
 		Map.Add_Arch(Station.Sarajevo, Station.Athina, Color.Green, 4);
 		Map.Add_Arch(Station.Rica, Station.Wilno, Color.Green, 4);
@@ -110,7 +110,7 @@ public class Game {
 		Map.Add_Arch(Station.Edimburgh, Station.London, Color.Black, 4);
 		Map.Add_Arch(Station.Bruxelles, Station.Amsterdam, Color.Black, 1);
 		Map.Add_Arch(Station.Frankfurt, Station.Berlin, Color.Black, 3);
-		Map.Add_Arch(Station.Venezia, Station.Roma, Color.Black, 2);
+		Map.Add_Arch(Station.Venice, Station.Rome, Color.Black, 2);
 		Map.Add_Arch(Station.Danzic, Station.Rica, Color.Black, 3);
 		Map.Add_Arch(Station.Ancora, Station.Erzurum, Color.Black, 3);
 		
@@ -119,7 +119,7 @@ public class Game {
 		Map.Add_Arch(Station.Pamplona, Station.Paris, Color.Blue, 4);		
 		Map.Add_Arch(Station.Bruxelles, Station.Frankfurt, Color.Blue, 2);
 		Map.Add_Arch(Station.Essen, Station.Berlin, Color.Blue, 2);
-		Map.Add_Arch(Station.Munchen, Station.Venezia, Color.Blue, 2);		
+		Map.Add_Arch(Station.Munchen, Station.Venice, Color.Blue, 2);		
 		Map.Add_Arch(Station.Wien, Station.Warszawa, Color.Blue, 4);
 		Map.Add_Arch(Station.Sofia, Station.Costantinople, Color.Blue, 3);
 		Map.Add_Arch(Station.Wilno, Station.Petrocrad, Color.Blue, 4);
@@ -144,7 +144,7 @@ public class Game {
 
 		// -----GREEN
 		Map.Add_Arch(Station.Pamplona, Station.Barcelona, Color.Green, 2);
-		Map.Add_Arch(Station.Marseille, Station.Roma, Color.Green, 4);
+		Map.Add_Arch(Station.Marseille, Station.Rome, Color.Green, 4);
 		
 		// -----RED
 		Map.Add_Arch(Station.Paris, Station.Zurich, Color.Red, 3);
@@ -157,7 +157,7 @@ public class Game {
 		Map.Add_Arch(Station.London, Station.Amsterdam, Color.Violet, 2);
 		
 		//-----ORANGE
-		Map.Add_Arch(Station.Roma, Station.Palermo, Color.Orange, 4);
+		Map.Add_Arch(Station.Rome, Station.Palermo, Color.Orange, 4);
 		
 	}
 	
@@ -178,6 +178,7 @@ public class Game {
 	{
 		System.out.println(Text);
 	}
+	
 	/**
 	 * Prints a text and goes to a new line
 	 * @param Text	A string to print
@@ -234,10 +235,22 @@ public class Game {
 		 
 		 Game.Print(ANSI_RED + Text + ANSI_RESET);
 		 Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-		 Game.Print("Enter an input");
 		 String result = myObj.nextLine();  // Read user input
 		 return result;
 	}
+	
+	public static String Press_Enter()
+	{
+		 String ANSI_RESET = "\u001B[0m";
+		 String ANSI_RED = "\u001B[31m";
+		 
+		 Game.Print(ANSI_RED + "Press return to continue..." + ANSI_RESET);
+		 Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+		 String result = myObj.nextLine();  // Read user input
+		 return result;
+	}
+	
+	
 	
 	public static void Print_Colored_Text(String Text, int color)
 	{

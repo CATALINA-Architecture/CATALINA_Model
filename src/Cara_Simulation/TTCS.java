@@ -27,6 +27,9 @@ public class TTCS {
 		Answer_Objects.add(Answer_0K); //2 response
 		Answer_Objects.add(Answer_0K); //3 response
 		Answer_Objects.add(Answer_0K); //4 response
+		Answer_Objects.add(Answer_0K); //5 response
+		Answer_Objects.add(Answer_0K); //6 response
+		Answer_Objects.add(Answer_0K); //7 response
 		
 		
 		

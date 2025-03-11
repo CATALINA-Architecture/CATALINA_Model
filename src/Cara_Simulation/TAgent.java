@@ -18,6 +18,9 @@ public class TAgent {
 	private TExecutive_Working_Memory_Maintenance WMM;
 	private TTCS TCS;
 	
+	//for demonstration only
+	public int Working_Cycle = 0;
+	
 	/**
 	 * Constructor class
 	 */
@@ -29,8 +32,76 @@ public class TAgent {
 		this.Reasoner = new TReasoner_Function(this);
 		this.E_Resource_A = new TExecutive_Resource_Allocation(this);
 		this.WMM = new TExecutive_Working_Memory_Maintenance(this);
+		
+		//Insert Executive functions and Reasoner in list of update data
+		this.E_Switching_Function.Insert_in_List_Update_Contract();
+		this.E_Inhibition_function.Insert_in_List_Update_Contract();
+		this.Reasoner.Insert_in_List_Update_Contract();
+		this.E_Resource_A.Insert_in_List_Update_Contract();
 
 		this.Status = TAgent_Status.Not_Active;
+	}
+	
+	public void Initialize_True_Beliefs()
+	{
+		//I initialize the Belief_visited_station I am in
+		ArrayList<TBelief_Base> Beliefs = this.WMM.Get_Beliefs();
+		
+		TBelief_Base Belief_visited_Start= null;
+		TBelief_Base Belief_Current_Station= null;
+		TBelief_Base Belief_Current_Step= null;
+		TBelief_Base Belief_Current_Route= null;
+		TBelief_Base Belief_Current_Time= null;
+		Station A_Station = null;
+		LocalDateTime A_Time = null;
+		for(TBelief_Base Belief: Beliefs )
+		{
+			if((Belief.get_Type_Belief() == TType_Beliefs.Belief_Current_Station) &&
+			   (Belief.get_Predicate().get_Subject() == TType_Subject.Me	))
+			{
+				A_Station = (Station) Belief.get_Predicate().get_Object_Complement();
+				Belief_Current_Station = Belief;
+				
+			}
+			if((Belief.get_Type_Belief() == TType_Beliefs.Belief_Current_Step) &&
+					   (Belief.get_Predicate().get_Subject() == TType_Subject.Me	))
+			{
+				Belief_Current_Step = Belief;
+			}
+			if((Belief.get_Type_Belief() == TType_Beliefs.Belief_Current_Route) &&
+					   (Belief.get_Predicate().get_Subject() == TType_Subject.Me	))
+			{
+				Belief_Current_Route = Belief;
+			}
+			//I get the current time for the Agent
+			if((Belief.get_Type_Belief() == TType_Beliefs.Belief_Current_Time))
+			{
+				Belief_Current_Time = Belief;
+				A_Time = (LocalDateTime) Belief_Current_Time.get_Predicate().get_Object_Complement();
+				
+			}
+		}
+		Belief_Current_Time.set_Time_stamp(A_Time);
+		Belief_Current_Station.set_Time_stamp(A_Time);
+		Belief_Current_Step.set_Time_stamp(A_Time);
+		Belief_Current_Route.set_Time_stamp(A_Time);
+		Belief_Current_Station.set_Truth(true);
+		Belief_Current_Step.set_Truth(true);
+		Belief_Current_Route.set_Truth(true);
+		
+		
+		for(TBelief_Base Belief: Beliefs )
+		{
+			if((Belief.get_Type_Belief() == TType_Beliefs.Belief_Visited_Station) &&
+			   ((Station) Belief.get_Predicate().get_Subject() == A_Station	) &&
+			   (Belief.get_Predicate().get_Object_Complement() == TType_Object_Complement.Me	))
+			{
+				Belief_visited_Start = Belief;
+				Belief_visited_Start.set_Truth(true);
+				Belief_visited_Start.set_Time_stamp(A_Time);
+			}
+		}
+		
 	}
 	
 	/**
@@ -91,8 +162,12 @@ public class TAgent {
 			//this.Read_Epistemic_Goals_From_File();
 			
 			
+			
 			// Create the Belief_Path_Taken_For_Belief linked to Functional Goal
 			this.Create_Belief_Path_Taken_For_Functional_Goal(Init_Creation_Path_Travelled_for_Functional_Goal);
+			
+			//Initialize some true Beliefs
+			this.Initialize_True_Beliefs();			
 	
 			HashMap<String, TPredicate> Map_Predicates = this.WMM.Get_Map_Predicates();
 			
@@ -111,14 +186,7 @@ public class TAgent {
 				belief.set_Predicate(Predicato);
 			}
 			
-			
-			this.GW.Updated_Beliefs_for_print = true;
-			this.GW.Updated_Goals_for_print = true;
-			this.GW.Updated_Desires_for_print = true;
-			this.GW.Updated_Desires_with_options_for_print = true;
-			this.GW.Updated_Intentions_for_print = true;
-			this.GW.Updated_Regions_for_print = true;
-
+			this.Make_True_Any_Information_To_Print();
 			
 			this.GW.Print_Data(1, 0);
 		}
@@ -130,6 +198,16 @@ public class TAgent {
 	      result = false;
 	    }
 		return result;
+	}
+	
+	public void Make_True_Any_Information_To_Print()
+	{
+		this.GW.Updated_Beliefs_for_print = true;
+		this.GW.Updated_Goals_for_print = true;
+		this.GW.Updated_Desires_for_print = true;
+		this.GW.Updated_Desires_with_options_for_print = true;
+		this.GW.Updated_Intentions_for_print = true;
+		this.GW.Updated_Regions_for_print = true;
 	}
 
 	/**
@@ -180,36 +258,36 @@ public class TAgent {
 	{
 		// Agent Initialization
 		
-				
 		Game.Scenario_Number++;
 
-		this.GW.Print_Data(0, 0);
+//		this.GW.Print_Data(0, 0);
 		this.Status = TAgent_Status.Active;
 		Game.Print("Now Agent Status is "+this.Status);
 		boolean Res;
 		boolean Post_OK;
-		int Working_Cycle = 0;
+		Working_Cycle = 0;
 		Game.Print("Agent Work Cycle start...");
 		Game.Print("*************************");
 		Game.PrintLn();
 		while(this.Status == TAgent_Status.Active)
 		{
 			Game.Print("Working Cycle number: "+ Working_Cycle);
-//			Game.Get_Input("Stop before calling Perception_Processing method");
+			Game.Print_Colored_Text("Stop before calling Perception_Processing method", 7);
+			Game.Press_Enter();
 			Res = this.WMM.Perception_Processing(Working_Cycle);
 			// this is for case study only
-			if(Working_Cycle == 9)
+			if(Working_Cycle == 12)
 			{
 				Game.End_Game();				
 			}
 			if(Res)
 			{
 				this.GW.Broadcast();
-//				Game.Get_Input("Stop before calling AM_Exogenous_Module method");
+				
 				Res = this.E_Switching_Function.AM_Exogenous_Module();
 				if( Res && !this.GW.Get_Updated_Desires())
 				{
-//					Game.Get_Input("Stop before calling AM_Endogenous_Module method");
+					
 					Res = this.E_Switching_Function.AM_Endogenous_Module();
 //					if( Res )
 //						GW.Broadcast();
@@ -217,25 +295,25 @@ public class TAgent {
 				if( Res )
 				{
 					GW.Broadcast();
-//					Game.Get_Input("Stop before calling MeansEnd method");
+					
 					Res = this.Reasoner.MeansEnd();
 					if( Res )
 					{
 						GW.Broadcast();
-//						Game.Get_Input("Stop before calling Deliberate_Process method");
+						
 						Res = this.Reasoner.Deliberate_Process();
 						if( Res )
 						{
 							GW.Broadcast();
-//							Game.Get_Input("Stop before calling Focus_Attention method");
+							
 							Res = this.E_Inhibition_function.Focus_Attention();
 							if( Res )
 							{
 								GW.Broadcast();
-//								Game.Get_Input("Stop before calling Plan_Advanc_Eval method");
+								
 								Post_OK = this.E_Resource_A.Plan_Advanc_Eval();
 								Working_Cycle++;
-								Game.Get_Input("Stop before starting again...");
+								Game.Print_Colored_Text("Stop before starting again...", 7);
 							}
 						}
 					}
@@ -334,9 +412,10 @@ public class TAgent {
 			{
 				if (Functional_Goal.get_Final_State().get_Type_Belief() == TType_Beliefs.Belief_Destination_Station)
 				{
+					//
 					TPredicate Predicate = this.GW.Create_Predicate(Functional_Goal.get_Name(), TType_Relationship.has_traveled,
-							new ArrayList<Route>());
-					LocalDateTime now = LocalDateTime.now();
+							new ArrayList<Integer>());
+					LocalDateTime now = null;//LocalDateTime.now();
 
 					//With Rosental...
 					TBelief_Base Belief = this.Get_GW().Create_Beliefs(Predicate, true, TType_Subject.Me, now, 

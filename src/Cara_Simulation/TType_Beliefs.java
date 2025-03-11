@@ -19,10 +19,12 @@ public enum TType_Beliefs {
 	Belief_Closed_Route,				//[ArrayList<Station>, is_Closed, null));
 	Belief_Busy_Route,					//[ArrayList<Station>, is_Busy, ArrayList<integer> round number));
 	Belief_Route_Status,				//this is a belief of status of a Route [int Route, is, TType_Route_Status]
-	Belief_Visited_Station,				//[Station, visited_by, [Player, TimeStamp]]
+	Belief_Visited_Station,				//[Station, visited_by, TType_Object_Complement]
 	
 	Belief_Map,
-	Belief_Path_Taken_For_Belief,     	//[String Functional_Goal_name, has_traveled, [ArrayList<TDouble>, ArrayList<TimeStamp>]: 
+	Belief_Path_Taken_For_Belief,     	//[String Functional_Goal_name, has_traveled, ArrayList<int Route>]:
+										//In Next versione it will be:
+										//[String Functional_Goal_name, has_traveled, [ArrayList<TDouble>, ArrayList<TimeStamp>]:
 										//TDouble as 2 object: 1-a Route; 2-a LocalDateTime
 	
 	Belief_Number_Players, 			    //[String "Number Players", is, integer all player number, Agent included]

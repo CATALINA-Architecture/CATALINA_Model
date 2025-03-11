@@ -105,6 +105,11 @@ public class TReasoner_Function {
 		this.Updated_Intentions = true;
 		this.Updated_Beliefs = true;
 		
+		
+	}
+	
+	public void Insert_in_List_Update_Contract()
+	{
 		this.Agent.Get_GW().Insert_for_Update_Contract(TType_Update_Contract.Desires, this);
 		this.Agent.Get_GW().Insert_for_Update_Contract(TType_Update_Contract.Desires_with_Option, this);
 	}
@@ -119,10 +124,14 @@ public class TReasoner_Function {
 		boolean result = true;
 		try 
 		{
+			
 			if(this.Updated_Desires)
 			{
 				this.Updated_Desires = false;
-			
+				
+				Game.Print_Colored_Text("Stop before calling MeansEnd method", 7);
+				Game.Press_Enter();
+					
 				///the following lines of code are to use the iterator way in the Start Agent method
 				//I get beliefs from Long Memory to send to Reasoner
 				ArrayList<TDesire> Desires = this.Agent.Get_GW().Get_Desires();
@@ -143,11 +152,12 @@ public class TReasoner_Function {
 				//In this time, I order goals to saliency order in higher order and In deliberation process
 				//For our purpose, I select the first desire as selected intention.
 				//So:
-				this.Agent.Get_GW().Print_Data(0, 0);
+				this.Agent.Get_GW().Print_Data(2, 0);
 				
 				Collections.sort(Desires, new TDesire_Compare());
 				
-				Game.Print("Using its Meand-End Reasoner, the agent tries to find some options for any desire.");
+				Game.Print("Using my Meand-End reasoner, I try to find some options for each desire.");
+				Game.PrintLn();
 				int Des_Num = 0;
 				
 				boolean Created_Desires = false;
@@ -171,7 +181,8 @@ public class TReasoner_Function {
 						if (Goal instanceof TFunctional_Goal) 
 						{
 							Game.Print("********* --------------- *************");
-							Game.Print("For the Desire --"+Des_Num+"-- The Attentional Goal is a:  TFunctional_Goal");
+							Game.PrintLn();
+							Game.Print(Des_Num+" - For the Desire --"+Desire.Get_Name()+"-- The Attentional Goal is a:  TFunctional_Goal");
 							TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
 							TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
 							switch(Functional_Belief.get_Type_Belief())
@@ -185,9 +196,10 @@ public class TReasoner_Function {
 									Game.Print("Its Final belief type is: Belief_Destination_Station");
 //									Game.Get_Input("Stop before calling Means_End_For_Belief_Destination_Station method");
 									Means_End_For_Belief_Destination_Station(Desire, Beliefs);
+									Game.PrintLn();
 									break;
 								default:
-									Game.Print("I cannot to handle the Type of Belief: "+Functional_Belief.get_Type_Belief());
+									Game.Print("For Means-End Reasoner, I cannot to handle the Type of Functional Belief: "+Functional_Belief.get_Type_Belief());
 									Game.End_Game();
 							}		
 			
@@ -197,11 +209,12 @@ public class TReasoner_Function {
 						//TO DO DEVELOPMENT
 						else if (Goal instanceof TEpistemic_Goal) 
 						{
-							Game.Print("For the Desire --"+Des_Num+"-- The Attentional Goal is a:  TEpistemic_Goal");
+							Game.Print("********* --------------- *************");
+							Game.PrintLn();
+							Game.Print(Des_Num+" - For the Desire --"+Desire.Get_Name()+"-- The Attentional Goal is a:  TEpistemic_Goal");
 							TEpistemic_Goal Epistemic_Goal = (TEpistemic_Goal) Goal;
 							TBelief_Base Epistemic_Belief = Epistemic_Goal.get_Belief();
-							Game.Print("-- Type of Epistemic Belief: : "+Epistemic_Belief.get_Type_Belief());
-//							Game.End_Game();
+//							Game.Print("-- Type of Epistemic Belief: : "+Epistemic_Belief.get_Type_Belief());
 							switch(Epistemic_Belief.get_Type_Belief())
 							{
 									///
@@ -215,13 +228,15 @@ public class TReasoner_Function {
 //									break;
 									
 								case TType_Beliefs.Stimulus_Route_Status:
-									Game.Get_Input("Stop before calling Means_End_For_Stimulus_Status_Route method");
-									this.Means_End_For_Stimulus_Status_Route(Desire, Beliefs);
 									
+									Game.Print_Colored_Text("Stop before calling Means_End_For_Stimulus_Status_Route method", 7);
+									Game.Press_Enter();
+									this.Means_End_For_Stimulus_Status_Route(Desire, Beliefs);
+									Game.PrintLn();									
 									///
 									break;
 								default:
-									Game.Print("I cannot to handle the Type of Epistemic Salient Belief: "+Epistemic_Belief.get_Type_Belief());
+									Game.Print("For Means-End Reasoner, I cannot to handle the Type of Epistemic Salient Belief: "+Epistemic_Belief.get_Type_Belief());
 									Game.End_Game();
 							}		
 						}
@@ -230,8 +245,9 @@ public class TReasoner_Function {
 				}
 				if(Created_Desires)
 				{
-					Game.Print("Now Agent will filter any desire.");
-					Game.Get_Input("Stop before calling Filtering_Process method");
+					Game.Print("Now I will filter any desire.");
+					Game.Print_Colored_Text("Stop before calling Filtering_Process method", 7);
+					Game.Press_Enter();
 					this.Filtering_Process(Desires);	
 					
 				}
@@ -261,8 +277,19 @@ public class TReasoner_Function {
 			if(this.Updated_Desires_with_Options)
 			{
 				this.Updated_Desires_with_Options = false;
-				this.Agent.Get_GW().Print_Data(0, 0);
+				Game.Print_Colored_Text("Stop before calling Deliberate_Process method", 7);
+				Game.Press_Enter();
 				
+				this.Agent.Get_GW().Print_Data(2, 0);
+				
+				
+				ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
+				Beliefs.addAll(this.Agent.Get_GW().Get_UnInhibited_Beliefs());
+				//When the Agent is not focused UnInhibited_Beliefs is empty so I have to get any beliefs
+				if(Beliefs.isEmpty())
+				{
+					Beliefs.addAll(this.Agent.Get_GW().Get_Beliefs());
+				}
 				
 				ArrayList<TIntention> New_Intentions = new ArrayList<TIntention>();
 				ArrayList<TIntention> Intentions = this.Agent.Get_GW().Get_Intentions();
@@ -278,22 +305,173 @@ public class TReasoner_Function {
 				ArrayList<TDesire> Desires =  this.Agent.Get_GW().Get_Desires();
 				Desires_To_Promote.addAll(Desires);
 				Desires_To_Promote.removeAll(Desires_in_Intentions);
-				
-				Game.Print("Now, Agent create an intention for any desire");
+				Game.Print("For each Desire, I select an option (if it exists) and I decide whether a Desire can become an intention to pursue.");
 				for(TDesire Desire: Desires_To_Promote)
 				{
-					// I create an Intention for any Desire and the first option of this Desire is the Option
-					// selected to pursue
-					TIntention An_Intention = new TIntention(Desire, 0);
+					
+					// I Deliberate an option (if it exists ad I create an Intention for any Desire and the first option of this Desire is the Option
+					// selected to pursue (for our purpose)
+					//If
+					if(Desire.get_Attentional_Goal() instanceof TFunctional_Goal)
+					{
+						TFunctional_Goal Functional_Goal = (TFunctional_Goal) Desire.get_Attentional_Goal();
+						
+						switch(Functional_Goal.get_Final_State().get_Type_Belief())
+						{
+						case TType_Beliefs.Belief_Destination_Station:
+							this.Deliberate_for_Belief_Destination_Station(Desire, Beliefs);	
+							break;
+						default:
+							//Other cases to handle 
+							Game.Print("I have to handle other cases to deliberate this Desire");
+							Game.End_Game();
+						}
+											
+					}
+					else
+					{
+						TEpistemic_Goal Epistemic_Goal = (TEpistemic_Goal) Desire.get_Attentional_Goal();
+						
+						switch(Epistemic_Goal.get_Belief().get_Type_Belief())
+						{
+						case TType_Beliefs.Stimulus_Route_Status:
+							
+							break;
+						default:
+							//Other cases to handle 
+							Game.Print("I have to handle other cases to deliberate this Desire");
+							Game.End_Game();
+						}
+					}
+					
+					
+					int Intention_Number = this.Agent.Get_GW().Get_Inc_Intention_Number() + 1;
+					String Intention_Name = "I"+Intention_Number;
+					TIntention An_Intention = new TIntention(Intention_Name, Desire, 0);
 					New_Intentions.add(An_Intention);
+					this.Agent.Get_GW().Inc_Intention_Number();
+					Game.Print("I create the Intention: "+An_Intention.Get_Name()+ " for the Desire: "+Desire.Get_Name());
 					Game.Print("Desire Attentional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
-					Game.Print("Desire Options: " + Desire.get_Option_List().size());
+					Game.Print("N. Desire Options: " + Desire.get_Option_List().size());
 					Game.PrintLn();
 				}
 				this.Agent.Get_GW().Update_Intentions(New_Intentions);
-				Game.Print("The Agent updated its intentions correctly.");
+				Game.Print("I updated my intentions correctly.");
 				
 				this.Agent.Get_GW().Print_Data(1, 0);
+			}
+		}
+		catch (Exception e) {
+	      Game.Print("Something went wrongin method: Insert_New_Desires.");
+	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
+	      result = false;
+	    }
+		return result;
+	}
+	
+	protected boolean Deliberate_for_Belief_Destination_Station(TDesire Desire, ArrayList<TBelief_Base> Beliefs)
+	{
+		boolean result = true;
+		try 
+		{
+			TAttentional_Goal Goal = Desire.get_Attentional_Goal();
+			TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
+			TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
+	
+			int i=0;
+			
+			LocalDateTime Current_Time = null;
+					while (i< Beliefs.size())
+					{
+						TBelief_Base Temp_Belief = Beliefs.get(i);
+						// Agent must to understand in which station it is
+						if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_Time) 
+						{
+							Current_Time = (LocalDateTime) Temp_Belief.get_Predicate().get_Object_Complement();
+							break;
+						}
+						i++;
+					}
+			
+			
+			LocalDateTime Start_Time = Functional_Goal.Get_Finally_Start();
+			LocalDateTime End_Time = Functional_Goal.Get_Finally_End();
+			
+			i = 0;
+			
+			ArrayList<TOption> option_List =  new ArrayList<TOption>();
+			ArrayList<TAction> plans = new ArrayList<TAction>();
+			Boolean Print_PAth = true;
+			Game.PrintLn();
+			Game.Print("Now, I have to deliberate for an option (if it exists) for the Desire: "+Desire.Get_Name());
+			Game.Print("Linked to Functional Goal : "+Goal.get_Name());
+			Game.Print("For each action plan for optios, I insert any actions to do (go to in some routes) in the desire.");
+
+			option_List = Desire.get_Option_List();
+			
+			i=0;
+			if (option_List.size()>0)
+			{
+				Game.Print("For this Desire, I have found n. options: "+option_List.size());
+				Game.Print("and I deliberate the following Selected Path:");
+				//         ///////////FirsOp    Actions    Action[0]
+				//Game.Print(option_List.get(0).get_Plan_Actions().getFirst().Get_Params());
+				
+				// Print Data PAth
+				Plan Path = option_List.get(0).Path;
+				int Minute_of_Hours = Path.Path_Time.intValue();
+				int Minutes = (int)((Path.Path_Time-Minute_of_Hours)*60) + Minute_of_Hours*60;
+				LocalDateTime Temp_Time = Current_Time.plusMinutes(Minutes);
+				
+				//if(this.Agent.Get_GW().Print_Selected_Path)
+				if(true)
+				{
+					Game.PrintLn();
+					Game.Print_Colored_Text("******************** Selected Path **********************: TReasoner_Function", 3);
+					Game.Print("********* PAth: "+i);	
+				
+					Game.Print("Stations: "+Path.Destinations);
+					Game.Print("Routes Numbers: "+Path.Routes);
+					Game.Print("Agent Start Time: "+Current_Time+ " - Finally Operator Data: Start_Interval: "+Start_Time+ " - End_Interval: "+End_Time);
+					Game.Print("Panorama average: "+Path.Total_Weights.get(TType_Quality_Goal.TGQ_Panorama));
+					Game.Print("Locomotive average ( CO2/Route ): "+Path.Total_Weights.get(TType_Quality_Goal.TGQ_Locomotive));
+					Game.Print("Speed average: "+Path.Total_Weights.get(TType_Quality_Goal.TGQ_Velocity));
+					
+					Game.Print("Path Time: "+Path.Path_Time+" - Arrive time: "+Temp_Time);
+					
+					Game.Print("Path Data:");
+					Game.Print("----------------------------");
+				}
+				for (int ind: Path.Routes)
+				{
+					Route rotta = this.Agent.Get_WMM().Get_Map().Get_Route(ind);
+					if(this.Agent.Get_GW().Print_Selected_Path)
+					{
+//						Game.Print("Route Number: "+rotta.Route_Number + " - Route_Time: "+rotta.Get_Path_Time());
+						Game.Print_Colored_Text("Route Number: "+rotta.Route_Number + " - Route_Time: "+rotta.Get_Path_Time(),3);
+						Game.Print("Route Color: "+rotta.Get_Color());
+						Game.Print("Total Rounds Route: "+rotta.Get_Total_Rounds());
+						Game.Print("Departure/Destination: "+ rotta.Get_Departure()+"-"+rotta.Get_Destination()+
+								" - Locomotive: "+rotta.Get_Locomotive() + " - Panorama: "+rotta.Get_Panorama_()+
+								" - Speed: "+rotta.Get_Velocita()+ " - N.pieces: "+rotta.Get_Steps_Number());
+						Game.Print("Step Number: "+rotta.Get_Steps_Number());
+						Game.Print("Locomotive value: "+rotta.Get_Locomotive().Get_Value(rotta.Get_Locomotive()));
+						Game.Print("Locomotive Route value: "+rotta.Get_Route_Locomotive());
+						Game.Print("Panorama value: "+rotta.Get_Panorama_().Get_Value(rotta.Get_Panorama_()));
+						Game.Print("Speed value: "+rotta.Get_Velocita().Get_Value(rotta.Get_Velocita()));
+						Game.Print("**********************");
+					}
+				}
+			}
+			else //Agent cannot deliberate, it hasn't any option
+			{
+				// It means that agent cannot to go in its destination because it hasn't a plan to pursue
+				// In this case the agent stop this goal and desire and continue to iterate its goals in
+				// AM_Endogenous_Module
+				Game.Print("I have not found any option. I cannot deliberate. I will have an intention without option.");
+	
 			}
 		}
 		catch (Exception e) {
@@ -320,8 +498,8 @@ public class TReasoner_Function {
 		boolean result = true;
 		try 
 		{
-			Game.Print("Agent uses its Means_End_For_Belief_Destination_Station method to search some options");
-			this.Agent.Get_GW().Print_Data(0, 0);
+			Game.Print("I use my Means_End_For_Belief_Destination_Station method to search some options");
+			this.Agent.Get_GW().Print_Data(2, 0);
 			
 			TAttentional_Goal Goal = Desire.get_Attentional_Goal();
 			TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
@@ -383,7 +561,7 @@ public class TReasoner_Function {
 			/////// I apply the Finally Operator
 			
 			Game.Print("I found n. paths Before Finally_Formula: " + Paths.size());
-			Game.Print("I Apply the Finally Operator");
+			Game.Print("I apply the Finally Operator");
 			Paths = Finally_Operator(Paths, Current_Time, Start_Time, End_Time );
 			Game.Print("I found n. paths After Finally_Formula: " + Paths.size());
 
@@ -392,7 +570,7 @@ public class TReasoner_Function {
 			ArrayList<TOption> option_List =  new ArrayList<TOption>();
 			ArrayList<TAction> plans = new ArrayList<TAction>();
 			Boolean Print_PAth = true;
-			Game.Print("Agent inserts actions to do (go to in some routes) in the desire. These can be null.");
+			Game.Print("For each action plan for optios, I insert any actions to do (go to in some routes) in the desire.");
 			Environment Map = this.Agent.Get_GW().Get_Map_Known();
 			//For any path
 			if(this.Agent.Get_GW().Print_steps_and_routes)
@@ -519,69 +697,13 @@ public class TReasoner_Function {
 				option_List.add(An_Option);
 			
 				i++;
+				Game.Print("....................................");
 			}
 			
 			Desire.set_Option_List(option_List);
+			Game.PrintLn();
 			Game.Print("N. Options found : "+option_List.size());
-			i=0;
-			if (option_List.size()>0)
-			{
-				
-				Game.Print("Agent found at least an option and it can deliberate");
-				//         ///////////FirsOp    Actions    Action[0]
-				//Game.Print(option_List.get(0).get_Plan_Actions().getFirst().Get_Params());
-				
-				// Print Data PAth
-				Plan Path = option_List.get(0).Path;
-				int Minute_of_Hours = Path.Path_Time.intValue();
-				int Minutes = (int)((Path.Path_Time-Minute_of_Hours)*60) + Minute_of_Hours*60;
-				LocalDateTime Temp_Time = Current_Time.plusMinutes(Minutes);
-				
-				if(this.Agent.Get_GW().Print_Selected_Path)
-				{
-					Game.Print("******************** Selected Path **********************: TReasoner_Function");
-					Game.Print("********* PAth: "+i);	
-				
-					Game.Print("Stations: "+Path.Destinations);
-					Game.Print("Routes Numbers: "+Path.Routes);
-					Game.Print("Agent Start Time: "+Current_Time+ " - Finally Operator Data: Start_Interval: "+Start_Time+ " - End_Interval: "+End_Time);
-					Game.Print("Panorama average: "+Path.Total_Weights.get(TType_Quality_Goal.TGQ_Panorama));
-					Game.Print("Locomotive average ( CO2/Route ): "+Path.Total_Weights.get(TType_Quality_Goal.TGQ_Locomotive));
-					Game.Print("Speed average: "+Path.Total_Weights.get(TType_Quality_Goal.TGQ_Velocity));
-					
-					Game.Print("Path Time: "+Path.Path_Time+" - Arrive time: "+Temp_Time);
-					
-					Game.Print("Path Data:");
-					Game.Print("----------------------------");
-				}
-				for (int ind: Path.Routes)
-				{
-					Route rotta = this.Agent.Get_WMM().Get_Map().Get_Route(ind);
-					if(this.Agent.Get_GW().Print_Selected_Path)
-					{
-						Game.Print("Route Number: "+rotta.Route_Number + " - Route_Time: "+rotta.Get_Path_Time());
-						Game.Print("Route Color: "+rotta.Get_Color());
-						Game.Print("Total Rounds Route: "+rotta.Get_Total_Rounds());
-						Game.Print("Departure/Destination: "+ rotta.Get_Departure()+"-"+rotta.Get_Destination()+
-								" - Locomotive: "+rotta.Get_Locomotive() + " - Panorama: "+rotta.Get_Panorama_()+
-								" - Speed: "+rotta.Get_Velocita()+ " - N.pieces: "+rotta.Get_Steps_Number());
-						Game.Print("Step Number: "+rotta.Get_Steps_Number());
-						Game.Print("Locomotive value: "+rotta.Get_Locomotive().Get_Value(rotta.Get_Locomotive()));
-						Game.Print("Locomotive Route value: "+rotta.Get_Route_Locomotive());
-						Game.Print("Panorama value: "+rotta.Get_Panorama_().Get_Value(rotta.Get_Panorama_()));
-						Game.Print("Speed value: "+rotta.Get_Velocita().Get_Value(rotta.Get_Velocita()));
-						Game.Print("**********************");
-					}
-				}
-			}
-			else //Agent cannot deliberate, it hasn't any option
-			{
-				// It means that agent cannot to go in its destination because it hasn't a plan to pursue
-				// In this case the agent stop this goal and desire and continue to iterate its goals in
-				// AM_Endogenous_Module
-				Game.Print("Agent has not an option. Agent will have an intention with no option.");
 
-			}
 			this.Agent.Get_GW().Print_Data(1, 0);
 	}
 	catch (Exception e) {
@@ -599,13 +721,13 @@ public class TReasoner_Function {
 		boolean result = true;
 		try
 		{
-			this.Agent.Get_GW().Print_Data(0, 0);
+			this.Agent.Get_GW().Print_Data(2, 0);
 			for(TDesire Desire: desires)
 			{
 				TAttentional_Goal Attentional_Goal = Desire.get_Attentional_Goal();
 				if (Attentional_Goal instanceof TFunctional_Goal)
 				{
-					Game.Print("Agent filters the options of the Desire with name: "+Desire.Get_Name());
+					Game.Print("I filter the options of the Desire with name: "+Desire.Get_Name());
 //					TAttentional_Goal Goal = Desire.get_Attentional_Goal();
 					TFunctional_Goal Functional_Goal = (TFunctional_Goal) Attentional_Goal;
 					TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
@@ -619,11 +741,13 @@ public class TReasoner_Function {
 					
 					Instant start = Instant.now();
 					/////// I apply Green Goal Filters
-					Game.Print("N. Green Goal for this desire: " +Functional_Goal.get_List_Green_Goal().size());
+					Game.Print("N. Green Goal for this Desire: " +Functional_Goal.get_List_Green_Goal().size());
 					if(Functional_Goal.get_List_Green_Goal().size()>0)
 					{
 						for(int i=0; i<Functional_Goal.get_List_Green_Goal().size(); i++)
 						{
+							Game.Print("I apply the Green Goal: "+Functional_Goal.get_List_Green_Goal().get(i).get_Name());
+							Game.Print("with its Constraint Predicate Name: "+Functional_Goal.get_List_Green_Goal().get(i).get_Constraint_Name());
 							Filtered_Options = Green_Filter(Desire.get_Option_List(), Functional_Goal.get_List_Green_Goal().get(i));
 							Desire.set_Option_List(Filtered_Options);
 						}
@@ -639,6 +763,8 @@ public class TReasoner_Function {
 					{
 						for(int i=0; i<Functional_Goal.get_List_Quality_Goal().size(); i++)
 						{
+							Game.Print("I apply the Quality Goal: "+Functional_Goal.get_List_Quality_Goal().get(i).get_Name());
+							Game.Print("with its Constraint Predicate Name: "+Functional_Goal.get_List_Quality_Goal().get(i).get_Constraint_Name());
 							Filtered_Options = Quality_Filter(Desire.get_Option_List(), Functional_Goal.get_List_Quality_Goal().get(i));
 							Desire.set_Option_List(Filtered_Options);
 						}
@@ -652,6 +778,8 @@ public class TReasoner_Function {
 					Game.Print("N. Survival Options of the Desire: " + Desire.get_Option_List().size());
 					Game.Print("I filtered and ordered found options ( "+Filtered_Options.size()+" ) in Time: "+ 
 					timeElapsed.toMillis() +" milliseconds");
+					Game.Print("...............");
+					Game.PrintLn();
 				}
 				else
 				//The Attentional Goal is an Epistemic Goal
@@ -823,7 +951,29 @@ public class TReasoner_Function {
 			
 			break;
 		case TType_Quality_Goal.TGQ_Velocity:
-			
+			switch (Value_Quality_Goal)
+			{
+			case "moderate":
+				Collections.sort(Options, new TQuality_Panorama_Compare());
+//				int start =0;
+//				int end =0;	
+//				//If the size list is > of 2 elements so I divide the list in 3 groups 
+//				//Otherwise, I get the first element,
+//				//	because "end" value is equal to 0 at this moment
+//				if(Options.size()>2)
+//				{
+//					end = (int) Options.size()/3;
+//				}
+//				int i=0;
+//				for(int i=0;i<Options.size();i++)
+//				{
+//					New_Options.add(Options.get(i));
+//				}
+				New_Options.add(Options.get(Options.size()/2));
+				break;			
+			default:
+				Game.Print("I cannot handle Quality_Goal Complement_Objecy: "+Quality_Goal.get_Constraint().get_Object_Complement());
+			}
 			break;
 		default:
 			Game.Print("I cannot handle Quality_Goal Type: "+Quality_Goal.get_Type_Quality_Goal());
@@ -865,7 +1015,7 @@ public class TReasoner_Function {
 			Desire.set_Option_List(option_List);
 			Game.Print("option_List size: "+option_List.size()+ ", of course...");
 			
-			TIntention Selected_Intention = new TIntention(Desire, 0);
+			TIntention Selected_Intention = new TIntention("",Desire, 0);
 			ArrayList<TIntention> Intentions = new ArrayList<TIntention>();
 			Intentions.add(Selected_Intention);
 			
@@ -909,8 +1059,8 @@ public class TReasoner_Function {
 		boolean result = true;
 		try 
 		{
-			Game.Print("Agent uses its specific method ( Means_End_For_Belief_Destination_Station) to get the route status");
-			this.Agent.Get_GW().Print_Data(0, 0);
+			Game.Print("I use my specific method ( Means_End_For_Stimulus_Status_Route ) to get the route status");
+			this.Agent.Get_GW().Print_Data(2, 0);
 			
 			TAttentional_Goal Goal = Desire.get_Attentional_Goal();
 			TEpistemic_Goal Epistemic_Goal = (TEpistemic_Goal) Goal;

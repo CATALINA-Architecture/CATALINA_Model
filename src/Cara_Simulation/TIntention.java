@@ -6,8 +6,9 @@ public class TIntention {
 	private Integer Seleted_Option_Id;
 	private String Name;
 	
-	public TIntention(TDesire desire, Integer seleted_Option_Id )
+	public TIntention(String name, TDesire desire, Integer seleted_Option_Id )
 	{
+		this.Name = name;
 		this.Desire = desire;
 		this.Seleted_Option_Id = seleted_Option_Id;
 	}

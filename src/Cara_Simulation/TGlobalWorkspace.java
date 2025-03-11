@@ -259,9 +259,19 @@ public class TGlobalWorkspace {
 	//TODO to check
 	public ArrayList<TFunctional_Goal> Get_Functional_Goals()
 	{
+		if (Goals.size()==0)
+			this.Get_Goals();
 		if (this.Functional_Goals.isEmpty())
 		{
 			this.Functional_Goals.addAll(this.Agent.Get_WMM().Get_Functional_Goals());
+		}
+		//For this demonstration
+		//This is useful only for the first time after the Agent is initialized, 
+		if (this.Agent.Working_Cycle == 0)
+		{
+			this.Get_Epistemic_Goals(); 
+			if (Goals.size()==0)
+				this.Get_Goals();
 		}
 		return this.Functional_Goals;
 	}
@@ -524,6 +534,7 @@ public class TGlobalWorkspace {
 		this.UnInhibition_Regions.Destinations.removeAll(inhibition_Regions.Destinations);
 		
 		this.Updated_UnInhibited_Regions = true;
+		this.Updated_Regions_for_print = true;		
 	}
 	
 	// TODO DEVELOPMENT
@@ -543,8 +554,15 @@ public class TGlobalWorkspace {
 			}
 			this.UnInhibited_Goals.removeAll(Inhibited_Goals);
 
-			this.Updated_Goals = true;			
+			this.Updated_Goals = true;
+			this.Updated_Goals_for_print = true;
 		}
+		
+	public void Update_Goals()
+	{
+		this.Updated_Goals = true;
+		this.Updated_Goals_for_print = true;
+	}
 		
 		
 	// TODO DEVELOPMENT
@@ -569,6 +587,7 @@ public class TGlobalWorkspace {
 		this.UnInhibited_Beliefs.removeAll(inhibited_Beliefs);
 		
 		this.Updated_Beliefs = true;
+		this.Updated_Beliefs_for_print = true;
 	}
 	
 	//From Reasoner Function: Update Intention
@@ -615,7 +634,7 @@ public class TGlobalWorkspace {
 			//In this time, I order goals to saliency order in higher order and In deliberation process
 			//I select the first desire as selected intention
 			
-			this.Agent.Get_GW().Print_Data(0, 0);
+//			this.Agent.Get_GW().Print_Data(0, 0);
 	
 			this.Desires.addAll(desires);
 			this.Add_Desire_Number(desires.size());
@@ -623,36 +642,27 @@ public class TGlobalWorkspace {
 			this.Updated_Desires = true;
 			this.Updated_Desires_for_print = true;
 			
-			
-			Game.Print("I inserted new Desires: "+desires.size());
-			
-//			//I get beliefs from Long Memory to send to Reasoner
-//			if(Beliefs.isEmpty())
-//			{
-//				this.Beliefs.addAll(this.Agent.Get_WMM().Get_Beliefs());
-//			}
-//			
-//			ArrayList<TBelief_Base> Temp_Beliefs = new ArrayList<TBelief_Base>();
-//			//for first time or any time the UnInhibited_Beliefs is empty
-//			if(this.UnInhibited_Beliefs.isEmpty())
-//			{
-//				Temp_Beliefs.addAll(this.Beliefs);
-//			}
-//			//for all other cases
-//			else
-//			{
-//				Temp_Beliefs.addAll(this.UnInhibited_Beliefs);
-//			}
-	
-			
-			this.Agent.Get_GW().Print_Data(1, 0);
-			
-			
-			//I send Desires and Beliefs to Reasoner for deliberation
-//			ArrayList<TDesire> Desires_to_Delete = this.Agent.get_Reasoner().Deliberate(this.Desires, Temp_Beliefs, this.Selected_Intentions);
-			
-			// 2025.02.03
-			//this.Desires.removeAll(Desires_to_Delete);
+			Game.PrintLn();
+			Game.Print("Number of New Desires I've created: "+desires.size());
+			int i=0;
+			for(TDesire Desire: desires)
+			{
+				i++;
+				if(Desire.get_Attentional_Goal() instanceof TFunctional_Goal)
+				{
+					TFunctional_Goal Goal = (TFunctional_Goal) Desire.get_Attentional_Goal();
+					Game.Print(i+" - I inserted the Desire: "+Desire.Get_Name()+ " - related Functional Goal Name: "+
+							Desire.get_Attentional_Goal().get_Name()+ " - related Belief type: "+Goal.get_Final_State().get_Type_Belief());
+				}
+				else
+				{
+					TEpistemic_Goal Goal = (TEpistemic_Goal) Desire.get_Attentional_Goal();
+					Game.Print(i+" - I inserted the Desire: "+Desire.Get_Name()+ " - related Epistemic Goal Name: "+
+							Desire.get_Attentional_Goal().get_Name()+ " - related Belief type: "+Goal.get_Belief().get_Type_Belief());
+				}
+			}
+
+//			this.Agent.Get_GW().Print_Data(1, 0);
 		}
 		catch (Exception e) {
 			Game.Print("Something went wrong in method: Insert_New_Desires.");
@@ -934,6 +944,22 @@ public class TGlobalWorkspace {
 		return Belief;
 	}
 	
+	public TBelief_Base Get_Belief_From_Type_Belief_and_Subject(TType_Beliefs Type_Beliefs, 
+			Object Subject)
+	{
+		TBelief_Base Belief = null;
+		for(TBelief_Base Temp_Belief: this.Agent.Get_WMM().Get_Beliefs())
+		{
+			if(Temp_Belief.get_Type_Belief() == Type_Beliefs && 
+					Temp_Belief.get_Predicate().get_Subject() == Subject)
+			{
+				Belief = Temp_Belief;
+			}
+		}
+	
+		return Belief;
+	}
+	
 	public void Update_Belief_by_Stimulus(TSalient_Belief Salient_Belief)
 	{
 //		Game.Scenario_Number++;
@@ -1020,19 +1046,22 @@ public class TGlobalWorkspace {
 		int index=Class_Name.indexOf(".");
 		Class_Name=Class_Name.substring(index+1);
 		Game.PrintLn();
-		Game.Print("************  Method:  "+Function_Name+" *********: "+Class_Name);
+		Game.Print_Colored_Text("************  Method:  "+Function_Name+" *********: "+Class_Name, 5);
 		Game.Print_Scenario();
 		switch(Start)
 		{
 		case 0://Start of the method
-			Game.Print("Data changed at the BEGINNING of the method:");
+			Game.Print_Colored_Text("Data changed at the BEGINNING of the method:",7);
 			break;
 		case 1://End of the method
-			Game.Print("Data changed at the END of the method:");
+			Game.Print_Colored_Text("Data changed at the END of the method:",6);
 			break;
 		case 2://Continue in work flow of the method
-			Game.Print("Data changed in Continuing the method workflow:");
-			break;
+//			Game.Print_Colored_Text("Operations and Data changed in Continuing the method workflow:",7);
+			Game.Print_Colored_Text("Work flow in Method:",7);
+			Game.PrintLn();
+			return ;
+//			break;
 		}
 		Game.PrintLn();
 
@@ -1049,7 +1078,10 @@ public class TGlobalWorkspace {
 				Game.Print("UnInhibited Belief Types:");
 				for(TBelief_Base Belief: this.UnInhibited_Beliefs)
 				{
-					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" - "+Belief.get_Predicate().get_Subject());//+
+					TPredicate Temp_Predicate = Belief.get_Predicate();
+					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" -  Truth: "+Belief.is_Truth()+ "   -   "+
+							"Predicate Name and data, "+Temp_Predicate.get_Name()+": "+Temp_Predicate.get_Subject()+ " "+ Temp_Predicate.get_Relationship()+
+							" "+Temp_Predicate.get_Object_Complement());
 //					" "+Belief.get_Predicate().get_Relationship()+ " "+Belief.get_Predicate().get_Object_Complement());
 				}
 				Game.PrintLn();
@@ -1057,25 +1089,28 @@ public class TGlobalWorkspace {
 
 			Game.Print("Beliefs in LONG MEMORY:");
 			Game.Print("N. Belief in LONG MEMORY: "+this.Agent.Get_WMM().Get_Beliefs().size());
-			if (Synthesis==1)
+			if (Synthesis==7)//Synthesis is never 7
 			{
 				Game.Print("Beliefs Types:");
 				for(TBelief_Base Belief: this.Agent.Get_WMM().Get_Beliefs())
 				{
-					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" - "+Belief.get_Predicate().get_Subject());//+
-//					" "+Belief.get_Predicate().get_Relationship()+ " "+Belief.get_Predicate().get_Object_Complement());
+					TPredicate Temp_Predicate = Belief.get_Predicate();
+					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" -  Truth: "+Belief.is_Truth()+ "   -   "+
+							"Predicate Name and data, "+Temp_Predicate.get_Name()+": "+Temp_Predicate.get_Subject()+ " "+ Temp_Predicate.get_Relationship()+
+							" "+Temp_Predicate.get_Object_Complement());
 				}
 				Game.PrintLn();
 			}
 			Game.Print("N. Inhibited Beliefs in LONG MEMORY: "+this.Agent.Get_WMM().Get_Inhibited_Beliefs().size());
-			if (Synthesis==1)
+			if (Synthesis==7)//Synthesis is never 7
 			{
 				Game.Print("Inhibited Beliefs Types:");
 				for(TBelief_Base Belief: this.Agent.Get_WMM().Get_Inhibited_Beliefs())
 				{
-//					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief());
-					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" - "+Belief.get_Predicate().get_Subject());//+
-//							" "+Belief.get_Predicate().get_Relationship()+ " "+Belief.get_Predicate().get_Object_Complement());
+					TPredicate Temp_Predicate = Belief.get_Predicate();
+					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" -  Truth: "+Belief.is_Truth()+ "   -   "+
+							"Predicate Name and data, "+Temp_Predicate.get_Name()+": "+Temp_Predicate.get_Subject()+ " "+ Temp_Predicate.get_Relationship()+
+							" "+Temp_Predicate.get_Object_Complement());
 				}
 			}
 			Game.PrintLn();
@@ -1089,7 +1124,10 @@ public class TGlobalWorkspace {
 			
 			//GW
 			Game.Print("Goals in GW");
-			Game.Print("N. Goals in GW: "+this.Get_Goals().size());
+//			Game.Print("N. Goals in GW: "+this.Get_Goals().size());
+//			if (Goals.size()==0)
+//				this.Get_Goals();
+			Game.Print("N. Goals in GW: "+this.Goals.size());
 			Game.Print("N. UnInhibited Goals in GW: "+this.UnInhibited_Goals.size());
 			if (Synthesis==1)
 			{
@@ -1140,7 +1178,7 @@ public class TGlobalWorkspace {
 			{
 				i++;
 				Game.Print("Desire N. -"+i+" - Named: "+Desire.Get_Name()+" - Saliency: "+
-						Desire.get_Attentional_Goal().Saliency);
+						Desire.get_Attentional_Goal().Saliency+ " - Attentional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
 			}
 			Game.PrintLn();
 		}
@@ -1157,7 +1195,8 @@ public class TGlobalWorkspace {
 			for(TDesire Desire: this.Desires)
 			{
 				i++;
-				Game.Print("Desire N. -"+i+" - Named: "+Desire.Get_Name()+" has N. Options: "+Desire.get_Option_List().size());
+				Game.Print("Desire N. -"+i+" - Named: "+Desire.Get_Name()+" has N. Options: "+Desire.get_Option_List().size()+
+						" - Saliency: "+Desire.get_Attentional_Goal().Saliency+ " - Attentional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
 			}
 			Game.PrintLn();
 		}
@@ -1171,6 +1210,15 @@ public class TGlobalWorkspace {
 			this.Updated_Intentions_for_print = false;
 			
 			Game.Print("N. Intentions in GW: "+this.Intentions.size());
+			int i=0;
+			for(TIntention Intention: this.Intentions)
+			{
+				i++;
+				TDesire Desire = Intention.get_Desire();
+				Game.Print("Intention: "+Intention.Get_Name()+ " related to Desire N. -"+i+" - Named: "+Desire.Get_Name()+" has N. Options: "+Desire.get_Option_List().size()+
+						" - Saliency: "+Desire.get_Attentional_Goal().Saliency+ " - Attentional Goal Name: "+Desire.get_Attentional_Goal().get_Name());
+			}
+			Game.PrintLn();
 			Game.PrintLn();
 		}
 		
@@ -1201,7 +1249,7 @@ public class TGlobalWorkspace {
 		}
 		if(Start==0)
 		{
-			Game.Print("*************** Work flow in Method ***************");
+//			Game.Print("*************** Work flow in Method ***************");
 		}
 	}
 	
@@ -1225,6 +1273,19 @@ public class TGlobalWorkspace {
 	public void Inc_Intention_Number()
 	{
 		this.Intention_Number++;
+	}
+	
+	public Integer Get_Inc_Intention_Number()
+	{
+		return this.Intention_Number;
+	}
+	
+	public void Inc_Intention_Number_by(int value) 
+	{
+		for(int i=0; i<value; i++)
+		{
+			this.Inc_Intention_Number();
+		}
 	}
 	
 	public void Broadcast()
@@ -1320,6 +1381,11 @@ public class TGlobalWorkspace {
 					{
 						//this.Agent.get_RA().Updated_Intentions(null, Beliefs);
 						this.Agent.Get_E_Resource_A().Updated_Intentions();
+					}
+					if(who instanceof TExecutive_Inhibition_function)
+					{
+						//this.Agent.get_RA().Updated_Intentions(null, Beliefs);
+						this.Agent.Get_E_Inhibition_function().Updated_Intentions();
 					}
 				}
 			}
@@ -1501,4 +1567,42 @@ public class TGlobalWorkspace {
 	
 		return Intention;
 	}
+	
+	public void Print_Predicate(TPredicate Predicate)
+	{
+		Game.Print("Predicate Name "+Predicate.get_Name()+": "+Predicate.get_Subject()+ " "+ Predicate.get_Relationship()+
+				" "+Predicate.get_Object_Complement());
+	}
+	
+	public void Print_Belief(TBelief_Base Belief)
+	{
+		
+		if(Belief instanceof TSalient_Belief)
+		{
+			
+		}
+		TPredicate Predicate = Belief.get_Predicate();
+		Game.Print(Belief);
+		Game.Print("Belief Time_stamp: "+Belief.get_Time_stamp());
+		Game.Print("Belief Information_Source: "+Belief.get_Information_Source());
+		Game.Print("Belief Name: "+Belief.get_Name());
+		Game.Print("Belief Type: "+Belief.get_Type_Belief());
+		Game.Print("Belief Truth: "+Belief.get_Truth());
+		if(Belief instanceof TSalient_Belief)
+		{
+			TSalient_Belief Salient_Belief = (TSalient_Belief) Belief;
+			Game.Print("Belief Truth: "+Salient_Belief.Get_Saliency());
+		}
+		Game.Print("Belief Predicate Name "+Predicate.get_Name()+": "+Predicate.get_Subject()+ " "+ Predicate.get_Relationship()+
+				" "+Predicate.get_Object_Complement());
+	}
+	
+	public LocalDateTime Get_Current_Time()
+	{
+		TBelief_Base Belief_Current_Time = this.Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Time).getFirst();
+		return (LocalDateTime) Belief_Current_Time.get_Predicate().get_Object_Complement();
+	}
+	
+	
+	
 }

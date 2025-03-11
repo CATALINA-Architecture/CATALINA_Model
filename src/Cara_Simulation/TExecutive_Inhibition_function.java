@@ -25,12 +25,19 @@ public class TExecutive_Inhibition_function {
 		this.Region = new TRegion();
 		this.Updated_Beliefs = true;
 		this.Updated_Intentions = true;
+		
+	}
+	
+	public void Insert_in_List_Update_Contract()
+	{
+		this.Agent.Get_GW().Insert_for_Update_Contract(TType_Update_Contract.Beliefs, this);
+		this.Agent.Get_GW().Insert_for_Update_Contract(TType_Update_Contract.Intentions, this);
 	}
 	
 	/***
 	 * TODO DEVELOPMENT
 	 */
-	public void Updated_Intentions()
+	public void Updated_Intentions_old()
 	{
 //		Game.Print("************  Function:  Update_Intentions from Update_Intentions Function  *********: TShifting_Attention");
 		Game.Print("Agent start to focus its attention");
@@ -39,6 +46,13 @@ public class TExecutive_Inhibition_function {
 		this.Agent.Get_GW().Print_Data(1, 0);
 		Game.Print("Agent focused its attention");
 	}
+	
+	public void Updated_Intentions()
+	{
+		this.Updated_Intentions = true;
+	}
+	
+	
 	
 	/***
 	 * DEVELOPED! Completed!
@@ -57,7 +71,10 @@ public class TExecutive_Inhibition_function {
 				{
 					this.Updated_Intentions = false;
 					
-					this.Agent.Get_GW().Print_Data(0, 0);
+					Game.Print_Colored_Text("Stop before calling Focus_Attention method", 7);
+					Game.Press_Enter();
+					
+					this.Agent.Get_GW().Print_Data(2, 0);
 				
 					//For our purpose we pursue only the first Intention
 					TIntention Intention = this.Agent.Get_GW().Get_Intentions().getFirst();
@@ -73,20 +90,20 @@ public class TExecutive_Inhibition_function {
 					///
 					/// CREATE INHIBITION REGIONS, INHIBITED GOALS AND BELIEFS-
 					///
-					Game.Print("Agent creates the Inhibition Regions");
+					Game.Print("I create the Inhibition Regions");
 					TRegion Inhibition_Regions = this.Create_Inhibition_Regions();
 					this.Agent.Get_GW().Update_Inhibition_Regions(Inhibition_Regions);
 					
-					Game.Print("Agent creates the Inhibited Goals");
+					Game.Print("I create the Inhibited Goals");
 					ArrayList<TAttentional_Goal> Inhibited_Goals = this.Create_Inhibited_Goals();
 					this.Agent.Get_GW().Update_Inhibited_Goals(Inhibited_Goals);
 					
 					//TODO development update inhibited belief
-					Game.Print("Agent creates the Inhibited Beliefs");
+					Game.Print("I create the Inhibited Beliefs");
 					ArrayList<TBelief_Base> Inhibited_Beliefs = this.Create_Inhibited_Beliefs(); 
 					this.Agent.Get_GW().Update_Inhibited_Beliefs(Inhibited_Beliefs);
 
-					this.Agent.Get_GW().Print_Data(1, 0);
+					this.Agent.Get_GW().Print_Data(1, 1);
 				}
 			}
 			else
@@ -542,8 +559,10 @@ public class TExecutive_Inhibition_function {
 					
 					
 					break;
+				case Stimulus_Route_Status:
+					break;
 				default:
-					Game.Print("I cannot handle type Functional Belief in Create_Inhibited_Beliefs: "+Type_Belief);
+					Game.Print("I cannot handle type Epistemic Belief in Create_Inhibited_Beliefs: "+Type_Belief);
 					Game.End_Game();
 				}
 				
