@@ -1,5 +1,6 @@
 package Cara_Simulation;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class TTCS {
@@ -8,12 +9,18 @@ public class TTCS {
 	private ArrayList<String> answers;
 	private ArrayList<TTriple_Object> Answer_Objects;
 	private int Response_Number;
+	private int Min_Closed_Route_Duration;
+	private int Max_Closed_Route_Duration;
 
 	
 	
 	public TTCS(Environment Map)
 	{
 		this.Map = Map;
+		
+		this.Min_Closed_Route_Duration = 1;
+		this.Max_Closed_Route_Duration = 5;
+		
 		answers = new ArrayList<String>();
 		Answer_Objects = new ArrayList<TTriple_Object>();
 		

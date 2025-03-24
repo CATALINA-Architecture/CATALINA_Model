@@ -136,6 +136,8 @@ public class TReasoner_Function {
 				//I get beliefs from Long Memory to send to Reasoner
 				ArrayList<TDesire> Desires = this.Agent.Get_GW().Get_Desires();
 				
+				ArrayList<TDesire> Desires_To_Filter = new ArrayList<TDesire>();
+				
 				ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
 				Beliefs.addAll(this.Agent.Get_GW().Get_UnInhibited_Beliefs());
 				//When the Agent is not focused UnInhibited_Beliefs is empty so I have to get any beliefs
@@ -176,6 +178,7 @@ public class TReasoner_Function {
 					{
 						Created_Desires = true;
 						TAttentional_Goal Goal = Desire.get_Attentional_Goal();
+						Desires_To_Filter.add(Desire);
 
 						//if the attentional_goal is a TFunctional_Goal
 						if (Goal instanceof TFunctional_Goal) 
@@ -207,7 +210,7 @@ public class TReasoner_Function {
 					
 						//the attentional_goal is an TEpistemic_Goal
 						//TO DO DEVELOPMENT
-						else if (Goal instanceof TEpistemic_Goal) 
+						else //if (Goal instanceof TEpistemic_Goal) 
 						{
 							Game.Print("********* --------------- *************");
 							Game.PrintLn();
@@ -222,10 +225,11 @@ public class TReasoner_Function {
 									///		
 									///     It means The Agent have to create a plan to go to its destination
 									///
-//								case TType_Beliefs.Stimulus_Temporary_Closed_Route:
-//									Game.Get_Input("Stop before calling Deliberate_from_Stimulus_Temporary_Closed_Route method");
-//									Deliberate_from_Stimulus_Temporary_Closed_Route(Desire);
-//									break;
+								case TType_Beliefs.Stimulus_Temporary_Closed_Route:
+									Game.Print_Colored_Text("Stop before calling Deliberate_from_Stimulus_Temporary_Closed_Route method", 7);
+									Game.Press_Enter();
+									Deliberate_from_Stimulus_Temporary_Closed_Route(Desire);
+									break;
 									
 								case TType_Beliefs.Stimulus_Route_Status:
 									
@@ -248,8 +252,8 @@ public class TReasoner_Function {
 					Game.Print("Now I will filter any desire.");
 					Game.Print_Colored_Text("Stop before calling Filtering_Process method", 7);
 					Game.Press_Enter();
-					this.Filtering_Process(Desires);	
-					
+//					this.Filtering_Process(Desires);
+					this.Filtering_Process(Desires_To_Filter);
 				}
 				
 				this.Agent.Get_GW().Print_Data(1, 0);
@@ -981,6 +985,11 @@ public class TReasoner_Function {
 			
 		}
 		return New_Options;
+	}
+	
+	public Boolean Deliberate_for_Stimulus_Temporary_Closed_Route(TDesire Desire)
+	{
+		
 	}
 	
 	public Boolean Deliberate_from_Stimulus_Temporary_Closed_Route(TDesire Desire)

@@ -4,4 +4,30 @@ Prediate: Visited Station:
 Stations - visited - array of station
 
 Funtion_To_Invoke by agent:
-GO_TO
+GO_TO_Route							Enter in a route
+GO_TO_Step							Move to next step in a route or move to next station from a route
+See Route Status					Stimulus: Agent wants to open its virtual camera it is the ionvoked Function from "See Semaphore for Route Status"
+Ask_Closed_Route_Duration			Stimulus: Agent wants ask to TCS ask how long the route is closed
+
+
+Answers from TCS:
+invoked Funcionions: 					Answer from TCS or User
+GO_TO_Route								Correct move!			(TCS)
+GO_TO_Step								Correct move!			(TCS)
+See Route Status						Acquired Route Status	(USER)
+How long will the route be closed?
+
+
+
+
+
+Stimuli:
+See Semaphore for Route Status		it is Arised when the agent doesn't know the route status (route status = TType_Route_Status.Unknown
+									and it generates the "See Route Status" using Belief "Stimulus_Route_Status"
+Ask how long the route is closed	It is arised when the agent knows that a route status is red
+									and it generates the "Ask_Closed_Route_Duration" using Belief "Stimulus_Closed_Route"
+
+
+Every time we want insert a type of stymulus, we have to handle following functions:
+TExecutive_Resource_Allocation.Information_Selection
+TExecutive_Switching_Function.Apply_Filter

@@ -32,6 +32,7 @@ public class TGlobalWorkspace {
 	private boolean Updated_Inhibited_Goals = false;
 	
 	private boolean Updated_Beliefs = false;
+	private boolean Updated_Stimuli = false;
 	private boolean Updated_Salient_Beliefs = false;
 	private boolean Updated_UnInhibited_Beliefs = false;
 	private boolean Updated_Inhibited_Beliefs = false;
@@ -42,6 +43,8 @@ public class TGlobalWorkspace {
 	public boolean Print_Selected_Path = true;
 	public boolean Print_steps_and_routes = true;
 	public boolean Updated_Beliefs_for_print = false;
+	public boolean Updated_Stimuli_for_print = false;
+	
 	public boolean Updated_Salient_Beliefs_for_print = false;
 	public boolean Updated_UnInhibited_Beliefs_for_print = false;
 	public boolean Updated_Inhibited_Beliefs_for_print = false;
@@ -188,6 +191,7 @@ public class TGlobalWorkspace {
 		this.Updated_Inhibited_Goals = false;
 		
 		this.Updated_Beliefs = false;
+		this.Updated_Stimuli = false;
 		this.Updated_UnInhibited_Beliefs = false;
 		this.Updated_Inhibited_Beliefs = false;
 		
@@ -201,6 +205,7 @@ public class TGlobalWorkspace {
 		 * These properties are only used to print a log.
 		 */
 		this.Updated_Beliefs_for_print = true;
+		this.Updated_Stimuli_for_print = false;
 		this.Updated_Salient_Beliefs_for_print = true;
 		this.Updated_UnInhibited_Beliefs_for_print = true;
 		this.Updated_Inhibited_Beliefs_for_print = true;
@@ -254,6 +259,16 @@ public class TGlobalWorkspace {
 			this.Goals.addAll(this.Agent.Get_WMM().Get_Attentional_Goals());
 		}
 		return this.Goals;
+	}
+	
+	public ArrayList<TAttentional_Goal> Get_Uninhibited_Goals()
+	{
+		
+		if(this.UnInhibited_Goals.isEmpty() && this.Agent.Get_WMM().Get_Inhibited_Goals().isEmpty())
+		{
+			this.UnInhibited_Goals.addAll(this.Get_Goals());
+		}
+		return this.UnInhibited_Goals;
 	}
 	
 	//TODO to check
@@ -975,7 +990,10 @@ public class TGlobalWorkspace {
 		
 		//the following lines of code are to use the iterator way in the Start Agent method
 		this.Updated_Beliefs = true;
+		this.Updated_Stimuli = true;
+		this.Updated_Stimuli_for_print = true;
 		this.Temp_Salient_Belief = Salient_Belief;
+		
 		//the previous lines of code are to use the iterator way in the Start Agent method
 		
 		
@@ -1327,6 +1345,25 @@ public class TGlobalWorkspace {
 			}
 		}
 		
+		if (this.Updated_Stimuli)
+		{
+			this.Updated_Stimuli = false;
+			this.Updated_Stimuli_for_print = true;
+			ArrayList<Object> Stimuli = this.Update_Contracts.get(TType_Update_Contract.Stimuli);
+			if(Stimuli.size()>0)
+			{
+				for(Object who: Stimuli)
+				{
+					if(who instanceof TExecutive_Switching_Function)
+					{
+						//Game.Print("I invoke this.Agent.Get_Reasoner().Updated_Desires()");
+						this.Agent.Get_E_Switching_Function().Updated_Stimuli();
+					}
+				}
+			}
+			
+		}
+		
 		if (this.Updated_Desires)
 		{
 			this.Updated_Desires = false;
@@ -1390,6 +1427,7 @@ public class TGlobalWorkspace {
 				}
 			}
 		}
+		
 		
 		
 		

@@ -2,6 +2,7 @@ package Cara_Simulation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class TExecutive_Inhibition_function {
@@ -76,9 +77,14 @@ public class TExecutive_Inhibition_function {
 					
 					this.Agent.Get_GW().Print_Data(2, 0);
 				
+					ArrayList<TIntention> Intentions = this.Agent.Get_GW().Get_Intentions();
+					Collections.sort(Intentions, new TIntention_Compare());
+					
+					TIntention Intention = Intentions.getFirst();
+					Game.Print("Intention Saliency: "+Intention.get_Desire().get_Attentional_Goal().get_Saliency());
 					//For our purpose we pursue only the first Intention
-					TIntention Intention = this.Agent.Get_GW().Get_Intentions().getFirst();
-					Game.Print("Functional Name for the Intention selected to pursue: "+Intention.get_Desire().get_Attentional_Goal().get_Name());
+					//TIntention Intention = this.Agent.Get_GW().Get_Intentions().getFirst();
+					//Game.Print("Functional Name for the Intention selected to pursue: "+Intention.get_Desire().get_Attentional_Goal().get_Name());
 					
 					this.Saliency_Threshold = Intention.get_Desire().get_Attentional_Goal().get_Saliency();
 					this.Agent.Get_GW().Update_Saliency_Threshold(this.Saliency_Threshold);
@@ -91,16 +97,16 @@ public class TExecutive_Inhibition_function {
 					/// CREATE INHIBITION REGIONS, INHIBITED GOALS AND BELIEFS-
 					///
 					Game.Print("I create the Inhibition Regions");
-					TRegion Inhibition_Regions = this.Create_Inhibition_Regions();
+					TRegion Inhibition_Regions = this.Create_Inhibition_Regions(Intentions);
 					this.Agent.Get_GW().Update_Inhibition_Regions(Inhibition_Regions);
 					
 					Game.Print("I create the Inhibited Goals");
-					ArrayList<TAttentional_Goal> Inhibited_Goals = this.Create_Inhibited_Goals();
+					ArrayList<TAttentional_Goal> Inhibited_Goals = this.Create_Inhibited_Goals(Intentions);
 					this.Agent.Get_GW().Update_Inhibited_Goals(Inhibited_Goals);
 					
 					//TODO development update inhibited belief
 					Game.Print("I create the Inhibited Beliefs");
-					ArrayList<TBelief_Base> Inhibited_Beliefs = this.Create_Inhibited_Beliefs(); 
+					ArrayList<TBelief_Base> Inhibited_Beliefs = this.Create_Inhibited_Beliefs(Intentions); 
 					this.Agent.Get_GW().Update_Inhibited_Beliefs(Inhibited_Beliefs);
 
 					this.Agent.Get_GW().Print_Data(1, 1);
@@ -160,7 +166,7 @@ public class TExecutive_Inhibition_function {
 	 * Later, I must to create the cases to handle the cases of Epistemic Goals
 	 * @return
 	 */
-	private TRegion Create_Inhibition_Regions()
+	private TRegion Create_Inhibition_Regions(ArrayList<TIntention> Intentions)
 	{
 		/*
 		* as regions you should consider paths. So you should create all
@@ -171,163 +177,138 @@ public class TExecutive_Inhibition_function {
 		//ArrayList<TBelief_Base> Inhibited_Beliefs = null;
 
 		//I create All region
-		TRegion Inhibited_Regions = new TRegion();		
+		TRegion Inhibited_Regions = this.Agent.Get_GW().Compute_All_Regions();
+		Environment Map = this.Agent.Get_WMM().Get_Map();
 	
-		TIntention Intention = this.Agent.Get_GW().Get_Intentions().getFirst();
+//		TIntention Intention = this.Agent.Get_GW().Get_Intentions().getFirst();
 		//TOption Option = Intention.get_Desire().get_Option_List().get(Intention.get_Seleted_Option_Id());
-		
-		if (Intention.get_Desire().get_Attentional_Goal() instanceof TFunctional_Goal)
+		for(TIntention Intention: Intentions)
 		{
-			//
-			//THIS IS A FUNCTIONAL GOAL
-			// 
 			
-			//The goal is a Functional Goal, so it means Agent wants to use a specific Route
-			//In this case Agent wants to inhibite all belief that aren't that specific Route
-			
-			TFunctional_Goal Functional_Goal = (TFunctional_Goal) Intention.get_Desire().get_Attentional_Goal();
-			// If the functional belief is Belief_Destination_Station, it means that it is a Functional Goal
-			// to go in a specific station, so I don't must to inhibit only specific beliefs
-			switch(Functional_Goal.get_Final_State().get_Type_Belief())
+		
+			if (Intention.get_Desire().get_Attentional_Goal() instanceof TFunctional_Goal)
 			{
-				case TType_Beliefs.Belief_Destination_Station:
-					//I insert all Routes in Inhibited_Regions
-					Environment Map = this.Agent.Get_WMM().Get_Map();
-//					Inhibited_Regions.Routes.addAll( Map.Tutte_Le_Rotte);
-//					int i =0;
-//					for(i=0; i< Map.Get_Routes_Number(); i++)
-//					{
-//						Inhibited_Regions.Integer_Routes.add(i);
-//					}
-//
-//					//I insert all Stations in Inhibited_Regions
-//					for(i=0; i < Station.values().length; i++)
-//					{
-//						Inhibited_Regions.Destinations.add(Station.values()[i]);
-//					}
-					
-					Inhibited_Regions = this.Agent.Get_GW().Compute_All_Regions();
-					
-					//I Remove path of the Intention of the Desire of the Functional Goal 
-					//from Inhibited_Regions
-					int Index_Option = Intention.get_Seleted_Option_Id();
-					TDesire Desire = Intention.get_Desire();
-					TOption Option = Desire.get_Option_List().get(Index_Option);
-					//GO_TO
-					//I get integer_Route from the selected Option only if "Action_Name" is
-					// "GO_TO"
-					ArrayList<Integer> Integer_Routes_to_Remove = new ArrayList<Integer>();
-					ArrayList<Route> Routes_to_Remove = new ArrayList<Route>();
-					for(TAction Action: Option.get_Plan_Actions())
-					{
-						if(Action.Get_Action_Name() == "GO_TO_Route")
+				//
+				//THIS IS A FUNCTIONAL GOAL
+				// 
+				
+				//The goal is a Functional Goal, so it means Agent wants to use a specific Route
+				//In this case Agent wants to inhibite all belief that aren't that specific Route
+				
+				TFunctional_Goal Functional_Goal = (TFunctional_Goal) Intention.get_Desire().get_Attentional_Goal();
+				// If the functional belief is Belief_Destination_Station, it means that it is a Functional Goal
+				// to go in a specific station, so I don't must to inhibit only specific beliefs
+				switch(Functional_Goal.get_Final_State().get_Type_Belief())
+				{
+					case TType_Beliefs.Belief_Destination_Station:
+						
+						//I Remove path of the Intention of the Desire of the Functional Goal 
+						//from Inhibited_Regions
+						int Index_Option = Intention.get_Seleted_Option_Id();
+						TDesire Desire = Intention.get_Desire();
+						if(Desire.get_Option_List().size()>0)
 						{
-							//Game.Print(Action.get_Params().get(0).getClass());
-							TPosition_Train_Coords Postcondition_Train_Coords = (TPosition_Train_Coords) Action.Get_Params().get(0);
-							
-//							int Integer_Route = (int) Action.get_Params().get(0);
-							int Integer_Route = (int) Postcondition_Train_Coords.Get_Route();
-							
-							
-							int Specular_Integer_Route = 0;
-							if (Integer_Route % 2 == 0)
+							TOption Option = Desire.get_Option_List().get(Index_Option);
+							//GO_TO
+							//I get integer_Route from the selected Option only if "Action_Name" is
+							// "GO_TO"
+							ArrayList<Integer> Integer_Routes_to_Remove = new ArrayList<Integer>();
+							ArrayList<Route> Routes_to_Remove = new ArrayList<Route>();
+							for(TAction Action: Option.get_Plan_Actions())
 							{
-								Specular_Integer_Route = Integer_Route + 1;
-								
+								if(Action.Get_Action_Name() == "GO_TO_Route")
+								{
+									//Game.Print(Action.get_Params().get(0).getClass());
+									TPosition_Train_Coords Postcondition_Train_Coords = (TPosition_Train_Coords) Action.Get_Params().get(0);
+									
+		//							int Integer_Route = (int) Action.get_Params().get(0);
+									int Integer_Route = (int) Postcondition_Train_Coords.Get_Route();
+									
+									
+									int Specular_Integer_Route = 0;
+									if (Integer_Route % 2 == 0)
+									{
+										Specular_Integer_Route = Integer_Route + 1;
+										
+									}
+									else
+									{
+										Specular_Integer_Route = Integer_Route - 1;
+									}
+									
+									Integer_Routes_to_Remove.add(Integer_Route);
+									Integer_Routes_to_Remove.add(Specular_Integer_Route);
+									
+									
+									Routes_to_Remove.add(Map.Get_Route(Integer_Route));
+									Routes_to_Remove.add(Map.Get_Route(Specular_Integer_Route));
+									
+									//I Remove all destinations form inhibition region that is in Path to pursue
+									Route The_Route = Map.Get_Route(Integer_Route);
+									Inhibited_Regions.Destinations.remove(The_Route.Get_Departure());
+									Inhibited_Regions.Destinations.remove(The_Route.Get_Destination());
+								}
 							}
-							else
-							{
-								Specular_Integer_Route = Integer_Route - 1;
-							}
-							
-							Integer_Routes_to_Remove.add(Integer_Route);
-							Integer_Routes_to_Remove.add(Specular_Integer_Route);
-							
-							
-							Routes_to_Remove.add(Map.Get_Route(Integer_Route));
-							Routes_to_Remove.add(Map.Get_Route(Specular_Integer_Route));
-							
-							//I Remove all destinations form inhibition region that is in Path to pursue
+							Inhibited_Regions.Integer_Routes.removeAll(Integer_Routes_to_Remove);
+							Inhibited_Regions.Routes.removeAll(Routes_to_Remove);
+						}
+						
+						break;
+						
+						
+					default:
+						Game.Print("I cannot handle Belief Type of TFunctional_Goal in Create_Inhibition_Regions Function");
+				}
+			}
+			else
+			{
+				//
+				//THIS IS AN EPISTEMIC GOAL
+				// 
+				
+				//The goal is a Functional Goal, so it means Agent wants to use a specific Route
+				//In this case Agent wants to inhibite all belief that aren't that specific Route
+				
+				TEpistemic_Goal Epistemic_Goal = (TEpistemic_Goal) Intention.get_Desire().get_Attentional_Goal();
+				// If the functional belief is Belief_Destination_Station, it means that it is a Functional Goal
+				// to go in a specific station, so I don't must to inhibit only specific beliefs
+				Game.Print("I cannot handle TEpistemic_Goal in Create_Inhibition_Regions Function");
+				switch(Epistemic_Goal.get_Belief().get_Type_Belief())
+				{
+					case TType_Beliefs.Stimulus_Temporary_Closed_Route:
+						
+						//I Remove path of the Intention of the Desire of the Functional Goal 
+						//from Inhibited_Regions
+						int Index_Option = Intention.get_Seleted_Option_Id();
+						TDesire Desire = Intention.get_Desire();
+						TOption Option = Desire.get_Option_List().get(Index_Option);
+						//Use_Route
+						//I get integer_Route from the selected Option only if "Action_Name" is
+						// "Ask_for_Temporary_Closed_Route"
+						//We have only ONE Route, the first and only param in the first and only Action
+						TAction Action = Option.get_Plan_Actions().getFirst();
+						//Ask_for_Temporary_Closed_Route
+						
+						if(Action.Get_Action_Name() == "How long will the route be closed?")
+						{
+							int Integer_Route = (int) Action.Get_Params().getFirst();
+							int Specular_Integer_Route = Map.Get_Specular_Route(Integer_Route);
 							Route The_Route = Map.Get_Route(Integer_Route);
+							Route Specular_Route = Map.Get_Route(Specular_Integer_Route);
 							Inhibited_Regions.Destinations.remove(The_Route.Get_Departure());
 							Inhibited_Regions.Destinations.remove(The_Route.Get_Destination());
+							
+							Inhibited_Regions.Integer_Routes.remove(Integer_Route);
+							Inhibited_Regions.Integer_Routes.remove(Specular_Integer_Route);
+							
+							Inhibited_Regions.Routes.remove(The_Route);
+							Inhibited_Regions.Routes.remove(Specular_Route);
 						}
-					}
-//					Inhibited_Regions.Integer_Routes.removeAll(Routes_to_Remove);
-					Inhibited_Regions.Integer_Routes.removeAll(Integer_Routes_to_Remove);
-					Inhibited_Regions.Routes.removeAll(Routes_to_Remove);
-					break;
+						break;
 					
-					
-				default:
-					Game.Print("I cannot handle Belief Type of TFunctional_Goal in Create_Inhibition_Regions Function");
-			}
-		}
-		else
-		{
-			//
-			//THIS IS AN EPISTEMIC GOAL
-			// 
-			
-			//The goal is a Functional Goal, so it means Agent wants to use a specific Route
-			//In this case Agent wants to inhibite all belief that aren't that specific Route
-			
-			TEpistemic_Goal Epistemic_Goal = (TEpistemic_Goal) Intention.get_Desire().get_Attentional_Goal();
-			// If the functional belief is Belief_Destination_Station, it means that it is a Functional Goal
-			// to go in a specific station, so I don't must to inhibit only specific beliefs
-			Game.Print("I cannot handle TEpistemic_Goal in Create_Inhibition_Regions Function");
-			switch(Epistemic_Goal.get_Belief().get_Type_Belief())
-			{
-				case TType_Beliefs.Stimulus_Temporary_Closed_Route:
-					//I insert all Routes in Inhibited_Regions
-					Environment Map = this.Agent.Get_WMM().Get_Map();
-//					Inhibited_Regions.Routes.addAll( Map.Tutte_Le_Rotte);
-//					int i =0;
-//					for(i=0; i< Map.Get_Routes_Number(); i++)
-//					{
-//						Inhibited_Regions.Integer_Routes.add(i);
-//					}
-//
-//					//I insert all Stations in Inhibited_Regions
-//					for(i=0; i < Station.values().length; i++)
-//					{
-//						Inhibited_Regions.Destinations.add(Station.values()[i]);
-//					}
-					Inhibited_Regions = this.Agent.Get_GW().Compute_All_Regions();
-					
-					
-					
-					//I Remove path of the Intention of the Desire of the Functional Goal 
-					//from Inhibited_Regions
-					int Index_Option = Intention.get_Seleted_Option_Id();
-					TDesire Desire = Intention.get_Desire();
-					TOption Option = Desire.get_Option_List().get(Index_Option);
-					//Use_Route
-					//I get integer_Route from the selected Option only if "Action_Name" is
-					// "Ask_for_Temporary_Closed_Route"
-					//We have only ONE Route, the first and only param in the first and only Action
-					TAction Action = Option.get_Plan_Actions().getFirst();
-					//Ask_for_Temporary_Closed_Route
-					
-					if(Action.Get_Action_Name() == "How long will the route be closed?")
-					{
-						int Integer_Route = (int) Action.Get_Params().getFirst();
-						int Specular_Integer_Route = Map.Get_Specular_Route(Integer_Route);
-						Route The_Route = Map.Get_Route(Integer_Route);
-						Route Specular_Route = Map.Get_Route(Specular_Integer_Route);
-						Inhibited_Regions.Destinations.remove(The_Route.Get_Departure());
-						Inhibited_Regions.Destinations.remove(The_Route.Get_Destination());
-						
-						Inhibited_Regions.Integer_Routes.remove(Integer_Route);
-						Inhibited_Regions.Integer_Routes.remove(Specular_Integer_Route);
-						
-						Inhibited_Regions.Routes.remove(The_Route);
-						Inhibited_Regions.Routes.remove(Specular_Route);
-					}
-					break;
-				
-				default:
-					Game.Print("I cannot handle Belief Type of TFunctional_Goal in Create_Inhibition_Regions Function");
+					default:
+						Game.Print("I cannot handle Belief Type of TEpistemic_Goal in Create_Inhibition_Regions Function");
+				}
 			}
 		}
 
@@ -395,7 +376,7 @@ public class TExecutive_Inhibition_function {
 		Saliency_Threshold = saliency_Threshold;
 	}
 	
-	private ArrayList<TAttentional_Goal> Create_Inhibited_Goals()
+	private ArrayList<TAttentional_Goal> Create_Inhibited_Goals(ArrayList<TIntention> Intentions)
 	{
 		/*
 		 * quali sarebbero in questi casi??
@@ -406,7 +387,9 @@ public class TExecutive_Inhibition_function {
 		//TFunctional_Goal Functional_Goal = (TFunctional_Goal) Intention.get_Desire().get_Attentional_Goal();
 		
 		Inhibited_Goals.addAll(this.Agent.Get_GW().Get_Goals());
-		for(TIntention Intention: this.Agent.Get_GW().Get_Intentions())
+//		
+//		for(TIntention Intention: this.Agent.Get_GW().Get_Intentions())
+		for(TIntention Intention: Intentions)
 		{
 			Inhibited_Goals.remove(Intention.get_Desire().get_Attentional_Goal());
 		}
@@ -464,7 +447,7 @@ public class TExecutive_Inhibition_function {
 		return this.Default_Attention_Threshold;
 	}	
 	
-	private ArrayList<TBelief_Base> Create_Inhibited_Beliefs()
+	private ArrayList<TBelief_Base> Create_Inhibited_Beliefs(ArrayList<TIntention> Intentions)
 	{
 //		Game.Print("************  Function:  Create_Inhibited_Beliefs form Focus  *********: TShifting_Attention");
 //		this.Agent.get_GW().Print_Data(0, 0);
@@ -480,7 +463,8 @@ public class TExecutive_Inhibition_function {
 		//TIntention Intention = this.EI.get_Agent().get_GW().Get_Selected_Intentions().getFirst();
 		//TOption Option = Intention.get_Desire().get_Option_List().get(Intention.get_Seleted_Option_Id());
 		
-		for (TIntention Intention: this.Agent.Get_GW().Get_Intentions())
+//		for (TIntention Intention: this.Agent.Get_GW().Get_Intentions())
+		for (TIntention Intention: Intentions)
 		{
 			String Attentional_Name = Intention.get_Desire().get_Attentional_Goal().get_Name();
 			TAttentional_Goal Attentional_Goal =  Intention.get_Desire().get_Attentional_Goal();

@@ -8,6 +8,7 @@ public class TExecutive_Switching_Function {
 	private Boolean Updated_Belief;
 	private Boolean Updated_Goals;
 	private Boolean Updated_Desires;
+	private Boolean Updated_Stimuli;
 	
 	public TExecutive_Switching_Function(TAgent agent)
 	{
@@ -16,6 +17,7 @@ public class TExecutive_Switching_Function {
 		//this property is only for ALL FUNCTIONAL GOAL (both inhibited and uninhibited goals)
 		this.Updated_Goals = true;
 		this.Updated_Desires = true;
+		this.Updated_Stimuli = false;
 	}
 	
 	public void Insert_in_List_Update_Contract()
@@ -205,76 +207,88 @@ public class TExecutive_Switching_Function {
 		{
 			
 			//the following lines of code are to use the iterator way in the Start Agent method
-			TSalient_Belief Stimulus = this.Agent.Get_GW().Get_Temp_Salient_Belief();
-			if(Stimulus==null )
+			if (this.Updated_Stimuli == true)
 			{
-				Game.Print("I have NOT a stimulus.");
-				this.Agent.Get_GW().Print_Data(1, 0);
-				return result;
-			}
-//			else if (Stimulus.get_Type_Belief() == TType_Beliefs.Stimulus_Ok_Correct_Movement)
-//			{
-//				return result;
-//			}
-			Game.Print_Colored_Text("Stop before calling AM_Exogenous_Module method", 7);
-			Game.Press_Enter();
-			this.Agent.Get_GW().Print_Data(2, 0);
+				this.Agent.Get_GW().Updated_Stimuli_for_print = true;
+				this.Updated_Stimuli = false;
 			
-			//the previous lines of code are to use the iterator way in the Start Agent method
-			
-			Game.Print("I have a stimulus and I check if it has a saliency greater than "+
-						"my Saliency/Attention threholds.");
-			
-			TGlobalWorkspace GW = this.Agent.Get_GW();
-	
-			TRegion Inhi_regions = this.Agent.Get_GW().Get_Inhibition_Regions();
-			
-			TSalient_Belief relevant_Stimulus = this.Apply_Filter( Stimulus , Inhi_regions );
-			
-			if ((Inhi_regions != null) && (relevant_Stimulus != null))
-			{
-				if ( relevant_Stimulus.Get_Saliency() > this.Agent.Get_E_Inhibition_function().get_Saliency_Threshold() )
+				TSalient_Belief Stimulus = this.Agent.Get_GW().Get_Temp_Salient_Belief();
+				if(Stimulus==null )
 				{
-					// The Shifting Attention module finds the goal
-			    	// corresponding to the relevant_Stimulus ( if it exists )
-					Game.Print("This stimulus is greater than Saliency Threshold.");
-					Game.Print("I create an Epistemic Goal and I promote it to Desire.");
-					TEpistemic_Goal New_Goal = GW.Stimulus_to_Goal(relevant_Stimulus);  
-					
-					Integer Desire_Number = this.Agent.Get_GW().Get_Desire_Number();
-					Desire_Number++;
-					TDesire Desire = this.Promote_to_Desire(Desire_Number, New_Goal, null);
-					ArrayList<TDesire> New_Desires = new ArrayList<TDesire>();
-					New_Desires.add(Desire);
-					
-					this.Agent.Get_GW().Update_Goals();
-										
-					GW.Insert_New_Desires(New_Desires);
+					Game.Print("I have NOT a stimulus.");
+					this.Agent.Get_GW().Print_Data(1, 0);
+					return result;
 				}
+	//			else if (Stimulus.get_Type_Belief() == TType_Beliefs.Stimulus_Ok_Correct_Movement)
+	//			{
+	//				return result;
+	//			}
+				Game.Print_Colored_Text("Stop before calling AM_Exogenous_Module method", 7);
+				Game.Press_Enter();
+				this.Agent.Get_GW().Print_Data(2, 0);
+				
+				//the previous lines of code are to use the iterator way in the Start Agent method
+				
+				Game.Print("I have a stimulus and I check if it has a saliency greater than "+
+							"my Saliency/Attention threholds.");
+				
+				TGlobalWorkspace GW = this.Agent.Get_GW();
+		
+				TRegion Inhi_regions = this.Agent.Get_GW().Get_Inhibition_Regions();
+				
+				TSalient_Belief relevant_Stimulus = this.Apply_Filter( Stimulus , Inhi_regions );
+				
+				if ((Inhi_regions != null) && (relevant_Stimulus != null))
+				{
+					if ( relevant_Stimulus.Get_Saliency() > this.Agent.Get_E_Inhibition_function().get_Saliency_Threshold() )
+					{
+						// The Shifting Attention module finds the goal
+				    	// corresponding to the relevant_Stimulus ( if it exists )
+						Game.Print("This stimulus is greater than Saliency Threshold.");
+						Game.Print("I create an Epistemic Goal and I promote it to Desire.");
+						TEpistemic_Goal New_Goal = GW.Stimulus_to_Goal(relevant_Stimulus);
+						
+						Integer Desire_Number = this.Agent.Get_GW().Get_Desire_Number();
+						Desire_Number++;
+						TDesire Desire = this.Promote_to_Desire(Desire_Number, New_Goal, null);
+						ArrayList<TDesire> New_Desires = new ArrayList<TDesire>();
+						New_Desires.add(Desire);
+						
+						this.Agent.Get_GW().Update_Goals();
+											
+						GW.Insert_New_Desires(New_Desires);
+					}
+				}
+				else
+				{
+					if (Stimulus.Get_Saliency() > this.Agent.Get_E_Inhibition_function().get_Attention_Threshold()) 
+					{
+				    	// The Shifting Attention module finds the goal
+				    	// corresponding to the relevant_Stimulus ( if it exists )
+						
+						Game.Print("This stimulus is greater than Attention Threshold.");
+						Game.Print("I create an Epistemic Goal and I promote it to Desire.");
+				    	TEpistemic_Goal New_Goal = GW.Stimulus_to_Goal(Stimulus);
+				    	
+				    	Integer Desire_Number = this.Agent.Get_GW().Get_Desire_Number();
+						Desire_Number++;
+						TDesire Desire = this.Promote_to_Desire(Desire_Number, New_Goal, null);
+						ArrayList<TDesire> New_Desires = new ArrayList<TDesire>();
+						New_Desires.add(Desire);
+				    	
+						this.Agent.Get_GW().Update_Goals();
+						
+				    	GW.Insert_New_Desires(New_Desires);
+					}
+				}
+				this.Agent.Get_GW().Print_Data(1, 1);
 			}
 			else
 			{
-				if (Stimulus.Get_Saliency() > this.Agent.Get_E_Inhibition_function().get_Attention_Threshold()) 
-				{
-			    	// The Shifting Attention module finds the goal
-			    	// corresponding to the relevant_Stimulus ( if it exists )
-					
-					Game.Print("This stimulus is greater than Attention Threshold.");
-					Game.Print("I create an Epistemic Goal and I promote it to Desire.");
-			    	TEpistemic_Goal New_Goal = GW.Stimulus_to_Goal(Stimulus);
-			    	
-			    	Integer Desire_Number = this.Agent.Get_GW().Get_Desire_Number();
-					Desire_Number++;
-					TDesire Desire = this.Promote_to_Desire(Desire_Number, New_Goal, null);
-					ArrayList<TDesire> New_Desires = new ArrayList<TDesire>();
-					New_Desires.add(Desire);
-			    	
-					this.Agent.Get_GW().Update_Goals();
-					
-			    	GW.Insert_New_Desires(New_Desires);
-				}
+				Game.Print("I have NOT a stimulus. I am not entering here ");
+				this.Agent.Get_GW().Print_Data(1, 0);
+				return result;
 			}
-			this.Agent.Get_GW().Print_Data(1, 1);
 		}
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
@@ -308,6 +322,30 @@ public class TExecutive_Switching_Function {
 			break;
 			
 			case TType_Beliefs.Stimulus_Closed_Route:
+				/**
+				 * Protocol Predicate:
+				 * Subject => Route Number (Integer)
+				 * Relationship => is_Busy | is_Closed | is_Temporary_Closed
+				 *  if Relationship = is_Temporary_Closed
+				 * 		Object = => Time amount (Integer)
+				 */
+				{
+					Integer Route_Number = (Integer) Stimulus.get_Predicate().get_Subject();
+//					Game.Print("Route_Number for Apply_Filter: "+Route_Number );
+					
+					//If Route Number NOT is in Inhi_regions: the route is in my path! The agent must be careful!
+					if (! Inhi_regions.Integer_Routes.contains(Route_Number))
+					{
+						Relevant_Stimulus = Stimulus;
+						Relevant_Stimulus.Update_Saliency(0.9);
+					}
+					else
+					{
+						Relevant_Stimulus = Stimulus;
+						Relevant_Stimulus.Update_Saliency(0.2);
+					}
+				};
+				break;
 			case TType_Beliefs.Stimulus_Busy_Route:
 			case TType_Beliefs.Stimulus_Temporary_Closed_Route:
 				/**
@@ -327,7 +365,11 @@ public class TExecutive_Switching_Function {
 						Relevant_Stimulus = Stimulus;
 						Relevant_Stimulus.Update_Saliency(0.9);
 					}
-					
+					else
+					{
+						Relevant_Stimulus = Stimulus;
+						Relevant_Stimulus.Update_Saliency(0.2);
+					}
 				};
 				break;
 			case TType_Beliefs.Stimulus_Too_Close_To_The_Train:
@@ -462,6 +504,11 @@ public class TExecutive_Switching_Function {
 	public void Updated_Beliefs()
 	{
 		this.Updated_Belief = true;		
+	}
+	
+	public void Updated_Stimuli()
+	{
+		this.Updated_Stimuli = true;		
 	}
 	
 	public void Update_Goals()

@@ -17,7 +17,7 @@ public class TExecutive_Working_Memory_Maintenance {
 	{
 		this.Agent = agent;
 		this.Long_Memory = new TLong_Memory(this);
-		this.Sensor = new TSensor_Managment();
+		this.Sensor = new TSensor_Managment(this);
 	}
 	
 	/**
@@ -410,14 +410,14 @@ public class TExecutive_Working_Memory_Maintenance {
 		ArrayList<String> Inhibited_Goals = new ArrayList<String>();
 		ArrayList<TAttentional_Goal> Goals = this.Long_Memory.Get_Inhibited_Goals();
 		
-		for(TAttentional_Goal Goal: Goals)
-		{
-			if(Goal instanceof TFunctional_Goal)
-			{
-				TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
-				Inhibited_Goals.add(Functional_Goal.get_Name());
-			}
-		}
+//		for(TAttentional_Goal Goal: Goals)
+//		{
+//			if(Goal instanceof TFunctional_Goal)
+//			{
+//				TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
+//				Inhibited_Goals.add(Functional_Goal.get_Name());
+//			}
+//		}
 		return Inhibited_Goals;
 	}
 	
@@ -559,7 +559,6 @@ public class TExecutive_Working_Memory_Maintenance {
 	
 	public boolean Perception_Processing(int i)
 	{
-//		this.Agent.Get_GW().Print_Data(0, 0);
 		this.Agent.Get_GW().Print_Data(2, 0);
 		Game.Print("Perception Processing number: "+i);
 		
@@ -596,30 +595,6 @@ public class TExecutive_Working_Memory_Maintenance {
 				Game.Print("***********************************");
 				Game.Print("***********************************");
 			}
-			
-//			if(String_TVS_Answer != "Correct move!" || )
-//	//		if(i>3)
-//			{
-//				Game.Scenario_Number++;
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("*********************************** "+ String_TVS_Answer);
-//				Game.Print("*******  CHANGE OF SCENARIO  ******");
-//				Game.Print("*******  SCENARIO Number "+ Game.Scenario_Number +" ********");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				Game.Print("***********************************");
-//				
-//			}
 		}
 		else
 		{
@@ -683,10 +658,35 @@ public class TExecutive_Working_Memory_Maintenance {
 					this.Manage_Acquired_Route_Status(Perception);
 					this.Agent.Get_GW().Updated_Salient_Beliefs_for_print = false;
 					break;
+				case "Ask how long the route is closed":
+					this.Manage_Ask_Closed_Route_Duration(Perception);
+					this.Agent.Get_GW().Updated_Salient_Beliefs_for_print = false;
+					break;
 				
 			}
 		}
 		return result;
+	}
+	
+	public void Manage_Ask_Closed_Route_Duration(TPerception Perception)
+	{
+		TRegion Inhibition_Regions = this.Agent.Get_GW().Get_Inhibition_Regions();
+		ArrayList<TBelief_Base> Unhinibited_Beliefs = this.Agent.Get_GW().Get_UnInhibited_Beliefs();
+		TSalient_Belief Salient_Belief;// = (TSalient_Belief) this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).getFirst();
+		
+		TTriple_Object Preceived_Data = Perception.get_Perceived_Data();
+		
+		int Integer_Route = (int) Preceived_Data.Get_Object_Second();
+		
+		ArrayList<TBelief_Base> Beliefs2 = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Temporary_Closed_Route);
+		Salient_Belief = (TSalient_Belief) Beliefs2.getFirst();
+		TPredicate Predicate = Salient_Belief.get_Predicate();
+		
+		Predicate.Set_Subject(Integer_Route);
+		Salient_Belief.Update_Saliency(0.9);
+		
+		Game.Print_Colored_Text("I want to ask to TCS: How long will the route be closed? "+Integer_Route, 5);
+		this.Agent.Get_GW().Update_Belief_by_Stimulus(Salient_Belief);	
 	}
 	
 	public void Manage_See_Semaphore_for_Route_Status(TPerception Perception)
@@ -903,6 +903,11 @@ public class TExecutive_Working_Memory_Maintenance {
 		//BISOGNA CANCELLARE IL DESIRE E IL SALIENT_BELIEF
 		//INOLTRE BISOGNA CREARE UNO STIMOLO CON SALIENCY BASSISSIMA DI TIPO ROTTA ACQUISITA
 		
+	}
+	
+	public TAgent Get_Agent()
+	{
+		return this.Agent;
 	}
 
 }

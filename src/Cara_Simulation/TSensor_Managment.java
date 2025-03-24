@@ -6,16 +6,19 @@ import java.util.ArrayList;
 public class TSensor_Managment {
 	
 	private ArrayList<TPerception> Acquired_Perceptions;
+	private TExecutive_Working_Memory_Maintenance WMM;
 	
 	
-	public TSensor_Managment()
+	public TSensor_Managment(TExecutive_Working_Memory_Maintenance wmm)
 	{
 
 		this.Acquired_Perceptions = new ArrayList<TPerception>();
+		this.WMM = wmm;
 	}
 	
-	public void Insert_Perception(LocalDateTime Time, TTriple_Object Data, Object source)
+	public void Insert_Perception(TTriple_Object Data, Object source)
 	{
+		LocalDateTime Time = this.WMM.Get_Agent().Get_GW().Get_Current_Time();
 		TPerception Perception= new TPerception(Time, Data, source);
 		this.Acquired_Perceptions.add(Perception);
 	}

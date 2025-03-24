@@ -10,6 +10,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 
+//import com.google.gson.Gson;
+
+//import com.google.gson.Gson;
+//import com.google.gson.reflect.TypeToken;
+import java.io.FileWriter;
+//import java.io.IOException;
+//import java.util.ArrayList;
+
 
 public class TFile_Manager {
 	
@@ -43,6 +51,19 @@ public class TFile_Manager {
 		    e.printStackTrace();
 		}
 	}
+	
+//	public void Write_Json_Predicates(ArrayList<TPredicate> Predicates)
+//	{
+//		String File_name = "Predicates.json";
+//		Gson gson = new Gson();
+//        String json = gson.toJson(Predicates);
+//
+//        try (FileWriter writer = new FileWriter(File_name)) {
+//            writer.write(json);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//	}
 	
 	public void Write_Beliefs(ArrayList<TBelief_Base> Beliefs)
 	{
@@ -293,9 +314,21 @@ public class TFile_Manager {
 		//Create Current Station, Route and step predicates: n-n+3
 		/////////////////
 		//Station
+		Station Start_Station = null;
+//		String String_Station = Game.Get_Input("Starting station: ");
+		
+		String String_Station = Game.Get_Preset_Input("Starting station:  ","Lisboa",2);
+		
+		Start_Station = Station.valueOf(String_Station);
+		
+//		Predicates.add(new 
+//				TPredicate( "p"+i++, TType_Subject.Me, TType_Relationship.is_in, 
+//						Station.Lisboa));
 		Predicates.add(new 
 				TPredicate( "p"+i++, TType_Subject.Me, TType_Relationship.is_in, 
-						Station.Lisboa));
+						Start_Station));
+		
+		
 		//Route
 		//Route is -1 when Agent is in a station, otherwise the value is > 0 when Agent is in Route
 		Predicates.add(new 
@@ -375,11 +408,11 @@ public class TFile_Manager {
 		/////////////////
 		//Create Destionation Station: 1-3
 		/////////////////
-		Beliefs.add(new TBelief_Base("b1", "p1", true, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief_Base("b1", "p1", false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Destination_Station));
-		Beliefs.add(new TBelief_Base("b2", "p2", true, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief_Base("b2", "p2", false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Destination_Station));
-		Beliefs.add(new TBelief_Base("b3", "p3", true, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief_Base("b3", "p3", false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Destination_Station));
 		
 		
@@ -546,9 +579,20 @@ public class TFile_Manager {
 				Fs2, Fe2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
 		
 		LocalDateTime Fs3 = LocalDateTime.parse("2024-10-01 21:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		
+//		Game.Print_Colored_Text("Insert the Finally Interval. Format string is: 2024-10-01 23:00:00", 2);
+//		String Data1 = Game.Get_Input("T1: ");
+//		String Data2 = Game.Get_Input("T2: ");
+		String Data1 = Game.Get_Preset_Input("Insert the Finally Start Interval. T1: ","2024-10-01 23:00:00",2);
+		String Data2 = Game.Get_Preset_Input("Insert the Finally End Interval. T2: ","2024-10-01 23:00:00",2);
+		
+		LocalDateTime Fe_Data1 = LocalDateTime.parse(Data1, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		LocalDateTime Fe_Data2 = LocalDateTime.parse(Data2, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//		LocalDateTime Fe3 = LocalDateTime.parse("2024-10-01 23:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		
 		LocalDateTime Fe3 = LocalDateTime.parse("2024-10-01 23:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		Functional_Goals.add(new TFunctional_Goal("Visit_Frankfurt", "b3", null,  0.4, 40.0, 0.1, Green_Goals_List, Quality_Goals_List,
-				Fs3, Fe3, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
+				Fe_Data1, Fe_Data2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
 		
 		//TFunctional_Goal func1 = new TFunctional_Goal("g1", "b1", null,  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List);
 		//TFunctional_Goal func2 = new TFunctional_Goal("g2", "b2", "p1", 21.0, 22.0, 23.0, Green_Goals_List, Quality_Goals_List);

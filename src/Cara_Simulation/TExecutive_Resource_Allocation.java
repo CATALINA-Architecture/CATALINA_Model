@@ -249,6 +249,10 @@ public class TExecutive_Resource_Allocation {
 			case "See Route Status":
 				this.Acquire_Route_Status(Action);
 				break;
+			case "Ask how long the route is closed":
+				
+				Game.End_Game();
+				break;
 			}
 
 			this.get_Agent().Get_GW().Print_Data(1, 0);
@@ -262,6 +266,13 @@ public class TExecutive_Resource_Allocation {
 	    }
 	    return result;
 	}
+	
+	//How long is the route closed?
+	private void How_Long_Is_The_Route_Closed(TAction Action)
+	{
+		
+	}
+	
 	
 	public void Updated_Beliefs() 
 	{
@@ -279,10 +290,16 @@ public class TExecutive_Resource_Allocation {
 		Stimulus.Set_Object_First("See Semaphore for Route Status");
 		Stimulus.Set_Object_Second(Integer_Route);
 		Stimulus.Set_Object_Third(null);
-		LocalDateTime Time = this.Agent.Get_GW().Get_Current_Time();
-		this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Time, Stimulus, "ME");
-		
-		
+		this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Stimulus, "ME");
+	}
+	
+	private void Insert_Stimulus_Get_Closed_Route_Duration(int Integer_Route)
+	{
+		TTriple_Object Stimulus = new TTriple_Object();
+		Stimulus.Set_Object_First("Ask how long the route is closed");
+		Stimulus.Set_Object_Second(Integer_Route);
+		Stimulus.Set_Object_Third(null);
+		this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Stimulus, "ME");
 	}
 	
 	private void Execute_Movement(TAction Action)
@@ -323,8 +340,7 @@ public class TExecutive_Resource_Allocation {
 		Response.Set_Object_First("Acquired Route Status");
 		Response.Set_Object_Second(route_number);
 		Response.Set_Object_Third(Route_Status);
-		LocalDateTime Time = this.Agent.Get_GW().Get_Current_Time();
-		this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Time, Response, "ME");
+		this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Response, "ME");
 
 //		Game.End_Game();
 		

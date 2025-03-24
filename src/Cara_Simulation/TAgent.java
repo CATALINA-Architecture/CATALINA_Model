@@ -188,7 +188,7 @@ public class TAgent {
 			
 			this.Make_True_Any_Information_To_Print();
 			
-			this.GW.Print_Data(1, 0);
+			this.GW.Print_Data(1, 7);
 		}
 		catch (Exception e) {
 			Game.Print("Something went wrong in method: Insert_New_Desires.");

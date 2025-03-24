@@ -26,6 +26,7 @@ public class Game {
 		Scenario_Number = 0;
 		
 		// I create a list of Predicates, Beliefs, Functional, Epistemic, Green and Quality Goals.
+        
 		Map = new Environment();
 		Create_Map();
 		TFile_Manager mana = new TFile_Manager();
@@ -38,7 +39,7 @@ public class Game {
 		mana.Create_Functional_Goals();
 		mana.Create_Epistemic_Goals();
 		
-		Game.Print("Creating Map");
+		Game.Print("Creatiddddng Map");
 		
 		Instant start = Instant.now();
 //		Map = new Environment();
@@ -238,6 +239,27 @@ public class Game {
 		 String result = myObj.nextLine();  // Read user input
 		 return result;
 	}
+	
+	public static String Get_Preset_Input(String Text, String Preset_Input, int color)
+	{
+//		Game.Print(ANSI_BOLD + Color + Text + ANSI_RESET);
+		
+		
+		 Print_Colored_Text(Text, color) ;
+		 System.out.print(Preset_Input);
+//		 String Answer = Get_Input(null) ;
+		
+		 Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+		 String Answer = myObj.nextLine();  // Read user input
+		 if(Answer == "")
+		 {
+			 Answer = Preset_Input;
+		 }
+		 
+		 return Answer;
+	}
+	
+	
 	
 	public static String Press_Enter()
 	{
