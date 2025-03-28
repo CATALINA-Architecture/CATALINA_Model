@@ -228,7 +228,7 @@ public class TReasoner_Function {
 								case TType_Beliefs.Stimulus_Temporary_Closed_Route:
 									Game.Print_Colored_Text("Stop before calling Deliberate_from_Stimulus_Temporary_Closed_Route method", 7);
 									Game.Press_Enter();
-									Deliberate_from_Stimulus_Temporary_Closed_Route(Desire);
+									Deliberate_for_Stimulus_Temporary_Closed_Route(Desire);
 									break;
 									
 								case TType_Beliefs.Stimulus_Route_Status:
@@ -339,6 +339,9 @@ public class TReasoner_Function {
 						switch(Epistemic_Goal.get_Belief().get_Type_Belief())
 						{
 						case TType_Beliefs.Stimulus_Route_Status:
+							
+							break;
+						case TType_Beliefs.Stimulus_Temporary_Closed_Route:
 							
 							break;
 						default:
@@ -795,6 +798,11 @@ public class TReasoner_Function {
 						//Game.Print("Agent not filter this desire: "+Desire.Get_Name());
 						
 						break;
+					case TType_Beliefs.Stimulus_Temporary_Closed_Route :
+						//Game.Print("Agent not filter this desire: "+Desire.Get_Name());
+						
+						break;
+					
 					}
 				}
 			}
@@ -990,14 +998,9 @@ public class TReasoner_Function {
 	public Boolean Deliberate_for_Stimulus_Temporary_Closed_Route(TDesire Desire)
 	{
 		
-	}
-	
-	public Boolean Deliberate_from_Stimulus_Temporary_Closed_Route(TDesire Desire)
-	{
 		boolean result = true;
 		try 
 		{
-
 			ArrayList<TOption> option_List =  new ArrayList<TOption>();
 			ArrayList<TAction> plans = new ArrayList<TAction>();
 	
@@ -1015,7 +1018,7 @@ public class TReasoner_Function {
 			An_Action.Get_Params().add(A_Route);
 							
 			// I define "Use_Route" as a function to go from a departure to a destination station
-			An_Action.Set_Action_Name("How long will the route be closed?");
+			An_Action.Set_Action_Name("Ask Closed Route Duration");
 			Actions.add(An_Action);
 			TOption An_Option = new TOption(Actions, null, 0.0, null);
 	
@@ -1031,7 +1034,7 @@ public class TReasoner_Function {
 			Game.Print("Agent update its intentions");
 			this.Agent.Get_GW().Update_Intentions(Intentions);
 			Game.Print("The Agent updated its intentions correctly");
-
+			
 		}
 		catch (Exception e) {
 	      Game.Print("Something went wrongin method: Insert_New_Desires.");
@@ -1042,7 +1045,8 @@ public class TReasoner_Function {
 	    }
 	    return result;
 	}
-
+	
+	
 	public void Updated_Desires() 
 	{
 		this.Updated_Desires = true;

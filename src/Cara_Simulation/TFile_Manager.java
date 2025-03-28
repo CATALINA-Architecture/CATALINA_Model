@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 //import com.google.gson.Gson;
 
@@ -343,14 +344,16 @@ public class TFile_Manager {
 		/////////////////
 		//Create Belief_Temporary_Closed_Route, Belief_Closed_Route, Belief_Busy_Route	
 		/////////////////
-		ArrayList<Station> Stations = new ArrayList<Station>();
-		ArrayList<Integer> Temp_Stations = new ArrayList<Integer>(Collections.nCopies(Station.values().length, 0));
+		HashMap<Integer, Integer> Routes = new HashMap<Integer, Integer>(); 
+		
+//		ArrayList<Station> Stations = new ArrayList<Station>();
+		ArrayList<Integer> Closed_Routes = new ArrayList<Integer>();
 		Predicates.add(new 
-				TPredicate( "p"+i++, Stations, TType_Relationship.is_Busy, Temp_Stations));
+				TPredicate( "p"+i++, Routes, TType_Relationship.is_Busy, null));
 		Predicates.add(new 
-				TPredicate( "p"+i++, Stations.clone(), TType_Relationship.is_Closed, null));
+				TPredicate( "p"+i++, Closed_Routes, TType_Relationship.is_Closed, null));
 		Predicates.add(new 
-				TPredicate( "p"+i++, Stations.clone(), TType_Relationship.is_Temporary_Closed, Temp_Stations.clone()));
+				TPredicate( "p"+i++, Routes.clone(), TType_Relationship.is_Temporary_Closed, null ));
 		
 		/////////////////
 		//Create Belief_Number_Players,	
@@ -368,9 +371,9 @@ public class TFile_Manager {
 		Predicates.add(new 
 				TPredicate( "p"+i++, -1, TType_Relationship.is_Closed, null));
 		Predicates.add(new 
-				TPredicate( "p"+i++, -1, TType_Relationship.is_Busy, new ArrayList<Integer>()));
+				TPredicate( "p"+i++, -1, TType_Relationship.is_Busy, null));
 		Predicates.add(new 
-				TPredicate( "p"+i++, -1, TType_Relationship.is_Temporary_Closed, Temp_Stations));
+				TPredicate( "p"+i++, -1, TType_Relationship.is_Temporary_Closed, null));
 		Predicates.add(new 
 				TPredicate( "p"+i++, -1, TType_Relationship.is_Crowded, 0));
 		//Stimulus_Status_Route

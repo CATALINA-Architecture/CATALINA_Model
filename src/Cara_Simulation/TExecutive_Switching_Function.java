@@ -322,31 +322,10 @@ public class TExecutive_Switching_Function {
 			break;
 			
 			case TType_Beliefs.Stimulus_Closed_Route:
-				/**
-				 * Protocol Predicate:
-				 * Subject => Route Number (Integer)
-				 * Relationship => is_Busy | is_Closed | is_Temporary_Closed
-				 *  if Relationship = is_Temporary_Closed
-				 * 		Object = => Time amount (Integer)
-				 */
-				{
-					Integer Route_Number = (Integer) Stimulus.get_Predicate().get_Subject();
-//					Game.Print("Route_Number for Apply_Filter: "+Route_Number );
-					
-					//If Route Number NOT is in Inhi_regions: the route is in my path! The agent must be careful!
-					if (! Inhi_regions.Integer_Routes.contains(Route_Number))
-					{
-						Relevant_Stimulus = Stimulus;
-						Relevant_Stimulus.Update_Saliency(0.9);
-					}
-					else
-					{
-						Relevant_Stimulus = Stimulus;
-						Relevant_Stimulus.Update_Saliency(0.2);
-					}
-				};
+			
 				break;
 			case TType_Beliefs.Stimulus_Busy_Route:
+				break;
 			case TType_Beliefs.Stimulus_Temporary_Closed_Route:
 				/**
 				 * Protocol Predicate:

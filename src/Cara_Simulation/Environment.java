@@ -209,14 +209,18 @@ public class Environment {
 			All_Paths.add(new ArrayList<>(Current_Path));
 			All_Paths_Integers.add(new ArrayList<>(Current_Path_Integers));
 		} else {
-			for (Route arco : Neighbors.getOrDefault(Current_Node, Collections.emptyList())) {
-				if (!Visited_Station.contains(arco.Get_Destination())) {
-
-					Arch_Index = arco.Route_Number;
-					Dfs(arco.Get_Destination(), Destination, Visited_Station, Current_Path, All_Paths,
-							Current_Path_Integers, All_Paths_Integers, Arch_Index);
-					if (Arch_Index > -1) {
-						Current_Path_Integers.remove(Arch_Index);
+			for (Route arc : Neighbors.getOrDefault(Current_Node, Collections.emptyList())) {
+				if (!Visited_Station.contains(arc.Get_Destination())) {
+					
+					if(arc.Get_Duration_Closed() == 0)
+					{
+						Arch_Index = arc.Route_Number;
+						Dfs(arc.Get_Destination(), Destination, Visited_Station, Current_Path, All_Paths,
+								Current_Path_Integers, All_Paths_Integers, Arch_Index);
+						if (Arch_Index > -1) 
+						{
+							Current_Path_Integers.remove(Arch_Index);
+						}
 					}
 				}
 			}
@@ -282,7 +286,7 @@ public class Environment {
 	 * @param A_Station		A specific Station  
 	 * @return				A list of routes
 	 */
-	public List<Route> get_Tratte_Città_Vicine(Station A_Station) {
+	public List<Route> Get_Routes_Nearby_Cities(Station A_Station) {
 		List<Route> Neighbor_Stations = Neighbors.getOrDefault(A_Station, Collections.emptyList());
 		return Neighbor_Stations;
 	}

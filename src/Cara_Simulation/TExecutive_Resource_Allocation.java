@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 
@@ -160,10 +161,27 @@ public class TExecutive_Resource_Allocation {
 										
 									case TType_Route_Status.Red:
 										Game.Print_Colored_Text("Route status is Red! I cannot go to route: "+Integer_Route, 2);
-										Game.Print_Colored_Text("I need to check how long the route will be inaccessible.",2);
-										Game.Print_Colored_Text("At this time, this feature is not implemented.", 2);
-										Game.Print_Colored_Text("Agent aborts its work",2);
-										Game.End_Game();
+																														   
+										Unhibited_Beliefs = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Temporary_Closed_Route);
+										TBelief_Base Bel = Unhibited_Beliefs.getFirst();  
+										HashMap<Integer, Integer> Routes = (HashMap<Integer, Integer>) Bel.Predicate.get_Subject();
+//										Game.Print(Routes.keySet());
+//										Game.Print(Routes.values());
+										if(Routes.containsKey(Integer_Route))
+										{
+											Integer Duration = Routes.get(Integer_Route);
+											Game.Print_Colored_Text("The Route "+Integer_Route+" will be closed for "+Duration+" time(s)", 2);
+											Game.Print_Colored_Text("Maybe, I must to recompute my plans", 2);
+											Game.End_Game();
+										}
+										else
+										{
+											Game.Print_Colored_Text("I need to check how long the route will be inaccessible.",2);
+											this.Insert_Stimulus_Get_Closed_Route_Duration(Integer_Route);
+										}
+										
+										
+										
 										break;
 										
 									case TType_Route_Status.Unknown:
@@ -249,9 +267,9 @@ public class TExecutive_Resource_Allocation {
 			case "See Route Status":
 				this.Acquire_Route_Status(Action);
 				break;
-			case "Ask how long the route is closed":
-				
-				Game.End_Game();
+			case "Ask Closed Route Duration":
+				this.Execute_Movement(Action);
+//				Game.End_Game();
 				break;
 			}
 
@@ -304,7 +322,7 @@ public class TExecutive_Resource_Allocation {
 	
 	private void Execute_Movement(TAction Action)
 	{
-		Game.Print("I execute a movement:");
+		Game.Print("I execute an action:");
 		TTriple_Object Request = new TTriple_Object();
 		//FUNCTION TO DO
 		Request.Set_Object_First(Action.Get_Action_Name()); 

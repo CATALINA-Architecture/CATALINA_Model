@@ -1,11 +1,17 @@
 Game starts at: 2024-10-01T16:00
-Creating Map
+[1m[31mStarting station:  [0m
+Lisboa
+[1m[31mInsert the Finally Start Interval. T1: [0m
+2024-10-01 23:00:00
+[1m[31mInsert the Finally End Interval. T2: [0m
+2024-10-01 23:00:00
+Creatiddddng Map
 I created the map in Time: 0 milliseconds
 Agent initialization...
 
-************  Method:  Initialization *********: TAgent
+[1m[34m************  Method:  Initialization *********: TAgent[0m
 ******* Scenario_Number:    --0-- *******
-Data changed at the BEGINNING of the method:
+[1m[36mData changed at the BEGINNING of the method:[0m
 
 Beliefs in GW:
 N. UnInhibited Beliefs in GW: 0
@@ -28,6 +34,7 @@ Desires with Options in GW
 Intentions in GW
 N. Intentions in GW: 0
 
+
 Regions in GW
 N. UnInhibited Routes Region in GW: 0
 N. UnInhibited Station Region in GW: 0
@@ -38,22 +45,264 @@ N. Inhibited Route Region in LONG MEMORY: 0
 N. Station in LONG MEMORY: 0
 N. Inhibited Station Region in LONG MEMORY: 0
 
-*************** Work flow in Method ***************
 I read predicates, beliefs, green, quality and functional goals.
 Loaded Functional Goals : [Visit_Paris, Visit_Frankfurt, Visit_Rome]
 
-************  Method:  Initialization *********: TAgent
+[1m[34m************  Method:  Initialization *********: TAgent[0m
 ******* Scenario_Number:    --0-- *******
-Data changed at the END of the method:
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
 N. UnInhibited Beliefs in GW: 0
 Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
+Beliefs Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T16:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b2: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p2: Rome visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p8: Madrid visited_by Me
+b9: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p9: Cadiz visited_by Me
+b10: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p10: Barcelona visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b12: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p12: Brest visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b14: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p14: Dieppe visited_by Me
+b15: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p15: Marseille visited_by Me
+b16: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p16: Zurich visited_by Me
+b17: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p17: Rome visited_by Me
+b18: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p18: Venice visited_by Me
+b19: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p19: Palermo visited_by Me
+b20: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p20: Brindisi visited_by Me
+b21: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p21: Frankfurt visited_by Me
+b22: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p22: Munchen visited_by Me
+b23: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p23: Wien visited_by Me
+b24: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p24: Budapest visited_by Me
+b25: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p25: Zacrab visited_by Me
+b26: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p26: Sarajevo visited_by Me
+b27: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p27: Bucaresti visited_by Me
+b28: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p28: Sofia visited_by Me
+b29: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p29: Athina visited_by Me
+b30: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p30: Smyrna visited_by Me
+b31: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p31: Ancora visited_by Me
+b32: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p32: Costantinople visited_by Me
+b33: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p33: Savastopol visited_by Me
+b34: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p34: Sochi visited_by Me
+b35: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p35: Rostow visited_by Me
+b36: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p36: Bruxelles visited_by Me
+b37: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p37: London visited_by Me
+b38: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p38: Edimburgh visited_by Me
+b39: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p39: Amsterdam visited_by Me
+b40: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p40: Essen visited_by Me
+b41: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p41: Berlin visited_by Me
+b42: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p42: Kodenilavn visited_by Me
+b43: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p43: Danzic visited_by Me
+b44: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p44: Stockholm visited_by Me
+b45: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p45: Warszawa visited_by Me
+b46: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p46: Rica visited_by Me
+b47: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p47: Wilno visited_by Me
+b48: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p48: Smolensk visited_by Me
+b49: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p49: Moskva visited_by Me
+b50: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p50: Petrocrad visited_by Me
+b51: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p51: Kyiv visited_by Me
+b52: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p52: Kharkov visited_by Me
+b53: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p53: Erzurum visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Lisboa
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b58: Belief_Closed_Route -  Truth: false   -   Predicate Name and data, p58: [] is_Closed null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: -1 is Unknown
+b68: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p68: 0 is Unknown
+b69: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p69: 1 is Unknown
+b70: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p70: 2 is Unknown
+b71: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p71: 3 is Unknown
+b72: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p72: 4 is Unknown
+b73: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p73: 5 is Unknown
+b74: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p74: 6 is Unknown
+b75: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p75: 7 is Unknown
+b76: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p76: 8 is Unknown
+b77: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p77: 9 is Unknown
+b78: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p78: 10 is Unknown
+b79: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p79: 11 is Unknown
+b80: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p80: 12 is Unknown
+b81: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p81: 13 is Unknown
+b82: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p82: 14 is Unknown
+b83: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p83: 15 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b85: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p85: 17 is Unknown
+b86: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p86: 18 is Unknown
+b87: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p87: 19 is Unknown
+b88: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p88: 20 is Unknown
+b89: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p89: 21 is Unknown
+b90: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p90: 22 is Unknown
+b91: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p91: 23 is Unknown
+b92: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p92: 24 is Unknown
+b93: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p93: 25 is Unknown
+b94: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p94: 26 is Unknown
+b95: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p95: 27 is Unknown
+b96: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p96: 28 is Unknown
+b97: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p97: 29 is Unknown
+b98: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p98: 30 is Unknown
+b99: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p99: 31 is Unknown
+b100: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p100: 32 is Unknown
+b101: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p101: 33 is Unknown
+b102: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p102: 34 is Unknown
+b103: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p103: 35 is Unknown
+b104: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p104: 36 is Unknown
+b105: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p105: 37 is Unknown
+b106: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p106: 38 is Unknown
+b107: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p107: 39 is Unknown
+b108: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p108: 40 is Unknown
+b109: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p109: 41 is Unknown
+b110: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p110: 42 is Unknown
+b111: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p111: 43 is Unknown
+b112: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p112: 44 is Unknown
+b113: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p113: 45 is Unknown
+b114: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p114: 46 is Unknown
+b115: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p115: 47 is Unknown
+b116: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p116: 48 is Unknown
+b117: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p117: 49 is Unknown
+b118: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p118: 50 is Unknown
+b119: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p119: 51 is Unknown
+b120: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p120: 52 is Unknown
+b121: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p121: 53 is Unknown
+b122: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p122: 54 is Unknown
+b123: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p123: 55 is Unknown
+b124: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p124: 56 is Unknown
+b125: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p125: 57 is Unknown
+b126: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p126: 58 is Unknown
+b127: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p127: 59 is Unknown
+b128: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p128: 60 is Unknown
+b129: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p129: 61 is Unknown
+b130: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p130: 62 is Unknown
+b131: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p131: 63 is Unknown
+b132: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p132: 64 is Unknown
+b133: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p133: 65 is Unknown
+b134: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p134: 66 is Unknown
+b135: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p135: 67 is Unknown
+b136: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p136: 68 is Unknown
+b137: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p137: 69 is Unknown
+b138: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p138: 70 is Unknown
+b139: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p139: 71 is Unknown
+b140: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p140: 72 is Unknown
+b141: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p141: 73 is Unknown
+b142: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p142: 74 is Unknown
+b143: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p143: 75 is Unknown
+b144: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p144: 76 is Unknown
+b145: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p145: 77 is Unknown
+b146: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p146: 78 is Unknown
+b147: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p147: 79 is Unknown
+b148: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p148: 80 is Unknown
+b149: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p149: 81 is Unknown
+b150: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p150: 82 is Unknown
+b151: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p151: 83 is Unknown
+b152: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p152: 84 is Unknown
+b153: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p153: 85 is Unknown
+b154: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p154: 86 is Unknown
+b155: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p155: 87 is Unknown
+b156: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p156: 88 is Unknown
+b157: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p157: 89 is Unknown
+b158: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p158: 90 is Unknown
+b159: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p159: 91 is Unknown
+b160: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p160: 92 is Unknown
+b161: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p161: 93 is Unknown
+b162: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p162: 94 is Unknown
+b163: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p163: 95 is Unknown
+b164: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p164: 96 is Unknown
+b165: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p165: 97 is Unknown
+b166: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p166: 98 is Unknown
+b167: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p167: 99 is Unknown
+b168: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p168: 100 is Unknown
+b169: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p169: 101 is Unknown
+b170: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p170: 102 is Unknown
+b171: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p171: 103 is Unknown
+b172: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p172: 104 is Unknown
+b173: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p173: 105 is Unknown
+b174: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p174: 106 is Unknown
+b175: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p175: 107 is Unknown
+b176: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p176: 108 is Unknown
+b177: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p177: 109 is Unknown
+b178: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p178: 110 is Unknown
+b179: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p179: 111 is Unknown
+b180: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p180: 112 is Unknown
+b181: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p181: 113 is Unknown
+b182: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p182: 114 is Unknown
+b183: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p183: 115 is Unknown
+b184: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p184: 116 is Unknown
+b185: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p185: 117 is Unknown
+b186: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p186: 118 is Unknown
+b187: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p187: 119 is Unknown
+b188: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p188: 120 is Unknown
+b189: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p189: 121 is Unknown
+b190: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p190: 122 is Unknown
+b191: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p191: 123 is Unknown
+b192: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p192: 124 is Unknown
+b193: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p193: 125 is Unknown
+b194: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p194: 126 is Unknown
+b195: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p195: 127 is Unknown
+b196: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p196: 128 is Unknown
+b197: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p197: 129 is Unknown
+b198: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p198: 130 is Unknown
+b199: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p199: 131 is Unknown
+b200: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p200: 132 is Unknown
+b201: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p201: 133 is Unknown
+b202: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p202: 134 is Unknown
+b203: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p203: 135 is Unknown
+b204: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p204: 136 is Unknown
+b205: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p205: 137 is Unknown
+b206: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p206: 138 is Unknown
+b207: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p207: 139 is Unknown
+b208: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p208: 140 is Unknown
+b209: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p209: 141 is Unknown
+b210: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p210: 142 is Unknown
+b211: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p211: 143 is Unknown
+b212: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p212: 144 is Unknown
+b213: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p213: 145 is Unknown
+b214: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p214: 146 is Unknown
+b215: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p215: 147 is Unknown
+b216: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p216: 148 is Unknown
+b217: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p217: 149 is Unknown
+b218: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p218: 150 is Unknown
+b219: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p219: 151 is Unknown
+b220: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p220: 152 is Unknown
+b221: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p221: 153 is Unknown
+b222: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p222: 154 is Unknown
+b223: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p223: 155 is Unknown
+b224: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p224: 156 is Unknown
+b225: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p225: 157 is Unknown
+b226: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p226: 158 is Unknown
+b227: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p227: 159 is Unknown
+b228: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p228: 160 is Unknown
+b229: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p229: 161 is Unknown
+b230: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p230: 162 is Unknown
+b231: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p231: 163 is Unknown
+b232: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p232: 164 is Unknown
+b233: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p233: 165 is Unknown
+b234: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p234: 166 is Unknown
+b235: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p235: 167 is Unknown
+b236: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p236: 168 is Unknown
+b237: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p237: 169 is Unknown
+b238: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p238: 170 is Unknown
+b239: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p239: 171 is Unknown
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled []
+b242: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p242: Visit_Rome has_traveled []
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
 N. Inhibited Beliefs in LONG MEMORY: 0
+Inhibited Beliefs Types:
 
 Goals in GW
-N. Goals in GW: 3
+N. Goals in GW: 0
 N. UnInhibited Goals in GW: 0
 Goals in LONG MEMORY
 N. Goals in LONG MEMORY: 3
@@ -67,6 +316,7 @@ Desires with Options in GW
 Intentions in GW
 N. Intentions in GW: 0
 
+
 Regions in GW
 N. UnInhibited Routes Region in GW: 0
 N. UnInhibited Station Region in GW: 0
@@ -77,38 +327,33 @@ N. Inhibited Route Region in LONG MEMORY: 0
 N. Station in LONG MEMORY: 47
 N. Inhibited Station Region in LONG MEMORY: 0
 
-
-************  Method:  Start *********: TAgent
-******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
 Now Agent Status is Active
 Agent Work Cycle start...
 *************************
 
 Working Cycle number: 0
+[1m[36mStop before calling Perception_Processing method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
 ******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
+[1m[36mWork flow in Method:[0m
 
-No data has changed.
-*************** Work flow in Method ***************
 Perception Processing number: 0
-Sensor acquires last Perception (if it exists).
-The Agent did not perceive any stimulus
+My sensor is attempting to acquire the most recent Stimulus (if any).
+I didn't feel any Stimulus.
 
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
 ******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
+I have NOT a stimulus. I am not entering here 
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
 ******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
 N. UnInhibited Beliefs in GW: 0
@@ -116,42 +361,42 @@ Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
 N. Inhibited Beliefs in LONG MEMORY: 0
 
-*************** Work flow in Method ***************
-The Agent has NOT a stimulus.
+[1m[36mStop before calling AM_Endogenous_Module method[0m
+[31mPress return to continue...[0m
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
+Now, I check if I have some Goals to promote to Desire.
+
+[1m[34m************  Method:  AM_Endogenous_Module *********: TExecutive_Switching_Function[0m
 ******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
+[1m[35mData changed at the END of the method:[0m
 
-No data has changed.
-Now, the agent checks if it has some goals to promote to desire
-I'm promoting the goal to Desire, inside --(List_goals - Inhibited_goals)-- section (see Listing 1). Goal Name: Visit_Paris
-Not Promoted Goal Name: Visit_Rome because the precondition Functional Goal is not true
-I'm promoting the goal to Desire, inside --(List_goals - Inhibited_goals)-- section (see Listing 1). Goal Name: Visit_Frankfurt
-I promoted the goal: Visit_Paris to the Desire: D1
-I promoted the goal: Visit_Frankfurt to the Desire: D2
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 0
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 3
+N. Inhibited Goals in LONG MEMORY: 0
 
-************  Method:  Insert_New_Desires *********: TGlobalWorkspace
+The goal -- Visit_Paris -- is in Uninhibited Goal and it has a saliency greater than Saliency Threshold: 0.5 > 0.3
+I'm promoting the goal to Desire, inside --(Uninhibited Goals)-- section (see Listing 1). Goal Name: Visit_Paris
+
+I do Not Promote Goal Name: Visit_Rome, because the Functional Goal's precondition is not true.
+
+The goal -- Visit_Frankfurt -- is in Uninhibited Goal and it has a saliency greater than Saliency Threshold: 0.4 > 0.3
+I'm promoting the goal to Desire, inside --(Uninhibited Goals)-- section (see Listing 1). Goal Name: Visit_Frankfurt
+
+I promoted the goal: Visit_Paris to the Desire: D1 with Saliency: 0.5
+
+I promoted the goal: Visit_Frankfurt to the Desire: D2 with Saliency: 0.4
+
+
+Number of New Desires I've created: 2
+1 - I inserted the Desire: D1 - related Functional Goal Name: Visit_Paris - related Belief type: Belief_Destination_Station
+2 - I inserted the Desire: D2 - related Functional Goal Name: Visit_Frankfurt - related Belief type: Belief_Destination_Station
+
+[1m[34m************  Method:  AM_Endogenous_Module *********: TExecutive_Switching_Function[0m
 ******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-I inserted new Desires: 2
-
-************  Method:  Insert_New_Desires *********: TGlobalWorkspace
-******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
-
-Desires in GW
-N. Desires in GW: 2
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
-
-
-************  Method:  AM_Endogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
 N. UnInhibited Beliefs in GW: 240
@@ -159,41 +404,43 @@ Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
 N. Inhibited Beliefs in LONG MEMORY: 0
 
-
-************  Method:  MeansEnd *********: TReasoner_Function
-******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
-
 Desires in GW
 N. Desires in GW: 2
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
+Desire N. -1 - Named: D1 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Desire N. -2 - Named: D2 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
 
-*************** Work flow in Method ***************
-Using its Meand-End Reasoner, the agent tries to find some options for any desire.
-********* --------------- *************
-For the Desire --1-- The Attentional Goal is a:  TFunctional_Goal
-Its Final belief type is: Belief_Destination_Station
-Agent uses its Means_End_For_Belief_Destination_Station method to search some options
+[1m[36mStop before calling MeansEnd method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Means_End_For_Belief_Destination_Station *********: TReasoner_Function
+
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
 ******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
+[1m[36mWork flow in Method:[0m
 
-No data has changed.
-*************** Work flow in Method ***************
+Using my Meand-End reasoner, I try to find some options for each desire.
+
+********* --------------- *************
+
+1 - For the Desire --D1-- The Attentional Goal is a:  TFunctional_Goal
+Its Final belief type is: Belief_Destination_Station
+I use my Means_End_For_Belief_Destination_Station method to search some options
+
+[1m[34m************  Method:  Means_End_For_Belief_Destination_Station *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
 
 The Functional_Goal Name is: Visit_Paris
 The Functional_Belief is a:  Belief_Destination_Station
 I search for several options for the Desire
-I created/found some options in Time: 1350 milliseconds
+I created/found some options in Time: 947 milliseconds
 I found paths: 964968
 I found n. paths Before Finally_Formula: 964968
-I Apply the Finally Operator
+I apply the Finally Operator
 Start time in simulation: 2024-10-01T16:00
 Range time in Finally Operator - 2024-10-01T18:00 - 2024-10-01T22:00
 I found n. paths After Finally_Formula: 3
-Agent inserts actions to do (go to in some routes) in the desire. These can be null.
+For each action plan for optios, I insert any actions to do (go to in some routes) in the desire.
 **** Printing Paths Steps ********
 
 ****** Path: 0
@@ -228,6 +475,7 @@ Postcondition.  Station: Pamplona - Route: 16 - Step: 4
 Precondition.  Station: Pamplona - Route: 16 - Step: 4
 Postcondition.  Station: Paris - Route: -1 - Step: 0
 -------------- Next Step --------------
+....................................
 
 ****** Path: 1
 Route list of the path: [128, 144, 18]
@@ -261,6 +509,7 @@ Postcondition.  Station: Pamplona - Route: 18 - Step: 4
 Precondition.  Station: Pamplona - Route: 18 - Step: 4
 Postcondition.  Station: Paris - Route: -1 - Step: 0
 -------------- Next Step --------------
+....................................
 
 ****** Path: 2
 Route list of the path: [128, 144, 114]
@@ -294,9 +543,146 @@ Postcondition.  Station: Pamplona - Route: 114 - Step: 4
 Precondition.  Station: Pamplona - Route: 114 - Step: 4
 Postcondition.  Station: Paris - Route: -1 - Step: 0
 -------------- Next Step --------------
+....................................
+
 N. Options found : 3
-Agent found at least an option and it can deliberate
-******************** Selected Path **********************: TReasoner_Function
+
+[1m[34m************  Method:  Means_End_For_Belief_Destination_Station *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Desires in GW
+N. Desires in GW: 2
+Desire N. -1 - Named: D1 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Desire N. -2 - Named: D2 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+
+
+********* --------------- *************
+
+2 - For the Desire --D2-- The Attentional Goal is a:  TFunctional_Goal
+Its Final belief type is: Belief_Destination_Station
+I use my Means_End_For_Belief_Destination_Station method to search some options
+
+[1m[34m************  Method:  Means_End_For_Belief_Destination_Station *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+
+The Functional_Goal Name is: Visit_Frankfurt
+The Functional_Belief is a:  Belief_Destination_Station
+I search for several options for the Desire
+I created/found some options in Time: 1032 milliseconds
+I found paths: 765772
+I found n. paths Before Finally_Formula: 765772
+I apply the Finally Operator
+Start time in simulation: 2024-10-01T16:00
+Range time in Finally Operator - 2024-10-01T23:00 - 2024-10-01T23:00
+I found n. paths After Finally_Formula: 0
+For each action plan for optios, I insert any actions to do (go to in some routes) in the desire.
+**** Printing Paths Steps ********
+
+N. Options found : 0
+
+[1m[34m************  Method:  Means_End_For_Belief_Destination_Station *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+
+Now I will filter any desire.
+[1m[36mStop before calling Filtering_Process method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Filtering_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+I filter the options of the Desire with name: D1
+
+Now I apply Green and Quality Goal filters
+
+I apply Green filters
+N. Green Goal for this Desire: 1
+I apply the Green Goal: gg1
+with its Constraint Predicate Name: p5
+Before resizing: 3
+After resizing: 2
+I found paths (options) After Green_Filter: 2
+
+I apply Quality filters
+N. Quality Goal for this desire: 1
+I apply the Quality Goal: qg1
+with its Constraint Predicate Name: p6
+--- I apply quality name: qg1
+--- Value_Quality_Goal: great
+I found paths (options) After Quality_Filter: 2
+Functional Goal Name for the Desire is : Visit_Paris
+N. Survival Options of the Desire: 2
+I filtered and ordered found options ( 2 ) in Time: 5 milliseconds
+...............
+
+I filter the options of the Desire with name: D2
+
+Now I apply Green and Quality Goal filters
+
+I apply Green filters
+N. Green Goal for this Desire: 1
+I apply the Green Goal: gg1
+with its Constraint Predicate Name: p5
+Before resizing: 0
+After resizing: 0
+I found paths (options) After Green_Filter: 0
+
+I apply Quality filters
+N. Quality Goal for this desire: 1
+I apply the Quality Goal: qg1
+with its Constraint Predicate Name: p6
+--- I apply quality name: qg1
+--- Value_Quality_Goal: great
+I found paths (options) After Quality_Filter: 0
+Functional Goal Name for the Desire is : Visit_Frankfurt
+N. Survival Options of the Desire: 0
+I filtered and ordered found options ( 0 ) in Time: 0 milliseconds
+...............
+
+
+[1m[34m************  Method:  Filtering_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Desires in GW
+N. Desires in GW: 2
+Desire N. -1 - Named: D1 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Desire N. -2 - Named: D2 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+
+Desires with Options in GW
+Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+
+
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before calling Deliberate_Process method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Deliberate_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+For each Desire, I select an option (if it exists) and I decide whether a Desire can become an intention to pursue.
+
+Now, I have to deliberate for an option (if it exists) for the Desire: D1
+Linked to Functional Goal : Visit_Paris
+For each action plan for optios, I insert any actions to do (go to in some routes) in the desire.
+For this Desire, I have found n. options: 2
+and I deliberate the following Selected Path:
+
+[1m[32m******************** Selected Path **********************: TReasoner_Function[0m
 ********* PAth: 0
 Stations: [Lisboa, Madrid, Pamplona, Paris]
 Routes Numbers: [128, 144, 16]
@@ -307,7 +693,7 @@ Speed average: 2.3333333333333335
 Path Time: 5.833333333333333 - Arrive time: 2024-10-01T21:49
 Path Data:
 ----------------------------
-Route Number: 128 - Route_Time: 1.3333333333333333
+[1m[32mRoute Number: 128 - Route_Time: 1.3333333333333333[0m
 Route Color: Violet
 Total Rounds Route: 2
 Departure/Destination: Lisboa-Madrid - Locomotive: Hybrid - Panorama: Fair - Speed: High - N.pieces: 3
@@ -317,7 +703,7 @@ Locomotive Route value: 1.5
 Panorama value: 0.6
 Speed value: 3
 **********************
-Route Number: 144 - Route_Time: 2.0
+[1m[32mRoute Number: 144 - Route_Time: 2.0[0m
 Route Color: White
 Total Rounds Route: 2
 Departure/Destination: Madrid-Pamplona - Locomotive: Electric - Panorama: Fair - Speed: Medium - N.pieces: 3
@@ -327,7 +713,7 @@ Locomotive Route value: 0.30000000000000004
 Panorama value: 0.6
 Speed value: 2
 **********************
-Route Number: 16 - Route_Time: 2.5
+[1m[32mRoute Number: 16 - Route_Time: 2.5[0m
 Route Color: Green
 Total Rounds Route: 3
 Departure/Destination: Pamplona-Paris - Locomotive: Electric - Panorama: Fair - Speed: Medium - N.pieces: 4
@@ -337,1491 +723,2115 @@ Locomotive Route value: 0.4
 Panorama value: 0.6
 Speed value: 2
 **********************
-
-************  Method:  Means_End_For_Belief_Destination_Station *********: TReasoner_Function
-******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
-
-No data has changed.
-********* --------------- *************
-For the Desire --2-- The Attentional Goal is a:  TFunctional_Goal
-Its Final belief type is: Belief_Destination_Station
-Agent uses its Means_End_For_Belief_Destination_Station method to search some options
-
-************  Method:  Means_End_For_Belief_Destination_Station *********: TReasoner_Function
-******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-
-The Functional_Goal Name is: Visit_Frankfurt
-The Functional_Belief is a:  Belief_Destination_Station
-I search for several options for the Desire
-I created/found some options in Time: 9264 milliseconds
-I found paths: 2376804
-I found n. paths Before Finally_Formula: 2376804
-I Apply the Finally Operator
-Start time in simulation: 2024-10-01T16:00
-Range time in Finally Operator - 2024-10-01T21:00 - 2024-10-01T23:00
-I found n. paths After Finally_Formula: 0
-Agent inserts actions to do (go to in some routes) in the desire. These can be null.
-**** Printing Paths Steps ********
-N. Options found : 0
-Agent has not an option. Agent will have an intention with no option.
-
-************  Method:  Means_End_For_Belief_Destination_Station *********: TReasoner_Function
-******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
-
-No data has changed.
-Now Agent will filter any desire.
-[31mStop before calling Filtering_Process method[0m
-Enter an input
-
-
-************  Method:  Filtering_Process *********: TReasoner_Function
-******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Agent filters the options of the Desire with name: D1
-
-Now I apply Green and Quality Goal filters
-
-I apply Green filters
-N. Green Goal for this desire: 1
-Before resizing: 3
-After resizing: 2
-I found paths (options) After Green_Filter: 2
-
-I apply Quality filters
-N. Quality Goal for this desire: 1
---- I apply quality name: qg1
---- Value_Quality_Goal: great
-I found paths (options) After Quality_Filter: 2
-Functional Goal Name for the Desire is : Visit_Paris
-N. Survival Options of the Desire: 2
-I filtered and ordered found options ( 2 ) in Time: 4 milliseconds
-Agent filters the options of the Desire with name: D2
-
-Now I apply Green and Quality Goal filters
-
-I apply Green filters
-N. Green Goal for this desire: 1
-Before resizing: 0
-After resizing: 0
-I found paths (options) After Green_Filter: 0
-
-I apply Quality filters
-N. Quality Goal for this desire: 1
---- I apply quality name: qg1
---- Value_Quality_Goal: great
-I found paths (options) After Quality_Filter: 0
-Functional Goal Name for the Desire is : Visit_Frankfurt
-N. Survival Options of the Desire: 0
-I filtered and ordered found options ( 0 ) in Time: 1 milliseconds
-
-************  Method:  Filtering_Process *********: TReasoner_Function
-******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
-
-Desires in GW
-N. Desires in GW: 2
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
-
-Desires with Options in GW
-Desire N. -1 - Named: D1 has N. Options: 2
-Desire N. -2 - Named: D2 has N. Options: 0
-
-
-************  Method:  MeansEnd *********: TReasoner_Function
-******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  Deliberate_Process *********: TReasoner_Function
-******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
-
-Desires in GW
-N. Desires in GW: 2
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
-
-Desires with Options in GW
-Desire N. -1 - Named: D1 has N. Options: 2
-Desire N. -2 - Named: D2 has N. Options: 0
-
-*************** Work flow in Method ***************
-Now, Agent create an intention for any desire
+I create the Intention: I1 for the Desire: D1
 Desire Attentional Goal Name: Visit_Paris
-Desire Options: 2
+N. Desire Options: 2
 
+
+Now, I have to deliberate for an option (if it exists) for the Desire: D2
+Linked to Functional Goal : Visit_Frankfurt
+For each action plan for optios, I insert any actions to do (go to in some routes) in the desire.
+I have not found any option. I cannot deliberate. I will have an intention without option.
+I create the Intention: I2 for the Desire: D2
 Desire Attentional Goal Name: Visit_Frankfurt
-Desire Options: 0
+N. Desire Options: 0
 
-The Agent updated its intentions correctly.
+I updated my intentions correctly.
 
-************  Method:  Deliberate_Process *********: TReasoner_Function
+[1m[34m************  Method:  Deliberate_Process *********: TReasoner_Function[0m
 ******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
+[1m[35mData changed at the END of the method:[0m
+
+Desires in GW
+N. Desires in GW: 2
+Desire N. -1 - Named: D1 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Desire N. -2 - Named: D2 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+
+Desires with Options in GW
+Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
 
 Intentions in GW
 N. Intentions in GW: 2
+Intention: I1 related to Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
 
 
-************  Method:  Focus_Attention *********: TE_Inhibition_function
+[1m[36mStop before calling Focus_Attention method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
 ******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
+[1m[36mWork flow in Method:[0m
 
-Intentions in GW
-N. Intentions in GW: 2
+Intention Saliency: 0.5
+I create the Inhibition Regions
+I create the Inhibited Goals
+I create the Inhibited Beliefs
 
-*************** Work flow in Method ***************
-Functional Name for the Intention selected to pursue: Visit_Paris
-Agent creates the Inhibition Regions
-Agent creates the Inhibited Goals
-Agent creates the Inhibited Beliefs
-
-************  Method:  Focus_Attention *********: TE_Inhibition_function
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
 ******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
-N. UnInhibited Beliefs in GW: 23
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T16:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Lisboa
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: -1 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p196: 128 is Unknown
+b212: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p212: 144 is Unknown
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled []
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
 Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
-N. Inhibited Beliefs in LONG MEMORY: 217
+N. Inhibited Beliefs in LONG MEMORY: 215
 
-*************** Work flow in Method ***************
-Agent acts an action for the intention with Functional Name: Visit_Paris
-Agent checks if preconditions for the actions are correct:
-Current Station is: Lisboa
-Current Route is: -1
-Current Step is: 0
-Precondition Station is: Lisboa
-Precondition Route is: -1
-Precondition Stepis: 0
-Yes, Position of Precondition of the action are correct!
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 2
+Goal Names:
+Visit_Paris
+Visit_Frankfurt
+
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 3
+Goal Names:
+Visit_Paris
+Visit_Rome
+Visit_Frankfurt
+
+N. Inhibited Goals in LONG MEMORY: 0
+Inhibited Goal Names:
+Visit_Rome
+
+Intentions in GW
+N. Intentions in GW: 2
+Intention: I1 related to Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+
+
+Regions in GW
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+Regions in LONG MEMORY
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+[1m[36mStop before calling Plan_Advanc_Eval method[0m
+[31mPress return to continue...[0m
+
+I act an action for the intention with Functional Name: Visit_Paris
+I check if current positions and precondition positions for the act current action are congruent (equal):
+Current position Station is: Lisboa
+Current position Route is: -1
+Current position Step is: 0
+Precondition position Station is: Lisboa
+Precondition position Route is: -1
+Precondition position Stepis: 0
+[1m[32mYes, Position of Precondition of the action are correct![0m
 Now, I check my knowledge of the route status
 [1m[34mThe route status is unknown.[0m
 [1m[34mI need to know if it is green or not.[0m
+[1m[31mI raise a stimulus to create an epistemic goal to turn on my virtual camera[0m
 
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
 ******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
-
-No data has changed.
-[31mStop before starting again...[0m
-Enter an input
-
-Working Cycle number: 1
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Perception Processing number: 1
-Sensor acquires last Perception (if it exists).
-I'm feeling some stimulus
-Perception acquired a Perception correctly.
-WMM analyzes perception.
-I want to see the semaphore for get the route status for route: 128
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --1-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --1-- *******
-Data changed at the END of the method:
-
-No data has changed.
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-*************  CHANGE OF SCENARIO  **********************
-*************  SCENARIO Number 2 **********************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --2-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --2-- *******
-Data changed at the BEGINNING of the method:
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
-N. UnInhibited Beliefs in GW: 23
+N. UnInhibited Beliefs in GW: 25
 Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
-N. Inhibited Beliefs in LONG MEMORY: 217
+N. Inhibited Beliefs in LONG MEMORY: 215
 
-*************** Work flow in Method ***************
-The Agent has a stimulus and checks if it has a saliency greater then Saliency/Attention threholds of the agent.
+[1m[36mStop before starting again...[0m
+Working Cycle number: 1
+[1m[36mStop before calling Perception_Processing method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Insert_New_Desires *********: TGlobalWorkspace
-******* Scenario_Number:    --2-- *******
-Data changed at the BEGINNING of the method:
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+Perception Processing number: 1
+My sensor is attempting to acquire the most recent Stimulus (if any).
+I feel a Stimulus.
+Stimulus acquired correctly.
+My WMM's "Information Selection" analyzes the Stimulus.
+[1m[34mI want to see the semaphore for get the route status for route: 128[0m
+
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mData changed at the BEGINNING of the method:[0m
 
 No data has changed.
-*************** Work flow in Method ***************
-I inserted new Desires: 1
 
-************  Method:  Insert_New_Desires *********: TGlobalWorkspace
-******* Scenario_Number:    --2-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before calling AM_Exogenous_Module method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+I have a stimulus and I check if it has a saliency greater than my Saliency/Attention threholds.
+This stimulus is greater than Saliency Threshold.
+I create an Epistemic Goal and I promote it to Desire.
+
+Number of New Desires I've created: 1
+1 - I inserted the Desire: D3 - related Epistemic Goal Name: eg1 - related Belief type: Stimulus_Route_Status
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T16:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Lisboa
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 128 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p196: 128 is Unknown
+b212: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p212: 144 is Unknown
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled []
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 2
+Goal Names:
+Visit_Paris
+Visit_Frankfurt
+
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 4
+Goal Names:
+Visit_Paris
+Visit_Rome
+Visit_Frankfurt
+eg1
+
+N. Inhibited Goals in LONG MEMORY: 0
+Inhibited Goal Names:
+Visit_Rome
 
 Desires in GW
 N. Desires in GW: 3
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
-Desire N. -3 - Named: D3 - Saliency: 0.9
+Desire N. -1 - Named: D1 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Desire N. -2 - Named: D2 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+Desire N. -3 - Named: D3 - Saliency: 0.9 - Attentional Goal Name: eg1
+
+[1m[36mStop before calling MeansEnd method[0m
+[31mPress return to continue...[0m
 
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --2-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
 
-No data has changed.
+Using my Meand-End reasoner, I try to find some options for each desire.
 
-************  Method:  MeansEnd *********: TReasoner_Function
-******* Scenario_Number:    --2-- *******
-Data changed at the BEGINNING of the method:
+********* --------------- *************
 
-Desires in GW
-N. Desires in GW: 3
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
-Desire N. -3 - Named: D3 - Saliency: 0.9
+1 - For the Desire --D3-- The Attentional Goal is a:  TEpistemic_Goal
+[1m[36mStop before calling Means_End_For_Stimulus_Status_Route method[0m
+[31mPress return to continue...[0m
 
-*************** Work flow in Method ***************
-Using its Meand-End Reasoner, the agent tries to find some options for any desire.
-For the Desire --1-- The Attentional Goal is a:  TEpistemic_Goal
--- Type of Epistemic Belief: : Stimulus_Status_Route
-[31mStop before calling Means_End_For_Stimulus_Status_Route method[0m
-Enter an input
+I use my specific method ( Means_End_For_Stimulus_Status_Route ) to get the route status
 
-Agent uses its specific method ( Means_End_For_Belief_Destination_Station) to get the route status
-
-************  Method:  Means_End_For_Stimulus_Status_Route *********: TReasoner_Function
-******* Scenario_Number:    --2-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-
-************  Method:  Means_End_For_Stimulus_Status_Route *********: TReasoner_Function
-******* Scenario_Number:    --2-- *******
-Data changed at the END of the method:
-
-No data has changed.
-Now Agent will filter any desire.
-[31mStop before calling Filtering_Process method[0m
-Enter an input
+[1m[34m************  Method:  Means_End_For_Stimulus_Status_Route *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
 
 
-************  Method:  Filtering_Process *********: TReasoner_Function
-******* Scenario_Number:    --2-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Agent filters the options of the Desire with name: D1
-
-Now I apply Green and Quality Goal filters
-
-I apply Green filters
-N. Green Goal for this desire: 1
-Before resizing: 2
-After resizing: 2
-I found paths (options) After Green_Filter: 2
-
-I apply Quality filters
-N. Quality Goal for this desire: 1
---- I apply quality name: qg1
---- Value_Quality_Goal: great
-I found paths (options) After Quality_Filter: 2
-Functional Goal Name for the Desire is : Visit_Paris
-N. Survival Options of the Desire: 2
-I filtered and ordered found options ( 2 ) in Time: 0 milliseconds
-Agent filters the options of the Desire with name: D2
-
-Now I apply Green and Quality Goal filters
-
-I apply Green filters
-N. Green Goal for this desire: 1
-Before resizing: 0
-After resizing: 0
-I found paths (options) After Green_Filter: 0
-
-I apply Quality filters
-N. Quality Goal for this desire: 1
---- I apply quality name: qg1
---- Value_Quality_Goal: great
-I found paths (options) After Quality_Filter: 0
-Functional Goal Name for the Desire is : Visit_Frankfurt
-N. Survival Options of the Desire: 0
-I filtered and ordered found options ( 0 ) in Time: 1 milliseconds
-
-************  Method:  Filtering_Process *********: TReasoner_Function
-******* Scenario_Number:    --2-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Means_End_For_Stimulus_Status_Route *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
 
 Desires in GW
 N. Desires in GW: 3
-Desire N. -1 - Named: D3 - Saliency: 0.9
-Desire N. -2 - Named: D1 - Saliency: 0.5
-Desire N. -3 - Named: D2 - Saliency: 0.4
+Desire N. -1 - Named: D3 - Saliency: 0.9 - Attentional Goal Name: eg1
+Desire N. -2 - Named: D1 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Desire N. -3 - Named: D2 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+
+
+Now I will filter any desire.
+[1m[36mStop before calling Filtering_Process method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Filtering_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+
+[1m[34m************  Method:  Filtering_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Desires in GW
+N. Desires in GW: 1
+Desire N. -1 - Named: D3 - Saliency: 0.9 - Attentional Goal Name: eg1
 
 Desires with Options in GW
-Desire N. -1 - Named: D3 has N. Options: 1
-Desire N. -2 - Named: D1 has N. Options: 2
-Desire N. -3 - Named: D2 has N. Options: 0
+Desire N. -1 - Named: D3 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg1
 
 
-************  Method:  MeansEnd *********: TReasoner_Function
-******* Scenario_Number:    --2-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
+[1m[36mStop before calling Deliberate_Process method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Deliberate_Process *********: TReasoner_Function
-******* Scenario_Number:    --2-- *******
-Data changed at the BEGINNING of the method:
 
-Desires in GW
-N. Desires in GW: 3
-Desire N. -1 - Named: D3 - Saliency: 0.9
-Desire N. -2 - Named: D1 - Saliency: 0.5
-Desire N. -3 - Named: D2 - Saliency: 0.4
+[1m[34m************  Method:  Deliberate_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
 
-Desires with Options in GW
-Desire N. -1 - Named: D3 has N. Options: 1
-Desire N. -2 - Named: D1 has N. Options: 2
-Desire N. -3 - Named: D2 has N. Options: 0
-
-*************** Work flow in Method ***************
-Now, Agent create an intention for any desire
+For each Desire, I select an option (if it exists) and I decide whether a Desire can become an intention to pursue.
+I create the Intention: I3 for the Desire: D3
 Desire Attentional Goal Name: eg1
-Desire Options: 1
+N. Desire Options: 1
 
-The Agent updated its intentions correctly.
+I updated my intentions correctly.
 
-************  Method:  Deliberate_Process *********: TReasoner_Function
-******* Scenario_Number:    --2-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Deliberate_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Desires in GW
+N. Desires in GW: 1
+Desire N. -1 - Named: D3 - Saliency: 0.9 - Attentional Goal Name: eg1
+
+Desires with Options in GW
+Desire N. -1 - Named: D3 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg1
 
 Intentions in GW
 N. Intentions in GW: 3
+Intention: I1 related to Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+Intention: I3 related to Desire N. -3 - Named: D3 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg1
 
 
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --2-- *******
-Data changed at the BEGINNING of the method:
+[1m[36mStop before calling Focus_Attention method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+Intention Saliency: 0.9
+I create the Inhibition Regions
+I cannot handle TEpistemic_Goal in Create_Inhibition_Regions Function
+I cannot handle Belief Type of TEpistemic_Goal in Create_Inhibition_Regions Function
+I create the Inhibited Goals
+I create the Inhibited Beliefs
+
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T16:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Lisboa
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 128 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p196: 128 is Unknown
+b212: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p212: 144 is Unknown
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled []
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 2
+Goal Names:
+Visit_Paris
+Visit_Frankfurt
+
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 4
+Goal Names:
+Visit_Paris
+Visit_Rome
+Visit_Frankfurt
+eg1
+
+N. Inhibited Goals in LONG MEMORY: 0
+Inhibited Goal Names:
+Visit_Rome
 
 Intentions in GW
 N. Intentions in GW: 3
+Intention: I3 related to Desire N. -1 - Named: D3 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg1
+Intention: I1 related to Desire N. -2 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -3 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
 
-*************** Work flow in Method ***************
-Agent acts an action for the intention with Epistemic Goal Name: eg1
 
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --2-- *******
-Data changed at the BEGINNING of the method:
+Regions in GW
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
 
-No data has changed.
-*************** Work flow in Method ***************
-Invoked Function for the Action: See Route Status
-Agent executes a movement:
-[31mWhat color should I see for route 128? 0 - Red, 1- Green.[0m
-Enter an input
+Regions in LONG MEMORY
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+[1m[36mStop before calling Plan_Advanc_Eval method[0m
+[31mPress return to continue...[0m
+
+I act an action for the intention with Epistemic Goal Name: eg1
+
+[1m[34m************  Method:  Plan_Exec *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+I Invoke the method for execute the Action: See Route Status
+I turn on my virtual camera to see the status of the route:
+[1m[36mWhat color should I see for route 128?[0m
+[31mGive me a number: 0 - for Red, 1- for Green.[0m
 1
 
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --2-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --2-- *******
-Data changed at the END of the method:
-
-No data has changed.
-[31mStop before starting again...[0m
-Enter an input
-
-Working Cycle number: 2
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --2-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Perception Processing number: 2
-Sensor acquires last Perception (if it exists).
-I'm feeling some stimulus
-Perception acquired a Perception correctly.
-WMM analyzes perception.
-Route_Status is: Green
-b0: Belief_Current_Time - Time
-b1: Belief_Destination_Station - Paris
-b3: Belief_Destination_Station - Roma
-b7: Belief_Visited_Station - Lisboa
-b8: Belief_Visited_Station - Madrid
-b11: Belief_Visited_Station - Pamplona
-b13: Belief_Visited_Station - Paris
-b54: Belief_Current_Station - Me
-b55: Belief_Current_Route - Me
-b56: Belief_Current_Step - Me
-b60: Belief_Number_Players - Number Players
-b61: Stimulus_Ok_Correct_Movement - Me
-b62: Stimulus_Too_Close_To_The_Train - Me
-b63: Stimulus_Closed_Route - -1
-b64: Stimulus_Busy_Route - -1
-b65: Stimulus_Temporary_Closed_Route - -1
-b66: Stimulus_Crowded_Route - -1
-b67: Stimulus_Status_Route - 128
-b84: Belief_Route_Status - 16
-b196: Belief_Route_Status - 128
-b212: Belief_Route_Status - 144
-b241: Belief_Path_Taken_For_Belief - Visit_Paris
-b243: Belief_Path_Taken_For_Belief - Visit_Frankfurt
-D3: 0.9
-D1: 0.5
-D2: 0.4
-Selected Intention:
-D3: 0.9
-Old Selected_Option.Get_Action_To_Do_ID(): 0
-New Selected_Option.Get_Action_To_Do_ID(): 1
-Selected_Option.get_Plan_Actions().size(): 1
-Now I delete the Selected Intention:
-D3: 0.9
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --2-- *******
-Data changed at the BEGINNING of the method:
-
-Desires in GW
-N. Desires in GW: 2
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
-
-*************** Work flow in Method ***************
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --2-- *******
-Data changed at the END of the method:
-
-No data has changed.
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-*************  CHANGE OF SCENARIO  **********************
-*************  SCENARIO Number 3 **********************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  Plan_Exec *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
-N. UnInhibited Beliefs in GW: 23
+N. UnInhibited Beliefs in GW: 25
 Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
-N. Inhibited Beliefs in LONG MEMORY: 217
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before starting again...[0m
+Working Cycle number: 2
+[1m[36mStop before calling Perception_Processing method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mWork flow in Method:[0m
+
+Perception Processing number: 2
+My sensor is attempting to acquire the most recent Stimulus (if any).
+I feel a Stimulus.
+Stimulus acquired correctly.
+My WMM's "Information Selection" analyzes the Stimulus.
+The aquired Route_Status (by my virtual camera) is: Green
+[1m[34mMy intention to acquire the route status color has been fulfilled[0m
+Now I delete the Selected Intention, with its desire and I move the Epistemic Goal in my goal satisfied List
+D3: 0.9 - Epistemic Goal: eg1
+
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --1-- *******
+[1m[36mData changed at the BEGINNING of the method:[0m
 
 Desires in GW
-N. Desires in GW: 2
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
+N. Desires in GW: 0
+
+
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --1-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+*******  CHANGE OF SCENARIO  ******
+*******  SCENARIO Number 2 ********
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before calling AM_Exogenous_Module method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+I have a stimulus and I check if it has a saliency greater than my Saliency/Attention threholds.
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T16:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Lisboa
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 128 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p212: 144 is Unknown
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled []
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+Desires in GW
+N. Desires in GW: 0
 
 Intentions in GW
 N. Intentions in GW: 2
+Intention: I1 related to Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
 
-*************** Work flow in Method ***************
-The Agent has a stimulus and checks if it has a saliency greater then Saliency/Attention threholds of the agent.
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
+[1m[36mStop before calling MeansEnd method[0m
+[31mPress return to continue...[0m
 
-No data has changed.
 
-************  Method:  MeansEnd *********: TReasoner_Function
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
 
-No data has changed.
-*************** Work flow in Method ***************
-Using its Meand-End Reasoner, the agent tries to find some options for any desire.
+Using my Meand-End reasoner, I try to find some options for each desire.
 
-************  Method:  MeansEnd *********: TReasoner_Function
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
+
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
+[1m[36mStop before calling Focus_Attention method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
 
-No data has changed.
-*************** Work flow in Method ***************
-Agent acts an action for the intention with Functional Name: Visit_Paris
-Agent checks if preconditions for the actions are correct:
-Current Station is: Lisboa
-Current Route is: -1
-Current Step is: 0
-Precondition Station is: Lisboa
-Precondition Route is: -1
-Precondition Stepis: 0
-Yes, Position of Precondition of the action are correct!
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+Intention Saliency: 0.5
+I create the Inhibition Regions
+I create the Inhibited Goals
+I create the Inhibited Beliefs
+
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T16:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Lisboa
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 128 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p212: 144 is Unknown
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled []
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 2
+Goal Names:
+Visit_Paris
+Visit_Frankfurt
+
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 3
+Goal Names:
+Visit_Paris
+Visit_Rome
+Visit_Frankfurt
+
+N. Inhibited Goals in LONG MEMORY: 0
+Inhibited Goal Names:
+Visit_Rome
+
+Regions in GW
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+Regions in LONG MEMORY
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+[1m[36mStop before calling Plan_Advanc_Eval method[0m
+[31mPress return to continue...[0m
+
+I act an action for the intention with Functional Name: Visit_Paris
+I check if current positions and precondition positions for the act current action are congruent (equal):
+Current position Station is: Lisboa
+Current position Route is: -1
+Current position Step is: 0
+Precondition position Station is: Lisboa
+Precondition position Route is: -1
+Precondition position Stepis: 0
+[1m[32mYes, Position of Precondition of the action are correct![0m
 Now, I check my knowledge of the route status
 [1m[32mRoute status is Green! I can go to route: 128[0m
-I execute the action
-[31mStop before calling Plan_Exec method[0m
-Enter an input
+[1m[32mI execute the action[0m
 
+[1m[34m************  Method:  Plan_Exec *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
 
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Invoked Function for the Action: GO_TO_Route
-Agent executes a movement:
+I Invoke the method for execute the Action: GO_TO_Route
+I execute an action:
 Response_Number: 0
 Request: GO_TO_Route
 
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
-
-No data has changed.
-[31mStop before starting again...[0m
-Enter an input
-
-Working Cycle number: 3
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Perception Processing number: 3
-Sensor acquires last Perception (if it exists).
-I'm feeling some stimulus
-Perception acquired a Perception correctly.
-WMM analyzes perception.
-I update several information in Beliefs and in plan actions
-I Update Position Beliefs:
-from Previous Current_Station: Lisboa
-from Previous Current_Route: -1
-from Previous Current_Step: 0
-
-to Updated Current_Station: Lisboa
-to Updated Current_Route: 128
-to Updated Current_Step: 3
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  Plan_Exec *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
-N. UnInhibited Beliefs in GW: 23
+N. UnInhibited Beliefs in GW: 25
 Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
-N. Inhibited Beliefs in LONG MEMORY: 217
+N. Inhibited Beliefs in LONG MEMORY: 215
 
-*************** Work flow in Method ***************
-The Agent has a stimulus and checks if it has a saliency greater then Saliency/Attention threholds of the agent.
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before starting again...[0m
+Working Cycle number: 3
+[1m[36mStop before calling Perception_Processing method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+Perception Processing number: 3
+My sensor is attempting to acquire the most recent Stimulus (if any).
+I feel a Stimulus.
+Stimulus acquired correctly.
+My WMM's "Information Selection" analyzes the Stimulus.
+I moved correctly.
+Now, I update several information in my Beliefs and in plan actions.
+I Update Position Beliefs:
+Before, the Previous Current Position Station was: Lisboa
+Before, the Previous Current Position Route was: -1
+Before, the Previous Current Position Step was: 0
+
+Now, the Updated Current Position Station is: Lisboa
+Now, the Updated Current Position Route is: 128
+Now, the Updated Current Position Step is: 3
+
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mData changed at the BEGINNING of the method:[0m
 
 No data has changed.
 
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
-*************** Work flow in Method ***************
-Agent acts an action for the intention with Functional Name: Visit_Paris
-Agent checks if preconditions for the actions are correct:
-Current Station is: Lisboa
-Current Route is: 128
-Current Step is: 3
-Precondition Station is: Lisboa
-Precondition Route is: 128
-Precondition Stepis: 3
-Yes, Position of Precondition of the action are correct!
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before calling AM_Exogenous_Module method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+I have a stimulus and I check if it has a saliency greater than my Saliency/Attention threholds.
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T17:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Lisboa
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in 128
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 3
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 128 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p212: 144 is Unknown
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled [128]
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+[1m[36mStop before calling Plan_Advanc_Eval method[0m
+[31mPress return to continue...[0m
+
+I act an action for the intention with Functional Name: Visit_Paris
+I check if current positions and precondition positions for the act current action are congruent (equal):
+Current position Station is: Lisboa
+Current position Route is: 128
+Current position Step is: 3
+Precondition position Station is: Lisboa
+Precondition position Route is: 128
+Precondition position Stepis: 3
+[1m[32mYes, Position of Precondition of the action are correct![0m
 Now, I check my knowledge of the route status
 I execute the action
-[31mStop before calling Plan_Exec method[0m
-Enter an input
 
+[1m[34m************  Method:  Plan_Exec *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
 
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Invoked Function for the Action: GO_TO_Step
-Agent executes a movement:
+I Invoke the method for execute the Action: GO_TO_Step
+I execute an action:
 Response_Number: 1
 Request: GO_TO_Step
 
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Plan_Exec *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
 
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
-[31mStop before starting again...[0m
-Enter an input
-
+[1m[36mStop before starting again...[0m
 Working Cycle number: 4
+[1m[36mStop before calling Perception_Processing method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
 
-No data has changed.
-*************** Work flow in Method ***************
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
 Perception Processing number: 4
-Sensor acquires last Perception (if it exists).
-I'm feeling some stimulus
-Perception acquired a Perception correctly.
-WMM analyzes perception.
-I update several information in Beliefs and in plan actions
+My sensor is attempting to acquire the most recent Stimulus (if any).
+I feel a Stimulus.
+Stimulus acquired correctly.
+My WMM's "Information Selection" analyzes the Stimulus.
+I moved correctly.
+Now, I update several information in my Beliefs and in plan actions.
 I Update Position Beliefs:
-from Previous Current_Station: Lisboa
-from Previous Current_Route: 128
-from Previous Current_Step: 3
+Before, the Previous Current Position Station was: Lisboa
+Before, the Previous Current Position Route was: 128
+Before, the Previous Current Position Step was: 3
+Cara_Simulation.TBelief_Base@f6efaab
+Belief Time_stamp: 2024-10-01T18:00
+Belief Information_Source: TCS
+Belief Name: b8
+Belief Type: Belief_Visited_Station
+Belief Truth: true
+Belief Predicate Name p8: Madrid visited_by Me
 
-to Updated Current_Station: Madrid
-to Updated Current_Route: -1
-to Updated Current_Step: 0
+Now, the Updated Current Position Station is: Madrid
+Now, the Updated Current Position Route is: -1
+Now, the Updated Current Position Step is: 0
 
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mData changed at the BEGINNING of the method:[0m
 
 No data has changed.
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before calling AM_Exogenous_Module method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+I have a stimulus and I check if it has a saliency greater than my Saliency/Attention threholds.
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
-N. UnInhibited Beliefs in GW: 23
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T18:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Madrid
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 128 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p212: 144 is Unknown
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled [128]
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
 Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
-N. Inhibited Beliefs in LONG MEMORY: 217
+N. Inhibited Beliefs in LONG MEMORY: 215
 
-*************** Work flow in Method ***************
-The Agent has a stimulus and checks if it has a saliency greater then Saliency/Attention threholds of the agent.
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
 
-No data has changed.
+[1m[36mStop before calling Plan_Advanc_Eval method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Agent acts an action for the intention with Functional Name: Visit_Paris
-Agent checks if preconditions for the actions are correct:
-Current Station is: Madrid
-Current Route is: -1
-Current Step is: 0
-Precondition Station is: Madrid
-Precondition Route is: -1
-Precondition Stepis: 0
-Yes, Position of Precondition of the action are correct!
+I act an action for the intention with Functional Name: Visit_Paris
+I check if current positions and precondition positions for the act current action are congruent (equal):
+Current position Station is: Madrid
+Current position Route is: -1
+Current position Step is: 0
+Precondition position Station is: Madrid
+Precondition position Route is: -1
+Precondition position Stepis: 0
+[1m[32mYes, Position of Precondition of the action are correct![0m
 Now, I check my knowledge of the route status
 [1m[34mThe route status is unknown.[0m
 [1m[34mI need to know if it is green or not.[0m
+[1m[31mI raise a stimulus to create an epistemic goal to turn on my virtual camera[0m
 
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
-[31mStop before starting again...[0m
-Enter an input
-
+[1m[36mStop before starting again...[0m
 Working Cycle number: 5
+[1m[36mStop before calling Perception_Processing method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
 
-No data has changed.
-*************** Work flow in Method ***************
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
 Perception Processing number: 5
-Sensor acquires last Perception (if it exists).
-I'm feeling some stimulus
-Perception acquired a Perception correctly.
-WMM analyzes perception.
-I want to see the semaphore for get the route status for route: 144
+My sensor is attempting to acquire the most recent Stimulus (if any).
+I feel a Stimulus.
+Stimulus acquired correctly.
+My WMM's "Information Selection" analyzes the Stimulus.
+[1m[34mI want to see the semaphore for get the route status for route: 144[0m
 
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --3-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --3-- *******
-Data changed at the END of the method:
-
-No data has changed.
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-*************  CHANGE OF SCENARIO  **********************
-*************  SCENARIO Number 4 **********************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --4-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mData changed at the BEGINNING of the method:[0m
 
 No data has changed.
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --4-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before calling AM_Exogenous_Module method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+I have a stimulus and I check if it has a saliency greater than my Saliency/Attention threholds.
+This stimulus is greater than Saliency Threshold.
+I create an Epistemic Goal and I promote it to Desire.
+
+Number of New Desires I've created: 1
+1 - I inserted the Desire: D4 - related Epistemic Goal Name: eg2 - related Belief type: Stimulus_Route_Status
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
-N. UnInhibited Beliefs in GW: 23
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T18:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Madrid
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 144 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p212: 144 is Unknown
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled [128]
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
 Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
-N. Inhibited Beliefs in LONG MEMORY: 217
+N. Inhibited Beliefs in LONG MEMORY: 215
 
-*************** Work flow in Method ***************
-The Agent has a stimulus and checks if it has a saliency greater then Saliency/Attention threholds of the agent.
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 2
+Goal Names:
+Visit_Paris
+Visit_Frankfurt
 
-************  Method:  Insert_New_Desires *********: TGlobalWorkspace
-******* Scenario_Number:    --4-- *******
-Data changed at the BEGINNING of the method:
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 4
+Goal Names:
+Visit_Paris
+Visit_Rome
+Visit_Frankfurt
+eg2
 
-No data has changed.
-*************** Work flow in Method ***************
-I inserted new Desires: 1
-
-************  Method:  Insert_New_Desires *********: TGlobalWorkspace
-******* Scenario_Number:    --4-- *******
-Data changed at the END of the method:
-
-Desires in GW
-N. Desires in GW: 3
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
-Desire N. -3 - Named: D4 - Saliency: 0.9
-
-
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --4-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  MeansEnd *********: TReasoner_Function
-******* Scenario_Number:    --4-- *******
-Data changed at the BEGINNING of the method:
+N. Inhibited Goals in LONG MEMORY: 0
+Inhibited Goal Names:
+Visit_Rome
 
 Desires in GW
-N. Desires in GW: 3
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
-Desire N. -3 - Named: D4 - Saliency: 0.9
+N. Desires in GW: 1
+Desire N. -1 - Named: D4 - Saliency: 0.9 - Attentional Goal Name: eg2
 
-*************** Work flow in Method ***************
-Using its Meand-End Reasoner, the agent tries to find some options for any desire.
-For the Desire --1-- The Attentional Goal is a:  TEpistemic_Goal
--- Type of Epistemic Belief: : Stimulus_Status_Route
-[31mStop before calling Means_End_For_Stimulus_Status_Route method[0m
-Enter an input
-
-Agent uses its specific method ( Means_End_For_Belief_Destination_Station) to get the route status
-
-************  Method:  Means_End_For_Stimulus_Status_Route *********: TReasoner_Function
-******* Scenario_Number:    --4-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-
-************  Method:  Means_End_For_Stimulus_Status_Route *********: TReasoner_Function
-******* Scenario_Number:    --4-- *******
-Data changed at the END of the method:
-
-No data has changed.
-Now Agent will filter any desire.
-[31mStop before calling Filtering_Process method[0m
-Enter an input
+[1m[36mStop before calling MeansEnd method[0m
+[31mPress return to continue...[0m
 
 
-************  Method:  Filtering_Process *********: TReasoner_Function
-******* Scenario_Number:    --4-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
 
-No data has changed.
-*************** Work flow in Method ***************
-Agent filters the options of the Desire with name: D1
+Using my Meand-End reasoner, I try to find some options for each desire.
 
-Now I apply Green and Quality Goal filters
+********* --------------- *************
 
-I apply Green filters
-N. Green Goal for this desire: 1
-Before resizing: 2
-After resizing: 2
-I found paths (options) After Green_Filter: 2
+1 - For the Desire --D4-- The Attentional Goal is a:  TEpistemic_Goal
+[1m[36mStop before calling Means_End_For_Stimulus_Status_Route method[0m
+[31mPress return to continue...[0m
 
-I apply Quality filters
-N. Quality Goal for this desire: 1
---- I apply quality name: qg1
---- Value_Quality_Goal: great
-I found paths (options) After Quality_Filter: 2
-Functional Goal Name for the Desire is : Visit_Paris
-N. Survival Options of the Desire: 2
-I filtered and ordered found options ( 2 ) in Time: 0 milliseconds
-Agent filters the options of the Desire with name: D2
+I use my specific method ( Means_End_For_Stimulus_Status_Route ) to get the route status
 
-Now I apply Green and Quality Goal filters
+[1m[34m************  Method:  Means_End_For_Stimulus_Status_Route *********: TReasoner_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
 
-I apply Green filters
-N. Green Goal for this desire: 1
-Before resizing: 0
-After resizing: 0
-I found paths (options) After Green_Filter: 0
 
-I apply Quality filters
-N. Quality Goal for this desire: 1
---- I apply quality name: qg1
---- Value_Quality_Goal: great
-I found paths (options) After Quality_Filter: 0
-Functional Goal Name for the Desire is : Visit_Frankfurt
-N. Survival Options of the Desire: 0
-I filtered and ordered found options ( 0 ) in Time: 0 milliseconds
-
-************  Method:  Filtering_Process *********: TReasoner_Function
-******* Scenario_Number:    --4-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Means_End_For_Stimulus_Status_Route *********: TReasoner_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 Desires in GW
-N. Desires in GW: 3
-Desire N. -1 - Named: D4 - Saliency: 0.9
-Desire N. -2 - Named: D1 - Saliency: 0.5
-Desire N. -3 - Named: D2 - Saliency: 0.4
+N. Desires in GW: 1
+Desire N. -1 - Named: D4 - Saliency: 0.9 - Attentional Goal Name: eg2
+
+
+Now I will filter any desire.
+[1m[36mStop before calling Filtering_Process method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Filtering_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+
+[1m[34m************  Method:  Filtering_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Desires in GW
+N. Desires in GW: 1
+Desire N. -1 - Named: D4 - Saliency: 0.9 - Attentional Goal Name: eg2
 
 Desires with Options in GW
-Desire N. -1 - Named: D4 has N. Options: 1
-Desire N. -2 - Named: D1 has N. Options: 2
-Desire N. -3 - Named: D2 has N. Options: 0
+Desire N. -1 - Named: D4 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg2
 
 
-************  Method:  MeansEnd *********: TReasoner_Function
-******* Scenario_Number:    --4-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
+[1m[36mStop before calling Deliberate_Process method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Deliberate_Process *********: TReasoner_Function
-******* Scenario_Number:    --4-- *******
-Data changed at the BEGINNING of the method:
 
-Desires in GW
-N. Desires in GW: 3
-Desire N. -1 - Named: D4 - Saliency: 0.9
-Desire N. -2 - Named: D1 - Saliency: 0.5
-Desire N. -3 - Named: D2 - Saliency: 0.4
+[1m[34m************  Method:  Deliberate_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
 
-Desires with Options in GW
-Desire N. -1 - Named: D4 has N. Options: 1
-Desire N. -2 - Named: D1 has N. Options: 2
-Desire N. -3 - Named: D2 has N. Options: 0
-
-*************** Work flow in Method ***************
-Now, Agent create an intention for any desire
+For each Desire, I select an option (if it exists) and I decide whether a Desire can become an intention to pursue.
+I create the Intention: I4 for the Desire: D4
 Desire Attentional Goal Name: eg2
-Desire Options: 1
+N. Desire Options: 1
 
-The Agent updated its intentions correctly.
+I updated my intentions correctly.
 
-************  Method:  Deliberate_Process *********: TReasoner_Function
-******* Scenario_Number:    --4-- *******
-Data changed at the END of the method:
-
-Intentions in GW
-N. Intentions in GW: 3
-
-
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --4-- *******
-Data changed at the BEGINNING of the method:
-
-Intentions in GW
-N. Intentions in GW: 3
-
-*************** Work flow in Method ***************
-Agent acts an action for the intention with Epistemic Goal Name: eg2
-
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --4-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Invoked Function for the Action: See Route Status
-Agent executes a movement:
-[31mWhat color should I see for route 144? 0 - Red, 1- Green.[0m
-Enter an input
-1
-
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --4-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --4-- *******
-Data changed at the END of the method:
-
-No data has changed.
-[31mStop before starting again...[0m
-Enter an input
-
-Working Cycle number: 6
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --4-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Perception Processing number: 6
-Sensor acquires last Perception (if it exists).
-I'm feeling some stimulus
-Perception acquired a Perception correctly.
-WMM analyzes perception.
-Route_Status is: Green
-b0: Belief_Current_Time - Time
-b1: Belief_Destination_Station - Paris
-b3: Belief_Destination_Station - Roma
-b7: Belief_Visited_Station - Lisboa
-b8: Belief_Visited_Station - Madrid
-b11: Belief_Visited_Station - Pamplona
-b13: Belief_Visited_Station - Paris
-b54: Belief_Current_Station - Me
-b55: Belief_Current_Route - Me
-b56: Belief_Current_Step - Me
-b60: Belief_Number_Players - Number Players
-b61: Stimulus_Ok_Correct_Movement - Me
-b62: Stimulus_Too_Close_To_The_Train - Me
-b63: Stimulus_Closed_Route - -1
-b64: Stimulus_Busy_Route - -1
-b65: Stimulus_Temporary_Closed_Route - -1
-b66: Stimulus_Crowded_Route - -1
-b67: Stimulus_Status_Route - 144
-b84: Belief_Route_Status - 16
-b196: Belief_Route_Status - 128
-b212: Belief_Route_Status - 144
-b241: Belief_Path_Taken_For_Belief - Visit_Paris
-b243: Belief_Path_Taken_For_Belief - Visit_Frankfurt
-D4: 0.9
-D1: 0.5
-D2: 0.4
-Selected Intention:
-D4: 0.9
-Old Selected_Option.Get_Action_To_Do_ID(): 0
-New Selected_Option.Get_Action_To_Do_ID(): 1
-Selected_Option.get_Plan_Actions().size(): 1
-Now I delete the Selected Intention:
-D4: 0.9
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --4-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  Deliberate_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 Desires in GW
-N. Desires in GW: 2
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
+N. Desires in GW: 1
+Desire N. -1 - Named: D4 - Saliency: 0.9 - Attentional Goal Name: eg2
 
-*************** Work flow in Method ***************
+Desires with Options in GW
+Desire N. -1 - Named: D4 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg2
 
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --4-- *******
-Data changed at the END of the method:
+Intentions in GW
+N. Intentions in GW: 3
+Intention: I1 related to Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+Intention: I4 related to Desire N. -3 - Named: D4 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg2
 
-No data has changed.
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-*************  CHANGE OF SCENARIO  **********************
-*************  SCENARIO Number 5 **********************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
 
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
+[1m[36mStop before calling Focus_Attention method[0m
+[31mPress return to continue...[0m
 
-No data has changed.
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+Intention Saliency: 0.9
+I create the Inhibition Regions
+I cannot handle TEpistemic_Goal in Create_Inhibition_Regions Function
+I cannot handle Belief Type of TEpistemic_Goal in Create_Inhibition_Regions Function
+I create the Inhibited Goals
+I create the Inhibited Beliefs
+
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
-N. UnInhibited Beliefs in GW: 23
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T18:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Madrid
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 144 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p212: 144 is Unknown
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled [128]
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
 Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
-N. Inhibited Beliefs in LONG MEMORY: 217
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 2
+Goal Names:
+Visit_Paris
+Visit_Frankfurt
+
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 4
+Goal Names:
+Visit_Paris
+Visit_Rome
+Visit_Frankfurt
+eg2
+
+N. Inhibited Goals in LONG MEMORY: 0
+Inhibited Goal Names:
+Visit_Rome
+
+Intentions in GW
+N. Intentions in GW: 3
+Intention: I4 related to Desire N. -1 - Named: D4 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg2
+Intention: I1 related to Desire N. -2 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -3 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+
+
+Regions in GW
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+Regions in LONG MEMORY
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+[1m[36mStop before calling Plan_Advanc_Eval method[0m
+[31mPress return to continue...[0m
+
+I act an action for the intention with Epistemic Goal Name: eg2
+
+[1m[34m************  Method:  Plan_Exec *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+I Invoke the method for execute the Action: See Route Status
+I turn on my virtual camera to see the status of the route:
+[1m[36mWhat color should I see for route 144?[0m
+[31mGive me a number: 0 - for Red, 1- for Green.[0m
+0
+
+[1m[34m************  Method:  Plan_Exec *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before starting again...[0m
+Working Cycle number: 6
+[1m[36mStop before calling Perception_Processing method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mWork flow in Method:[0m
+
+Perception Processing number: 6
+My sensor is attempting to acquire the most recent Stimulus (if any).
+I feel a Stimulus.
+Stimulus acquired correctly.
+My WMM's "Information Selection" analyzes the Stimulus.
+The aquired Route_Status (by my virtual camera) is: Red
+[1m[34mMy intention to acquire the route status color has been fulfilled[0m
+Now I delete the Selected Intention, with its desire and I move the Epistemic Goal in my goal satisfied List
+D4: 0.9 - Epistemic Goal: eg2
+
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --2-- *******
+[1m[36mData changed at the BEGINNING of the method:[0m
 
 Desires in GW
-N. Desires in GW: 2
-Desire N. -1 - Named: D1 - Saliency: 0.5
-Desire N. -2 - Named: D2 - Saliency: 0.4
+N. Desires in GW: 0
+
+
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --2-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+*******  CHANGE OF SCENARIO  ******
+*******  SCENARIO Number 3 ********
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --3-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before calling AM_Exogenous_Module method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --3-- *******
+[1m[36mWork flow in Method:[0m
+
+I have a stimulus and I check if it has a saliency greater than my Saliency/Attention threholds.
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --3-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T18:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Madrid
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 144 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p212: 144 is Red
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled [128]
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+Desires in GW
+N. Desires in GW: 0
 
 Intentions in GW
 N. Intentions in GW: 2
+Intention: I1 related to Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
 
-*************** Work flow in Method ***************
-The Agent has a stimulus and checks if it has a saliency greater then Saliency/Attention threholds of the agent.
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
+[1m[36mStop before calling MeansEnd method[0m
+[31mPress return to continue...[0m
 
-No data has changed.
 
-************  Method:  MeansEnd *********: TReasoner_Function
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --3-- *******
+[1m[36mWork flow in Method:[0m
 
-No data has changed.
-*************** Work flow in Method ***************
-Using its Meand-End Reasoner, the agent tries to find some options for any desire.
+Using my Meand-End reasoner, I try to find some options for each desire.
 
-************  Method:  MeansEnd *********: TReasoner_Function
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
+
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --3-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
+[1m[36mStop before calling Focus_Attention method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
 
-No data has changed.
-*************** Work flow in Method ***************
-Agent acts an action for the intention with Functional Name: Visit_Paris
-Agent checks if preconditions for the actions are correct:
-Current Station is: Madrid
-Current Route is: -1
-Current Step is: 0
-Precondition Station is: Madrid
-Precondition Route is: -1
-Precondition Stepis: 0
-Yes, Position of Precondition of the action are correct!
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --3-- *******
+[1m[36mWork flow in Method:[0m
+
+Intention Saliency: 0.5
+I create the Inhibition Regions
+I create the Inhibited Goals
+I create the Inhibited Beliefs
+
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --3-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T18:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Madrid
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: -1 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 144 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p212: 144 is Red
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled [128]
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 2
+Goal Names:
+Visit_Paris
+Visit_Frankfurt
+
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 3
+Goal Names:
+Visit_Paris
+Visit_Rome
+Visit_Frankfurt
+
+N. Inhibited Goals in LONG MEMORY: 0
+Inhibited Goal Names:
+Visit_Rome
+
+Regions in GW
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+Regions in LONG MEMORY
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --3-- *******
+[1m[36mWork flow in Method:[0m
+
+[1m[36mStop before calling Plan_Advanc_Eval method[0m
+[31mPress return to continue...[0m
+
+I act an action for the intention with Functional Name: Visit_Paris
+I check if current positions and precondition positions for the act current action are congruent (equal):
+Current position Station is: Madrid
+Current position Route is: -1
+Current position Step is: 0
+Precondition position Station is: Madrid
+Precondition position Route is: -1
+Precondition position Stepis: 0
+[1m[32mYes, Position of Precondition of the action are correct![0m
 Now, I check my knowledge of the route status
-[1m[32mRoute status is Green! I can go to route: 144[0m
-I execute the action
-[31mStop before calling Plan_Exec method[0m
-Enter an input
+[1m[31mRoute status is Red! I cannot go to route: 144[0m
+[]
+[]
+[1m[31mI need to check how long the route will be inaccessible.[0m
 
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --3-- *******
+[1m[35mData changed at the END of the method:[0m
 
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
 
-No data has changed.
-*************** Work flow in Method ***************
-Invoked Function for the Action: GO_TO_Route
-Agent executes a movement:
-Response_Number: 2
-Request: GO_TO_Route
-
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
-
-No data has changed.
-[31mStop before starting again...[0m
-Enter an input
-
+[1m[36mStop before starting again...[0m
 Working Cycle number: 7
+[1m[36mStop before calling Perception_Processing method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
 
-No data has changed.
-*************** Work flow in Method ***************
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --3-- *******
+[1m[36mWork flow in Method:[0m
+
 Perception Processing number: 7
-Sensor acquires last Perception (if it exists).
-I'm feeling some stimulus
-Perception acquired a Perception correctly.
-WMM analyzes perception.
-I update several information in Beliefs and in plan actions
-I Update Position Beliefs:
-from Previous Current_Station: Madrid
-from Previous Current_Route: -1
-from Previous Current_Step: 0
+My sensor is attempting to acquire the most recent Stimulus (if any).
+I feel a Stimulus.
+Stimulus acquired correctly.
+My WMM's "Information Selection" analyzes the Stimulus.
+[1m[34mI want to ask to TCS: How long will the route be closed? 144[0m
 
-to Updated Current_Station: Madrid
-to Updated Current_Route: 144
-to Updated Current_Step: 2
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --3-- *******
+[1m[36mData changed at the BEGINNING of the method:[0m
 
 No data has changed.
 
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --3-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+*******  CHANGE OF SCENARIO  ******
+*******  SCENARIO Number 4 ********
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --4-- *******
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before calling AM_Exogenous_Module method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --4-- *******
+[1m[36mWork flow in Method:[0m
+
+I have a stimulus and I check if it has a saliency greater than my Saliency/Attention threholds.
+This stimulus is greater than Saliency Threshold.
+I create an Epistemic Goal and I promote it to Desire.
+
+Number of New Desires I've created: 1
+1 - I inserted the Desire: D5 - related Epistemic Goal Name: eg3 - related Belief type: Stimulus_Temporary_Closed_Route
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --4-- *******
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
-N. UnInhibited Beliefs in GW: 23
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T18:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Madrid
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: 144 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 144 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p212: 144 is Red
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled [128]
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
 Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
-N. Inhibited Beliefs in LONG MEMORY: 217
+N. Inhibited Beliefs in LONG MEMORY: 215
 
-*************** Work flow in Method ***************
-The Agent has a stimulus and checks if it has a saliency greater then Saliency/Attention threholds of the agent.
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 2
+Goal Names:
+Visit_Paris
+Visit_Frankfurt
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 4
+Goal Names:
+Visit_Paris
+Visit_Rome
+Visit_Frankfurt
+eg3
+
+N. Inhibited Goals in LONG MEMORY: 0
+Inhibited Goal Names:
+Visit_Rome
+
+Desires in GW
+N. Desires in GW: 1
+Desire N. -1 - Named: D5 - Saliency: 0.9 - Attentional Goal Name: eg3
+
+[1m[36mStop before calling MeansEnd method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --4-- *******
+[1m[36mWork flow in Method:[0m
+
+Using my Meand-End reasoner, I try to find some options for each desire.
+
+********* --------------- *************
+
+1 - For the Desire --D5-- The Attentional Goal is a:  TEpistemic_Goal
+[1m[36mStop before calling Deliberate_from_Stimulus_Temporary_Closed_Route method[0m
+[31mPress return to continue...[0m
+
+The Route to ask: 144
+option_List size: 1, of course...
+Agent update its intentions
+The Agent updated its intentions correctly
+Now I will filter any desire.
+[1m[36mStop before calling Filtering_Process method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Filtering_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --4-- *******
+[1m[36mWork flow in Method:[0m
+
+
+[1m[34m************  Method:  Filtering_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --4-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Desires in GW
+N. Desires in GW: 1
+Desire N. -1 - Named: D5 - Saliency: 0.9 - Attentional Goal Name: eg3
+
+Desires with Options in GW
+Desire N. -1 - Named: D5 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg3
+
+Intentions in GW
+N. Intentions in GW: 3
+Intention: I1 related to Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+Intention:  related to Desire N. -3 - Named: D5 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg3
+
+
+
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --4-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
+[1m[36mStop before calling Deliberate_Process method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
+
+[1m[34m************  Method:  Deliberate_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --4-- *******
+[1m[36mWork flow in Method:[0m
+
+For each Desire, I select an option (if it exists) and I decide whether a Desire can become an intention to pursue.
+I updated my intentions correctly.
+
+[1m[34m************  Method:  Deliberate_Process *********: TReasoner_Function[0m
+******* Scenario_Number:    --4-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Desires in GW
+N. Desires in GW: 1
+Desire N. -1 - Named: D5 - Saliency: 0.9 - Attentional Goal Name: eg3
+
+Desires with Options in GW
+Desire N. -1 - Named: D5 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg3
+
+Intentions in GW
+N. Intentions in GW: 3
+Intention: I1 related to Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+Intention:  related to Desire N. -3 - Named: D5 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg3
+
+
+[1m[36mStop before calling Focus_Attention method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --4-- *******
+[1m[36mWork flow in Method:[0m
+
+Intention Saliency: 0.9
+I create the Inhibition Regions
+I cannot handle TEpistemic_Goal in Create_Inhibition_Regions Function
+I create the Inhibited Goals
+I create the Inhibited Beliefs
+
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --4-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T18:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Madrid
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: 144 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 144 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p212: 144 is Red
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled [128]
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 2
+Goal Names:
+Visit_Paris
+Visit_Frankfurt
+
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 4
+Goal Names:
+Visit_Paris
+Visit_Rome
+Visit_Frankfurt
+eg3
+
+N. Inhibited Goals in LONG MEMORY: 0
+Inhibited Goal Names:
+Visit_Rome
+
+Intentions in GW
+N. Intentions in GW: 3
+Intention:  related to Desire N. -1 - Named: D5 has N. Options: 1 - Saliency: 0.9 - Attentional Goal Name: eg3
+Intention: I1 related to Desire N. -2 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -3 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+
+
+Regions in GW
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+Regions in LONG MEMORY
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --4-- *******
+[1m[36mWork flow in Method:[0m
+
+[1m[36mStop before calling Plan_Advanc_Eval method[0m
+[31mPress return to continue...[0m
+
+I act an action for the intention with Epistemic Goal Name: eg3
+
+[1m[34m************  Method:  Plan_Exec *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --4-- *******
+[1m[36mWork flow in Method:[0m
+
+I Invoke the method for execute the Action: Ask Closed Route Duration
+I execute an action:
+Response_Number: 2
+Request: Ask Closed Route Duration
+Ask Closed Route Duration
+[1m[31mClosed Route Duration?:  [0m
+1
+
+[1m[34m************  Method:  Plan_Exec *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --4-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --4-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
-*************** Work flow in Method ***************
-Agent acts an action for the intention with Functional Name: Visit_Paris
-Agent checks if preconditions for the actions are correct:
-Current Station is: Madrid
-Current Route is: 144
-Current Step is: 2
-Precondition Station is: Madrid
-Precondition Route is: 144
-Precondition Stepis: 2
-Yes, Position of Precondition of the action are correct!
-Now, I check my knowledge of the route status
-I execute the action
-[31mStop before calling Plan_Exec method[0m
-Enter an input
-
-
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Invoked Function for the Action: GO_TO_Step
-Agent executes a movement:
-Response_Number: 3
-Request: GO_TO_Step
-
-************  Method:  Plan_Exec *********: TResource_Allocation
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
-
-No data has changed.
-[31mStop before starting again...[0m
-Enter an input
-
+[1m[36mStop before starting again...[0m
 Working Cycle number: 8
+[1m[36mStop before calling Perception_Processing method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
 
-No data has changed.
-*************** Work flow in Method ***************
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
+******* Scenario_Number:    --4-- *******
+[1m[36mWork flow in Method:[0m
+
 Perception Processing number: 8
-Sensor acquires last Perception (if it exists).
-I'm feeling some stimulus
-Perception acquired a Perception correctly.
-WMM analyzes perception.
-I update several information in Beliefs and in plan actions
-I Update Position Beliefs:
-from Previous Current_Station: Madrid
-from Previous Current_Route: 144
-from Previous Current_Step: 2
+My sensor is attempting to acquire the most recent Stimulus (if any).
+I feel a Stimulus.
+Stimulus acquired correctly.
+My WMM's "Information Selection" analyzes the Stimulus.
+I Acquired Closed _Route Duration.
+Now, I update several information in my Beliefs and in plan actions.
+Duration: 1
+The duration time acquired for the temporarily closed route is: 1
+[1m[34mMy intention to acquire the Duration for the Closed Route has been fulfilled[0m
+Now I delete the Selected Intention, with its desire and I move the Epistemic Goal in my goal satisfied List
+D5: 0.9 - Epistemic Goal: eg3
 
-to Updated Current_Station: Pamplona
-to Updated Current_Route: -1
-to Updated Current_Step: 0
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --4-- *******
+[1m[36mData changed at the BEGINNING of the method:[0m
 
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
+Desires in GW
+N. Desires in GW: 0
 
-No data has changed.
-*************** Work flow in Method ***************
 
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
-
-No data has changed.
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
+[1m[34m************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace[0m
+******* Scenario_Number:    --4-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+*******  CHANGE OF SCENARIO  ******
+*******  SCENARIO Number 5 ********
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
+***********************************
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
+[1m[34m************  Method:  Perception_Processing *********: TExecutive_Working_Memory_Maintenance[0m
 ******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
+[1m[35mData changed at the END of the method:[0m
+
+No data has changed.
+[1m[36mStop before calling AM_Exogenous_Module method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --5-- *******
+[1m[36mWork flow in Method:[0m
+
+I have a stimulus and I check if it has a saliency greater than my Saliency/Attention threholds.
+
+[1m[34m************  Method:  AM_Exogenous_Module *********: TExecutive_Switching_Function[0m
+******* Scenario_Number:    --5-- *******
+[1m[35mData changed at the END of the method:[0m
 
 Beliefs in GW:
-N. UnInhibited Beliefs in GW: 23
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T18:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Madrid
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {144=1, 145=1} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: 144 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 144 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p212: 144 is Red
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled [128]
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
 Beliefs in LONG MEMORY:
 N. Belief in LONG MEMORY: 240
-N. Inhibited Beliefs in LONG MEMORY: 217
+N. Inhibited Beliefs in LONG MEMORY: 215
 
-*************** Work flow in Method ***************
-The Agent has a stimulus and checks if it has a saliency greater then Saliency/Attention threholds of the agent.
+Desires in GW
+N. Desires in GW: 0
 
-************  Method:  AM_Exogenous_Module *********: TE_Switching_Function
+Intentions in GW
+N. Intentions in GW: 2
+Intention: I1 related to Desire N. -1 - Named: D1 has N. Options: 2 - Saliency: 0.5 - Attentional Goal Name: Visit_Paris
+Intention: I2 related to Desire N. -2 - Named: D2 has N. Options: 0 - Saliency: 0.4 - Attentional Goal Name: Visit_Frankfurt
+
+
+[1m[36mStop before calling MeansEnd method[0m
+[31mPress return to continue...[0m
+
+
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
 ******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
+[1m[36mWork flow in Method:[0m
+
+Using my Meand-End reasoner, I try to find some options for each desire.
+
+
+[1m[34m************  Method:  MeansEnd *********: TReasoner_Function[0m
+******* Scenario_Number:    --5-- *******
+[1m[35mData changed at the END of the method:[0m
 
 No data has changed.
+[1m[36mStop before calling Focus_Attention method[0m
+[31mPress return to continue...[0m
 
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
+
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
 ******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
+[1m[36mWork flow in Method:[0m
 
-No data has changed.
-*************** Work flow in Method ***************
-Agent acts an action for the intention with Functional Name: Visit_Paris
-Agent checks if preconditions for the actions are correct:
-Current Station is: Pamplona
-Current Route is: -1
-Current Step is: 0
-Precondition Station is: Pamplona
-Precondition Route is: -1
-Precondition Stepis: 0
-Yes, Position of Precondition of the action are correct!
+Intention Saliency: 0.5
+I create the Inhibition Regions
+I create the Inhibited Goals
+I create the Inhibited Beliefs
+
+[1m[34m************  Method:  Focus_Attention *********: TExecutive_Inhibition_function[0m
+******* Scenario_Number:    --5-- *******
+[1m[35mData changed at the END of the method:[0m
+
+Beliefs in GW:
+N. UnInhibited Beliefs in GW: 25
+UnInhibited Belief Types:
+b0: Belief_Current_Time -  Truth: true   -   Predicate Name and data, p0: Time is 2024-10-01T18:00
+b1: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p1: Paris visited_by Me
+b3: Belief_Destination_Station -  Truth: false   -   Predicate Name and data, p3: Frankfurt visited_by Me
+b7: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p7: Lisboa visited_by Me
+b8: Belief_Visited_Station -  Truth: true   -   Predicate Name and data, p8: Madrid visited_by Me
+b11: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p11: Pamplona visited_by Me
+b13: Belief_Visited_Station -  Truth: false   -   Predicate Name and data, p13: Paris visited_by Me
+b54: Belief_Current_Station -  Truth: true   -   Predicate Name and data, p54: Me is_in Madrid
+b55: Belief_Current_Route -  Truth: true   -   Predicate Name and data, p55: Me is_in -1
+b56: Belief_Current_Step -  Truth: true   -   Predicate Name and data, p56: Me is_in 0
+b57: Belief_Busy_Route -  Truth: false   -   Predicate Name and data, p57: {} is_Busy null
+b59: Belief_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p59: {144=1, 145=1} is_Temporary_Closed null
+b60: Belief_Number_Players -  Truth: false   -   Predicate Name and data, p60: Number Players is 0
+b61: Stimulus_Ok_Correct_Movement -  Truth: false   -   Predicate Name and data, p61: Me is_in 0
+b62: Stimulus_Too_Close_To_The_Train -  Truth: false   -   Predicate Name and data, p62: Me is_Too_Close_To_The_Train 0
+b63: Stimulus_Closed_Route -  Truth: false   -   Predicate Name and data, p63: -1 is_Closed null
+b64: Stimulus_Busy_Route -  Truth: false   -   Predicate Name and data, p64: -1 is_Busy null
+b65: Stimulus_Temporary_Closed_Route -  Truth: false   -   Predicate Name and data, p65: 144 is_Temporary_Closed null
+b66: Stimulus_Crowded_Route -  Truth: false   -   Predicate Name and data, p66: -1 is_Crowded 0
+b67: Stimulus_Route_Status -  Truth: false   -   Predicate Name and data, p67: 144 is Unknown
+b84: Belief_Route_Status -  Truth: false   -   Predicate Name and data, p84: 16 is Unknown
+b196: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p196: 128 is Green
+b212: Belief_Route_Status -  Truth: true   -   Predicate Name and data, p212: 144 is Red
+b241: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p241: Visit_Paris has_traveled [128]
+b243: Belief_Path_Taken_For_Belief -  Truth: true   -   Predicate Name and data, p243: Visit_Frankfurt has_traveled []
+
+Beliefs in LONG MEMORY:
+N. Belief in LONG MEMORY: 240
+N. Inhibited Beliefs in LONG MEMORY: 215
+
+Goals in GW
+N. Goals in GW: 3
+N. UnInhibited Goals in GW: 2
+Goal Names:
+Visit_Paris
+Visit_Frankfurt
+
+Goals in LONG MEMORY
+N. Goals in LONG MEMORY: 3
+Goal Names:
+Visit_Paris
+Visit_Rome
+Visit_Frankfurt
+
+N. Inhibited Goals in LONG MEMORY: 0
+Inhibited Goal Names:
+Visit_Rome
+
+Regions in GW
+N. UnInhibited Routes Region in GW: 3
+N. UnInhibited Station Region in GW: 4
+
+Regions in LONG MEMORY
+N. All Route Region in LONG MEMORY: 172
+N. Inhibited Route Region in LONG MEMORY: 166
+N. Station in LONG MEMORY: 47
+N. Inhibited Station Region in LONG MEMORY: 43
+
+
+[1m[34m************  Method:  Plan_Advanc_Eval *********: TExecutive_Resource_Allocation[0m
+******* Scenario_Number:    --5-- *******
+[1m[36mWork flow in Method:[0m
+
+[1m[36mStop before calling Plan_Advanc_Eval method[0m
+[31mPress return to continue...[0m
+
+I act an action for the intention with Functional Name: Visit_Paris
+I check if current positions and precondition positions for the act current action are congruent (equal):
+Current position Station is: Madrid
+Current position Route is: -1
+Current position Step is: 0
+Precondition position Station is: Madrid
+Precondition position Route is: -1
+Precondition position Stepis: 0
+[1m[32mYes, Position of Precondition of the action are correct![0m
 Now, I check my knowledge of the route status
-[1m[34mThe route status is unknown.[0m
-[1m[34mI need to know if it is green or not.[0m
-
-************  Method:  Plan_Advanc_Eval *********: TResource_Allocation
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
-
-No data has changed.
-[31mStop before starting again...[0m
-Enter an input
-
-Working Cycle number: 9
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-Perception Processing number: 9
-Sensor acquires last Perception (if it exists).
-I'm feeling some stimulus
-Perception acquired a Perception correctly.
-WMM analyzes perception.
-I want to see the semaphore for get the route status for route: 16
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --5-- *******
-Data changed at the BEGINNING of the method:
-
-No data has changed.
-*************** Work flow in Method ***************
-
-************  Method:  Update_Belief_by_Stimulus *********: TGlobalWorkspace
-******* Scenario_Number:    --5-- *******
-Data changed at the END of the method:
-
-No data has changed.
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-*************  CHANGE OF SCENARIO  **********************
-*************  SCENARIO Number 6 **********************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-***********************************
-
-************  Method:  Perception_Processing *********: TWorking_Memory_Maintenance
-******* Scenario_Number:    --6-- *******
-Data changed at the END of the method:
-
-No data has changed.
+[1m[31mRoute status is Red! I cannot go to route: 144[0m
+[144, 145]
+[1, 1]
+[1m[31mThe Route 144 will be closed for 1 time(s)[0m
+[1m[31mMaybe, I must to recompute my plans[0m
 End Simulation.

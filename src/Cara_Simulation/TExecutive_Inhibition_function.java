@@ -289,7 +289,7 @@ public class TExecutive_Inhibition_function {
 						TAction Action = Option.get_Plan_Actions().getFirst();
 						//Ask_for_Temporary_Closed_Route
 						
-						if(Action.Get_Action_Name() == "How long will the route be closed?")
+						if(Action.Get_Action_Name() == "Ask Closed Route Duration")
 						{
 							int Integer_Route = (int) Action.Get_Params().getFirst();
 							int Specular_Integer_Route = Map.Get_Specular_Route(Integer_Route);
@@ -297,6 +297,7 @@ public class TExecutive_Inhibition_function {
 							Route Specular_Route = Map.Get_Route(Specular_Integer_Route);
 							Inhibited_Regions.Destinations.remove(The_Route.Get_Departure());
 							Inhibited_Regions.Destinations.remove(The_Route.Get_Destination());
+
 							
 							Inhibited_Regions.Integer_Routes.remove(Integer_Route);
 							Inhibited_Regions.Integer_Routes.remove(Specular_Integer_Route);
@@ -517,29 +518,29 @@ public class TExecutive_Inhibition_function {
 				switch(Type_Belief)
 				{
 				case Stimulus_Temporary_Closed_Route:
-					//Here, I insert in Map_Attentional_Goal_and_Beliefs only all Beliefs related to
-					//the Epistemic Goal by zero, so:
-					///()Salient)Belief of Functional_Goal, Belief_Path_Taken_For_Belief and
-					///Belief of route
-//					TType_Beliefs.Belief_Current_Time
-					//Belief_Number_Players
-					//Belief_Temporary_Closed_Route
-//					Game.Print("All_related_Beliefs_Of_Goal: "+Old_All_related_Beliefs_Of_Goal);
-					for(TBelief_Base Bel: Old_All_related_Beliefs_Of_Goal)
-					{
-//						Game.Print(Bel.get_Name()+ " - "+Bel.get_Type_Belief());
-					}
-//					Game.Print("New All_related_Beliefs_Of_Goal: "+Old_All_related_Beliefs_Of_Goal);
-					ArrayList<TBelief_Base> New_All_related_Beliefs_Of_Goal = new ArrayList<TBelief_Base>();
-					
-					New_All_related_Beliefs_Of_Goal.addAll(Create_List_of_Belief__for_Stimulus_Temporary_Closed_Route(Epistemic_Goal));
-					
-					Old_All_related_Beliefs_Of_Goal.clear();
-					Old_All_related_Beliefs_Of_Goal.addAll(New_All_related_Beliefs_Of_Goal);
-					//New_All_related_Beliefs_Of_Goal.addAll(Create_List_of_Belief__for_Destination_Station(Functional_Goal));
-					
-					Old_All_related_Beliefs_Of_Goal.clear();
-					Old_All_related_Beliefs_Of_Goal.addAll(New_All_related_Beliefs_Of_Goal);
+//					//Here, I insert in Map_Attentional_Goal_and_Beliefs only all Beliefs related to
+//					//the Epistemic Goal by zero, so:
+//					///()Salient)Belief of Functional_Goal, Belief_Path_Taken_For_Belief and
+//					///Belief of route
+////					TType_Beliefs.Belief_Current_Time
+//					//Belief_Number_Players
+//					//Belief_Temporary_Closed_Route
+////					Game.Print("All_related_Beliefs_Of_Goal: "+Old_All_related_Beliefs_Of_Goal);
+//					for(TBelief_Base Bel: Old_All_related_Beliefs_Of_Goal)
+//					{
+////						Game.Print(Bel.get_Name()+ " - "+Bel.get_Type_Belief());
+//					}
+////					Game.Print("New All_related_Beliefs_Of_Goal: "+Old_All_related_Beliefs_Of_Goal);
+//					ArrayList<TBelief_Base> New_All_related_Beliefs_Of_Goal = new ArrayList<TBelief_Base>();
+//					
+//					New_All_related_Beliefs_Of_Goal.addAll(Create_List_of_Belief__for_Stimulus_Temporary_Closed_Route(Epistemic_Goal));
+//					
+//					Old_All_related_Beliefs_Of_Goal.clear();
+//					Old_All_related_Beliefs_Of_Goal.addAll(New_All_related_Beliefs_Of_Goal);
+//					//New_All_related_Beliefs_Of_Goal.addAll(Create_List_of_Belief__for_Destination_Station(Functional_Goal));
+//					
+//					Old_All_related_Beliefs_Of_Goal.clear();
+//					Old_All_related_Beliefs_Of_Goal.addAll(New_All_related_Beliefs_Of_Goal);
 					
 					
 					break;
@@ -619,7 +620,8 @@ public class TExecutive_Inhibition_function {
 				break;
 			case 	Belief_Current_Time, Belief_Current_Station, Belief_Current_Route, Belief_Current_Step,
 				 	Belief_Number_Players, Belief_Next_Route, Belief_Next_Station, Belief_Next_Step,
-				 	Belief_Prev_Route, Belief_Prev_Station, Belief_Prev_Step, Belief_Map:
+				 	Belief_Prev_Route, Belief_Prev_Station, Belief_Prev_Step, Belief_Map,
+				 	Belief_Temporary_Closed_Route, Belief_Busy_Route:
 				 	
 					if(!New_All_related_Beliefs_Of_Goal.contains(Belief))
 					{

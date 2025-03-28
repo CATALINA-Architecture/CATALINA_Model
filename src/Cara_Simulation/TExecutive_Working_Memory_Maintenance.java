@@ -658,15 +658,20 @@ public class TExecutive_Working_Memory_Maintenance {
 					this.Manage_Acquired_Route_Status(Perception);
 					this.Agent.Get_GW().Updated_Salient_Beliefs_for_print = false;
 					break;
-				case "Ask how long the route is closed":
+				case "Ask how long the route is closed"://to acquire the duration of closed route
 					this.Manage_Ask_Closed_Route_Duration(Perception);
 					this.Agent.Get_GW().Updated_Salient_Beliefs_for_print = false;
 					break;
-				
+				case "Acquired Closed Route Duration"://to acquire the duration of closed route
+					this.Manage_Acquired_Closed_Route_Duration(Perception);
+					this.Agent.Get_GW().Updated_Salient_Beliefs_for_print = false;
+					break;
 			}
 		}
 		return result;
 	}
+	
+
 	
 	public void Manage_Ask_Closed_Route_Duration(TPerception Perception)
 	{
@@ -678,7 +683,7 @@ public class TExecutive_Working_Memory_Maintenance {
 		
 		int Integer_Route = (int) Preceived_Data.Get_Object_Second();
 		
-		ArrayList<TBelief_Base> Beliefs2 = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Temporary_Closed_Route);
+		ArrayList<TBelief_Base> Beliefs2 = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route);
 		Salient_Belief = (TSalient_Belief) Beliefs2.getFirst();
 		TPredicate Predicate = Salient_Belief.get_Predicate();
 		
@@ -794,6 +799,8 @@ public class TExecutive_Working_Memory_Maintenance {
 		Selected_Option.Inc_Action_To_Do_ID();
 		TPredicate Predicate = Salient_Belief.get_Predicate();
 		
+	
+		
 		//This is the Saslient_Belief for Epistemic_Goal
 		Salient_Belief.Update_Saliency(0.1);
 		
@@ -819,6 +826,11 @@ public class TExecutive_Working_Memory_Maintenance {
 			Temp_Belief.set_Truth(true);;
 		}
 		
+		//Now I have to update Other information
+		//I update the temporrary closed ruotes (I decrease their time)
+		this.Update_Temporary_Closed_Routes();
+		
+		
 		this.Agent.Get_GW().Update_Belief_by_Stimulus(Salient_Belief);		
 	}
 	
@@ -843,13 +855,10 @@ public class TExecutive_Working_Memory_Maintenance {
 		LocalDateTime A_Time = this.Agent.Get_GW().Get_Current_Time();
 		for(TBelief_Base Bel: Belifs)
 		{
-//			Game.Print(Bel.get_Name()+": "+Bel.get_Type_Belief()+" - "+Bel.get_Predicate().get_Subject());
 			if(Bel.get_Type_Belief() == TType_Beliefs.Belief_Route_Status)
 			{
 				if( (int) Bel.Predicate.get_Subject() == Integer_Route)
 				{
-//					Game.Print("Trovata!! Eccola:");
-//					Game.Print(Bel.get_Name()+": "+Bel.get_Type_Belief()+" - "+Bel.get_Predicate().get_Subject());
 					Belief = Bel;
 					Belief.set_Truth(true);
 					Belief.set_Time_stamp(A_Time);
@@ -861,21 +870,16 @@ public class TExecutive_Working_Memory_Maintenance {
 		
 		//Now I Update next action 
 		ArrayList<TIntention> Intentions = this.Agent.Get_GW().Get_Intentions();
-//		for(TIntention Intent: Intentions)
-//		{
-//			Game.Print(Intent.get_Desire().Get_Name()+": "+Intent.get_Desire().get_Attentional_Goal().get_Saliency());
-//		}
+
 		TIntention Intention = Intentions.getFirst();
 		TDesire Desire = Intention.get_Desire();
-//		Game.Print("Selected Intention:");
-//		Game.Print(Intention.get_Desire().Get_Name()+": "+Intention.get_Desire().get_Attentional_Goal().get_Saliency());
+
 		TAttentional_Goal Attentional_Goal = Desire.get_Attentional_Goal();
 		
 		TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
-//		Game.Print("	_To_Do_ID(): "+Selected_Option.Get_Action_To_Do_ID());
+		
 		Selected_Option.Inc_Action_To_Do_ID();
-//		Game.Print("New Selected_Option.Get_Action_To_Do_ID(): "+Selected_Option.Get_Action_To_Do_ID());
-//		Game.Print("Selected_Option.get_Plan_Actions().size(): "+Selected_Option.get_Plan_Actions().size());
+
 		if(Selected_Option.Get_Action_To_Do_ID() >= Selected_Option.get_Plan_Actions().size())
 		{
 			TDesire Desire_to_Delete = Intention.get_Desire();
@@ -905,9 +909,120 @@ public class TExecutive_Working_Memory_Maintenance {
 		
 	}
 	
+	public void Manage_Acquired_Closed_Route_Duration(TPerception Perception)
+	{
+		TRegion Inhibition_Regions = this.Agent.Get_GW().Get_Inhibition_Regions();
+		ArrayList<TBelief_Base> Unhinibited_Beliefs = this.Agent.Get_GW().Get_UnInhibited_Beliefs();
+		TSalient_Belief Salient_Belief;// = (TSalient_Belief) this.Get_Inhibited_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route).getFirst();
+		
+		TTriple_Object Preceived_Data = Perception.get_Perceived_Data();
+		Game.Print("I Acquired Closed _Route Duration.");
+		Game.Print("Now, I update several information in my Beliefs and in plan actions.");
+		ArrayList<TBelief_Base> Beliefs2 = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route);
+		Salient_Belief = (TSalient_Belief) Beliefs2.getFirst();
+		
+		Salient_Belief.Update_Saliency(0.1);
+
+		Integer Duration = (Integer) Preceived_Data.Get_Object_Third(); 
+		Game.Print("Duration: "+Duration);
+		
+		int Integer_Route = (int) Preceived_Data.Get_Object_Second();
+		int Specular_Integer_Route = this.Get_Map().Get_Specular_Route(Integer_Route);
+		Game.Print("The duration time acquired for the temporarily closed route is: "+Duration);
+		
+		for(TBelief_Base Bel: Unhinibited_Beliefs)
+		{
+//			Game.Print(Bel.get_Name()+": "+Bel.get_Type_Belief()+" - "+Bel.get_Predicate().get_Subject());
+			if(Bel.get_Type_Belief() == TType_Beliefs.Belief_Temporary_Closed_Route)
+			{
+				HashMap<Integer, Integer> Routes = (HashMap<Integer, Integer>) Bel.get_Predicate().get_Subject();
+				
+				if( !Routes.containsKey(Integer_Route) )
+				{
+					Routes.put(Integer_Route, Duration);
+					Routes.put(Specular_Integer_Route, Duration);
+					Route route = this.Get_Map().Get_Route(Integer_Route);
+					route.Set_Duration_Closed(Duration);
+					
+					route = this.Get_Map().Get_Route(Specular_Integer_Route);
+					route.Set_Duration_Closed(Duration);
+				}
+				Bel.get_Predicate().Set_Subject(Routes);
+			}
+		}
+		
+		
+		ArrayList<TIntention> Intentions = this.Agent.Get_GW().Get_Intentions();
+
+		TIntention Intention = Intentions.getFirst();
+		TDesire Desire = Intention.get_Desire();
+
+		TAttentional_Goal Attentional_Goal = Desire.get_Attentional_Goal();
+		
+		TOption Selected_Option = Desire.get_Option_List().get(Intention.get_Seleted_Option_Id());
+		
+		Selected_Option.Inc_Action_To_Do_ID();
+
+		if(Selected_Option.Get_Action_To_Do_ID() >= Selected_Option.get_Plan_Actions().size())
+		{
+			TDesire Desire_to_Delete = Intention.get_Desire();
+			Game.Print_Colored_Text("My intention to acquire the Duration for the Closed Route has been fulfilled", 5);
+			Game.Print("Now I delete the Selected Intention, with its desire and I move the Epistemic Goal in my goal satisfied List");
+			Game.Print(Desire_to_Delete.Get_Name()+": "+Desire_to_Delete.get_Attentional_Goal().get_Saliency()+
+					" - Epistemic Goal: "+Desire_to_Delete.get_Attentional_Goal().get_Name());
+			this.Agent.Get_GW().Delete_Intention(Intention);
+			
+			this.Agent.Get_GW().Get_Goals().remove(Attentional_Goal);
+			this.Long_Memory.Delete_Goal(Attentional_Goal);
+			this.Long_Memory.Insert_Attentional_Goals_Satisfied(Attentional_Goal);
+			
+		}
+		
+//		Beliefs2 = this.Agent.Get_GW().Get_Beliefs_From_Type_Belief(TType_Beliefs.Stimulus_Temporary_Closed_Route);
+//		Salient_Belief = (TSalient_Belief) Beliefs2.getFirst();
+//		Salient_Belief.Update_Saliency(0.1);
+		
+		this.Agent.Get_GW().Update_Belief_by_Stimulus(Salient_Belief);	
+		
+		
+	}
+	
 	public TAgent Get_Agent()
 	{
 		return this.Agent;
+	}
+	
+	public void Update_Temporary_Closed_Routes()
+	{
+		ArrayList<TBelief_Base> Unhinibited_Beliefs = this.Agent.Get_GW().Get_UnInhibited_Beliefs();
+		for(TBelief_Base Bel: Unhinibited_Beliefs)
+		{
+			if(Bel.get_Type_Belief() == TType_Beliefs.Belief_Temporary_Closed_Route)
+			{
+				HashMap<Integer, Integer> Routes = (HashMap<Integer, Integer>) Bel.Predicate.get_Subject();
+				for(Integer Route_ID: Routes.keySet())
+				{
+					Integer Value = Routes.get(Route_ID);
+					Value = Value - 1;
+					if(Value>0)
+					{
+						Routes.put(Route_ID, Value);	
+						Route route = this.Get_Map().Get_Route(Route_ID);
+						route.Set_Duration_Closed(Value);
+					}
+					else
+					{
+						if(Routes.containsKey(Route_ID))
+						{
+							Routes.remove(Route_ID);
+							Route route = this.Get_Map().Get_Route(Route_ID);
+							route.Set_Duration_Closed(0);
+						}
+					}
+				}
+				Bel.Predicate.Set_Subject(Routes);
+			}
+		}
 	}
 
 }

@@ -2,6 +2,7 @@ package Cara_Simulation;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TTCS {
 	
@@ -77,16 +78,6 @@ public class TTCS {
 		
 		switch(Request_String)
 		{
-		case "Status Route":								
-			//Response.Object_First = "Route is Temporary Closed";		//Response
-//			Response.Object_First = ;
-//			Response.Object_Second = Request.Object_Second;
-//			Response.Object_Third = Request.Object_Third;
-			Response.Set_Object_First(Answer_Objects.get(Response_Number).Get_Object_First());
-			Response.Set_Object_Second(Request.Get_Object_Second());
-			Response.Set_Object_Third(Request.Get_Object_Third());
-			
-			break;
 		case "GO_TO_Route":								
 			//Response.Object_First = Answer_Objects.get(Response_Number).Object_First;
 			Response.Set_Object_First(Answer_Objects.get(Response_Number).Get_Object_First());
@@ -101,11 +92,23 @@ public class TTCS {
 			Response.Set_Object_Third(Request.Get_Object_Third());
 			
 			break;
-		case "How long will the route be closed?":			//Request
+		case "Ask Closed Route Duration":			//Request
 			//Response.Object_First = Answer_Objects.get(Response_Number).Object_First;
-			Response.Set_Object_First(Answer_Objects.get(Response_Number).Get_Object_First());
+			Game.Print(Request_String);;
+			TTriple_Object Answer_Temp_Closed =  new TTriple_Object();
+
+			Answer_Temp_Closed.Set_Object_First("Acquired Closed Route Duration");
+			Random random = new Random();
+			int min = 1;
+			int max = 9;
+	        Integer number = random.nextInt(max - min + 1) + min;
+	        
+	        String String_Duration = Game.Get_Preset_Input("Closed Route Duration?:  ",number.toString(),2);
+	        
+	        Integer Duration = Integer.parseInt(String_Duration);
+			Response.Set_Object_First(Answer_Temp_Closed.Get_Object_First());
 			Response.Set_Object_Second(Request.Get_Object_Second());
-			Response.Set_Object_Third(Request.Get_Object_Third());
+			Response.Set_Object_Third( Duration);
 			break;
 		default:
 			Game.Print("I cannot handle in TCS in function Response: "+Request_String);

@@ -15,9 +15,9 @@ public enum TType_Beliefs {
 	Belief_Prev_Station,
 	Belief_Prev_Step,
 	Belief_Current_Time,				//[Time, is, datetime[yyyy-mm-dd hh-mm-ss]]
-	Belief_Temporary_Closed_Route,		//[ArrayList<int Route>, is_Temporary_Closed, ArrayList<integer> round number));
+	Belief_Temporary_Closed_Route,		//[HashMap<int Route, int duration>, is_Temporary_Closed, null));
 	Belief_Closed_Route,				//[ArrayList<int Route>, is_Closed, null));
-	Belief_Busy_Route,					//[ArrayList<int Route>, is_Busy, ArrayList<integer> round number));
+	Belief_Busy_Route,					//[HashMap<int Route, int duration>, is_Busy, null));
 	Belief_Route_Status,				//this is a belief of status of a Route [int Route, is, TType_Route_Status]
 	Belief_Visited_Station,				//[Station, visited_by, TType_Object_Complement]
 	

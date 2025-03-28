@@ -20,6 +20,8 @@ public class Route{
 	private int Route_Speed;
 	private int Route_used_by_agent;
 	private int Total_Rounds;	
+	private int Duration_Closed;
+	
 	
 	/**
 	 * It returns Path Time of the route
@@ -208,6 +210,16 @@ public class Route{
 		this.Route_used_by_agent = route_used_by_agent;
 	}
 	
+	public void Set_Duration_Closed(Integer value)
+	{
+		this.Duration_Closed = value;
+	}
+	
+	public Integer Get_Duration_Closed()
+	{
+		return this.Duration_Closed;
+	}
+	
 	/**
 	 * Constructor of the class
 	 * @param departure			The departure station
@@ -233,6 +245,7 @@ public class Route{
 		this.The_Panorama = panorama;
 		this.Speed = speed;
 		this.Route_Number = route_Number;
+		this.Duration_Closed = 0;
 
 		//Computed values
 		this.Route_Locomotive =  this.Locomotive.Get_Value(this.Locomotive) * this.Steps_Number;
