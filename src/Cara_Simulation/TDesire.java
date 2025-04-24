@@ -7,6 +7,7 @@ public class TDesire {
 	private TAttentional_Goal Attentional_Goal;
 	private ArrayList<TOption> Option_List;
 	private String Name;
+	private TIntention Related_Intention;
 	
 	public String Get_Name()
 	{
@@ -28,6 +29,7 @@ public class TDesire {
 	{
 		this.Attentional_Goal = attentional_Goal;
 		this.Name = Name;
+		this.Related_Intention = null;
 		
 		//if option_List is different to null 
 		if (Option_List != null)
@@ -39,7 +41,16 @@ public class TDesire {
 		{
 			Option_List = new ArrayList<TOption>();
 		}
-		
+	}
+	
+	public void Set_Realated_Intention(TIntention intention)
+	{
+		this.Related_Intention = intention;
+	}
+	
+	public TIntention Get_Realated_Intention()
+	{
+		return this.Related_Intention;
 	}
 
 

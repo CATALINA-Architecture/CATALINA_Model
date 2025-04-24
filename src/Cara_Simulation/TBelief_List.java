@@ -6,16 +6,16 @@ public class TBelief_List {
 	
 	private Integer Belief_Counter;
 	
-	public ArrayList<TBelief_Base> Beliefs;
+	public ArrayList<TBelief> Beliefs;
 	
 	
 	public TBelief_List()
 	{
-		ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
+		ArrayList<TBelief> Beliefs = new ArrayList<TBelief>();
 		this.Belief_Counter = 0;
 	}
 	
-	public void Add_Belief(TBelief_Base belief)
+	public void Add_Belief(TBelief belief)
 	{
 		//Belief_Counter++;
 		Integer Temp_Belief_Counter = Belief_Counter;
@@ -23,13 +23,13 @@ public class TBelief_List {
 		belief.set_Belief_ID(Belief_Counter);
 		if (this.Beliefs == null)
 		{
-			this.Beliefs = new ArrayList<TBelief_Base>();
+			this.Beliefs = new ArrayList<TBelief>();
 		}
 		Beliefs.add(belief);
 		Belief_Counter = Temp_Belief_Counter;
 	}
 	
-	public void Remove_Belief(TBelief_Base belief)
+	public void Remove_Belief(TBelief belief)
 	{
 		Beliefs.remove(belief);
 		Belief_Counter--;

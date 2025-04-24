@@ -19,6 +19,7 @@ public enum TType_Relationship
 	is_Closed,
 	is_Temporary_Closed,
 	is_Too_Close_To_The_Train,
-	is_Crowded
+	is_Crowded,
+	has_a_Danger
 	
 }

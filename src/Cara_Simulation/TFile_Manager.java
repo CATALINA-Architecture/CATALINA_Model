@@ -66,7 +66,7 @@ public class TFile_Manager {
 //        }
 //	}
 	
-	public void Write_Beliefs(ArrayList<TBelief_Base> Beliefs)
+	public void Write_Beliefs(ArrayList<TBelief> Beliefs)
 	{
 		String File_name = "Beliefs.cara";
 
@@ -161,13 +161,13 @@ public class TFile_Manager {
 		return Predicates;
 	}
 	
-	public ArrayList<TBelief_Base> Read_Beliefs()
+	public ArrayList<TBelief> Read_Beliefs()
 	{
 		String File_name = "Beliefs.cara";
-		ArrayList<TBelief_Base> Beliefs = null;
+		ArrayList<TBelief> Beliefs = null;
 		try (FileInputStream fileIn = new FileInputStream(File_name);
 			     ObjectInputStream in = new ObjectInputStream(fileIn)) {
-			Beliefs = (ArrayList<TBelief_Base>) in.readObject();
+			Beliefs = (ArrayList<TBelief>) in.readObject();
 
 			} catch (IOException | ClassNotFoundException e) {
 			    e.printStackTrace();
@@ -263,18 +263,18 @@ public class TFile_Manager {
 		/////////////////
 		//Create Destionation predicates: 1-3
 		/////////////////
-		Predicates.add(new TPredicate( "p1", Station.Paris,TType_Relationship.visited_by, 
+		Predicates.add(new TPredicate( "p1", City.Paris,TType_Relationship.visited_by, 
 				TType_Object_Complement.Me));
-		Predicates.add(new TPredicate( "p2", Station.Rome,TType_Relationship.visited_by, 
+		Predicates.add(new TPredicate( "p2", City.Rome,TType_Relationship.visited_by, 
 				TType_Object_Complement.Me));
-		Predicates.add(new TPredicate( "p3", Station.Frankfurt,TType_Relationship.visited_by, 
+		Predicates.add(new TPredicate( "p3", City.Frankfurt,TType_Relationship.visited_by, 
 				TType_Object_Complement.Me));
 
 		/////////////////
 		//Create Trigger Condition Destionation predicates: 1-3
 		/////////////////
 		this.Init_Creation_Trigger_Condition_Functional_Predicates = Predicates.size();
-		Predicates.add(new TPredicate( "p4", Station.Paris,TType_Relationship.visited_by, 
+		Predicates.add(new TPredicate( "p4", City.Paris,TType_Relationship.visited_by, 
 				TType_Object_Complement.Me));	
 		
 		/////////////////
@@ -303,7 +303,7 @@ public class TFile_Manager {
 		this.Init_Creation_Visited_Station_Predicates = Init_Creation_Quality_Goals_Predicates +
 														Initial_Number_Quality_Goals;
 		i = this.Init_Creation_Visited_Station_Predicates;
-		for(Station station: Station.values())
+		for(City station: City.values())
 		{
 			Predicates.add(new 
 					TPredicate( "p"+i, station, TType_Relationship.visited_by, 
@@ -315,12 +315,12 @@ public class TFile_Manager {
 		//Create Current Station, Route and step predicates: n-n+3
 		/////////////////
 		//Station
-		Station Start_Station = null;
+		City Start_Station = null;
 //		String String_Station = Game.Get_Input("Starting station: ");
 		
 		String String_Station = Game.Get_Preset_Input("Starting station:  ","Lisboa",2);
 		
-		Start_Station = Station.valueOf(String_Station);
+		Start_Station = City.valueOf(String_Station);
 		
 //		Predicates.add(new 
 //				TPredicate( "p"+i++, TType_Subject.Me, TType_Relationship.is_in, 
@@ -362,6 +362,20 @@ public class TFile_Manager {
 				TPredicate( "p"+i++, "Number Players", TType_Relationship.is, 0));
 		
 		/////////////////
+		//Create Belief_Danger_on_the_Route,	
+		/////////////////
+		Predicates.add(new 
+				TPredicate( "p"+i++, -1, TType_Relationship.has_a_Danger, TType_Danger.Unknown));
+		
+		/////////////////
+		//Create Belief_Come_Back_to_City,	
+		/////////////////
+		Predicates.add(new 
+//				TPredicate( "p"+i++, TType_Subject.Me, TType_Relationship.goes, -1));
+				TPredicate( "p"+i++, City.Paris, TType_Relationship.visited_by, 
+						TType_Object_Complement.Me));
+		
+		/////////////////
 		//Create Stimulus_Beliefs,	
 		/////////////////
 		Predicates.add(new 
@@ -379,6 +393,12 @@ public class TFile_Manager {
 		//Stimulus_Status_Route
 		Predicates.add(new 
 				TPredicate( "p"+i++, -1, TType_Relationship.is, TType_Route_Status.Unknown));
+		//Stimulus_Danger_on_the_Route
+		Predicates.add(new 
+				TPredicate( "p"+i++, -1, TType_Relationship.has_a_Danger, TType_Danger.Unknown ));
+		//Stimulus_Irrilevant
+		Predicates.add(new 
+				TPredicate( "p"+i++, null, TType_Relationship.is, null ));
 		
 		
 		
@@ -398,24 +418,24 @@ public class TFile_Manager {
 	
 	public void Create_Beliefs()
 	{
-		ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
-		ArrayList<TBelief_Base> Leggere_Beliefs = null;
+		ArrayList<TBelief> Beliefs = new ArrayList<TBelief>();
+		ArrayList<TBelief> Leggere_Beliefs = null;
 		;
 		
 		/////////////////
 		//Create Current Time predicate
 		/////////////////
-		Beliefs.add(new TBelief_Base("b0", "p0", true, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief("b0", "p0", true, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Current_Time));
 		
 		/////////////////
 		//Create Destionation Station: 1-3
 		/////////////////
-		Beliefs.add(new TBelief_Base("b1", "p1", false, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief("b1", "p1", false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Destination_Station));
-		Beliefs.add(new TBelief_Base("b2", "p2", false, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief("b2", "p2", false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Destination_Station));
-		Beliefs.add(new TBelief_Base("b3", "p3", false, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief("b3", "p3", false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Destination_Station));
 		
 		
@@ -434,10 +454,10 @@ public class TFile_Manager {
 		/////////////////
 //		this.Init_Creation_Visited_Station_Predicates = Beliefs.size();
 		int i = this.Init_Creation_Visited_Station_Predicates;
-		for(Station station: Station.values())
+		for(City station: City.values())
 		{
 
-			Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+			Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
 					null, TType_Beliefs.Belief_Visited_Station));
 			i++;
 		}
@@ -447,15 +467,15 @@ public class TFile_Manager {
 		//Create Current Station, Route and step predicates: n-n+3
 		/////////////////
 		//Station
-		Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
-				null, TType_Beliefs.Belief_Current_Station));
+		Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+				null, TType_Beliefs.Belief_Current_City));
 		i++;
 		//Route
-		Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Current_Route));
 		i++;
 		//Step
-		Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Current_Step));
 		
 		i++;
@@ -463,22 +483,38 @@ public class TFile_Manager {
 		/////////////////
 		//Create Belief_Temporary_Closed_Route, Belief_Closed_Route, Belief_Busy_Route	
 		/////////////////
-		Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Busy_Route));
 		i++;
-		Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Closed_Route));
 		i++;
-		Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Temporary_Closed_Route));
 		i++;
 		
 		/////////////////
 		//Create Belief_Number_Players,	
 		/////////////////
-		Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+		Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Number_Players));
 		i++;
+		
+		/////////////////
+		//Create Belief_Danger_on_the_Route	
+		/////////////////
+		Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+				null, TType_Beliefs.Belief_Danger_on_the_Route));
+		i++;
+		
+		/////////////////
+		//Create Belief_Come_Back_to_City	
+		/////////////////
+		Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Me, 
+				null, TType_Beliefs.Belief_Come_Back_to_City));
+		i++;
+		
+		
 		
 		/////////////////
 		//Create Stimulus_Beliefs,	
@@ -512,13 +548,19 @@ public class TFile_Manager {
 		Beliefs.add(new TSalient_Belief("b"+i, "p"+i, 0.0, false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Stimulus_Route_Status));
 		i++;
+		Beliefs.add(new TSalient_Belief("b"+i, "p"+i, 0.0, false, TType_Object_Complement.Developer, 
+				null, TType_Beliefs.Stimulus_Danger_on_the_Route));
+		i++;
+		Beliefs.add(new TSalient_Belief("b"+i, "p"+i, 0.0, false, TType_Object_Complement.Developer, 
+				null, TType_Beliefs.Stimulus_Irrelevant));
+		i++;
 		
 		/////////////////
-		//Create Predicates for Status_Route (one for any route)	
+		//Create Beliefs for Route_Status (one for any route)	
 		/////////////////
 		for(Route route: Map.All_Routes)
 		{
-			Beliefs.add(new TBelief_Base("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
+			Beliefs.add(new TBelief("b"+i, "p"+i, false, TType_Object_Complement.Developer, 
 					null, TType_Beliefs.Belief_Route_Status));
 			i++;
 		}
@@ -571,26 +613,39 @@ public class TFile_Manager {
 		//These operators aren't developed in this project
 		LocalDateTime Irrelevant_Time = LocalDateTime.parse("2024-10-01 21:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		
-		LocalDateTime Fs1 = LocalDateTime.parse("2024-10-01 18:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		LocalDateTime Fe1 = LocalDateTime.parse("2024-10-01 22:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		Functional_Goals.add(new TFunctional_Goal("Visit_Paris", "b1", null,  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List,
-				Fs1, Fe1, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
+		Game.Print("Temporal Data of Finally Operator for Visit_Paris:");
 		
-		LocalDateTime Fs2 = LocalDateTime.parse("2024-10-01 10:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		LocalDateTime Fe2 = LocalDateTime.parse("2024-10-01 15:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		String Data1 = Game.Get_Preset_Input("Insert the Finally Start Interval. T1: ","2024-10-01 18:00:00",2);
+//		String Data2 = Game.Get_Preset_Input("Insert the Finally End Interval. T2: ","2024-10-02 06:00:00",2);
+		String Data2 = Game.Get_Preset_Input("Insert the Finally End Interval. T2: ","2024-10-02 06:00:00",2);
+		LocalDateTime Fe_Data1 = LocalDateTime.parse(Data1, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		LocalDateTime Fe_Data2 = LocalDateTime.parse(Data2, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		
+//		LocalDateTime Fs1 = LocalDateTime.parse("2024-10-01 18:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//		String Data0 = Game.Get_Preset_Input("Insert the Finally Start Interval for Functional Goal \"Visit_Paris\". T1: ","2024-10-01 22:00:00",2);
+//		LocalDateTime Fe_Data0 = LocalDateTime.parse(Data0, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		
+//		LocalDateTime Fe1 = LocalDateTime.parse("2024-10-02 06:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		Functional_Goals.add(new TFunctional_Goal("Visit_Paris", "b1", null,  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List,
+				Fe_Data1, Fe_Data2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
+		
+//		LocalDateTime Fs2 = LocalDateTime.parse("2024-10-01 10:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//		LocalDateTime Fe2 = LocalDateTime.parse("2024-10-01 15:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		LocalDateTime Fs2 = LocalDateTime.parse("2024-10-02 10:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		LocalDateTime Fe2_1 = LocalDateTime.parse("2024-10-02 13:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		Functional_Goals.add(new TFunctional_Goal("Visit_Rome", "b2", "p4",  0.8, 40.0, 0.1, Green_Goals_List, Quality_Goals_List,
-				Fs2, Fe2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
+				Fs2, Fe2_1, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
 		
 		LocalDateTime Fs3 = LocalDateTime.parse("2024-10-01 21:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		
 //		Game.Print_Colored_Text("Insert the Finally Interval. Format string is: 2024-10-01 23:00:00", 2);
 //		String Data1 = Game.Get_Input("T1: ");
 //		String Data2 = Game.Get_Input("T2: ");
-		String Data1 = Game.Get_Preset_Input("Insert the Finally Start Interval. T1: ","2024-10-01 23:00:00",2);
-		String Data2 = Game.Get_Preset_Input("Insert the Finally End Interval. T2: ","2024-10-01 23:00:00",2);
+		Data1 = Game.Get_Preset_Input("Insert the Finally Start Interval. T1: ","2024-10-01 22:00:00",2);
+		Data2 = Game.Get_Preset_Input("Insert the Finally End Interval. T2: ","2024-10-01 24:00:00",2);
 		
-		LocalDateTime Fe_Data1 = LocalDateTime.parse(Data1, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		LocalDateTime Fe_Data2 = LocalDateTime.parse(Data2, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		Fe_Data1 = LocalDateTime.parse(Data1, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		Fe_Data2 = LocalDateTime.parse(Data2, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 //		LocalDateTime Fe3 = LocalDateTime.parse("2024-10-01 23:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		
 		LocalDateTime Fe3 = LocalDateTime.parse("2024-10-01 23:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

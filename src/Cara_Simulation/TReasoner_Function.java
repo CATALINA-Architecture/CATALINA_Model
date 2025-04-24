@@ -122,11 +122,12 @@ public class TReasoner_Function {
 	public boolean MeansEnd()
 	{
 		boolean result = true;
-		try 
-		{
-			
+//		try 
+//		{
+//			Game.Print_Colored_Text("MeansEnd ", 6);
 			if(this.Updated_Desires)
 			{
+//				Game.Print_Colored_Text("MeansEnd Entrato", 6);
 				this.Updated_Desires = false;
 				
 				Game.Print_Colored_Text("Stop before calling MeansEnd method", 7);
@@ -138,7 +139,7 @@ public class TReasoner_Function {
 				
 				ArrayList<TDesire> Desires_To_Filter = new ArrayList<TDesire>();
 				
-				ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
+				ArrayList<TBelief> Beliefs = new ArrayList<TBelief>();
 				Beliefs.addAll(this.Agent.Get_GW().Get_UnInhibited_Beliefs());
 				//When the Agent is not focused UnInhibited_Beliefs is empty so I have to get any beliefs
 				if(Beliefs.isEmpty())
@@ -187,7 +188,7 @@ public class TReasoner_Function {
 							Game.PrintLn();
 							Game.Print(Des_Num+" - For the Desire --"+Desire.Get_Name()+"-- The Attentional Goal is a:  TFunctional_Goal");
 							TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
-							TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
+							TBelief Functional_Belief = Functional_Goal.get_Final_State();
 							switch(Functional_Belief.get_Type_Belief())
 							{
 									///
@@ -197,9 +198,14 @@ public class TReasoner_Function {
 									///
 								case TType_Beliefs.Belief_Destination_Station:
 									Game.Print("Its Final belief type is: Belief_Destination_Station");
-//									Game.Get_Input("Stop before calling Means_End_For_Belief_Destination_Station method");
+									Game.Print("I have to create some plans to go to my destination.");
 									Means_End_For_Belief_Destination_Station(Desire, Beliefs);
 									Game.PrintLn();
+									break;
+								case TType_Beliefs.Belief_Come_Back_to_City:
+									Game.Print("Its Final belief type is: Belief_Come_Back_to_City");
+									Game.Print("I have to make plans to return to the previous city before the route.");
+									Means_End_For_Belief_Come_Back_to_City(Desire, Beliefs);
 									break;
 								default:
 									Game.Print("For Means-End Reasoner, I cannot to handle the Type of Functional Belief: "+Functional_Belief.get_Type_Belief());
@@ -216,7 +222,7 @@ public class TReasoner_Function {
 							Game.PrintLn();
 							Game.Print(Des_Num+" - For the Desire --"+Desire.Get_Name()+"-- The Attentional Goal is a:  TEpistemic_Goal");
 							TEpistemic_Goal Epistemic_Goal = (TEpistemic_Goal) Goal;
-							TBelief_Base Epistemic_Belief = Epistemic_Goal.get_Belief();
+							TBelief Epistemic_Belief = Epistemic_Goal.get_Belief();
 //							Game.Print("-- Type of Epistemic Belief: : "+Epistemic_Belief.get_Type_Belief());
 							switch(Epistemic_Belief.get_Type_Belief())
 							{
@@ -239,6 +245,13 @@ public class TReasoner_Function {
 									Game.PrintLn();									
 									///
 									break;
+								case TType_Beliefs.Stimulus_Danger_on_the_Route:
+									Game.Print_Colored_Text("Stop before calling Means_End_For_Stimulus_Danger_on_the_Route method", 7);
+									Game.Press_Enter();
+									this.Means_End_For_Stimulus_Danger_on_the_Route(Desire, Beliefs);
+									Game.PrintLn();	
+									
+									break;
 								default:
 									Game.Print("For Means-End Reasoner, I cannot to handle the Type of Epistemic Salient Belief: "+Epistemic_Belief.get_Type_Belief());
 									Game.End_Game();
@@ -258,14 +271,14 @@ public class TReasoner_Function {
 				
 				this.Agent.Get_GW().Print_Data(1, 0);
 			}
-		}
-		catch (Exception e) {
-	      Game.Print("Something went wrongin method: Insert_New_Desires.");
-	      Game.Print("Message Error: "+e.getMessage());
-	      Game.PrintLn();
-	      e.printStackTrace();
-	      result = false;
-	    }
+//		}
+//		catch (Exception e) {
+//	      Game.Print("Something went wrongin method: Insert_New_Desires.");
+//	      Game.Print("Message Error: "+e.getMessage());
+//	      Game.PrintLn();
+//	      e.printStackTrace();
+//	      result = false;
+//	    }
 	    return result;
 	}
 	
@@ -276,8 +289,8 @@ public class TReasoner_Function {
 	public boolean Deliberate_Process()	
 	{
 		boolean result = true;
-		try 
-		{
+//		try 
+//		{
 			if(this.Updated_Desires_with_Options)
 			{
 				this.Updated_Desires_with_Options = false;
@@ -287,7 +300,7 @@ public class TReasoner_Function {
 				this.Agent.Get_GW().Print_Data(2, 0);
 				
 				
-				ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
+				ArrayList<TBelief> Beliefs = new ArrayList<TBelief>();
 				Beliefs.addAll(this.Agent.Get_GW().Get_UnInhibited_Beliefs());
 				//When the Agent is not focused UnInhibited_Beliefs is empty so I have to get any beliefs
 				if(Beliefs.isEmpty())
@@ -325,6 +338,10 @@ public class TReasoner_Function {
 						case TType_Beliefs.Belief_Destination_Station:
 							this.Deliberate_for_Belief_Destination_Station(Desire, Beliefs);	
 							break;
+						//Maybe it works
+						case TType_Beliefs.Belief_Come_Back_to_City:
+							this.Deliberate_for_Belief_Destination_Station(Desire, Beliefs);	
+							break;
 						default:
 							//Other cases to handle 
 							Game.Print("I have to handle other cases to deliberate this Desire");
@@ -344,6 +361,9 @@ public class TReasoner_Function {
 						case TType_Beliefs.Stimulus_Temporary_Closed_Route:
 							
 							break;
+						case TType_Beliefs.Stimulus_Danger_on_the_Route:
+							
+							break;
 						default:
 							//Other cases to handle 
 							Game.Print("I have to handle other cases to deliberate this Desire");
@@ -355,6 +375,7 @@ public class TReasoner_Function {
 					int Intention_Number = this.Agent.Get_GW().Get_Inc_Intention_Number() + 1;
 					String Intention_Name = "I"+Intention_Number;
 					TIntention An_Intention = new TIntention(Intention_Name, Desire, 0);
+					Desire.Set_Realated_Intention(An_Intention);
 					New_Intentions.add(An_Intention);
 					this.Agent.Get_GW().Inc_Intention_Number();
 					Game.Print("I create the Intention: "+An_Intention.Get_Name()+ " for the Desire: "+Desire.Get_Name());
@@ -367,32 +388,32 @@ public class TReasoner_Function {
 				
 				this.Agent.Get_GW().Print_Data(1, 0);
 			}
-		}
-		catch (Exception e) {
-	      Game.Print("Something went wrongin method: Insert_New_Desires.");
-	      Game.Print("Message Error: "+e.getMessage());
-	      Game.PrintLn();
-	      e.printStackTrace();
-	      result = false;
-	    }
+//		}
+//		catch (Exception e) {
+//	      Game.Print("Something went wrongin method: Insert_New_Desires.");
+//	      Game.Print("Message Error: "+e.getMessage());
+//	      Game.PrintLn();
+//	      e.printStackTrace();
+//	      result = false;
+//	    }
 		return result;
 	}
 	
-	protected boolean Deliberate_for_Belief_Destination_Station(TDesire Desire, ArrayList<TBelief_Base> Beliefs)
+	protected boolean Deliberate_for_Belief_Destination_Station(TDesire Desire, ArrayList<TBelief> Beliefs)
 	{
 		boolean result = true;
 		try 
 		{
 			TAttentional_Goal Goal = Desire.get_Attentional_Goal();
 			TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
-			TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
+			TBelief Functional_Belief = Functional_Goal.get_Final_State();
 	
 			int i=0;
 			
 			LocalDateTime Current_Time = null;
 					while (i< Beliefs.size())
 					{
-						TBelief_Base Temp_Belief = Beliefs.get(i);
+						TBelief Temp_Belief = Beliefs.get(i);
 						// Agent must to understand in which station it is
 						if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_Time) 
 						{
@@ -451,6 +472,7 @@ public class TReasoner_Function {
 					Game.Print("Path Data:");
 					Game.Print("----------------------------");
 				}
+//				Game.Gui_Map.Show_Message("Stop", "Stop", 2);
 				for (int ind: Path.Routes)
 				{
 					Route rotta = this.Agent.Get_WMM().Get_Map().Get_Route(ind);
@@ -491,9 +513,266 @@ public class TReasoner_Function {
 		return result;
 	}
 	
-	protected boolean Means_End_For_Belief_Destination_Station(TDesire Desire, ArrayList<TBelief_Base> Beliefs)
-	//TFunctional_Goal Functional_Goal,TBelief_Base Functional_Belief, 
-	//ArrayList<TBelief_Base> Beliefs)
+	protected boolean Means_End_For_Belief_Come_Back_to_City(TDesire Desire, ArrayList<TBelief> Beliefs)
+	{
+		///
+		///		Belief_Come_Back_to_City
+		///		
+		///     This means that the agent must create a plan to return/stay in the previous city before 
+		///		entering the current route.
+		///
+		boolean result = true;
+		try 
+		{
+			Game.Print("I use my Means_End_For_Belief_Destination_Station method to search some options");
+			this.Agent.Get_GW().Print_Data(2, 0);
+			
+			TAttentional_Goal Goal = Desire.get_Attentional_Goal();
+			TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
+			TBelief Functional_Belief = Functional_Goal.get_Final_State();
+			
+			Game.PrintLn();
+			Game.Print("The Functional_Goal Name is: "+Functional_Goal.get_Name());
+			Game.Print("The Functional_Belief is a: "+Functional_Goal.get_Final_State().get_Type_Belief());
+			
+			City Current_City = null;
+			int Current_Route = -2;
+			int Current_Step = -1;
+			int i = 0;
+			while (i< Beliefs.size())
+			{
+				TBelief Temp_Belief = Beliefs.get(i);
+				// Agent must to understand in which station it is
+				if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_City) 
+				{
+					if (Temp_Belief.get_Predicate().get_Subject() == TType_Subject.Me)
+					{
+						Current_City = (City) Temp_Belief.Predicate.get_Object_Complement();
+					}
+//					continue;
+				}
+				if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_Route) 
+				{
+					if (Temp_Belief.get_Predicate().get_Subject() == TType_Subject.Me)
+					{
+						Current_Route = (int) Temp_Belief.Predicate.get_Object_Complement();
+					}
+//					break;
+				}
+				if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_Step) 
+				{
+					if (Temp_Belief.get_Predicate().get_Subject() == TType_Subject.Me)
+					{
+						Current_Step = (int) Temp_Belief.Predicate.get_Object_Complement();
+					}
+//					break;
+				}
+				i++;
+			}
+			// The perception "Acquired Danger Type on the road" has already changed and inverted
+			// Current_Route and Current_Step to maintain a consistency with where beliefs need to change 
+			Game.Print(Current_City+" - "+Current_Route+ " - "+Current_Step);
+//			Game.End_Game();
+			ArrayList<Plan> Paths = new ArrayList<Plan>();
+			i = 0;
+			
+			
+			Boolean Print_PAth = true;
+
+			ArrayList<TOption> option_List =  new ArrayList<TOption>();
+			ArrayList<TAction> plans = new ArrayList<TAction>();
+			ArrayList<TAction> Actions = new ArrayList<TAction>();
+			String Function_To_Invoke = "Come_Back_to_City";
+			
+			if(this.Agent.Get_GW().Print_steps_and_routes)
+			{
+				Game.Print("Start creating Path Plan:");
+			}
+			
+			//if Current_Route < 0, Agent is already in city, it must not move
+			Game.Print("Current_Route: "+Current_Route);
+			Game.Print("Current_Step: "+Current_Step);
+//			Game.End_Game();
+			if(Current_Route < 0)
+			{
+				Game.Print("Agent is already in city: "+Current_City);
+				TPosition_Train_Coords Precondition_Position_Train_Coords = new TPosition_Train_Coords(Current_City, Current_Route, Current_Step);
+				TPosition_Train_Coords Postcondition_Position_Train_Coords = new TPosition_Train_Coords(Current_City, Current_Route, Current_Step);
+				
+				TPredicate Precondition = new TPredicate(null, TType_Subject.Me, 
+						TType_Relationship.is_in, Precondition_Position_Train_Coords);
+				
+				TPredicate Postcondition = new TPredicate(null, TType_Subject.Me, 
+						TType_Relationship.is_in, Postcondition_Position_Train_Coords);
+				
+				TAction An_Action = new TAction(null, Precondition, Postcondition);
+				An_Action.Get_Params().add(Postcondition_Position_Train_Coords);
+				
+				An_Action.Set_Action_Name(Function_To_Invoke);
+				Actions.add(An_Action);
+				Game.Print("(Current_Route < 0)");
+//				Game.End_Game();
+			}
+			else
+			{
+				Game.Print("(Current_Route >= 0)");
+//				Game.End_Game();
+				Route route = this.get_Agent().Get_WMM().Get_Map().All_Routes.get(Current_Route);
+				
+				Plan Action_plan = new Plan();
+				Action_plan.Destinations.add(route.Get_Departure());
+				Action_plan.Destinations.add(route.Get_Destination());
+				Action_plan.Get_Routes().add(Current_Route);
+				Action_plan.Total_Weights.putAll(this.get_Agent().Get_WMM().Get_Map().Compute_Sum_Weights_Routes(Action_plan.Get_Routes()));
+				Action_plan.Path_Time  = route.Get_Path_Time_Starting_By_Step(Current_Step);
+				
+				Paths.add(Action_plan);
+//				Paths = this.get_Agent().Get_WMM().Get_Map().Find_All_Paths(route.Get_Departure(), route.Get_Destination());
+				
+				Environment Map = this.Agent.Get_GW().Get_Map_Known();
+				//For any path
+				if(this.Agent.Get_GW().Print_steps_and_routes)
+				{
+					Game.Print("**** Printing Paths Steps ********");
+				}
+				
+				
+				
+//				Game.End_Game();
+				
+				for (Plan path: Paths)
+				{	
+					Game.Print("path: "+path);
+	//							i++;
+					if(this.Agent.Get_GW().Print_steps_and_routes)
+					{
+						Game.PrintLn();
+						Game.Print("****** Path: "+i);
+						Game.Print("Route list of the path: "+path.Routes);
+					}
+					Actions = new ArrayList<TAction>();
+					
+					//I Create plans for any options
+					//For Any Route
+					for (Integer Route_Number: path.Routes )
+					{
+						
+						//Now, Action stores only a Route at a time
+						// An Action => A step for a Route
+	
+						//Now, I create any action in plan option
+						//I get the rounds time to go from Station A to Station B
+						Route A_Route = Map.All_Routes.get(Route_Number);
+						if(this.Agent.Get_GW().Print_steps_and_routes)
+						{
+							Game.PrintLn();	
+							Game.Print("******** New Route: "+Route_Number+ " - Departure: "+A_Route.Get_Departure()+
+									" - Destination: "+A_Route.Get_Destination());
+						}
+						
+						int Rounds_Time = A_Route.Get_Total_Rounds_Starting_By_Step(Current_Step);
+						
+						//I get the correct Station
+						City A_Departure_Station;
+						City A_Destination_Station;
+						City A_Destination_Station_in_PostCondition;
+	
+						//A_Departure_Station = Current_City;//A_Route.Get_Departure();
+						A_Departure_Station = A_Route.Get_Departure();
+						A_Destination_Station = A_Route.Get_Destination();
+						int step_position = Current_Step;
+						Game.Print("step_position: "+step_position);
+						int Start_route_position = Route_Number;
+						int End_route_position = Route_Number;
+						//For Any Step in Route
+						if(this.Agent.Get_GW().Print_steps_and_routes)
+						{
+							Game.Print("Start creating Path Plan:");
+						}
+						
+						for(Integer Step = Current_Step; Step <= Rounds_Time; Step++)
+						{
+							TPosition_Train_Coords Precondition_Position_Train_Coords;
+							TPosition_Train_Coords Postcondition_Position_Train_Coords;
+							TPredicate Precondition;
+							TPredicate Postcondition;
+							
+							
+							Function_To_Invoke = "Come_Back_to_City";
+							Start_route_position = Route_Number;
+	
+							Precondition_Position_Train_Coords = new TPosition_Train_Coords(A_Departure_Station, 
+									Start_route_position, step_position);
+							
+							step_position = step_position + A_Route.get_Route_Speed();
+							
+							//I set ending precondition data
+							//A_Destination_Station_in_PostCondition = Current_City;//City; A_Departure_Station;
+							A_Destination_Station_in_PostCondition = A_Departure_Station;
+							
+							if (step_position > A_Route.Get_Steps_Number())
+							{
+								//A_Destination_Station_in_PostCondition = Current_City;//A_Destination_Station;
+								A_Destination_Station_in_PostCondition = A_Destination_Station;
+								//If I arrive in next Station, I set the Route to -1 and the
+								//step_position to 0
+								End_route_position = -1;
+								step_position = 0;
+							}
+	
+							Postcondition_Position_Train_Coords = new TPosition_Train_Coords(
+									A_Destination_Station_in_PostCondition, End_route_position, step_position);
+							
+							Precondition = new TPredicate(null, TType_Subject.Me, 
+									TType_Relationship.is_in, Precondition_Position_Train_Coords);
+							
+							Postcondition = new TPredicate(null, TType_Subject.Me, 
+									TType_Relationship.is_in, Postcondition_Position_Train_Coords);
+							
+							
+							TAction An_Action = new TAction(null, Precondition, Postcondition);
+							An_Action.Get_Params().add(Postcondition_Position_Train_Coords);
+							An_Action.Get_Params().add(A_Route.Route_Number);
+							
+							
+							// I define "Use_Route" as a function to go from a departure to a destination station
+							An_Action.Set_Action_Name(Function_To_Invoke);
+							Actions.add(An_Action);
+							if(this.Agent.Get_GW().Print_steps_and_routes)
+							{
+								Game.Print("Precondition.  Station: "+Precondition_Position_Train_Coords.Get_City()+
+										" - Route: "+Precondition_Position_Train_Coords.Get_Route()+
+										" - Step: "+Precondition_Position_Train_Coords.Get_Step());
+								Game.Print("Postcondition.  Station: "+Postcondition_Position_Train_Coords.Get_City()+
+										" - Route: "+Postcondition_Position_Train_Coords.Get_Route()+
+										" - Step: "+Postcondition_Position_Train_Coords.Get_Step());
+								Game.Print("-------------- Next Step --------------");
+							}
+						}
+					}
+					
+					TOption An_Option = new TOption(Actions, null, 0.0, path.Total_Weights);
+					An_Option.Path.Copy_Plan(path);
+					option_List.add(An_Option);
+				}
+					i++;
+					Game.Print("....................................");
+			}
+				
+			Desire.set_Option_List(option_List);
+//			Game.End_Game();
+		}
+		catch (Exception e) {
+	      Game.Print("Something went wrongin method: Insert_New_Desires.");
+	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
+	      result = false;
+	    }
+	return result;
+	}
+	
+	protected boolean Means_End_For_Belief_Destination_Station(TDesire Desire, ArrayList<TBelief> Beliefs)
 	{
 	
 	///
@@ -510,29 +789,29 @@ public class TReasoner_Function {
 			
 			TAttentional_Goal Goal = Desire.get_Attentional_Goal();
 			TFunctional_Goal Functional_Goal = (TFunctional_Goal) Goal;
-			TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
+			TBelief Functional_Belief = Functional_Goal.get_Final_State();
 			
 			Game.PrintLn();
 			Game.Print("The Functional_Goal Name is: "+Functional_Goal.get_Name());
 			Game.Print("The Functional_Belief is a:  Belief_Destination_Station");
-			Station Destination_Station = (Station) Functional_Belief.Predicate.get_Subject();
-			Station Current_Station = null;
+			City Destination_Station = (City) Functional_Belief.Predicate.get_Subject();
+			City Current_Station = null;
 			int i = 0;
 			while (i< Beliefs.size())
 			{
-				TBelief_Base Temp_Belief = Beliefs.get(i);
+				TBelief Temp_Belief = Beliefs.get(i);
 				// Agent must to understand in which station it is
-				if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_Station) 
+				if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_City) 
 				{
 					if (Temp_Belief.get_Predicate().get_Subject() == TType_Subject.Me)
 					{
-						Current_Station = (Station) Temp_Belief.Predicate.get_Object_Complement();
+						Current_Station = (City) Temp_Belief.Predicate.get_Object_Complement();
 					}
 					break;
 				}
 				i++;
 			}
-			Game.Print("I search for several options for the Desire");
+			Game.Print("I search for several options for the Desire. I start my research from the station "+Current_Station);
 			Instant start = Instant.now();
 			
 			ArrayList<Plan> Paths = this.get_Agent().Get_WMM().Get_Map().Find_All_Paths(Current_Station, Destination_Station);
@@ -548,7 +827,7 @@ public class TReasoner_Function {
 			LocalDateTime Current_Time = null;
 			while (i< Beliefs.size())
 			{
-				TBelief_Base Temp_Belief = Beliefs.get(i);
+				TBelief Temp_Belief = Beliefs.get(i);
 				// Agent must to understand in which station it is
 				if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_Time) 
 				{
@@ -593,7 +872,8 @@ public class TReasoner_Function {
 				{
 					Game.PrintLn();
 					Game.Print("****** Path: "+i);
-					Game.Print("Route list of the path: "+path.Routes);
+					Game.Print("Routes list of the path: "+path.Routes);
+					Game.Print("Destinations list of the path: "+path.Destinations);
 				}
 				ArrayList<TAction> Actions = new ArrayList<TAction>();
 				
@@ -617,9 +897,9 @@ public class TReasoner_Function {
 					int Rounds_Time = A_Route.Get_Total_Rounds();
 					
 					//I get the correct Station
-					Station A_Departure_Station;
-					Station A_Destination_Station;
-					Station A_Destination_Station_in_PostCondition;
+					City A_Departure_Station;
+					City A_Destination_Station;
+					City A_Destination_Station_in_PostCondition;
 
 					A_Departure_Station = A_Route.Get_Departure();
 					A_Destination_Station = A_Route.Get_Destination();
@@ -682,16 +962,17 @@ public class TReasoner_Function {
 						
 						TAction An_Action = new TAction(null, Precondition, Postcondition);
 						An_Action.Get_Params().add(Postcondition_Position_Train_Coords);
+						An_Action.Get_Params().add(A_Route.Route_Number);
 						
 						// I define "Use_Route" as a function to go from a departure to a destination station
 						An_Action.Set_Action_Name(Function_To_Invoke);
 						Actions.add(An_Action);
 						if(this.Agent.Get_GW().Print_steps_and_routes)
 						{
-							Game.Print("Precondition.  Station: "+Precondition_Position_Train_Coords.Get_Station()+
+							Game.Print("Precondition.  Station: "+Precondition_Position_Train_Coords.Get_City()+
 									" - Route: "+Precondition_Position_Train_Coords.Get_Route()+
 									" - Step: "+Precondition_Position_Train_Coords.Get_Step());
-							Game.Print("Postcondition.  Station: "+Postcondition_Position_Train_Coords.Get_Station()+
+							Game.Print("Postcondition.  Station: "+Postcondition_Position_Train_Coords.Get_City()+
 									" - Route: "+Postcondition_Position_Train_Coords.Get_Route()+
 									" - Step: "+Postcondition_Position_Train_Coords.Get_Step());
 							Game.Print("-------------- Next Step --------------");
@@ -710,7 +991,7 @@ public class TReasoner_Function {
 			Desire.set_Option_List(option_List);
 			Game.PrintLn();
 			Game.Print("N. Options found : "+option_List.size());
-
+			
 			this.Agent.Get_GW().Print_Data(1, 0);
 	}
 	catch (Exception e) {
@@ -726,8 +1007,8 @@ public class TReasoner_Function {
 	private Boolean Filtering_Process(ArrayList<TDesire> desires)
 	{
 		boolean result = true;
-		try
-		{
+//		try
+//		{
 			this.Agent.Get_GW().Print_Data(2, 0);
 			for(TDesire Desire: desires)
 			{
@@ -737,7 +1018,7 @@ public class TReasoner_Function {
 					Game.Print("I filter the options of the Desire with name: "+Desire.Get_Name());
 //					TAttentional_Goal Goal = Desire.get_Attentional_Goal();
 					TFunctional_Goal Functional_Goal = (TFunctional_Goal) Attentional_Goal;
-					TBelief_Base Functional_Belief = Functional_Goal.get_Final_State();
+					TBelief Functional_Belief = Functional_Goal.get_Final_State();
 					
 					Game.PrintLn();
 					Game.Print("Now I apply Green and Quality Goal filters");
@@ -802,6 +1083,10 @@ public class TReasoner_Function {
 						//Game.Print("Agent not filter this desire: "+Desire.Get_Name());
 						
 						break;
+					case TType_Beliefs.Stimulus_Danger_on_the_Route :
+						//Game.Print("Agent not filter this desire: "+Desire.Get_Name());
+						
+						break;
 					
 					}
 				}
@@ -810,14 +1095,14 @@ public class TReasoner_Function {
 			this.Agent.Get_GW().Update_Desire_with_Options(desires);
 			
 			this.Agent.Get_GW().Print_Data(1, 0);
-		}
-		catch (Exception e) {
-	      Game.Print("Something went wrong in method: Insert_New_Desires.");
-	      Game.Print("Line§(s) Error: "+e.getStackTrace());
-	      Game.PrintLn();
-	      e.printStackTrace();
-	      result = false;
-	    }
+//		}
+//		catch (Exception e) {
+//	      Game.Print("Something went wrong in method: Insert_New_Desires.");
+//	      Game.Print("Line§(s) Error: "+e.getStackTrace());
+//	      Game.PrintLn();
+//	      e.printStackTrace();
+//	      result = false;
+//	    }
 	    return result;
 	}
 	
@@ -1067,7 +1352,45 @@ public class TReasoner_Function {
 		this.Updated_Intentions = true;
 	}
 	
-	protected boolean Means_End_For_Stimulus_Status_Route(TDesire Desire, ArrayList<TBelief_Base> Beliefs)
+	protected boolean Means_End_For_Stimulus_Danger_on_the_Route(TDesire Desire, ArrayList<TBelief> Beliefs)
+	{
+		boolean result = true;
+		try 
+		{
+			Game.Print("I use my specific method (Means_End_For_Stimulus_Danger_on_the_Route) to get the danger type on the road.");
+			this.Agent.Get_GW().Print_Data(2, 0);
+			
+			TAttentional_Goal Goal = Desire.get_Attentional_Goal();
+			TEpistemic_Goal Epistemic_Goal = (TEpistemic_Goal) Goal;
+			TSalient_Belief Salient_Belief = (TSalient_Belief) Epistemic_Goal.get_Belief();
+			TPredicate Predicate = Salient_Belief.get_Predicate();
+			
+			//In this case, agent create one only option
+			ArrayList<TOption> option_List =  new ArrayList<TOption>();
+	
+			ArrayList<TAction> Actions = new ArrayList<TAction>();
+			TAction An_Action = new TAction(null, null, null);
+			String Function_To_Invoke = "Ask Danger Type on the road";
+			An_Action.Set_Action_Name(Function_To_Invoke);
+			An_Action.Get_Params().add(Predicate.get_Subject());
+			Actions.add(An_Action);
+	
+			TOption An_Option = new TOption(Actions, null, 0.0, null);
+			option_List.add(An_Option);
+			Desire.set_Option_List(option_List);
+			this.Agent.Get_GW().Print_Data(1, 0);
+		}
+		catch (Exception e) {
+	      Game.Print("Something went wrongin method: Insert_New_Desires.");
+	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
+	      result = false;
+	    }
+	    return result;
+	}
+	
+	protected boolean Means_End_For_Stimulus_Status_Route(TDesire Desire, ArrayList<TBelief> Beliefs)
 	{
 		boolean result = true;
 		try 

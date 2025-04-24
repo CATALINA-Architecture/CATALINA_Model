@@ -1,8 +1,11 @@
 package Cara_Simulation;
 
+import java.awt.Point;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.swing.JOptionPane;
 
 /** 
  * It represents the agent in according to the CATALINA Architecture 
@@ -20,6 +23,7 @@ public class TAgent {
 	
 	//for demonstration only
 	public int Working_Cycle = 0;
+	private int Work_Cycles_Number = 300;
 	
 	/**
 	 * Constructor class
@@ -45,22 +49,36 @@ public class TAgent {
 	public void Initialize_True_Beliefs()
 	{
 		//I initialize the Belief_visited_station I am in
-		ArrayList<TBelief_Base> Beliefs = this.WMM.Get_Beliefs();
+		ArrayList<TBelief> Beliefs = this.WMM.Get_Beliefs();
 		
-		TBelief_Base Belief_visited_Start= null;
-		TBelief_Base Belief_Current_Station= null;
-		TBelief_Base Belief_Current_Step= null;
-		TBelief_Base Belief_Current_Route= null;
-		TBelief_Base Belief_Current_Time= null;
-		Station A_Station = null;
+		TBelief Belief_visited_Start= null;
+		TBelief Belief_Current_Station= null;
+		TBelief Belief_Current_Step= null;
+		TBelief Belief_Current_Route= null;
+		TBelief Belief_Current_Time= null;
+		City A_Station = null;
 		LocalDateTime A_Time = null;
-		for(TBelief_Base Belief: Beliefs )
+		
+		for(TBelief Belief: Beliefs )
 		{
-			if((Belief.get_Type_Belief() == TType_Beliefs.Belief_Current_Station) &&
+			if((Belief.get_Type_Belief() == TType_Beliefs.Belief_Current_City) &&
 			   (Belief.get_Predicate().get_Subject() == TType_Subject.Me	))
 			{
-				A_Station = (Station) Belief.get_Predicate().get_Object_Complement();
+				A_Station = (City) Belief.get_Predicate().get_Object_Complement();
 				Belief_Current_Station = Belief;
+				if(A_Station != null)
+				{
+					Point Starting_Point = Game.Gui_Map.mappaPanel.Stations_Coords.get(A_Station);
+//					Game.Gui_Map.mappaPanel.spostaMacchinaA(Starting_Point.x, Starting_Point.y);
+					
+					Game.Gui_Map.mappaPanel.spostaMacchinaLentamente(Starting_Point, 3.0f);
+//					for(Route route: this.GW.Get_Map_Known().All_Routes)
+//					{
+//						Game.Print(route.Get_Numered_Route() +" - "+route.Get_Departure() +" - "+route.Get_Destination()+" - "+
+//					    route.Get_Color()+" - "+route.Get_Steps_Number()+" - "+route.get_Route_Speed());
+//					}
+//					Game.End_Game();
+				}
 				
 			}
 			if((Belief.get_Type_Belief() == TType_Beliefs.Belief_Current_Step) &&
@@ -90,10 +108,10 @@ public class TAgent {
 		Belief_Current_Route.set_Truth(true);
 		
 		
-		for(TBelief_Base Belief: Beliefs )
+		for(TBelief Belief: Beliefs )
 		{
 			if((Belief.get_Type_Belief() == TType_Beliefs.Belief_Visited_Station) &&
-			   ((Station) Belief.get_Predicate().get_Subject() == A_Station	) &&
+			   ((City) Belief.get_Predicate().get_Subject() == A_Station	) &&
 			   (Belief.get_Predicate().get_Object_Complement() == TType_Object_Complement.Me	))
 			{
 				Belief_visited_Start = Belief;
@@ -172,7 +190,7 @@ public class TAgent {
 			HashMap<String, TPredicate> Map_Predicates = this.WMM.Get_Map_Predicates();
 			
 			ArrayList<TType_Beliefs> Beliefs_Type_list = new ArrayList<TType_Beliefs>();
-			for(TBelief_Base belief: this.WMM.Get_Beliefs())
+			for(TBelief belief: this.WMM.Get_Beliefs())
 			{
 	
 				TPredicate Predicato = null;
@@ -271,23 +289,38 @@ public class TAgent {
 		Game.PrintLn();
 		while(this.Status == TAgent_Status.Active)
 		{
+			Game.Print("*************************");
+			Game.Print("*************************");
 			Game.Print("Working Cycle number: "+ Working_Cycle);
 			Game.Print_Colored_Text("Stop before calling Perception_Processing method", 7);
 			Game.Press_Enter();
+//			Game.Gui_Map.mappaPanel.movimentoTimer.stop();
+//			Game.Get_Input("");
+
 			Res = this.WMM.Perception_Processing(Working_Cycle);
 			// this is for case study only
-			if(Working_Cycle == 12)
+			if(Working_Cycle == Work_Cycles_Number)
 			{
+				Game.Gui_Map.Show_Message("Information...", "I have finished my execution. See you soon!",
+						JOptionPane.INFORMATION_MESSAGE);
 				Game.End_Game();				
 			}
 			if(Res)
 			{
 				this.GW.Broadcast();
-				
+
 				Res = this.E_Switching_Function.AM_Exogenous_Module();
+				if(Working_Cycle>12)
+				{
+					Game.Print("Working_Cycle: "+Working_Cycle + " -- this.GW.Get_Updated_Desires(): "+this.GW.Get_Updated_Desires());
+				}
 				if( Res && !this.GW.Get_Updated_Desires())
 				{
-					
+					if(Working_Cycle>12)
+					{
+						Game.Print("Second Working_Cycle: "+Working_Cycle + " -- this.GW.Get_Updated_Desires(): "+this.GW.Get_Updated_Desires());
+//						Game.Get_Input(" ");
+					}
 					Res = this.E_Switching_Function.AM_Endogenous_Module();
 //					if( Res )
 //						GW.Broadcast();
@@ -295,7 +328,7 @@ public class TAgent {
 				if( Res )
 				{
 					GW.Broadcast();
-					
+
 					Res = this.Reasoner.MeansEnd();
 					if( Res )
 					{
@@ -341,7 +374,7 @@ public class TAgent {
 	{
 		TFile_Manager Manager = new TFile_Manager();
 		
-		ArrayList<TBelief_Base> Beliefs = null;
+		ArrayList<TBelief> Beliefs = null;
 		Beliefs = Manager.Read_Beliefs();
 		this.WMM.Set_Beliefs(Beliefs);
 	}
@@ -401,7 +434,7 @@ public class TAgent {
 	{
 		HashMap<String, ArrayList<TPredicate>> Map_Attentional_Goal_and_Predicates = 
 				this.WMM.Get_Map_Attentional_Goals_and_Predicates();
-		HashMap<String, ArrayList<TBelief_Base>> Map_Attentional_Goal_and_Beliefs = 
+		HashMap<String, ArrayList<TBelief>> Map_Attentional_Goal_and_Beliefs = 
 						this.WMM.Get_Map_Attentional_Goals_and_Beliefs();
 		
 		Game.Print("Loaded Functional Goals : "+Map_Attentional_Goal_and_Beliefs.keySet());
@@ -418,9 +451,9 @@ public class TAgent {
 					LocalDateTime now = null;//LocalDateTime.now();
 
 					//With Rosental...
-					TBelief_Base Belief = this.Get_GW().Create_Beliefs(Predicate, true, TType_Subject.Me, now, 
+					TBelief Belief = this.Get_GW().Create_Beliefs(Predicate, true, TType_Subject.Me, now, 
 							TType_Beliefs.Belief_Path_Taken_For_Belief);
-					ArrayList<TBelief_Base> List_Beliefs = 
+					ArrayList<TBelief> List_Beliefs = 
 							Map_Attentional_Goal_and_Beliefs.get(Functional_Goal.get_Name());
 					
 					ArrayList<TPredicate> List_Predicates = 
@@ -467,7 +500,7 @@ public class TAgent {
 	private void Print_Beliefs()
 	{
 		int i=0;
-		for (TBelief_Base Bel: this.WMM.Get_Beliefs())
+		for (TBelief Bel: this.WMM.Get_Beliefs())
 		{
 			i++;
 			Game.Print("Beliefs "+i
@@ -565,7 +598,7 @@ public class TAgent {
 			Game.Print("Functional_Goal.get_Trigger_Condition_Name() "+Functional_Goal.get_Trigger_Condition_Name());
 			
 			
-			TBelief_Base Final_State = null;
+			TBelief Final_State = null;
 			Final_State = Functional_Goal.get_Final_State();
 			Game.Print("- Final_State.get_Name() "+Final_State.get_Name());
 			Game.Print("- Final_State.get_Time_stamp() "+Final_State.get_Time_stamp());
@@ -670,7 +703,7 @@ public class TAgent {
 			Game.Print("Epistemic_Goals.get_Belief_Name() "+Functional_Goal.get_Belief_Name());
 			
 			
-			TBelief_Base Final_State = null;
+			TBelief Final_State = null;
 			Final_State = Functional_Goal.get_Belief();
 			Game.Print("- Final_State.get_Name() "+Final_State.get_Name());
 			Game.Print("- Final_State.get_Time_stamp() "+Final_State.get_Time_stamp());
@@ -878,9 +911,9 @@ public class TAgent {
 	public void Insert_Belief(String name, String predicate_Name, Boolean truth, 
 			Object information_Source, LocalDateTime time_stamp, TType_Beliefs type_Belief)
 	{
-		ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
+		ArrayList<TBelief> Beliefs = new ArrayList<TBelief>();
 		
-		TBelief_Base Belief = new TBelief_Base(name, predicate_Name, truth, information_Source, 
+		TBelief Belief = new TBelief(name, predicate_Name, truth, information_Source, 
 				time_stamp, type_Belief);
 		
 		Beliefs.add(Belief);
@@ -905,4 +938,5 @@ public class TAgent {
 		Predicates.add(Predicate);
 		this.WMM.Set_Predicates(Predicates);
 	}
+	
 }

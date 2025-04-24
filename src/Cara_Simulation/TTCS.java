@@ -38,6 +38,20 @@ public class TTCS {
 		Answer_Objects.add(Answer_0K); //5 response
 		Answer_Objects.add(Answer_0K); //6 response
 		Answer_Objects.add(Answer_0K); //7 response
+		Answer_Objects.add(Answer_0K); //1 response
+		Answer_Objects.add(Answer_0K); //2 response
+		Answer_Objects.add(Answer_0K); //3 response
+		Answer_Objects.add(Answer_0K); //4 response
+		Answer_Objects.add(Answer_0K); //5 response
+		Answer_Objects.add(Answer_0K); //6 response
+		Answer_Objects.add(Answer_0K); //7 response
+		Answer_Objects.add(Answer_0K); //1 response
+		Answer_Objects.add(Answer_0K); //2 response
+		Answer_Objects.add(Answer_0K); //3 response
+		Answer_Objects.add(Answer_0K); //4 response
+		Answer_Objects.add(Answer_0K); //5 response
+		Answer_Objects.add(Answer_0K); //6 response
+		Answer_Objects.add(Answer_0K); //7 response
 		
 		
 		
@@ -75,26 +89,40 @@ public class TTCS {
 		Game.Print("Response_Number: "+Response_Number);
 		String Request_String = (String) Request.Get_Object_First();
 		Game.Print("Request: "+Request_String);
+		TTriple_Object Answer =  new TTriple_Object();
+//		Answer.Set_Object_First("Correct move!");
 		
 		switch(Request_String)
 		{
 		case "GO_TO_Route":								
 			//Response.Object_First = Answer_Objects.get(Response_Number).Object_First;
-			Response.Set_Object_First(Answer_Objects.get(Response_Number).Get_Object_First());
+//			Response.Set_Object_First(Answer_Objects.get(Response_Number)Get_Object_First);
+			
+			Answer.Set_Object_First("Correct move!");
+			Response.Set_Object_First(Answer.Get_Object_First());
 			Response.Set_Object_Second(Request.Get_Object_Second());
 			Response.Set_Object_Third(Request.Get_Object_Third());
 			
 			break;
 		case "GO_TO_Step":								
-			//Response.Object_First = Answer_Objects.get(Response_Number).Object_First;
-			Response.Set_Object_First(Answer_Objects.get(Response_Number).Get_Object_First());
+			
+			Answer.Set_Object_First("Correct move!");
+			Response.Set_Object_First(Answer.Get_Object_First());	
 			Response.Set_Object_Second(Request.Get_Object_Second());
 			Response.Set_Object_Third(Request.Get_Object_Third());
 			
 			break;
+		case "Come_Back_to_City":
+			
+			Answer.Set_Object_First("Correct move!");
+			Response.Set_Object_First(Answer.Get_Object_First());	
+			Response.Set_Object_Second(Request.Get_Object_Second());
+			Response.Set_Object_Third(Request.Get_Object_Third());
+			break;
+			
 		case "Ask Closed Route Duration":			//Request
 			//Response.Object_First = Answer_Objects.get(Response_Number).Object_First;
-			Game.Print(Request_String);;
+			Game.Print(Request_String);
 			TTriple_Object Answer_Temp_Closed =  new TTriple_Object();
 
 			Answer_Temp_Closed.Set_Object_First("Acquired Closed Route Duration");
@@ -103,13 +131,19 @@ public class TTCS {
 			int max = 9;
 	        Integer number = random.nextInt(max - min + 1) + min;
 	        
-	        String String_Duration = Game.Get_Preset_Input("Closed Route Duration?:  ",number.toString(),2);
+//	        String String_Duration = Game.Get_Preset_Input("Closed Route Duration?:  ",number.toString(),2);
+	        String String_Duration = Game.Get_Preset_Input("How long will the route be closed?: ",number.toString(),2);
 	        
 	        Integer Duration = Integer.parseInt(String_Duration);
 			Response.Set_Object_First(Answer_Temp_Closed.Get_Object_First());
 			Response.Set_Object_Second(Request.Get_Object_Second());
 			Response.Set_Object_Third( Duration);
 			break;
+//		case "Ask Danger Type on the road":
+//			Game.Print(Request_String);
+//
+//			Answer.Set_Object_First("Acquired Danger Type on the road");
+//			break;
 		default:
 			Game.Print("I cannot handle in TCS in function Response: "+Request_String);
 			Game.End_Game();

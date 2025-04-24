@@ -6,17 +6,20 @@ Stations - visited - array of station
 Funtion_To_Invoke by agent:
 GO_TO_Route							Enter in a route
 GO_TO_Step							Move to next step in a route or move to next station from a route
-
+-									Stimulus: Agent wants ask to TCS:What kind of danger is there in the route?
 See Route Status					Stimulus: Agent wants to open its virtual camera it is the ionvoked Function from "See Semaphore for Route Status"
-Ask_Closed_Route_Duration			Stimulus: Agent wants ask to TCS ask how long the route is closed
+Ask_Closed_Route_Duration			Stimulus: Agent wants ask to TCS: how long the route is closed
 
 
-Answers from TCS:
-invoked Funcionions: 					Answer from TCS or User
-GO_TO_Route								Correct move!			(TCS)
-GO_TO_Step								Correct move!			(TCS)
-See Route Status						Acquired Route Status	(USER)
-Ask Closed Route Duration				Acquired Closed Route Duration	(TCS)
+				Request from Agent to TCS
+invoked Functions: 						Answer from TCS or User
+GO_TO_Route								(TCS) Correct move!
+GO_TO_Step								(TCS) Correct move!
+-										(TCS) Danger on the route!
+See Route Status						(USER) Acquired Route Status
+Ask Closed Route Duration				(TCS) Acquired Closed Route Duration
+Ask Danger Type on the road				(USER) Acquired Danger Type on the road  ****
+
 
 
 
@@ -29,9 +32,6 @@ Ask how long the route is closed	It is arised when the agent knows that a route 
 									and it generates the "Ask_Closed_Route_Duration" using Belief "Stimulus_Temporary_Closed_Route"
 
 
-Every time we want insert a type of stymulus, we have to handle following functions:
-TExecutive_Resource_Allocation.Information_Selection
-TExecutive_Switching_Function.Apply_Filter
 
 
 Message handled by Information_Selection
@@ -40,9 +40,13 @@ Message handled by Information_Selection
 "See Semaphore for Route Status":
 "Acquired Route Status":
 "Ask how long the route is closed":
+"Danger on the route!"
+"Acquired Danger Type on the road"
 
 
+Every time we want insert a type of stymulus, we have to handle following functions:
 When we want to insert a stimulus, we need:
+-Handle Create_Predicates and Create_Beliefs in module TFile_Manager to create Predicates and Beliefs/Stimuli
 -Handle the stimulus in "Information_Selection" module in "Working Memory Maintenance"
 -Handle the stimulus in "Apply_Filter" in "Switching Function"
 -Handle the stimulus in "MeansEnd" module in "Reasoner Function"
@@ -50,6 +54,6 @@ When we want to insert a stimulus, we need:
 -Handle the stimulus in "Deliberation Process" module in "Reasoner Function"
 -Handle the stimulus in "Create_Inhibition_Regions" in "Executive_Inhibition_function"
 -Handle the stimulus in "Create_Inhibited_Beliefs" in "Executive_Inhibition_function"
--Handle the stimulus in "Execute_Player_Action" in "TCS"
+-Handle the stimulus in "Execute_Player_Action" in "TCS" or in "Plan_Exec" in "TExecutive_Resource_Allocation"
 
 and create the acquired data for stimulus

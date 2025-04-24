@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class TPropositional_Formula {
 	
-	private ArrayList<TBelief_Base> Beliefs;
+	private ArrayList<TBelief> Beliefs;
 	private String Formula;
 	
 	public TPropositional_Formula()
@@ -12,11 +12,11 @@ public class TPropositional_Formula {
 		
 	}
 
-	public ArrayList<TBelief_Base> get_Beliefs() {
+	public ArrayList<TBelief> get_Beliefs() {
 		return Beliefs;
 	}
 
-	public void set_Beliefs(ArrayList<TBelief_Base> beliefs) {
+	public void set_Beliefs(ArrayList<TBelief> beliefs) {
 		Beliefs = beliefs;
 	}
 
@@ -31,7 +31,7 @@ public class TPropositional_Formula {
 	public Boolean Verify_Formula()
 	{
 		TBoolean_Expression_Evaluetor Evaluetor = new TBoolean_Expression_Evaluetor();
-		for (TBelief_Base Belief: this.Beliefs) 
+		for (TBelief Belief: this.Beliefs) 
 		{
 			Evaluetor.set_Variable(Belief.get_Name(), Belief.is_Truth());
 		}

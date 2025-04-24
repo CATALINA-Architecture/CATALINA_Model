@@ -11,7 +11,7 @@ public class Environment {
 	private int Routes_Number;
 	protected My_Collections My_Collection;
 
-	public Map<Station, List<Route>> Neighbors;
+	public Map<City, List<Route>> Neighbors;
 	public ArrayList<Route> All_Routes;
 
 	public Environment() {
@@ -45,10 +45,12 @@ public class Environment {
 	 *                       routes
 	 * @param Steps          The number of steps that make up any route
 	 */
-	public void Add_Arch(Station Departure, Station Destination, Color Assigned_Color, int Steps) {
+	public void Add_Arch(City Departure, City Destination, Color Assigned_Color, int Steps) {
 		Color_Route Color_Route = My_Collection.Color_Ruotes.get(Assigned_Color);
 
-		for (int i = 0; i < Color_Route.Locomotives.size(); i++) {
+//		for (int i = 0; i < Color_Route.Locomotives.size(); i++) 
+		{
+			int i = 0;
 			this.Routes_Number++;// increase the number of outbound routes
 			Route Outward_Route = new Route(Departure, Destination, Assigned_Color, Steps,
 					Color_Route.Locomotives.get(i), Color_Route.The_Panorama, Color_Route.The_Speed,
@@ -73,10 +75,10 @@ public class Environment {
 	 * @param Destination Destination Station
 	 * @return A list of Plan
 	 */
-	public ArrayList<Plan> Find_All_Paths(Station Departure, Station Destination) {
-		Set<Station> Visited_Stations = new HashSet<>();
-		List<Station> Current_Path = new ArrayList<>();
-		List<List<Station>> All_Paths = new ArrayList<>();
+	public ArrayList<Plan> Find_All_Paths(City Departure, City Destination) {
+		Set<City> Visited_Stations = new HashSet<>();
+		List<City> Current_Path = new ArrayList<>();
+		List<List<City>> All_Paths = new ArrayList<>();
 		List<Integer> Current_Route_Sections = new ArrayList<>();
 		List<List<Integer>> All_Routes_Sections = new ArrayList<>();
 
@@ -86,7 +88,7 @@ public class Environment {
 		ArrayList<Plan> Plans = new ArrayList<>();
 		int i = 0;
 		for (i = 0; i < All_Routes_Sections.size(); i++) {
-			List<Station> Stations_Path = All_Paths.get(i);
+			List<City> Stations_Path = All_Paths.get(i);
 			List<Integer> Routes_Path = All_Routes_Sections.get(i);
 
 			EnumMap<TType_Quality_Goal, Double> Totale_Pesi = Compute_Sum_Weights_Routes(Routes_Path);
@@ -104,7 +106,7 @@ public class Environment {
 	 * @return A record of Locomotive, Panorama and Speed average of all Routes of
 	 *         the path
 	 */
-	protected EnumMap<TType_Quality_Goal, Double> Compute_Sum_Weights(List<Station> Path) {
+	protected EnumMap<TType_Quality_Goal, Double> Compute_Sum_Weights(List<City> Path) {
 		EnumMap<TType_Quality_Goal, Double> Total_Weights = new EnumMap<>(TType_Quality_Goal.class);
 
 		double Locomotive_Route = 0;
@@ -112,8 +114,8 @@ public class Environment {
 		double Speed__Route = 0;
 
 		for (int i = 0; i < Path.size() - 1; i++) {
-			Station Station1 = Path.get(i);
-			Station Station2 = Path.get(i + 1);
+			City Station1 = Path.get(i);
+			City Station2 = Path.get(i + 1);
 			for (Route arch : Neighbors.get(Station1)) {
 				if (arch.Get_Destination() == Station2) {
 					;
@@ -196,8 +198,8 @@ public class Environment {
 	 * @param All_Paths_Integers
 	 * @param Arch_Index
 	 */
-	protected void Dfs(Station Current_Node, Station Destination, Set<Station> Visited_Station,
-			List<Station> Current_Path, List<List<Station>> All_Paths, List<Integer> Current_Path_Integers,
+	protected void Dfs(City Current_Node, City Destination, Set<City> Visited_Station,
+			List<City> Current_Path, List<List<City>> All_Paths, List<Integer> Current_Path_Integers,
 			List<List<Integer>> All_Paths_Integers, Integer Arch_Index) {
 		Visited_Station.add(Current_Node);
 		Current_Path.add(Current_Node);
@@ -237,7 +239,7 @@ public class Environment {
 	 * @param Destination	The Destination Station
 	 * @return 				A List of routes
 	 */
-	public ArrayList<Route> get_Routes(Station Departure, Station Destination) {
+	public ArrayList<Route> get_Routes(City Departure, City Destination) {
 		ArrayList<Route> Routes = new ArrayList<Route>();
 
 		if (Departure != Destination) {
@@ -270,8 +272,8 @@ public class Environment {
 	 * @param A_Station		A specific Station  
 	 * @return				A list of Stations
 	 */
-	public List<Station> Get_Neighbor_Stations(Station A_Station) {
-		List<Station> Neighbor_Stations = new ArrayList<>();
+	public List<City> Get_Neighbor_Stations(City A_Station) {
+		List<City> Neighbor_Stations = new ArrayList<>();
 
 		List<Route> All_Neighbors = Neighbors.getOrDefault(A_Station, Collections.emptyList());
 
@@ -286,7 +288,7 @@ public class Environment {
 	 * @param A_Station		A specific Station  
 	 * @return				A list of routes
 	 */
-	public List<Route> Get_Routes_Nearby_Cities(Station A_Station) {
+	public List<Route> Get_Routes_Nearby_Cities(City A_Station) {
 		List<Route> Neighbor_Stations = Neighbors.getOrDefault(A_Station, Collections.emptyList());
 		return Neighbor_Stations;
 	}
@@ -311,13 +313,40 @@ public class Environment {
 	 */
 	public int Get_Specular_Route(int A_Route) {
 		int Specular_Integer_Route = 0;
-		if (A_Route % 2 == 0) {
-			Specular_Integer_Route = A_Route + 1;
-
-		} else {
-			Specular_Integer_Route = A_Route - 1;
+		//if A_Route = -1 it means the agent is in a city, so Specular_Integer_Route must to be = -1
+		if (A_Route<0)
+		{
+			Specular_Integer_Route = A_Route;
+		}
+		else
+		{
+			if (A_Route % 2 == 0) {
+				Specular_Integer_Route = A_Route + 1;
+	
+			} else {
+				Specular_Integer_Route = A_Route - 1;
+			}
 		}
 		return Specular_Integer_Route;
+	}
+	
+	public int Get_Specular_Step_in_Route(int A_Route, int A_Step)
+	{
+		int Specular_Step_in_Route = -1;
+		int Specular_Route = this.Get_Specular_Route(A_Route);
+		//If Agent is already in city, Specular_Step_in_Route must to be = 0
+		if(Specular_Route == -1)
+		{
+			Specular_Step_in_Route = 0;
+		}
+		else
+		{
+			Route route = this.All_Routes.get(Specular_Route);
+			int steps = route.Get_Steps_Number();
+			Specular_Step_in_Route = steps - A_Step + 1;
+		}
+		
+		return Specular_Step_in_Route;
 	}
 
 }

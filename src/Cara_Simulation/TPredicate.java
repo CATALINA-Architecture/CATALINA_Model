@@ -10,7 +10,7 @@ public class TPredicate implements Serializable{
 	private Object Subject;
 	private TType_Relationship Relationship;
 	private Object Object_Complement;
-	private transient TBelief_Base Linked_Belief;
+	private transient TBelief Linked_Belief;
 	private String Linked_Belief_Name;
 	
 	public void Clear()
@@ -56,7 +56,7 @@ public class TPredicate implements Serializable{
 		Predicate_ID = predicate_ID;
 	}
 	
-	public void set_Linked_Belief(TBelief_Base belief) {
+	public void set_Linked_Belief(TBelief belief) {
 		this.Linked_Belief = belief;
 		this.Linked_Belief_Name = belief.get_Name();
 	}
@@ -69,7 +69,7 @@ public class TPredicate implements Serializable{
 		return Linked_Belief_Name;
 	}
 	
-	public TBelief_Base Get_Linked_Belief()
+	public TBelief Get_Linked_Belief()
 	{
 		return this.Linked_Belief;
 	}

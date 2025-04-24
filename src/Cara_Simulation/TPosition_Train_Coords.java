@@ -3,13 +3,13 @@ package Cara_Simulation;
 public class TPosition_Train_Coords {
 	//If agent is in a station => station = a station, Route = -1, step = 0
 	//If agent is in a station => station = a station, Route => 0 , step => 0
-	private Station The_Station;
+	private City The_City;
 	private Integer Route;
 	private Integer Step;
 	
-	public TPosition_Train_Coords(Station station, Integer route, Integer step)
+	public TPosition_Train_Coords(City city, Integer route, Integer step)
 	{
-		this.The_Station = station;
+		this.The_City = city;
 		this.Route = route;
 		this.Step = step;
 	}
@@ -31,13 +31,13 @@ public class TPosition_Train_Coords {
 		return this.Step;
 	}
 	
-	public void Set_Station(Station station) {
-		this.The_Station = station;
+	public void Set_Station(City station) {
+		this.The_City = station;
 	}
 	
-	public Station Get_Station()
+	public City Get_City()
 	{
-		return this.The_Station;
+		return this.The_City;
 	}
 	
 	

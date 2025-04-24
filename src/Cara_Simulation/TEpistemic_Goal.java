@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class TEpistemic_Goal extends TAttentional_Goal{
 	
-	private TBelief_Base Belief;
+	private TBelief Belief;
 	private String Belief_Name;
 	
-	public TEpistemic_Goal(String name, TBelief_Base belief, Double saliency, Double reward, Double relax_Preference,
+	public TEpistemic_Goal(String name, TBelief belief, Double saliency, Double reward, Double relax_Preference,
 			ArrayList<TGreen_Goal> list_Green_Goal, ArrayList<TQuality_Goal> list_Quality_Goal)
 	{
 		super(name, saliency, reward, relax_Preference, list_Green_Goal, list_Quality_Goal);
@@ -36,11 +36,11 @@ public class TEpistemic_Goal extends TAttentional_Goal{
 		return true;
 	}
 	
-	public TBelief_Base get_Belief() {
+	public TBelief get_Belief() {
 		return Belief;
 	}
 	
-	public void set_Belief(TBelief_Base belief) {
+	public void set_Belief(TBelief belief) {
 		this.Belief = belief;
 		this.Belief_Name = belief.get_Name();
 	}

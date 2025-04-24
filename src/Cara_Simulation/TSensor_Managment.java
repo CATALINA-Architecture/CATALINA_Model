@@ -30,7 +30,9 @@ public class TSensor_Managment {
 		{
 			Game.Print("I feel a Stimulus.");
 			Game.Print("Stimulus acquired correctly.");
-			return this.Acquired_Perceptions.getLast();
+			TPerception Last_Perception = this.Acquired_Perceptions.getLast();
+			this.Acquired_Perceptions.clear();
+			return Last_Perception;
 		}
 		else
 		{

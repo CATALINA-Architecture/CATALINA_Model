@@ -12,7 +12,7 @@ public class My_Collections
 	public HashMap<Locomotive, Float> Locomotive_Values = new HashMap<Locomotive, Float>();
 	public HashMap<Panorama, Float> Panorama_Values = new HashMap<Panorama, Float>();
 	public HashMap<Speed, Float> Velocity_Values = new HashMap<Speed, Float>();
-	public HashMap<Station, Integer> Station_Values = new HashMap<Station, Integer>();
+	public HashMap<City, Integer> Station_Values = new HashMap<City, Integer>();
 	
 	public My_Collections()
 	{
@@ -59,7 +59,7 @@ public class My_Collections
 	private void Initialize_Station_Values() 
 	{
 		int i = 0;
-		for (Station A_Station : Station.values())
+		for (City A_Station : City.values())
 		{
             this.Station_Values.put(A_Station, i);
             i++;

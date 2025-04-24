@@ -2,7 +2,7 @@ package Cara_Simulation;
 
 import java.time.LocalDateTime;
 
-public class TSalient_Belief extends TBelief_Base {
+public class TSalient_Belief extends TBelief {
 	
 	private Double Saliency;
 	

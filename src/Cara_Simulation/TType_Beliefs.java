@@ -3,7 +3,7 @@ package Cara_Simulation;
 public enum TType_Beliefs {
 	
 	Belief_Current_Route,				//[ME, is_in, Integer route]
-	Belief_Current_Station,				//[ME, is_in, station]
+	Belief_Current_City,				//[ME, is_in, station]
 	Belief_Current_Step,				//[ME, is_in, Integer step]
 	Belief_Destination_Station,			//[Station, visited_by, Me] //For Functional Goal
 	Belief_Destination_Step,
@@ -26,6 +26,8 @@ public enum TType_Beliefs {
 										//In Next versione it will be:
 										//[String Functional_Goal_name, has_traveled, [ArrayList<TDouble>, ArrayList<TimeStamp>]:
 										//TDouble as 2 object: 1-a Route; 2-a LocalDateTime
+	Belief_Danger_on_the_Route,			// [int route, has_a_Danger, TType_Danger]
+	Belief_Come_Back_to_City,			//[Me, go/goes, int city]
 	
 	Belief_Number_Players, 			    //[String "Number Players", is, integer all player number, Agent included]
 	
@@ -36,7 +38,13 @@ public enum TType_Beliefs {
 	Stimulus_Busy_Route,				// Busy Route: [int route, is_Busy, ...]
 	Stimulus_Temporary_Closed_Route, 	// A route damaged: [int route, is_Temporary_Closed, integer round]
 	Stimulus_Crowded_Route,				// A crowded route by many trains [Integer Route, is_Crowded, (integer) number train)
-	Stimulus_Route_Status				//this is an epistemic (but endogenous) goal [Route, null, null]
+	Stimulus_Route_Status,				// this is an epistemic (but endogenous) goal [Route, null, null]
+	Stimulus_Danger_on_the_Route,		// A danger has been perceived on the route, the officer must investigate
+										//[TTriple_Object[ TPosition_Train_Coords Precondition_Position, 
+										//				   TPosition_Train_Coords Postcondition_Position, null], 
+										//->			,has_a_Danger, TType_Danger]
+	Stimulus_Irrelevant					//
+	
 	
 
 }

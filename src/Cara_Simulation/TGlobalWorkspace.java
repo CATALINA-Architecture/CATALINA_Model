@@ -100,14 +100,14 @@ public class TGlobalWorkspace {
 	private HashMap<String, TPredicate> Map_Predicates;
 	
 	//Belief Properties
-	private ArrayList<TBelief_Base> Beliefs;
-	private HashMap<String, TBelief_Base> Map_Beliefs;
+	private ArrayList<TBelief> Beliefs;
+	private HashMap<String, TBelief> Map_Beliefs;
 	private TRegion Regions;
 	private TRegion Inhibition_Regions;
 	private TRegion UnInhibition_Regions;
-	private ArrayList<TBelief_Base> Inhibited_Beliefs;
-	private ArrayList<TBelief_Base> UnInhibited_Beliefs;
-	private HashMap<TAttentional_Goal, ArrayList<TBelief_Base>> Map_Attentional_Goal_and_Beliefs;
+	private ArrayList<TBelief> Inhibited_Beliefs;
+	private ArrayList<TBelief> UnInhibited_Beliefs;
+	private HashMap<TAttentional_Goal, ArrayList<TBelief>> Map_Attentional_Goal_and_Beliefs;
 	private HashMap<TAttentional_Goal, ArrayList<Object>> Map_Attentional_Goal_and_Regions;
 	private TBelief_List Belief_List;
 	
@@ -173,13 +173,13 @@ public class TGlobalWorkspace {
 		this.Predicates = new ArrayList<TPredicate>();
 		this.Map_Predicates = new HashMap<String, TPredicate>();
 		
-		this.Beliefs = new ArrayList<TBelief_Base>();
-		this.Map_Beliefs = new HashMap<String, TBelief_Base>();
-		this.Inhibited_Beliefs = new ArrayList<TBelief_Base>();
-		this.UnInhibited_Beliefs = new ArrayList<TBelief_Base>();
+		this.Beliefs = new ArrayList<TBelief>();
+		this.Map_Beliefs = new HashMap<String, TBelief>();
+		this.Inhibited_Beliefs = new ArrayList<TBelief>();
+		this.UnInhibited_Beliefs = new ArrayList<TBelief>();
 		
 		//I initialize the List Map between TAttentional_Goal and TBelief_Base 
-		this.Map_Attentional_Goal_and_Beliefs = new HashMap<TAttentional_Goal, ArrayList<TBelief_Base>>();
+		this.Map_Attentional_Goal_and_Beliefs = new HashMap<TAttentional_Goal, ArrayList<TBelief>>();
 		this.Belief_List = new TBelief_List();
 
 		//this is the list in which any component can observe the data type change
@@ -244,10 +244,40 @@ public class TGlobalWorkspace {
 //		desire.set_Attentional_Goal(null);
 		
 		//desire.get_Attentional_Goal().Clear();
+		Boolean result = this.Desires.remove(desire); 
 		desire.get_Option_List().clear();
+		
 		this.Updated_Desires = true;
 		this.Updated_Desires_for_print = true;
-		return this.Desires.remove(desire);
+		return result;
+	}
+	public Boolean Delete_Desires(ArrayList<TDesire> Desire_To_Remove)
+	{
+		Boolean result = false;
+		TDesire Desire = new TDesire(null, null, Options);
+		
+		//this.Desires.removeAll(Desire_To_Remove); 
+		int dim = Desire_To_Remove.size();
+//		Game.Print("Desire at the before: "+this.Desires.size());
+		for(int i=0;i<dim;i++)
+		{
+			if(Desire_To_Remove.get(i).Get_Realated_Intention() != null)
+			{
+				this.Delete_Intention(Desire_To_Remove.get(i).Get_Realated_Intention());
+			}
+			else
+			{
+				this.Desires.remove(Desire_To_Remove.get(i));
+			}
+				
+		}
+		Game.Print("Desire at the end: "+this.Desires.size());
+		Desire_To_Remove.clear();
+//		Game.End_Game();
+		this.Updated_Desires = true;
+		this.Updated_Desires_for_print = true;
+		
+		return result;
 	}
 	
 	//TODO to check
@@ -259,6 +289,35 @@ public class TGlobalWorkspace {
 			this.Goals.addAll(this.Agent.Get_WMM().Get_Attentional_Goals());
 		}
 		return this.Goals;
+	}
+	
+	public void Add_Goal(TAttentional_Goal Attentional_Goal)
+	{
+		if (!this.Goals.contains(Attentional_Goal))
+		{
+			this.Goals.add(Attentional_Goal);
+		}
+		if(Attentional_Goal instanceof TFunctional_Goal)
+		{
+			TFunctional_Goal Functional_Goal = (TFunctional_Goal) Attentional_Goal;
+			
+			ArrayList<TFunctional_Goal> Functional_Goals = new ArrayList<TFunctional_Goal>();
+			Functional_Goals.add(Functional_Goal);
+			this.Agent.Get_WMM().Set_Functional_Goals(Functional_Goals);
+			
+			if(!this.Functional_Goals.contains(Functional_Goal))
+			{
+				this.Functional_Goals.add(Functional_Goal);
+			}
+		}
+		if(Attentional_Goal instanceof TEpistemic_Goal)
+		{
+			TEpistemic_Goal Epistemic_Goal = (TEpistemic_Goal) Attentional_Goal;
+			if(!this.Epistemic_Goals.contains(Epistemic_Goal))
+			{
+				this.Epistemic_Goals.add(Epistemic_Goal);
+			}
+		}
 	}
 	
 	public ArrayList<TAttentional_Goal> Get_Uninhibited_Goals()
@@ -280,6 +339,7 @@ public class TGlobalWorkspace {
 		{
 			this.Functional_Goals.addAll(this.Agent.Get_WMM().Get_Functional_Goals());
 		}
+//		this.get_func
 		//For this demonstration
 		//This is useful only for the first time after the Agent is initialized, 
 		if (this.Agent.Working_Cycle == 0)
@@ -288,6 +348,10 @@ public class TGlobalWorkspace {
 			if (Goals.size()==0)
 				this.Get_Goals();
 		}
+		
+		
+		
+		
 		return this.Functional_Goals;
 	}
 	
@@ -315,7 +379,7 @@ public class TGlobalWorkspace {
 			return this.Agent.Get_WMM().Create_Predicate(obj1, relationship, obj2);
 	}
 	
-	public TBelief_Base Create_Beliefs(TPredicate Predicate, Boolean truth, Object information_Source,
+	public TBelief Create_Beliefs(TPredicate Predicate, Boolean truth, Object information_Source,
 			LocalDateTime time_stamp, TType_Beliefs type_Belief)
 	{
 		return this.Agent.Get_WMM().Create_Belief(Predicate, truth, information_Source, time_stamp,
@@ -417,7 +481,7 @@ public class TGlobalWorkspace {
 		this.Saliency_Threshold = value;
 	}
 
-	public HashMap<TAttentional_Goal, ArrayList<TBelief_Base>> Get_Map_Attentional_Goal_and_Beliefs2()
+	public HashMap<TAttentional_Goal, ArrayList<TBelief>> Get_Map_Attentional_Goal_and_Beliefs2()
 	{
 		return this.Map_Attentional_Goal_and_Beliefs;
 	}
@@ -482,7 +546,7 @@ public class TGlobalWorkspace {
 	/***
 	 * TODO DEVELOPMENT
 	 */
-	public ArrayList<Route> Get_Inhibition_Regions_By_Stimulus(TBelief_Base Stimulus )
+	public ArrayList<Route> Get_Inhibition_Regions_By_Stimulus(TBelief Stimulus )
 	{
 		TGlobalWorkspace GW = this.Agent.Get_GW();
 		ArrayList<Route> All_Regions = GW.Get_Map_Known().All_Routes;
@@ -531,7 +595,7 @@ public class TGlobalWorkspace {
 		return All_Regions;
 	}
 	
-	public ArrayList<TBelief_Base> Get_Inhibited_Beliefs()
+	public ArrayList<TBelief> Get_Inhibited_Beliefs()
 	{
 		return this.Inhibited_Beliefs;
 	}
@@ -563,25 +627,32 @@ public class TGlobalWorkspace {
 			//this.Goals.clear();
 			this.UnInhibited_Goals.clear();
 			
+//			for(TAttentional_Goal Attentional_Goal: this.Get_Goals())
 			for(TAttentional_Goal Attentional_Goal: this.Get_Goals())
 			{
 				this.UnInhibited_Goals.add(Attentional_Goal);
 			}
 			this.UnInhibited_Goals.removeAll(Inhibited_Goals);
 
-			this.Updated_Goals = true;
-			this.Updated_Goals_for_print = true;
+//			this.Updated_Goals = true;
+//			this.Updated_Goals_for_print = true;
 		}
 		
-	public void Update_Goals()
+	public void Update_Goals_for_Broadcast()
 	{
 		this.Updated_Goals = true;
 		this.Updated_Goals_for_print = true;
 	}
+	
+	public void Update_Beliefs_for_Broadcast()
+	{
+		this.Updated_Beliefs = true;
+		this.Updated_Beliefs_for_print = true;
+	}
 		
 		
 	// TODO DEVELOPMENT
-	public void Update_Inhibited_Beliefs(ArrayList<TBelief_Base> inhibited_Beliefs)
+	public void Update_Inhibited_Beliefs(ArrayList<TBelief> inhibited_Beliefs)
 	{
 //		Game.Print("************  Function:  Update_Inhibited_Beliefs from Update_Inhibited_Beliefs Function  *********: TGlobalWorkspace");
 //		this.Agent.get_GW().Print_Data(0, 0);
@@ -591,7 +662,7 @@ public class TGlobalWorkspace {
 		this.Inhibited_Beliefs.addAll(inhibited_Beliefs);
 		
 		this.UnInhibited_Beliefs.clear();
-		for(TBelief_Base Belief: this.Agent.Get_WMM().Get_Beliefs())
+		for(TBelief Belief: this.Agent.Get_WMM().Get_Beliefs())
 		{
 			if(!this.UnInhibited_Beliefs.contains(Belief))
 			{
@@ -630,15 +701,21 @@ public class TGlobalWorkspace {
 //		this.Agent.get_RA().Updated_Intentions(this.Selected_Intentions, this.Beliefs);
 	}
 	
-	
-	
-	public void Add_Attentional_Goal(TAttentional_Goal Goal)
+	public void Update_Intention_for_Broadcast()
 	{
-		this.Goals_Number++;
-		Goal.set_Name("g" + this.Goals_Number);
-		this.Goals.add(Goal);
-
+		this.Updated_Intentions = true;
+		this.Updated_Intentions_for_print = true;
 	}
+	
+	
+	
+//	public void Add_Attentional_Goal(TAttentional_Goal Goal)
+//	{
+//		this.Goals_Number++;
+//		Goal.set_Name("g" + this.Goals_Number);
+//		this.Goals.add(Goal);
+//
+//	}
 	
 
 	
@@ -712,12 +789,12 @@ public class TGlobalWorkspace {
 //		return this.Surviving_Options;
 //	}
 
-	public ArrayList<TBelief_Base> Get_Beliefs() {
+	public ArrayList<TBelief> Get_Beliefs() {
 		this.Beliefs = this.Agent.Get_WMM().Get_Beliefs();
 		return this.Beliefs;
 	}
 	
-	public ArrayList<TBelief_Base> Get_Beliefs_from_WMM() {
+	public ArrayList<TBelief> Get_Beliefs_from_WMM() {
 		return this.Agent.Get_WMM().Get_Beliefs();
 	}
 	
@@ -736,7 +813,7 @@ public class TGlobalWorkspace {
 		return this.Agent.Get_WMM().Get_Inhibition_Regions();
 	}
 
-	public HashMap<TAttentional_Goal, ArrayList<TBelief_Base>> Get_List_Beliefs() 
+	public HashMap<TAttentional_Goal, ArrayList<TBelief>> Get_List_Beliefs() 
 	{
 		return this.Map_Attentional_Goal_and_Beliefs;
 	}
@@ -769,10 +846,10 @@ public class TGlobalWorkspace {
 	}
 	
 	
-	public void Set_Beliefs(ArrayList<TBelief_Base> beliefs)
+	public void Set_Beliefs(ArrayList<TBelief> beliefs)
 	{
 		this.Beliefs = beliefs;
-		for(TBelief_Base belief: beliefs)
+		for(TBelief belief: beliefs)
 		{
 			this.Belief_List.Add_Belief(belief);
 			this.Map_Beliefs.put(belief.get_Name(), belief);
@@ -909,15 +986,15 @@ public class TGlobalWorkspace {
 //		//null, null);
 //	}
 	
-	public HashMap<String, ArrayList<TBelief_Base>> Get_Map_Attentional_Goal_and_Beliefs()
+	public HashMap<String, ArrayList<TBelief>> Get_Map_Attentional_Goal_and_Beliefs()
 	{
 		return this.Agent.Get_WMM().Get_Map_Attentional_Goals_and_Beliefs();
 	}
 	
-	public ArrayList<TBelief_Base> Get_Beliefs_From_Type_Belief(TType_Beliefs Type_Beliefs)
+	public ArrayList<TBelief> Get_Beliefs_From_Type_Belief(TType_Beliefs Type_Beliefs)
 	{
-		ArrayList<TBelief_Base> Beliefs = new ArrayList<TBelief_Base>();
-		for(TBelief_Base Belief: this.Agent.Get_WMM().Get_Beliefs())
+		ArrayList<TBelief> Beliefs = new ArrayList<TBelief>();
+		for(TBelief Belief: this.Agent.Get_WMM().Get_Beliefs())
 		{
 			if(Belief.get_Type_Belief() == Type_Beliefs)
 			{
@@ -928,11 +1005,11 @@ public class TGlobalWorkspace {
 		return Beliefs;
 	}
 	
-	public TBelief_Base Get_UnInhibited_Beliefs_From_Type_Belief_and_Subject(TType_Beliefs Type_Beliefs, Object Subject)
+	public TBelief Get_UnInhibited_Beliefs_From_Type_Belief_and_Subject(TType_Beliefs Type_Beliefs, Object Subject)
 	{
-		TBelief_Base Belief = null;
+		TBelief Belief = null;
 //		for(TBelief_Base Temp_Belief: this.Agent.Get_WMM().Get_Beliefs())
-		for(TBelief_Base Temp_Belief: this.Agent.Get_GW().Get_UnInhibited_Beliefs())
+		for(TBelief Temp_Belief: this.Agent.Get_GW().Get_UnInhibited_Beliefs())
 		{
 			if(Temp_Belief.get_Type_Belief() == Type_Beliefs && Temp_Belief.get_Predicate().get_Subject() == Subject)
 			{
@@ -943,11 +1020,11 @@ public class TGlobalWorkspace {
 		return Belief;
 	}
 	
-	public TBelief_Base Get_Belief_From_Type_Belief_and_Object_complement(TType_Beliefs Type_Beliefs, 
+	public TBelief Get_Belief_From_Type_Belief_and_Object_complement(TType_Beliefs Type_Beliefs, 
 																Object Object_complement)
 	{
-		TBelief_Base Belief = null;
-		for(TBelief_Base Temp_Belief: this.Agent.Get_WMM().Get_Beliefs())
+		TBelief Belief = null;
+		for(TBelief Temp_Belief: this.Agent.Get_WMM().Get_Beliefs())
 		{
 			if(Temp_Belief.get_Type_Belief() == Type_Beliefs && 
 					Temp_Belief.get_Predicate().get_Object_Complement() == Object_complement)
@@ -959,11 +1036,11 @@ public class TGlobalWorkspace {
 		return Belief;
 	}
 	
-	public TBelief_Base Get_Belief_From_Type_Belief_and_Subject(TType_Beliefs Type_Beliefs, 
+	public TBelief Get_Belief_From_Type_Belief_and_Subject(TType_Beliefs Type_Beliefs, 
 			Object Subject)
 	{
-		TBelief_Base Belief = null;
-		for(TBelief_Base Temp_Belief: this.Agent.Get_WMM().Get_Beliefs())
+		TBelief Belief = null;
+		for(TBelief Temp_Belief: this.Agent.Get_WMM().Get_Beliefs())
 		{
 			if(Temp_Belief.get_Type_Belief() == Type_Beliefs && 
 					Temp_Belief.get_Predicate().get_Subject() == Subject)
@@ -1048,9 +1125,9 @@ public class TGlobalWorkspace {
 		}
 
 		//I insert all Stations in Inhibited_Regions
-		for(i=0; i < Station.values().length; i++)
+		for(i=0; i < City.values().length; i++)
 		{
-			All_Regions.Destinations.add(Station.values()[i]);
+			All_Regions.Destinations.add(City.values()[i]);
 		}
 		return All_Regions;
 	}
@@ -1094,7 +1171,7 @@ public class TGlobalWorkspace {
 			if (Synthesis==1)
 			{
 				Game.Print("UnInhibited Belief Types:");
-				for(TBelief_Base Belief: this.UnInhibited_Beliefs)
+				for(TBelief Belief: this.UnInhibited_Beliefs)
 				{
 					TPredicate Temp_Predicate = Belief.get_Predicate();
 					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" -  Truth: "+Belief.is_Truth()+ "   -   "+
@@ -1110,7 +1187,7 @@ public class TGlobalWorkspace {
 			if (Synthesis==7)//Synthesis is never 7
 			{
 				Game.Print("Beliefs Types:");
-				for(TBelief_Base Belief: this.Agent.Get_WMM().Get_Beliefs())
+				for(TBelief Belief: this.Agent.Get_WMM().Get_Beliefs())
 				{
 					TPredicate Temp_Predicate = Belief.get_Predicate();
 					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" -  Truth: "+Belief.is_Truth()+ "   -   "+
@@ -1123,7 +1200,7 @@ public class TGlobalWorkspace {
 			if (Synthesis==7)//Synthesis is never 7
 			{
 				Game.Print("Inhibited Beliefs Types:");
-				for(TBelief_Base Belief: this.Agent.Get_WMM().Get_Inhibited_Beliefs())
+				for(TBelief Belief: this.Agent.Get_WMM().Get_Inhibited_Beliefs())
 				{
 					TPredicate Temp_Predicate = Belief.get_Predicate();
 					Game.Print(Belief.get_Name()+": "+Belief.get_Type_Belief()+" -  Truth: "+Belief.is_Truth()+ "   -   "+
@@ -1364,6 +1441,25 @@ public class TGlobalWorkspace {
 			
 		}
 		
+		if (this.Updated_Goals)
+		{
+			this.Updated_Goals = false;
+			this.Updated_Goals_for_print = true;
+			ArrayList<Object> Goals = this.Update_Contracts.get(TType_Update_Contract.Goals);
+			if(Goals.size()>0)
+			{
+				for(Object who: Goals)
+				{
+					if(who instanceof TExecutive_Switching_Function)
+					{
+						//Game.Print("I invoke this.Agent.Get_Reasoner().Updated_Desires()");
+						this.Agent.Get_E_Switching_Function().Update_Goals();
+					}
+				}
+			}
+			
+		}
+		
 		if (this.Updated_Desires)
 		{
 			this.Updated_Desires = false;
@@ -1490,7 +1586,7 @@ public class TGlobalWorkspace {
 		return this.Updated_Intentions;
 	}
 	
-	public ArrayList<TBelief_Base> Get_UnInhibited_Beliefs()
+	public ArrayList<TBelief> Get_UnInhibited_Beliefs()
 	{
 		if(UnInhibited_Beliefs.size() == 0)
 		{
@@ -1501,10 +1597,20 @@ public class TGlobalWorkspace {
 	
 	public void Update_Desire_with_Options(ArrayList<TDesire> desires)
 	{
-		ArrayList<TDesire> Updated_Desires = new ArrayList<TDesire>();
-		Updated_Desires.addAll(desires);
-		this.Desires.clear();
-		this.Desires.addAll(Updated_Desires);
+//		ArrayList<TDesire> Updated_Desires = new ArrayList<TDesire>();
+//		Updated_Desires.addAll(desires);
+//		this.Desires.clear();
+//		this.Desires.addAll(Updated_Desires);
+		for(TDesire Des: desires)
+		{
+			if(!this.Desires.contains(Des))
+			{
+				this.Desires.add(Des);
+			}
+		}
+		
+		
+		
 		this.Updated_Desires = true;
 		this.Updated_Desires_with_options = true;
 		this.Updated_Desires_for_print = true;
@@ -1612,7 +1718,7 @@ public class TGlobalWorkspace {
 				" "+Predicate.get_Object_Complement());
 	}
 	
-	public void Print_Belief(TBelief_Base Belief)
+	public void Print_Belief(TBelief Belief)
 	{
 		
 		if(Belief instanceof TSalient_Belief)
@@ -1637,8 +1743,20 @@ public class TGlobalWorkspace {
 	
 	public LocalDateTime Get_Current_Time()
 	{
-		TBelief_Base Belief_Current_Time = this.Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Time).getFirst();
+		TBelief Belief_Current_Time = this.Get_Beliefs_From_Type_Belief(TType_Beliefs.Belief_Current_Time).getFirst();
 		return (LocalDateTime) Belief_Current_Time.get_Predicate().get_Object_Complement();
+	}
+	
+	public void Update_Desires_for_Broadcast()
+	{
+		this.Updated_Desires = true;
+		this.Updated_Desires_for_print = true;
+	}
+	
+	public void UnUpdate_Desires_for_Broadcast()
+	{
+		this.Updated_Desires = false;
+		this.Updated_Desires_for_print = false;
 	}
 	
 	

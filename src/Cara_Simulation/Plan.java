@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Plan {
 	
-	 public ArrayList<Station> Destinations;
+	 public ArrayList<City> Destinations;
 	 public EnumMap<TType_Quality_Goal, Double> Total_Weights = new EnumMap<>(TType_Quality_Goal.class); 
 	 public ArrayList<Integer> Routes;
 	 public Double Path_Time;
@@ -14,7 +14,7 @@ public class Plan {
 
 	 public Plan()
 	 {
-		 this.Destinations = new ArrayList<Station>();
+		 this.Destinations = new ArrayList<City>();
 		 this.Routes = new ArrayList<Integer>();
 		 this.Path_Time = 0.0;
 		 this.Next_Position = new TTriple_Object();
@@ -26,7 +26,7 @@ public class Plan {
 	  * @param Weights			Weights of the path
 	  * @param path_Time		Path Time
 	  */
-	 public void Insert_Path_by_Routes( List<Station> Destionations, List<Integer> Numered_Route, 
+	 public void Insert_Path_by_Routes( List<City> Destionations, List<Integer> Numered_Route, 
 			 EnumMap<TType_Quality_Goal, Double> Weights, Double path_Time)
 	 {
 		 this.Destinations.addAll(Destionations);
@@ -46,7 +46,7 @@ public class Plan {
 	 public void Insert_Path_by_Stations( List<Route> Routes, List<Integer> Numered_Destinations, 
 			 EnumMap<TType_Quality_Goal, Double> Weights, Double path_Time)
 	 {
-		 List<Station> Destinations = new ArrayList<Station>();
+		 List<City> Destinations = new ArrayList<City>();
 		 if (Numered_Destinations.size()>0)
 		 {
 			 int i=0;

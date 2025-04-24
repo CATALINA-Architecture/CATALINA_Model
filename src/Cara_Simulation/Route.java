@@ -4,8 +4,8 @@ public class Route{
 	
 	private Double Path_Time; 
 	protected int Route_Number;
-	private Station Departure;
-	private Station Destination;
+	private City Departure;
+	private City Destination;
 	private Color Color;
 	private int Steps_Number;	
 	private Boolean Interrupted;
@@ -45,7 +45,7 @@ public class Route{
 	 * It returns the departure station of the route
 	 * @return		A station value
 	 */
-	public Station Get_Departure() 
+	public City Get_Departure() 
 	{
 		return this.Departure;
 	}
@@ -54,7 +54,7 @@ public class Route{
 	 * It returns the destination station of the route
 	 * @return		A station value
 	 */
-	public Station Get_Destination() 
+	public City Get_Destination() 
 	{
 		return this.Destination;
 	}
@@ -231,7 +231,7 @@ public class Route{
 	 * @param speed
 	 * @param route_Number
 	 */
-	public Route(Station departure, Station destination, Color color, int steps_Number, 
+	public Route(City departure, City destination, Color color, int steps_Number, 
 			Locomotive locomotive, Panorama panorama, Speed speed, int route_Number)
 	{
 		this.Departure = departure;
@@ -255,6 +255,17 @@ public class Route{
 		//to go to the last step, but to go in next station I have to do another action!
 		this.Path_Time = (double) ((double)(this.Steps_Number+1) / this.Route_Speed);
 		this.Total_Rounds = (int) Math.ceil(this.Path_Time);
+	}
+	
+	public double Get_Path_Time_Starting_By_Step(int Starting_Step) 
+	{
+		return (double) ((double)(this.Steps_Number+1-Starting_Step) / this.Route_Speed);
+	}
+	
+	public int Get_Total_Rounds_Starting_By_Step(int Starting_Step) 
+	{
+		double time = this.Get_Path_Time_Starting_By_Step(Starting_Step);
+		return (int) Math.ceil(time);
 	}
 
 }

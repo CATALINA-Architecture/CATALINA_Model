@@ -7,6 +7,78 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+///////////////////////////////
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.List;
+
+class GUI extends JFrame {
+
+    public MappaPanel mappaPanel;
+
+    public GUI(String mappaPath, String macchinaPath, List<Point> posizioni) {
+    	
+    	
+    	
+        setTitle("Simulazione Spostamento Macchina");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        mappaPanel = new MappaPanel(mappaPath, macchinaPath, posizioni);
+        add(mappaPanel, BorderLayout.CENTER);
+
+        JButton spostaButton = new JButton("Sposta Macchina");
+        spostaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mappaPanel.spostaMacchina();
+            }
+        });
+        add(spostaButton, BorderLayout.SOUTH);
+
+        pack(); // Adatta la dimensione della finestra ai componenti
+        setLocationRelativeTo(null); // Centra la finestra sullo schermo
+        setVisible(true);
+    }
+    
+    public void Show_Message(String Title, String Message, Integer Type_Message)
+    {
+    	if(Type_Message == null)
+    	{
+    		Type_Message = JOptionPane.INFORMATION_MESSAGE;
+    	}
+    	JOptionPane.showMessageDialog(this, Message , Title, Type_Message);
+    }
+
+    public static void main(String[] args) {
+        // Percorsi delle immagini (assicurati che siano corretti)
+    	
+//    	String workingDirectory = System.getProperty("user.dir");
+//        System.out.println("Directory di lavoro: " + workingDirectory);
+        
+        String mappaPath = ".img/ticket to ride.jpeg";
+        String macchinaPath = ".img/m4.png";
+
+        // Definisci le posizioni predefinite dove spostare la macchinina
+        List<Point> posizioni = Arrays.asList(
+                new Point(50, 50),
+                new Point(200, 100),
+                new Point(100, 250),
+                new Point(300, 150)
+        );
+
+        // Crea e avvia l'interfaccia grafica
+        SwingUtilities.invokeLater(() -> new GUI(mappaPath, macchinaPath, posizioni));
+    }
+}
+
+///////////////////////////////
+
+
+
 /**
  * It represents the simulation game for the CATALINA Architecture 
  */
@@ -16,6 +88,9 @@ public class Game {
 	public static Integer Scenario_Number;
 	public static TTCS TCS;
 	public static int Init_Creation_Path_Travelled_for_Functional_Goal;
+	public static GUI Gui_Map;
+	public static Boolean Disable_Input = true;
+	public static Boolean Disable_Show_Message = true;
 	
 	/**
 	 * Start Simulation
@@ -23,6 +98,30 @@ public class Game {
 	 */
 	public static void main(String[] args) 
 	{
+		
+		String workingDirectory = System.getProperty("user.dir");
+        System.out.println("Directory di lavoro: " + workingDirectory);
+        
+        String mappaPath = "img/ticket to ride.jpeg";
+//        String macchinaPath = "img/m4.png";
+        String macchinaPath = "img/auto.png";
+
+        // Definisci le posizioni predefinite dove spostare la macchinina
+        List<Point> posizioni = Arrays.asList(
+                new Point(50, 50),
+                new Point(200, 100),
+                new Point(100, 250),
+                new Point(300, 150)
+        );
+
+        // Crea e avvia l'interfaccia grafica
+        Gui_Map = new GUI(mappaPath, macchinaPath, posizioni);
+        //SwingUtilities.invokeLater(() -> Gui_Map);
+        
+        
+		
+		
+		///////////////
 		Scenario_Number = 0;
 		
 		// I create a list of Predicates, Beliefs, Functional, Epistemic, Green and Quality Goals.
@@ -55,9 +154,36 @@ public class Game {
 		Game.Print("Agent initialization...");
 		Agent.Initialization(TCS, Map, Init_Creation_Path_Travelled_for_Functional_Goal);
 		
+		
+//		ArrayList<Integer> lista = new ArrayList<Integer>();
+//        lista.add(96);
+//        lista.add(32);
+//        lista.add(112);
+//        lista.add(16);
+//        lista.add(82);
+//        lista.add(125);
+//        lista.add(120);
+//        int durata = 0;
+//        for(Integer i: lista)
+//        {
+//        	Route route = Map.All_Routes.get(i);
+//        	Game.Print("Route "+i);
+//    		Game.Print("Departure: "+route.Get_Departure()+ " - Destination: "+route.Get_Destination()+" - Color: "+route.Get_Color());
+//    		Game.Print("Locomotive: "+route.Get_Locomotive()+ " - Speed: "+route.get_Route_Speed());
+//    		Game.Print("Path_Time: "+route.Get_Path_Time());
+//    		Game.Print("ceil Path_Time : "+Math.ceil(route.Get_Path_Time()));
+//    		durata += Math.ceil(route.Get_Path_Time());
+//    		Game.Print("--------------------");
+//        }
+//        Game.Print("Durata Totale: "+durata);
+        		
+        
+//        Game.End_Game();
+		
+		
 		// The Working Cycle of the Agent starts
 		Agent.Start();
-		End_Game();
+//		End_Game();
 	}
 		
 	/**
@@ -66,99 +192,99 @@ public class Game {
 	public static void Create_Map()
 	{
 		//Creating all paths RED
-		Map.Add_Arch(Station.Pamplona, Station.Marseille, Color.Red, 4);
-		Map.Add_Arch(Station.Paris, Station.Bruxelles, Color.Red, 2);
-		Map.Add_Arch(Station.Frankfurt, Station.Berlin, Color.Red, 3);
-		Map.Add_Arch(Station.Wien, Station.Budapest, Color.Red, 1);
-		Map.Add_Arch(Station.Zacrab, Station.Sarajevo, Color.Red, 3);
-		Map.Add_Arch(Station.Warszawa, Station.Wilno, Color.Red, 3);
-		Map.Add_Arch(Station.Kyiv, Station.Smolensk, Color.Red, 3);
-		Map.Add_Arch(Station.Erzurum, Station.Sochi, Color.Red, 3);
+		Map.Add_Arch(City.Pamplona, City.Marseille, Color.Red, 4);
+		Map.Add_Arch(City.Paris, City.Bruxelles, Color.Red, 2);
+		Map.Add_Arch(City.Frankfurt, City.Berlin, Color.Red, 3);
+		Map.Add_Arch(City.Wien, City.Budapest, Color.Red, 1);
+		Map.Add_Arch(City.Zacrab, City.Sarajevo, Color.Red, 3);
+		Map.Add_Arch(City.Warszawa, City.Wilno, Color.Red, 3);
+		Map.Add_Arch(City.Kyiv, City.Smolensk, Color.Red, 3);
+		Map.Add_Arch(City.Erzurum, City.Sochi, Color.Red, 3);
 		
 		//Creating all paths GREEN
-		Map.Add_Arch(Station.Pamplona, Station.Paris, Color.Green, 4);
-		Map.Add_Arch(Station.Dieppe, Station.Bruxelles, Color.Green, 2);
-		Map.Add_Arch(Station.Frankfurt, Station.Essen, Color.Green, 2);
-		Map.Add_Arch(Station.Zurich, Station.Venice, Color.Green, 2);
-		Map.Add_Arch(Station.Berlin, Station.Wien, Color.Green, 3);
-		Map.Add_Arch(Station.Sarajevo, Station.Athina, Color.Green, 4);
-		Map.Add_Arch(Station.Rica, Station.Wilno, Color.Green, 4);
-		Map.Add_Arch(Station.Kharkov, Station.Rostow, Color.Green, 2);
+		Map.Add_Arch(City.Pamplona, City.Paris, Color.Green, 4);
+		Map.Add_Arch(City.Dieppe, City.Bruxelles, Color.Green, 2);
+		Map.Add_Arch(City.Frankfurt, City.Essen, Color.Green, 2);
+		Map.Add_Arch(City.Zurich, City.Venice, Color.Green, 2);
+		Map.Add_Arch(City.Berlin, City.Wien, Color.Green, 3);
+		Map.Add_Arch(City.Sarajevo, City.Athina, Color.Green, 4);
+		Map.Add_Arch(City.Rica, City.Wilno, Color.Green, 4);
+		Map.Add_Arch(City.Kharkov, City.Rostow, Color.Green, 2);
 		
 		//Creating all paths YELLOW
-		Map.Add_Arch(Station.Madrid, Station.Barcelona, Color.Yellow, 2);
-		Map.Add_Arch(Station.Paris, Station.Bruxelles, Color.Yellow, 2);
-		Map.Add_Arch(Station.Amsterdam, Station.Essen, Color.Yellow, 3);
-		Map.Add_Arch(Station.Zurich, Station.Munchen, Color.Yellow, 2);
-		Map.Add_Arch(Station.Kodenilavn, Station.Stockholm, Color.Yellow, 3);
-		Map.Add_Arch(Station.Berlin, Station.Warszawa, Color.Yellow, 4);
-		Map.Add_Arch(Station.Bucaresti, Station.Costantinople, Color.Yellow, 3);
-		Map.Add_Arch(Station.Wilno, Station.Smolensk, Color.Yellow, 3);
+		Map.Add_Arch(City.Madrid, City.Barcelona, Color.Yellow, 2);
+		Map.Add_Arch(City.Paris, City.Bruxelles, Color.Yellow, 2);
+		Map.Add_Arch(City.Amsterdam, City.Essen, Color.Yellow, 3);
+		Map.Add_Arch(City.Zurich, City.Munchen, Color.Yellow, 2);
+		Map.Add_Arch(City.Kodenilavn, City.Stockholm, Color.Yellow, 3);
+		Map.Add_Arch(City.Berlin, City.Warszawa, Color.Yellow, 4);
+		Map.Add_Arch(City.Bucaresti, City.Costantinople, Color.Yellow, 3);
+		Map.Add_Arch(City.Wilno, City.Smolensk, Color.Yellow, 3);
 		
 		//Creating all paths ORANGE
-		Map.Add_Arch(Station.Madrid, Station.Cadiz, Color.Orange, 3);
-		Map.Add_Arch(Station.Brest, Station.Dieppe, Color.Orange, 2);
-		Map.Add_Arch(Station.Edimburgh, Station.London, Color.Orange, 4);
-		Map.Add_Arch(Station.Paris, Station.Frankfurt, Color.Orange, 3);
-		Map.Add_Arch(Station.Munchen, Station.Wien, Color.Orange, 3);
-		Map.Add_Arch(Station.Zacrab, Station.Budapest, Color.Orange, 2);
-		Map.Add_Arch(Station.Smyrna, Station.Ancora, Color.Orange, 3);
-		Map.Add_Arch(Station.Smolensk, Station.Moskva, Color.Orange, 2);
+		Map.Add_Arch(City.Madrid, City.Cadiz, Color.Orange, 3);
+		Map.Add_Arch(City.Brest, City.Dieppe, Color.Orange, 2);
+		Map.Add_Arch(City.Edinburgh, City.London, Color.Orange, 4);
+		Map.Add_Arch(City.Paris, City.Frankfurt, Color.Orange, 3);
+		Map.Add_Arch(City.Munchen, City.Wien, Color.Orange, 3);
+		Map.Add_Arch(City.Zacrab, City.Budapest, Color.Orange, 2);
+		Map.Add_Arch(City.Smyrna, City.Ancora, Color.Orange, 3);
+		Map.Add_Arch(City.Smolensk, City.Moskva, Color.Orange, 2);
 		
 		//Creating all paths BLACK
-		Map.Add_Arch(Station.Madrid, Station.Pamplona, Color.Black, 3);
-		Map.Add_Arch(Station.Brest, Station.Paris, Color.Black, 3);
-		Map.Add_Arch(Station.Edimburgh, Station.London, Color.Black, 4);
-		Map.Add_Arch(Station.Bruxelles, Station.Amsterdam, Color.Black, 1);
-		Map.Add_Arch(Station.Frankfurt, Station.Berlin, Color.Black, 3);
-		Map.Add_Arch(Station.Venice, Station.Rome, Color.Black, 2);
-		Map.Add_Arch(Station.Danzic, Station.Rica, Color.Black, 3);
-		Map.Add_Arch(Station.Ancora, Station.Erzurum, Color.Black, 3);
+		Map.Add_Arch(City.Madrid, City.Pamplona, Color.Black, 3);
+		Map.Add_Arch(City.Brest, City.Paris, Color.Black, 3);
+		Map.Add_Arch(City.Edinburgh, City.London, Color.Black, 4);
+		Map.Add_Arch(City.Bruxelles, City.Amsterdam, Color.Black, 1);
+		Map.Add_Arch(City.Frankfurt, City.Berlin, Color.Black, 3);
+		Map.Add_Arch(City.Venice, City.Rome, Color.Black, 2);
+		Map.Add_Arch(City.Danzic, City.Rica, Color.Black, 3);
+		Map.Add_Arch(City.Ancora, City.Erzurum, Color.Black, 3);
 		
 		//Creating all paths BLU
-		Map.Add_Arch(Station.Lisboa, Station.Cadiz, Color.Blue, 2);
-		Map.Add_Arch(Station.Pamplona, Station.Paris, Color.Blue, 4);		
-		Map.Add_Arch(Station.Bruxelles, Station.Frankfurt, Color.Blue, 2);
-		Map.Add_Arch(Station.Essen, Station.Berlin, Color.Blue, 2);
-		Map.Add_Arch(Station.Munchen, Station.Venice, Color.Blue, 2);		
-		Map.Add_Arch(Station.Wien, Station.Warszawa, Color.Blue, 4);
-		Map.Add_Arch(Station.Sofia, Station.Costantinople, Color.Blue, 3);
-		Map.Add_Arch(Station.Wilno, Station.Petrocrad, Color.Blue, 4);
+		Map.Add_Arch(City.Lisboa, City.Cadiz, Color.Blue, 2);
+		Map.Add_Arch(City.Pamplona, City.Paris, Color.Blue, 4);		
+		Map.Add_Arch(City.Bruxelles, City.Frankfurt, Color.Blue, 2);
+		Map.Add_Arch(City.Essen, City.Berlin, Color.Blue, 2);
+		Map.Add_Arch(City.Munchen, City.Venice, Color.Blue, 2);		
+		Map.Add_Arch(City.Wien, City.Warszawa, Color.Blue, 4);
+		Map.Add_Arch(City.Sofia, City.Costantinople, Color.Blue, 3);
+		Map.Add_Arch(City.Wilno, City.Petrocrad, Color.Blue, 4);
 		
 		//Creating all paths VIOLET
-		Map.Add_Arch(Station.Lisboa, Station.Madrid, Color.Violet, 3);
-		Map.Add_Arch(Station.Pamplona, Station.Brest, Color.Violet, 4);		
-		Map.Add_Arch(Station.Dieppe, Station.Paris, Color.Violet, 1);
-		Map.Add_Arch(Station.Marseille, Station.Zurich, Color.Violet, 2);
-		Map.Add_Arch(Station.Frankfurt, Station.Munchen, Color.Violet, 2);		
-		Map.Add_Arch(Station.Berlin, Station.Warszawa, Color.Violet, 4);
-		Map.Add_Arch(Station.Budapest, Station.Sarajevo, Color.Violet, 3);
-		Map.Add_Arch(Station.Sofia, Station.Athina, Color.Violet, 3);
+		Map.Add_Arch(City.Lisboa, City.Madrid, Color.Violet, 3);
+		Map.Add_Arch(City.Pamplona, City.Brest, Color.Violet, 4);		
+		Map.Add_Arch(City.Dieppe, City.Paris, Color.Violet, 1);
+		Map.Add_Arch(City.Marseille, City.Zurich, Color.Violet, 2);
+		Map.Add_Arch(City.Frankfurt, City.Munchen, Color.Violet, 2);		
+		Map.Add_Arch(City.Berlin, City.Warszawa, Color.Violet, 4);
+		Map.Add_Arch(City.Budapest, City.Sarajevo, Color.Violet, 3);
+		Map.Add_Arch(City.Sofia, City.Athina, Color.Violet, 3);
 		
 		//Creating all paths WHITE
-		Map.Add_Arch(Station.Madrid, Station.Pamplona, Color.White, 3);////aggiornare sulla mappa
+		Map.Add_Arch(City.Madrid, City.Pamplona, Color.White, 3);////aggiornare sulla mappa
 		
-		//Creating all paths GRIGI
+		//Creating all paths Grey
 		// -----BLU
-		Map.Add_Arch(Station.Marseille, Station.Barcelona, Color.Blue, 4);
-		Map.Add_Arch(Station.Dieppe, Station.London, Color.Blue, 2);
+		Map.Add_Arch(City.Marseille, City.Barcelona, Color.Blue, 4);
+		Map.Add_Arch(City.Dieppe, City.London, Color.Blue, 2);
 
 		// -----GREEN
-		Map.Add_Arch(Station.Pamplona, Station.Barcelona, Color.Green, 2);
-		Map.Add_Arch(Station.Marseille, Station.Rome, Color.Green, 4);
+		Map.Add_Arch(City.Pamplona, City.Barcelona, Color.Green, 2);
+		Map.Add_Arch(City.Marseille, City.Rome, Color.Green, 4);
 		
 		// -----RED
-		Map.Add_Arch(Station.Paris, Station.Zurich, Color.Red, 3);
+		Map.Add_Arch(City.Paris, City.Zurich, Color.Red, 3);
 		
 		// -----YELLOW
-		Map.Add_Arch(Station.Marseille, Station.Paris, Color.Yellow, 4);
-		Map.Add_Arch(Station.Dieppe, Station.London, Color.Yellow, 2);
+		Map.Add_Arch(City.Marseille, City.Paris, Color.Yellow, 4);
+		Map.Add_Arch(City.Dieppe, City.London, Color.Yellow, 2);
 		
 		//-----VIOLET
-		Map.Add_Arch(Station.London, Station.Amsterdam, Color.Violet, 2);
+		Map.Add_Arch(City.London, City.Amsterdam, Color.Violet, 2);
 		
 		//-----ORANGE
-		Map.Add_Arch(Station.Rome, Station.Palermo, Color.Orange, 4);
+		Map.Add_Arch(City.Rome, City.Palermo, Color.Orange, 4);
 		
 	}
 	
@@ -263,6 +389,10 @@ public class Game {
 	
 	public static String Press_Enter()
 	{
+		if(Disable_Input)
+		{
+			return "";
+		}
 		 String ANSI_RESET = "\u001B[0m";
 		 String ANSI_RED = "\u001B[31m";
 		 
@@ -322,5 +452,6 @@ public class Game {
 		 
 		Game.Print(ANSI_BOLD + Color + Text + ANSI_RESET);
 	}
+	
 }
 	

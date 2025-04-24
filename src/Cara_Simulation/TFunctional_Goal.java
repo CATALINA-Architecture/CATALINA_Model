@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class TFunctional_Goal extends TAttentional_Goal{
 	
-	private transient TBelief_Base Final_State;
+	private transient TBelief Final_State;
 	private String Final_State_Name;
 	private transient TPredicate Trigger_Condition;
 	private String Trigger_Condition_Name;
@@ -19,7 +19,7 @@ public class TFunctional_Goal extends TAttentional_Goal{
 	
 	
 	
-	public TFunctional_Goal(String name, TBelief_Base final_state, TPredicate trigger_Condition, Double saliency, Double reward, Double relax_Preference,
+	public TFunctional_Goal(String name, TBelief final_state, TPredicate trigger_Condition, Double saliency, Double reward, Double relax_Preference,
 			ArrayList<TGreen_Goal> list_Green_Goal, ArrayList<TQuality_Goal> list_Quality_Goal,
 			LocalDateTime finally_Start, LocalDateTime finally_End, LocalDateTime global_Start, LocalDateTime global_End, 
 			LocalDateTime untill_Start, LocalDateTime until_End )
@@ -74,11 +74,11 @@ public class TFunctional_Goal extends TAttentional_Goal{
 
 
 
-	public TBelief_Base get_Final_State() {
+	public TBelief get_Final_State() {
 		return Final_State;
 	}
 	
-	public void set_Final_State(TBelief_Base final_state) {
+	public void set_Final_State(TBelief final_state) {
 		 this.Final_State = final_state;
 		 this.Final_State_Name = final_state.get_Name();
 	}

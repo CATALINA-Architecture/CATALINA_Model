@@ -46,12 +46,12 @@ public class TLong_Memory {
 	//private HashMap<Integer, ArrayList<Trpedicate>> Map__Beliefs_and_Predicates;
 	
 	//Belief Properties
-	private ArrayList<TBelief_Base> Beliefs;
-	private ArrayList<TBelief_Base> Inhibited_Beliefs;
-	private HashMap<String, TBelief_Base> Map_Beliefs;
+	private ArrayList<TBelief> Beliefs;
+	private ArrayList<TBelief> Inhibited_Beliefs;
+	private HashMap<String, TBelief> Map_Beliefs;
 	private TRegion Regions;
 	private TRegion Inhibition_Regions;
-	private HashMap<String, ArrayList<TBelief_Base>> Map_Attentional_Goals_and_Beliefs;
+	private HashMap<String, ArrayList<TBelief>> Map_Attentional_Goals_and_Beliefs;
 	private HashMap<String, ArrayList<Object>> Map_Attentional_Goals_and_Regions;
 	public TBelief_List Belief_List;
 	
@@ -101,12 +101,12 @@ public class TLong_Memory {
 		
 		
 		//Belief Properties
-		this.Beliefs = new ArrayList<TBelief_Base>();
-		this.Inhibited_Beliefs = new ArrayList<TBelief_Base>();
-		this.Map_Beliefs = new HashMap<String, TBelief_Base>();
+		this.Beliefs = new ArrayList<TBelief>();
+		this.Inhibited_Beliefs = new ArrayList<TBelief>();
+		this.Map_Beliefs = new HashMap<String, TBelief>();
 		this.Regions = new TRegion();
 		this.Inhibition_Regions = new TRegion();
-		this.Map_Attentional_Goals_and_Beliefs = new HashMap<String, ArrayList<TBelief_Base>>();
+		this.Map_Attentional_Goals_and_Beliefs = new HashMap<String, ArrayList<TBelief>>();
 		this.Map_Attentional_Goals_and_Regions = new HashMap<String, ArrayList<Object>>();
 		this.Belief_List = new TBelief_List();
 		
@@ -176,7 +176,7 @@ public class TLong_Memory {
 		return this.Beliefs.size();
 	}
 	
-	public ArrayList<TBelief_Base> Get_Beliefs()
+	public ArrayList<TBelief> Get_Beliefs()
 	{
 		return this.Beliefs;
 	}
@@ -188,21 +188,21 @@ public class TLong_Memory {
 //		this.Beliefs_Number = this.Beliefs.size();
 //	}
 	
-	public void AddAll_Beliefs(ArrayList<TBelief_Base> beliefs)
+	public void AddAll_Beliefs(ArrayList<TBelief> beliefs)
 	{
-		for(TBelief_Base Belief: beliefs)
+		for(TBelief Belief: beliefs)
 		{
 			this.Add_Belief(Belief);
 		}
 	}
 	
-	public void Add_Belief(TBelief_Base belief)
+	public void Add_Belief(TBelief belief)
 	{
 		this.Beliefs.add(belief);
 		this.Inc_Beliefs_Number++; 
 	}
 	
-	public HashMap<String, TBelief_Base> Get_Map_Beliefs()
+	public HashMap<String, TBelief> Get_Map_Beliefs()
 	{
 		return this.Map_Beliefs;
 	}
@@ -334,13 +334,24 @@ public class TLong_Memory {
 	{
 		this.Goals.add(attentional_Goal);
 		this.Inc_Goals_Number++; 
+		
 		if(attentional_Goal instanceof TFunctional_Goal)
 		{
 			this.Inc_Functional_Goals_Number++;
+			TFunctional_Goal Functional_Goal = (TFunctional_Goal) attentional_Goal;
+			if(Functional_Goal.get_Name().equals(""))
+			{
+				Functional_Goal.set_Name("Fg"+this.Inc_Functional_Goals_Number);
+			}
 		}
 		else
 		{
 			this.Inc_Epistemic_Goals_Number++;
+			TEpistemic_Goal pistemic_Goal = (TEpistemic_Goal) attentional_Goal;
+			if(pistemic_Goal.get_Name().equals(""))
+			{
+				pistemic_Goal.set_Name("Eg"+this.Inc_Epistemic_Goals_Number);
+			}
 		}
 	}
 	
@@ -454,7 +465,7 @@ public class TLong_Memory {
 		return this.Map_Attentional_Goals_and_Predicates;
 	}
 	
-	public HashMap<String, ArrayList<TBelief_Base>> Get_Map_Attentional_Goals_and_Beliefs()
+	public HashMap<String, ArrayList<TBelief>> Get_Map_Attentional_Goals_and_Beliefs()
 	{
 		return this.Map_Attentional_Goals_and_Beliefs;
 	}
@@ -499,14 +510,14 @@ public class TLong_Memory {
 
 	}
 	
-	public TBelief_Base Create_Belief(TPredicate Predicate, Boolean truth, Object information_Source,
+	public TBelief Create_Belief(TPredicate Predicate, Boolean truth, Object information_Source,
 			LocalDateTime time_stamp, TType_Beliefs type_Belief)
 	{
 
 		int incremental_id = this.Inc_Beliefs_Number + 1;
 		String Belief_Name = "b" + incremental_id;
 
-		TBelief_Base Belief = new TBelief_Base(Belief_Name, Predicate, truth, information_Source, time_stamp,
+		TBelief Belief = new TBelief(Belief_Name, Predicate, truth, information_Source, time_stamp,
 												type_Belief);
 
 		this.Beliefs.addLast(Belief);
@@ -523,7 +534,7 @@ public class TLong_Memory {
 		this.Inc_Beliefs_Number = value;
 	}
 	
-	public void Set_Inhibited_Beliefs(ArrayList<TBelief_Base> inhibited_Beliefs)
+	public void Set_Inhibited_Beliefs(ArrayList<TBelief> inhibited_Beliefs)
 	{
 		this.Inhibited_Beliefs.clear();
 		this.Inhibited_Beliefs.addAll(inhibited_Beliefs);
@@ -554,9 +565,9 @@ public class TLong_Memory {
 		}
 
 		//I insert all Stations in Inhibited_Regions
-		for(i=0; i < Station.values().length; i++)
+		for(i=0; i < City.values().length; i++)
 		{
-			this.Regions.Destinations.add(Station.values()[i]);
+			this.Regions.Destinations.add(City.values()[i]);
 		}
 		return this.Regions;
 	}
@@ -583,7 +594,7 @@ public class TLong_Memory {
 		return this.Regions;
 	}
 	
-	public ArrayList<TBelief_Base> Get_Inhibited_Beliefs()
+	public ArrayList<TBelief> Get_Inhibited_Beliefs()
 	{
 		return this.Inhibited_Beliefs;
 	}
