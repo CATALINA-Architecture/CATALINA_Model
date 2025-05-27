@@ -1,8 +1,0 @@
-C:\Users\avern\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_22.0.2.v20240802-1626\jre
-
-java "D:\Cartelle\CNR\Paper\01\Java\Cara_Simulation.Game"
-
-cd /d "D:\Cartelle\CNR\Paper\01\Java\bin"
-java Cara_Simulation.Game
-
-2024-10-02 06:00:00
