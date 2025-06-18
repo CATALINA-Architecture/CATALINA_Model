@@ -23,7 +23,7 @@ public class TAgent {
 	
 	//for demonstration only
 	public int Working_Cycle = 0;
-	private int Work_Cycles_Number = 3000;
+	private int Work_Cycles_Number = 300;
 	
 	/**
 	 * Constructor class

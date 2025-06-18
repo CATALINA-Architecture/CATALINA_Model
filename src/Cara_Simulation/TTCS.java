@@ -110,7 +110,7 @@ public class TTCS {
 			Response.Set_Object_Third(Request.Get_Object_Third());
 			
 			break;
-		case "Come_Back_to_City":
+		case "Come_Back_to_City", "Stay_in_Station":
 			
 			Answer.Set_Object_First("Correct move!");
 			Response.Set_Object_First(Answer.Get_Object_First());	

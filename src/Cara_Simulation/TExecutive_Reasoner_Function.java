@@ -9,6 +9,7 @@ import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.EnumMap;
 import java.util.List;
 
 
@@ -598,6 +599,296 @@ public class TExecutive_Reasoner_Function {
 			}
 			// The perception "Acquired Danger Type on the road" has already changed and inverted
 			// Current_Route and Current_Step to maintain a consistency with where beliefs need to change 
+//			Game.Print(Current_City+" - "+Current_Route+ " - "+Current_Step);
+//			Game.End_Game();
+			Game.Get_Input("");
+			ArrayList<Plan> Paths = new ArrayList<Plan>();
+			i = 0;
+			
+			
+			Boolean Print_PAth = true;
+
+			ArrayList<TOption> option_List =  new ArrayList<TOption>();
+			ArrayList<TAction> plans = new ArrayList<TAction>();
+			ArrayList<TAction> Actions = new ArrayList<TAction>();
+			String Function_To_Invoke = "Come_Back_to_City";
+			
+			if(this.Agent.Get_GW().Print_steps_and_routes)
+			{
+				Game.Print("Start creating Path Plan:");
+			}
+			
+			//if Current_Route < 0, Agent is already in city, it must not move
+//			Game.Print("Current_Route: "+Current_Route);
+//			Game.Print("Current_Step: "+Current_Step);
+//			Game.End_Game();
+//			Game.Gui_Map.Show_Message(Function_To_Invoke, "Current_Route: "+Current_Route, null);
+			//The Agent is already in station, it has no to move
+			if(Current_Route < 0)
+			{
+				Game.Print("Agent is already in city: "+Current_City);
+				TPosition_Train_Coords Precondition_Position_Train_Coords = new TPosition_Train_Coords(Current_City, Current_Route, Current_Step);
+				TPosition_Train_Coords Postcondition_Position_Train_Coords = new TPosition_Train_Coords(Current_City, Current_Route, Current_Step);
+				
+				TPredicate Precondition = new TPredicate(null, TType_Subject.Me, 
+						TType_Relationship.is_in, Precondition_Position_Train_Coords);
+				
+				TPredicate Postcondition = new TPredicate(null, TType_Subject.Me, 
+						TType_Relationship.is_in, Postcondition_Position_Train_Coords);
+				
+				TAction An_Action = new TAction(null, Precondition, Postcondition);
+				An_Action.Get_Params().add(Postcondition_Position_Train_Coords);
+				
+				Function_To_Invoke = "Stay_in_Station";
+				An_Action.Set_Action_Name(Function_To_Invoke);
+				Actions.add(An_Action);
+//				Game.Print("(Current_Route < 0)");
+//				Game.End_Game();
+//				Game.Gui_Map.Show_Message(Function_To_Invoke, "(Current_Route < 0) - Current_Route: "+Current_Route, null);
+				EnumMap<TType_Quality_Goal, Double> Total_Weights = 
+						new EnumMap<TType_Quality_Goal, Double>(TType_Quality_Goal.class);
+				Total_Weights.put(TType_Quality_Goal.TGQ_Locomotive, 0.0);
+				Total_Weights.put(TType_Quality_Goal.TGQ_Panorama, 0.0);
+				Total_Weights.put(TType_Quality_Goal.TGQ_Velocity, 0.0);
+				
+				TOption An_Option = new TOption(Actions, null, 0.0, Total_Weights);
+//				An_Option.Path.Copy_Plan(path);
+				option_List.add(An_Option);
+//				Game.Print("Actions.size(): "+Actions.size());
+//				Game.Print("An_Option: "+An_Option.toString());
+//				Game.Print("option_List.size(): "+option_List.size());
+//				Game.Get_Input("");
+				
+			}
+			else
+			{
+//				Game.Print("(Current_Route >= 0)");
+//				Game.Gui_Map.Show_Message("titolo", "(Current_Route >= "+Current_Route+")", null);
+//				Game.Gui_Map.Show_Message("titolo", "(Current_Step >= "+Current_Step+")", null);
+//				Game.End_Game();
+				Route route = this.get_Agent().Get_WMM().Get_Map().All_Routes.get(Current_Route);
+				
+				Plan Action_plan = new Plan();
+				Action_plan.Destinations.add(route.Get_Departure());
+				Action_plan.Destinations.add(route.Get_Destination());
+				Action_plan.Get_Routes().add(Current_Route);
+				Action_plan.Total_Weights.putAll(this.get_Agent().Get_WMM().Get_Map().Compute_Sum_Weights_Routes(Action_plan.Get_Routes()));
+				Action_plan.Path_Time  = route.Get_Path_Time_Starting_By_Step(Current_Step);
+				
+				Paths.add(Action_plan);
+//				Paths = this.get_Agent().Get_WMM().Get_Map().Find_All_Paths(route.Get_Departure(), route.Get_Destination());
+				
+				Environment Map = this.Agent.Get_GW().Get_Map_Known();
+				//For any path
+				if(this.Agent.Get_GW().Print_steps_and_routes)
+				{
+					Game.Print("**** Printing Paths Steps ********");
+				}
+				
+				
+				Game.Print("numbero of Paths: "+Paths.size());
+//				Game.End_Game();
+				
+				for (Plan path: Paths)
+				{	
+					Game.Print("path: "+path);
+	//							i++;
+					if(this.Agent.Get_GW().Print_steps_and_routes)
+					{
+						Game.PrintLn();
+						Game.Print("****** Path: "+i);
+						Game.Print("Route list of the path: "+path.Routes);
+					}
+					Actions = new ArrayList<TAction>();
+					
+					//I Create plans for any options
+					//For Any Route
+					for (Integer Route_Number: path.Routes )
+					{
+						
+						//Now, Action stores only a Route at a time
+						// An Action => A step for a Route
+	
+						//Now, I create any action in plan option
+						//I get the rounds time to go from Station A to Station B
+						Route A_Route = Map.All_Routes.get(Route_Number);
+						if(this.Agent.Get_GW().Print_steps_and_routes)
+						{
+							Game.PrintLn();	
+							Game.Print("******** New Route: "+Route_Number+ " - Departure: "+A_Route.Get_Departure()+
+									" - Destination: "+A_Route.Get_Destination());
+						}
+						
+						int Rounds_Time = A_Route.Get_Total_Rounds_Starting_By_Step(Current_Step);
+						
+						//I get the correct Station
+						City A_Departure_Station;
+						City A_Destination_Station;
+						City A_Destination_Station_in_PostCondition;
+	
+						//A_Departure_Station = Current_City;//A_Route.Get_Departure();
+						A_Departure_Station = A_Route.Get_Departure();
+						A_Destination_Station = A_Route.Get_Destination();
+						int step_position = Current_Step;
+//						Game.Print("step_position: "+step_position);
+						int Start_route_position = Route_Number;
+						int End_route_position = Route_Number;
+						//For Any Step in Route
+						if(this.Agent.Get_GW().Print_steps_and_routes)
+						{
+							Game.Print("Start creating Path Plan:");
+						}
+						
+//						Game.Print("Current_Step: "+Current_Step);
+//						Game.Print("Rounds_Time: "+Rounds_Time);
+//						Game.Gui_Map.Show_Message("titolo", "Entro nel Loop", null);
+//						for(Integer Step = Current_Step; Step <= Rounds_Time; Step++)
+						for(Integer Step = 1; Step <= Rounds_Time; Step++)
+						{
+							TPosition_Train_Coords Precondition_Position_Train_Coords;
+							TPosition_Train_Coords Postcondition_Position_Train_Coords;
+							TPredicate Precondition;
+							TPredicate Postcondition;
+							
+							
+							Function_To_Invoke = "Come_Back_to_City";
+							Start_route_position = Route_Number;
+	
+							Precondition_Position_Train_Coords = new TPosition_Train_Coords(A_Departure_Station, 
+									Start_route_position, step_position);
+							
+							step_position = step_position + A_Route.get_Route_Speed();
+							
+							//I set ending precondition data
+							//A_Destination_Station_in_PostCondition = Current_City;//City; A_Departure_Station;
+							A_Destination_Station_in_PostCondition = A_Departure_Station;
+//							Game.Gui_Map.Show_Message("titolo", Step+" - Prima dell'if", null);
+							if (step_position > A_Route.Get_Steps_Number())
+							{
+//								Game.Gui_Map.Show_Message("titolo", Step+" - Dentro l'if", null);
+								//A_Destination_Station_in_PostCondition = Current_City;//A_Destination_Station;
+								A_Destination_Station_in_PostCondition = A_Destination_Station;
+								//If I arrive in next Station, I set the Route to -1 and the
+								//step_position to 0
+								End_route_position = -1;
+								step_position = 0;
+							}
+//							Game.Gui_Map.Show_Message("titolo", Step+" - Fuori dall'if", null);
+							Postcondition_Position_Train_Coords = new TPosition_Train_Coords(
+									A_Destination_Station_in_PostCondition, End_route_position, step_position);
+							
+							Precondition = new TPredicate(null, TType_Subject.Me, 
+									TType_Relationship.is_in, Precondition_Position_Train_Coords);
+							
+							Postcondition = new TPredicate(null, TType_Subject.Me, 
+									TType_Relationship.is_in, Postcondition_Position_Train_Coords);
+							
+							
+							TAction An_Action = new TAction(null, Precondition, Postcondition);
+							An_Action.Get_Params().add(Postcondition_Position_Train_Coords);
+							An_Action.Get_Params().add(A_Route.Route_Number);
+							
+							
+							// I define "Use_Route" as a function to go from a departure to a destination station
+							An_Action.Set_Action_Name(Function_To_Invoke);
+							Actions.add(An_Action);
+							if(this.Agent.Get_GW().Print_steps_and_routes)
+							{
+								Game.Print("Precondition.  Station: "+Precondition_Position_Train_Coords.Get_City()+
+										" - Route: "+Precondition_Position_Train_Coords.Get_Route()+
+										" - Step: "+Precondition_Position_Train_Coords.Get_Step());
+								Game.Print("Postcondition.  Station: "+Postcondition_Position_Train_Coords.Get_City()+
+										" - Route: "+Postcondition_Position_Train_Coords.Get_Route()+
+										" - Step: "+Postcondition_Position_Train_Coords.Get_Step());
+								Game.Print("-------------- Next Step --------------");
+							}
+						}
+					}
+					
+					TOption An_Option = new TOption(Actions, null, 0.0, path.Total_Weights);
+					An_Option.Path.Copy_Plan(path);
+					option_List.add(An_Option);
+//					Game.Print("Actions.size(): "+Actions.size());
+//					Game.Print("An_Option: "+An_Option.toString());
+//					Game.Print("option_List.size(): "+option_List.size());
+//					Game.Get_Input("");
+////					Game.End_Game();
+				}
+					i++;
+					Game.Print("....................................");
+			}
+				
+			Desire.set_Option_List(option_List);
+//			Game.End_Game();
+		}
+		catch (Exception e) {
+	      Game.Print("Something went wrongin method: Insert_New_Desires.");
+	      Game.Print("Message Error: "+e.getMessage());
+	      Game.PrintLn();
+	      e.printStackTrace();
+	      result = false;
+	    }
+	return result;
+	}
+	
+	protected boolean Means_End_For_Belief_Come_Back_to_City_old(TActive_Desire Desire, ArrayList<TBelief> Beliefs)
+	{
+		///
+		///		Belief_Come_Back_to_City
+		///		
+		///     This means that the agent must create a plan to return/stay in the previous city before 
+		///		entering the current route.
+		///
+		boolean result = true;
+		try 
+		{
+			Game.Print("I use my Means_End_For_Belief_Destination_Station method to search some options");
+			this.Agent.Get_GW().Print_Data(2, 0);
+			
+			TAttentional_Desire Goal = Desire.get_Attentional_Goal();
+			TFunctional_Desire Functional_Goal = (TFunctional_Desire) Goal;
+			TBelief Functional_Belief = Functional_Goal.get_Final_State();
+			
+			Game.PrintLn();
+			Game.Print("The Functional_Goal Name is: "+Functional_Goal.get_Name());
+			Game.Print("The Functional_Belief is a: "+Functional_Goal.get_Final_State().get_Type_Belief());
+			
+			City Current_City = null;
+			int Current_Route = -2;
+			int Current_Step = -1;
+			int i = 0;
+			while (i< Beliefs.size())
+			{
+				TBelief Temp_Belief = Beliefs.get(i);
+				// Agent must to understand in which station it is
+				if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_City) 
+				{
+					if (Temp_Belief.get_Predicate().get_Subject() == TType_Subject.Me)
+					{
+						Current_City = (City) Temp_Belief.Predicate.get_Object_Complement();
+					}
+//					continue;
+				}
+				if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_Route) 
+				{
+					if (Temp_Belief.get_Predicate().get_Subject() == TType_Subject.Me)
+					{
+						Current_Route = (int) Temp_Belief.Predicate.get_Object_Complement();
+					}
+//					break;
+				}
+				if (Temp_Belief.get_Type_Belief()  == TType_Beliefs.Belief_Current_Step) 
+				{
+					if (Temp_Belief.get_Predicate().get_Subject() == TType_Subject.Me)
+					{
+						Current_Step = (int) Temp_Belief.Predicate.get_Object_Complement();
+					}
+//					break;
+				}
+				i++;
+			}
+			// The perception "Acquired Danger Type on the road" has already changed and inverted
+			// Current_Route and Current_Step to maintain a consistency with where beliefs need to change 
 			Game.Print(Current_City+" - "+Current_Route+ " - "+Current_Step);
 //			Game.End_Game();
 			ArrayList<Plan> Paths = new ArrayList<Plan>();
@@ -638,11 +929,13 @@ public class TExecutive_Reasoner_Function {
 				An_Action.Set_Action_Name(Function_To_Invoke);
 				Actions.add(An_Action);
 				Game.Print("(Current_Route < 0)");
-//				Game.End_Game();
+				Game.End_Game();
 			}
 			else
 			{
 				Game.Print("(Current_Route >= 0)");
+				Game.Gui_Map.Show_Message("titolo", "(Current_Route >= "+Current_Route+")", null);
+				Game.Gui_Map.Show_Message("titolo", "(Current_Step >= "+Current_Step+")", null);
 //				Game.End_Game();
 				Route route = this.get_Agent().Get_WMM().Get_Map().All_Routes.get(Current_Route);
 				

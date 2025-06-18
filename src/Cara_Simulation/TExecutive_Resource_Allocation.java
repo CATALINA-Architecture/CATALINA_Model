@@ -196,6 +196,7 @@ public class TExecutive_Resource_Allocation {
 											if(Data1.equals("1"))
 											{
 //													TTriple_Object Response = new TTriple_Object();
+												
 												this.Insert_Perception_Get_Danger_Type_on_the_Road(Action);
 												this.get_Agent().Get_GW().Print_Data(1, 0);
 //												Game.Print("Entro qua in GO_TO_Route");
@@ -286,6 +287,11 @@ public class TExecutive_Resource_Allocation {
 										}
 									}
 									break;
+									
+								case "Stay_in_Station":
+									this.Plan_Exec(Action);
+									Game.Gui_Map.Show_Message("Information...", "I stay where I am, and I change the path...",
+											JOptionPane.INFORMATION_MESSAGE);
 									
 								case "GO_TO_Step", "Come_Back_to_City":
 									if(Action.Get_Action_Name().equals("GO_TO_Step"))
@@ -433,7 +439,7 @@ public class TExecutive_Resource_Allocation {
 			Game.Print("I Invoke the method for execute the Action: "+Invoked_Function );
 			switch(Invoked_Function)
 			{
-			case "GO_TO_Route", "GO_TO_Step", "Come_Back_to_City":
+			case "GO_TO_Route", "GO_TO_Step", "Come_Back_to_City", "Stay_in_Station":
 				this.Execute_Movement(Action);		
 				break;
 			case "See Route Status":
@@ -518,7 +524,19 @@ public class TExecutive_Resource_Allocation {
 		Stimulus.Set_Object_First("Danger on the route!");
 		Stimulus.Set_Object_Second(Precondition_Position);
 		Stimulus.Set_Object_Third(Postcondition_Position);
-		this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Stimulus, "ME");
+		Game.Print("Precondition_Position: "+Precondition_Position.Get_City()+" - "+Precondition_Position.Get_Route()+ " - "+Precondition_Position.Get_Step());
+		Game.Print("Postcondition_Position: "+Postcondition_Position.Get_City()+" - "+Postcondition_Position.Get_Route()+ " - "+Postcondition_Position.Get_Step());
+		Game.Get_Input("Insert_Perception_Get_Danger_Type_on_the_Road");
+		//Precondition_Position.Get_Route() == -1, it means Agent is already in station and it has not to move
+//		if(Precondition_Position.Get_Route() == -1)
+//		{
+//			this.Plan_Exec(Action);
+//		}
+//		else
+		{
+			this.Agent.Get_WMM().Get_Sensor().Insert_Perception(Stimulus, "ME");
+		}
+		
 	}
 	
 	private void Insert_Perception_Get_Closed_Route_Duration(int Integer_Route)
