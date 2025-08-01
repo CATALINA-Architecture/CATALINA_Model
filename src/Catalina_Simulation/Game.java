@@ -320,12 +320,14 @@ public class Game {
 		 return result;
 	}
 	
-	public static String Get_Preset_Input(String Text, String Preset_Input, int color)
+	public static String Get_Preset_Input(String Text, String Preset_Input, int color, 
+			boolean print_preset_input)
 	{
 //		Game.Print(ANSI_BOLD + Color + Text + ANSI_RESET);
 		
 		 Print_Colored_Text(Text, color) ;
-		 System.out.print(Preset_Input);
+		 if (print_preset_input)
+			 System.out.print(Preset_Input);
 //		 String Answer = Get_Input(null) ;
 		
 		 Scanner myObj = new Scanner(System.in);  // Create a Scanner object
@@ -336,6 +338,7 @@ public class Game {
 		 }
 		 return Answer;
 	}
+	
 	
 	
 	

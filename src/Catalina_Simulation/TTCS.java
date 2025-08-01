@@ -130,7 +130,7 @@ public class TTCS {
 	        Integer number = random.nextInt(max - min + 1) + min;
 	        
 //	        String String_Duration = Game.Get_Preset_Input("Closed Route Duration?:  ",number.toString(),2);
-	        String String_Duration = Game.Get_Preset_Input("How long will the route be closed?: ",number.toString(),2);
+	        String String_Duration = Game.Get_Preset_Input("How long will the route be closed?: ",number.toString(),2, true);
 	        
 	        Integer Duration = Integer.parseInt(String_Duration);
 			Response.Set_Object_First(Answer_Temp_Closed.Get_Object_First());

@@ -601,7 +601,7 @@ public class TExecutive_Reasoner_Function {
 			// Current_Route and Current_Step to maintain a consistency with where beliefs need to change 
 //			Game.Print(Current_City+" - "+Current_Route+ " - "+Current_Step);
 //			Game.End_Game();
-			Game.Get_Input("");
+//			Game.Get_Input("");
 			ArrayList<Plan> Paths = new ArrayList<Plan>();
 			i = 0;
 			

@@ -194,7 +194,7 @@ public class TExecutive_Resource_Allocation {
 	//											Data1 = Game.Get_Preset_Input("Before entering the route, Do I see any obstacles?","1",2);
 												Game.Print("this.Agent.Working_Cycle: "+this.Agent.Working_Cycle);
 												Game.Print_Colored_Text("Before entering the route, Do I detect any obstacles?", 2);
-												Data1 = Game.Get_Preset_Input("Give me a number: 0 - for No, 1- for Yes.", "0", 2);
+												Data1 = Game.Get_Preset_Input("Give me a number: 0 - for No, 1- for Yes.", "0", 2, true);
 												Game.Print(Data1+ " - "+Data1.getClass());
 												if(Data1.equals("1"))
 												{
@@ -302,7 +302,7 @@ public class TExecutive_Resource_Allocation {
 	//										Data1 = Game.Get_Preset_Input("Before I continue on my path, Do I see any obstacles?","1",2);
 											Game.Print("this.Agent.Working_Cycle: "+this.Agent.Working_Cycle);
 											Game.Print_Colored_Text("Before I continue on my path, Do I detect any obstacles?", 2);
-											Data1 = Game.Get_Preset_Input("Give me a number: 0 - for No, 1- for Yes.", "0", 2);
+											Data1 = Game.Get_Preset_Input("Give me a number: 0 - for No, 1- for Yes.", "0", 2, true);
 	//										Game.Print(Data1+ " - "+Data1.getClass());
 											if(Data1.equals("1"))
 											{
@@ -530,7 +530,7 @@ public class TExecutive_Resource_Allocation {
 		Stimulus.Set_Object_Third(Postcondition_Position);
 		Game.Print("Precondition_Position: "+Precondition_Position.Get_City()+" - "+Precondition_Position.Get_Route()+ " - "+Precondition_Position.Get_Step());
 		Game.Print("Postcondition_Position: "+Postcondition_Position.Get_City()+" - "+Postcondition_Position.Get_Route()+ " - "+Postcondition_Position.Get_Step());
-		Game.Get_Input("Insert_Perception_Get_Danger_Type_on_the_Road");
+//		Game.Get_Input("Insert_Perception_Get_Danger_Type_on_the_Road");
 		//Precondition_Position.Get_Route() == -1, it means Agent is already in station and it has not to move
 //		if(Precondition_Position.Get_Route() == -1)
 //		{
@@ -602,7 +602,7 @@ public class TExecutive_Resource_Allocation {
         Integer number = random.nextInt(max - min + 1) + min;
         
 //        String String_Duration = Game.Get_Preset_Input("Closed Route Duration?:  ",number.toString(),2);
-        String String_Duration = Game.Get_Preset_Input("How long will the route "+route_number+" be closed?: ",number.toString(),2);
+        String String_Duration = Game.Get_Preset_Input("How long will the route "+route_number+" be closed?: ",number.toString(),2, true);
         
         Integer Duration = Integer.parseInt(String_Duration);
         Danger_Data.Set_Object_Third(Duration);        
@@ -646,7 +646,7 @@ public class TExecutive_Resource_Allocation {
 			Game.Print("Locomotive: "+route.Get_Locomotive()+ " - Speed: "+route.Get_Route_Speed());
 			Game.Print_Colored_Text("I don't know if I can travel the route "+route_number+". Can I travel the route  "+route_number+"?", 7);
 //			result = Game.Get_Input("Give me a number: 0 - for No, 1- for Yes.");
-			result = Game.Get_Preset_Input("Give me a number: 0 - for No, 1- for Yes.", "1", 2);
+			result = Game.Get_Preset_Input("Give me a number: 0 - for No, 1- for Yes.", "1", 2, true);
 			switch(result)
 			{
 			case "0":

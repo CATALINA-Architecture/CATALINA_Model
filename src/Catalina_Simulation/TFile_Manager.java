@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -29,6 +30,12 @@ public class TFile_Manager {
 	int Initial_Number_Green_Goals;
 	int Initial_Number_Quality_Goals;
 	int Init_Creation_Path_Travelled_for_Functional_Desire;
+	
+	
+	private Duration Difference_between_dates = null;
+	private DateTimeFormatter Default_formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+	private HashMap<String, TBelief> Map_Beliefs = new HashMap<String, TBelief>();
+	private HashMap<String, TPredicate> Map_Predicate = new HashMap<String, TPredicate>();
 	
 	private Environment Map;
 	
@@ -82,7 +89,7 @@ public class TFile_Manager {
 	
 	public void Write_Epistemic_Goals(ArrayList<TEpistemic_Standing_Desire> Epistemic_Goals)
 	{
-		String File_name = "Epistemic_Goals.cara";
+		String File_name = "Epistemic_Desires.cara";
 
 		try (FileOutputStream fileOut = new FileOutputStream(File_name);
 		     ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
@@ -96,7 +103,7 @@ public class TFile_Manager {
 	
 	public void Write_Functional_Goals(ArrayList<TFunctional_Standing_Desire> Functional_Goals)
 	{
-		String File_name = "Functional_Goals.cara";
+		String File_name = "Functional_Desires.cara";
 
 		try (FileOutputStream fileOut = new FileOutputStream(File_name);
 		     ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
@@ -110,7 +117,7 @@ public class TFile_Manager {
 	
 	public void Write_Green_Goals(ArrayList<TGreen_Standing_Desire> Green_Goals)
 	{
-		String File_name = "Green_Goals.cara";
+		String File_name = "Green_Desires.cara";
 
 		try (FileOutputStream fileOut = new FileOutputStream(File_name);
 		     ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
@@ -124,7 +131,7 @@ public class TFile_Manager {
 	
 	public void Write_Quality_Goals(ArrayList<TQuality_Standing_Desire> Quality_Goals)
 	{
-		String File_name = "Quality_Goals.cara";
+		String File_name = "Quality_Desires.cara";
 
 		try (FileOutputStream fileOut = new FileOutputStream(File_name);
 		     ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
@@ -187,7 +194,7 @@ public class TFile_Manager {
 	
 	public ArrayList<TEpistemic_Standing_Desire> Read_Epistemic_Standing_Desires()
 	{
-		String File_name = "Epistemic_Goals.cara";
+		String File_name = "Epistemic_Desires.cara";
 		ArrayList<TEpistemic_Standing_Desire> Epistemic_Goals = null;
 		try (FileInputStream fileIn = new FileInputStream(File_name);
 			     ObjectInputStream in = new ObjectInputStream(fileIn)) {
@@ -201,7 +208,7 @@ public class TFile_Manager {
 	
 	public ArrayList<TFunctional_Standing_Desire> Read_Functional_Standing_Desires()
 	{
-		String File_name = "Functional_Goals.cara";
+		String File_name = "Functional_Desires.cara";
 		ArrayList<TFunctional_Standing_Desire> Functional_Goals = null;
 		try (FileInputStream fileIn = new FileInputStream(File_name);
 			     ObjectInputStream in = new ObjectInputStream(fileIn)) {
@@ -215,7 +222,7 @@ public class TFile_Manager {
 	
 	public ArrayList<TGreen_Standing_Desire> Read_Green_Standing_Desires()
 	{ 
-		String File_name = "Green_Goals.cara";
+		String File_name = "Green_Desires.cara";
 		ArrayList<TGreen_Standing_Desire> Green_Goals = null;
 		try (FileInputStream fileIn = new FileInputStream(File_name);
 			     ObjectInputStream in = new ObjectInputStream(fileIn)) {
@@ -229,7 +236,7 @@ public class TFile_Manager {
 	
 	public ArrayList<TQuality_Standing_Desire> Read_Quality_Standing_Desires()
 	{
-		String File_name = "Quality_Goals.cara";
+		String File_name = "Quality_Desires.cara";
 		ArrayList<TQuality_Standing_Desire> Quality_Goals = null;
 		try (FileInputStream fileIn = new FileInputStream(File_name);
 			     ObjectInputStream in = new ObjectInputStream(fileIn)) {
@@ -253,26 +260,83 @@ public class TFile_Manager {
 		//Create Current Time predicate
 		/////////////////
 //		LocalDateTime ldt= LocalDateTime.now().withNano(0);
-		//LocalDateTime d = LocalDateTime.parse("  2016-10-31 23:59:59", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		LocalDateTime ldt = LocalDateTime.parse("2024-10-01 16:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		String String_Data = "";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 		
+		
+		
+		//LocalDateTime d = LocalDateTime.parse("  2016-10-31 23:59:59", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		LocalDateTime ldt = LocalDateTime.parse("2024-10-01 16:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+		Game.Print_Colored_Text("Default Start time is "+ldt.format(formatter),5);
+		
+		Game.Print_Colored_Text("Enter another date and time (in the same format) or just press Enter to use the default value: ",5);
+//		String_Data = Game.Get_Preset_Input("Insert the the start time: ",ldt.toString(),2, false);
+		String_Data = Game.Get_Preset_Input("Insert the the start time: ",ldt.format(formatter),2, false);
+		
+		
+		
+		
+		
+		
+		LocalDateTime ldt2 = LocalDateTime.parse(String_Data, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 		Predicates.add(new TPredicate( "p0", TType_Subject.Time,TType_Relationship.is, 
-				ldt));
-		Game.Print("Game starts at: "+ldt);
+				ldt2));
+		Game.Print("Game starts at time: "+ldt2.format(formatter));
+		
+		this.Difference_between_dates = Duration.between(ldt, ldt2);
 		
 		/////////////////
 		//Create Destionation predicates: 1-3
 		/////////////////
-		Predicates.add(new TPredicate( "p1", City.Paris,TType_Relationship.visited_by, 
+		
+		/// PREDICATE 1
+		Game.Print_Colored_Text("Default City to arrive for Practical Desire 1 is: Paris",5);
+		Game.Print_Colored_Text("Enter another city, the names of the cities you can enter are in the \"City\" enumeration.\n"
+				+ "Or just press Enter to use the default value: ",5);
+		City city = null;
+		String_Data = Game.Get_Preset_Input("Insert the the city: ","Paris",2, false);
+		city = City.valueOf(String_Data);
+		Game.Print("City to arrive for Practical Desire 1: "+ city);
+		
+		Predicates.add(new TPredicate( "p1", city,TType_Relationship.visited_by, 
 				TType_Object_Complement.Me));
-		Predicates.add(new TPredicate( "p2", City.Rome,TType_Relationship.visited_by, 
+		this.Map_Predicate.put(Predicates.getLast().Get_Name(),Predicates.getLast());
+		
+		
+		/// PREDICATE 2
+		Game.Print_Colored_Text("Default City to arrive for Practical Desire 2 is: Rome",5);
+		Game.Print_Colored_Text("Enter another city, the names of the cities you can enter are in the \"City\" enumeration.\n"
+				+ "Or just press Enter to use the default value: ",5);
+		String_Data = Game.Get_Preset_Input("Insert the the city: ","Rome",2, false);
+		city = City.valueOf(String_Data);
+		Game.Print("City to arrive for Practical Desire 2: "+ city);
+		
+		Predicates.add(new TPredicate( "p2", city,TType_Relationship.visited_by, 
 				TType_Object_Complement.Me));
-		Predicates.add(new TPredicate( "p3", City.Frankfurt,TType_Relationship.visited_by, 
-				TType_Object_Complement.Me));
+		this.Map_Predicate.put(Predicates.getLast().Get_Name(),Predicates.getLast());
+		
+		/// PREDICATE 3
+		Game.Print_Colored_Text("Default City to arrive for Practical Desire 3 is: Frankfurt",5);
+		Game.Print_Colored_Text("Enter another city, the names of the cities you can enter are in the \"City\" enumeration.\n"
+				+ "Or just press Enter to use the default value: ",5);
+		String_Data = Game.Get_Preset_Input("Insert the the city: ","Frankfurt",2, false);
+		city = City.valueOf(String_Data);
+		Game.Print("City to arrive for Practical Desire 3: "+ city);
 
+		Predicates.add(new TPredicate( "p3",city,TType_Relationship.visited_by, 
+				TType_Object_Complement.Me));
+		this.Map_Predicate.put(Predicates.getLast().Get_Name(),Predicates.getLast());
+		
 		/////////////////
 		//Create Trigger Condition Destionation predicates: 1-3
 		/////////////////
+		Game.Print_Colored_Text("Default City to trigger the Practical Desire 2 is: Paris",5);
+		Game.Print_Colored_Text("Enter another city, the names of the cities you can enter are in the \"City\" enumeration.\n"
+				+ "Or just press Enter to use the default value: ",5);
+		String_Data = Game.Get_Preset_Input("Insert the the city: ","Paris",2, false);
+		city = City.valueOf(String_Data);
+		Game.Print("City to arrive for Practical Desire 2: "+ city);
+		
 		this.Init_Creation_Trigger_Condition_Functional_Predicates = Predicates.size();
 		Predicates.add(new TPredicate( "p4", City.Paris,TType_Relationship.visited_by, 
 				TType_Object_Complement.Me));	
@@ -325,8 +389,8 @@ public class TFile_Manager {
 		//Station
 		City Start_Station = null;
 //		String String_Station = Game.Get_Input("Starting station: ");
-		
-		String String_Station = Game.Get_Preset_Input("Starting station:  ","Lisboa",2);
+		Game.Print_Colored_Text("The simulation starts at a specific station. You can change this station by typing its name (immediately after Lisboa) and pressing \"Enter\".",2); 
+		String String_Station = Game.Get_Preset_Input("Default Starting station:  ","Lisboa",2, true);
 		
 		Start_Station = City.valueOf(String_Station);
 		
@@ -439,10 +503,13 @@ public class TFile_Manager {
 		/////////////////
 		Beliefs.add(new TBelief("b1", "p1", false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Destination_City));
+		this.Map_Beliefs.put(Beliefs.getLast().Get_Name(), Beliefs.getLast());
 		Beliefs.add(new TBelief("b2", "p2", false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Destination_City));
+		this.Map_Beliefs.put(Beliefs.getLast().Get_Name(), Beliefs.getLast());
 		Beliefs.add(new TBelief("b3", "p3", false, TType_Object_Complement.Developer, 
 				null, TType_Beliefs.Belief_Destination_City));
+		this.Map_Beliefs.put(Beliefs.getLast().Get_Name(), Beliefs.getLast());
 		
 		
 //		/////////////////
@@ -623,7 +690,7 @@ public class TFile_Manager {
 		//These operators aren't developed in this project
 		LocalDateTime Irrelevant_Time = LocalDateTime.parse("2024-10-01 21:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		
-		Game.Print("Temporal Data of Finally Operator for Visit_Paris:");
+//		Game.Print("Temporal Data of Finally Operator for Visit_Paris:");
 		String Data1 = "";
 		String Data2 = "";
 		
@@ -631,29 +698,88 @@ public class TFile_Manager {
 //		String Data2 = Game.Get_Preset_Input("Insert the Finally End Interval. T2: ","2024-10-02 06:00:00",2);
 //		Data2 = Game.Get_Preset_Input("Insert the Finally End Interval. T2: ","2024-10-02 06:00:00",2);
 		
+		
+		//// PRACTICAL DESIRE 1
 		Data1="2024-10-01 18:00:00";
 		Data2="2024-10-02 06:00:00";
 		
 		
+		
 		LocalDateTime Fe_Data1 = LocalDateTime.parse(Data1, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		LocalDateTime Fe_Data2 = LocalDateTime.parse(Data2, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		LocalDateTime Fe_Data2= LocalDateTime.parse(Data2, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		
+		Fe_Data1 = Fe_Data1.plus(this.Difference_between_dates);
+		Fe_Data2 = Fe_Data2.plus(this.Difference_between_dates);
+		
 		
 //		LocalDateTime Fs1 = LocalDateTime.parse("2024-10-01 18:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 //		String Data0 = Game.Get_Preset_Input("Insert the Finally Start Interval for Functional Goal \"Visit_Paris\". T1: ","2024-10-01 22:00:00",2);
 //		LocalDateTime Fe_Data0 = LocalDateTime.parse(Data0, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		
 //		LocalDateTime Fe1 = LocalDateTime.parse("2024-10-02 06:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		Functional_Goals.add(new TFunctional_Standing_Desire("Visit_Paris", "b1", null,  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List1,
+		
+		Game.Print_Colored_Text("Default Start time of Finally Operator for Practical Desire 1 is:"+Fe_Data1.format(Default_formatter),5);
+		Game.Print_Colored_Text("You can insert another time, or just press Enter to use the default value: ",5);
+		Data1 = Game.Get_Preset_Input("Insert the time: ",Fe_Data1.format(Default_formatter),2, false);
+		Fe_Data1 = LocalDateTime.parse(Data1, this.Default_formatter);
+//		city = City.valueOf(String_Data);
+		Game.Print("Start time of Finally Operator for for Practical Desire 1: "+ Fe_Data1.format(Default_formatter));
+		
+		Game.Print_Colored_Text("Default End time of Finally Operator for Practical Desire 1 is:"+Fe_Data2.format(Default_formatter),5);
+		Game.Print_Colored_Text("You can insert another time, or just press Enter to use the default value: ",5);
+		Data2 = Game.Get_Preset_Input("Insert the time: ",Fe_Data2.format(Default_formatter),2, false);
+		Fe_Data2 = LocalDateTime.parse(Data2, this.Default_formatter);
+//		city = City.valueOf(String_Data);
+		Game.Print("Start time of Finally Operator for for Practical Desire 1: "+ Fe_Data2.format(Default_formatter));
+		
+		TBelief Belief = this.Map_Beliefs.get("b1");
+		TPredicate Predicate = this.Map_Predicate.get(Belief.Get_Predicate_name());
+		String Functional_Goal_Name = "Visit_"+ Predicate.Get_Subject();
+//		Game.Print("Name city: "+Predicate.Get_Subject());
+		
+//		Functional_Goals.add(new TFunctional_Standing_Desire("Visit_Paris", "b1", null,  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List1,
+//				Fe_Data1, Fe_Data2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
+		Functional_Goals.add(new TFunctional_Standing_Desire(Functional_Goal_Name, "b1", null,  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List1,
 				Fe_Data1, Fe_Data2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
 		
+		//// PRACTICAL DESIRE 2
 //		LocalDateTime Fs2 = LocalDateTime.parse("2024-10-01 10:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 //		LocalDateTime Fe2 = LocalDateTime.parse("2024-10-01 15:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		LocalDateTime Fs2 = LocalDateTime.parse("2024-10-02 10:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		LocalDateTime Fe2_1 = LocalDateTime.parse("2024-10-02 13:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-
-		Functional_Goals.add(new TFunctional_Standing_Desire("Visit_Rome", "b2", "p4", 0.8, 40.0, 0.1, Green_Goals_List,
-				Quality_Goals_List2, Fs2, Fe2_1, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
+//		LocalDateTime Fs2 = LocalDateTime.parse("2024-10-02 10:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//		LocalDateTime Fe2_1 = LocalDateTime.parse("2024-10-02 13:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		Fe_Data1 = LocalDateTime.parse("2024-10-02 10:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		Fe_Data2 = LocalDateTime.parse("2024-10-02 13:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		
+		Fe_Data1 = Fe_Data1.plus(this.Difference_between_dates);
+		Fe_Data2 = Fe_Data2.plus(this.Difference_between_dates);
+		
+		Game.Print_Colored_Text("Default Start time of Finally Operator for Practical Desire 2 is:"+Fe_Data1.format(Default_formatter),5);
+		Game.Print_Colored_Text("You can insert another time, or just press Enter to use the default value: ",5);
+		Data1 = Game.Get_Preset_Input("Insert the time: ",Fe_Data1.format(Default_formatter),2, false);
+		Fe_Data1 = LocalDateTime.parse(Data1, this.Default_formatter);
+//		city = City.valueOf(String_Data);
+		Game.Print("Start time of Finally Operator for for Practical Desire 2: "+ Fe_Data1.format(Default_formatter));
+		
+		Game.Print_Colored_Text("Default End time of Finally Operator for Practical Desire 2 is:"+Fe_Data2.format(Default_formatter),5);
+		Game.Print_Colored_Text("You can insert another time, or just press Enter to use the default value: ",5);
+		Data2 = Game.Get_Preset_Input("Insert the time: ",Fe_Data2.format(Default_formatter),2, false);
+		Fe_Data2 = LocalDateTime.parse(Data2, this.Default_formatter);
+//		city = City.valueOf(String_Data);
+		Game.Print("End time of Finally Operator for for Practical Desire 2: "+ Fe_Data2.format(Default_formatter));
+		
+		Belief = this.Map_Beliefs.get("b2");
+		Predicate = this.Map_Predicate.get(Belief.Get_Predicate_name());
+		Functional_Goal_Name = "Visit_"+ Predicate.Get_Subject();
+		
+		
+
+//		Functional_Goals.add(new TFunctional_Standing_Desire("Visit_Rome", "b2", "p4", 0.8, 40.0, 0.1, Green_Goals_List,
+//				Quality_Goals_List2, Fe_Data1, Fe_Data2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
+		Functional_Goals.add(new TFunctional_Standing_Desire(Functional_Goal_Name, "b2", "p4", 0.8, 40.0, 0.1, Green_Goals_List,
+				Quality_Goals_List2, Fe_Data1, Fe_Data2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
+		
+		
+		//// PRACTICAL DESIRE 3
 		LocalDateTime Fs3 = LocalDateTime.parse("2024-10-01 21:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		
 //		Game.Print_Colored_Text("Insert the Finally Interval. Format string is: 2024-10-01 23:00:00", 2);
@@ -671,8 +797,35 @@ public class TFile_Manager {
 		Fe_Data2 = LocalDateTime.parse(Data2, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 //		LocalDateTime Fe3 = LocalDateTime.parse("2024-10-01 23:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 		
-		LocalDateTime Fe3 = LocalDateTime.parse("2024-10-01 23:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		Functional_Goals.add(new TFunctional_Standing_Desire("Visit_Frankfurt", "b3", null,  0.4, 40.0, 0.1, Green_Goals_List, Quality_Goals_List1,
+		Fe_Data1 = LocalDateTime.parse("2024-10-02 14:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		Fe_Data2 = LocalDateTime.parse("2024-10-02 16:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		
+		Fe_Data1 = Fe_Data1.plus(this.Difference_between_dates);
+		Fe_Data2 = Fe_Data2.plus(this.Difference_between_dates);
+		
+		Game.Print_Colored_Text("Default Start time of Finally Operator for Practical Desire 3 is:"+Fe_Data1.format(Default_formatter),5);
+		Game.Print_Colored_Text("You can insert another time, or just press Enter to use the default value: ",5);
+		Data1 = Game.Get_Preset_Input("Insert the time: ",Fe_Data1.format(Default_formatter),2, false);
+		Fe_Data1 = LocalDateTime.parse(Data1, this.Default_formatter);
+//		city = City.valueOf(String_Data);
+		Game.Print("Start time of Finally Operator for for Practical Desire 3: "+ Fe_Data1.format(Default_formatter));
+		
+		Game.Print_Colored_Text("Default End time of Finally Operator for Practical Desire 3 is:"+Fe_Data2.format(Default_formatter),5);
+		Game.Print_Colored_Text("You can insert another time, or just press Enter to use the default value: ",5);
+		Data2 = Game.Get_Preset_Input("Insert the time: ",Fe_Data2.format(Default_formatter),2, false);
+		Fe_Data2 = LocalDateTime.parse(Data2, this.Default_formatter);
+//		city = City.valueOf(String_Data);
+		Game.Print("End time of Finally Operator for for Practical Desire 3: "+ Fe_Data2.format(Default_formatter));
+		
+		Belief = this.Map_Beliefs.get("b3");
+		Predicate = this.Map_Predicate.get(Belief.Get_Predicate_name());
+		Functional_Goal_Name = "Visit_"+ Predicate.Get_Subject();
+		
+		
+//		LocalDateTime Fe3 = LocalDateTime.parse("2024-10-01 23:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//		Functional_Goals.add(new TFunctional_Standing_Desire("Visit_Frankfurt", "b3", null,  0.4, 40.0, 0.1, Green_Goals_List, Quality_Goals_List1,
+//				Fe_Data1, Fe_Data2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
+		Functional_Goals.add(new TFunctional_Standing_Desire(Functional_Goal_Name, "b3", null,  0.4, 40.0, 0.1, Green_Goals_List, Quality_Goals_List1,
 				Fe_Data1, Fe_Data2, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time, Irrelevant_Time));
 		
 		//TFunctional_Goal func1 = new TFunctional_Goal("g1", "b1", null,  0.5, 40.0, 0.1, Green_Goals_List, Quality_Goals_List);
