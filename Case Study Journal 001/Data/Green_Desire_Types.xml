@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Green_Desire_Types>
+  <Green_Desire_Type>
+    <Green_Desire_Name>GDT_Limited_Pollution_to</Green_Desire_Name>
+    <Description>A Green Desire that wants to limit the average pollution on a Path
+</Description>
+  </Green_Desire_Type>
+</Green_Desire_Types>

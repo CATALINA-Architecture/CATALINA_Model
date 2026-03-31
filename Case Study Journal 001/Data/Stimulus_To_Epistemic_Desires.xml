@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Stimulus_To_Epistemic_Desires>
+  <Stimulus_To_Epistemic_Desire>
+    <Belief_Type>BLTS_Stimulus_Danger_on_the_Route</Belief_Type>
+    <Function_Name>Generate_ED_to_Understand_Danger_on_the_Route</Function_Name>
+    <Checked>0</Checked>
+    <Description>It generate an epistemic desire to understand the type of the danger on the route and how much time the route is temporary closed</Description>
+  </Stimulus_To_Epistemic_Desire>
+</Stimulus_To_Epistemic_Desires>

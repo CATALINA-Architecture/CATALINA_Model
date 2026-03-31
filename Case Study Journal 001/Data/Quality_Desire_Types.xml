@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Quality_Desire_Types>
+  <Quality_Desire_Type>
+    <Quality_Desire_Name>QDT_Panorama_is_Great</Quality_Desire_Name>
+    <Description>A Quality Desire that prefers to travel the Path with moderate Speeds.
+</Description>
+  </Quality_Desire_Type>
+  <Quality_Desire_Type>
+    <Quality_Desire_Name>QDT_Velocity_is_Moderate</Quality_Desire_Name>
+    <Description>A Quality Desire that prefers to travel the Path with moderate Speeds.
+</Description>
+  </Quality_Desire_Type>
+</Quality_Desire_Types>

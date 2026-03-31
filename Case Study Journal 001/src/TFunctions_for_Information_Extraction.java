@@ -1,0 +1,139 @@
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import com.Catalina_Model.Catalina_V_0_3.TBelief;
+import com.Catalina_Model.Catalina_V_0_3.TExecutive_Memory_Maintenance_Function;
+import com.Catalina_Model.Catalina_V_0_3.TExecutive_Perception_Function;
+import com.Catalina_Model.Catalina_V_0_3.TInformation_Extraction_old;
+import com.Catalina_Model.Catalina_V_0_3.TPerception;
+import com.Catalina_Model.Catalina_V_0_3.TPredicate;
+import com.Catalina_Model.Catalina_V_0_3.TRegion;
+import com.Catalina_Model.Catalina_V_0_3.TStimulus;
+
+public class TFunctions_for_Information_Extraction 
+{
+	public HashSet<String> Sensors;
+	private Autonomous_Vehicle_Demo Demo;
+	private TCommon_Functions Common_Functions;
+	
+	public TFunctions_for_Information_Extraction(Autonomous_Vehicle_Demo demo)
+	{
+		this.Demo = demo;
+		this.Common_Functions = demo.Common_Functions;
+	}
+	
+	public ArrayList<TStimulus> Manage_Positions_Acquired( TPerception Perception, ArrayList<TBelief> Beliefs,
+    		ArrayList<TRegion> Regions )
+	{
+
+		return null;
+	}
+	
+	public ArrayList<TStimulus> Manage_Stimulus_Danger_on_the_Route( TPerception Perception, ArrayList<TBelief> Beliefs,
+    		ArrayList<TRegion> Regions )
+	{
+		ArrayList<TStimulus> Stimuli = new ArrayList<TStimulus>();
+
+		HashSet<String> Types_to_Consider = new HashSet<String>();
+		Types_to_Consider.add( "BLTS_Stimulus_Danger_on_the_Route" );
+		Types_to_Consider.add( "BLT_Position_City" );
+		Types_to_Consider.add( "BLT_Position_Route" );
+		Types_to_Consider.add( "BLT_Position_Step" );
+//		TStimulus Stimulus = (TStimulus)Beliefs.stream() // 1. Crea uno stream
+//	            						.filter(belief -> belief.getType_Belief().equals()) // 2. Filtra per tipo
+//	            						.findFirst() // 3. Prendi il primo risultato (e si ferma qui)
+//	            						.orElse(null); // 4. Se non trova nulla, restituisce null
+		
+		HashMap<String, TBelief> Useful_Belief = (HashMap<String, TBelief>) Beliefs.stream() // 1. Crea lo stream
+	            
+									            // 2. FILTRA: Tieni solo i belief il cui tipo
+									            //    è PRESENTE nel Set 'tipiDaCercare'
+									            .filter(belief -> Types_to_Consider.contains(belief.Get_Type_Belief() )
+									            		)
+									            // 3. Raccogli in una Mappa (ID -> Oggetto)
+									            .collect(Collectors.toMap(
+									                TBelief::Get_Type_Belief,
+									                Function.identity()
+									            ));
+		
+		TStimulus Stimulus = (TStimulus) Useful_Belief.get( "BLTS_Stimulus_Danger_on_the_Route" );
+		TBelief Belief_Route =  Useful_Belief.get( "BLT_Position_Route" );
+		
+		int Route_Position = -1;
+		if( Belief_Route != null)
+		{
+			Route_Position = (int) Belief_Route.Get_Predicate().Get_Object_Complement();			
+		}
+		else
+		{
+			this.Common_Functions.Print_Colored_Text(
+					"An Error occours in 'Manage_Stimulus_Danger_on_the_Route' when AV gets "
+					+ "the BLT_Position_Route.", 2);
+		}
+		
+		/***
+		 * 		
+		 */
+		TBelief Belief_Step=  Useful_Belief.get( "BLT_Position_Step" );
+		
+		int Step_Position = -1;
+		if( Belief_Step != null)
+		{
+			Step_Position = (int) Belief_Step.Get_Predicate().Get_Object_Complement();			
+		}
+		else
+		{
+			this.Common_Functions.Print_Colored_Text(
+					"An Error occours in 'Manage_Stimulus_Danger_on_the_Route' when AV gets "
+					+ "the BLT_Position_Step.", 2);
+		}
+		
+		TBelief Belief_City=  Useful_Belief.get( "BLT_Position_City" );
+		
+		int City_Position = -1;
+		if( Belief_City != null)
+		{
+//			this.Common_Functions.Print(Belief_City.Get_Predicate().Get_Object_Complement().getClass());
+			City_Position = (Integer) Belief_City.Get_Predicate().Get_Object_Complement();			
+		}
+		else
+		{
+			this.Common_Functions.Print_Colored_Text(
+					"An Error occours in 'Manage_Stimulus_Danger_on_the_Route' when AV gets "
+					+ "the BLT_Position_City.", 2);
+		}
+		
+		
+		if( Stimulus != null)
+		{
+			ArrayList<Integer> Positions = new ArrayList<Integer>();
+			Positions.add(City_Position);
+			Positions.add(Route_Position);
+			Positions.add(Step_Position);
+			TPredicate Predicate = Stimulus.Get_Predicate();
+//			Predicate.Set_Subject( Route_Position );
+			Predicate.Set_Subject( Positions );
+			Stimuli.add( Stimulus );
+		}
+		else
+		{
+			this.Common_Functions.Print_Colored_Text(
+					"An Error occours in 'Manage_Stimulus_Danger_on_the_Route' when AV gets "
+					+ "the Stimulus.", 2);
+		}
+//		System.out.println("Generated Stimulus: "+Stimulus.Get_Name());
+        return Stimuli;
+	}
+	
+	public void Add_Function_To_Information_Extraction(TExecutive_Perception_Function MMF)
+	{
+		MMF.Register_Information_Extraction_Function("Front_Virtual_Camera", this::Manage_Stimulus_Danger_on_the_Route);
+//		Manage_Positions_Acquired
+	}
+
+}

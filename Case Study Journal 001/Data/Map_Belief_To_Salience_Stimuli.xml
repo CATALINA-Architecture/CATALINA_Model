@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map_Belief_To_Salience_Stimuli>
+  <Map_Belief_To_Salience_Stimulus>
+    <Belief_Type>BLTS_Stimulus_Danger_on_the_Route</Belief_Type>
+    <Value>0,90</Value>
+    <Checked>-1</Checked>
+    <Description>This Stimulus arises an Epistemic Desire to understand the kind of danger that is on the road</Description>
+  </Map_Belief_To_Salience_Stimulus>
+</Map_Belief_To_Salience_Stimuli>

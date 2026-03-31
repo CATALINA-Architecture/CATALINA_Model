@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Plan_Executive_Functions>
+  <Plan_Executive_Function>
+    <Green_Name>Ask Danger Type on the road</Green_Name>
+    <Function_Name>Handle_Ask_Danger_Type_on_the_road</Function_Name>
+    <Checked>-1</Checked>
+    <Description>Ask to Traffic Control Service the type and duration of the danger on the road.
+This function gives a TDouble_Object:
+0- true or false;
+1- Data: [Integer Duration, TType_Danger Type_Danger]</Description>
+  </Plan_Executive_Function>
+  <Plan_Executive_Function>
+    <Green_Name>GO_TO_Route</Green_Name>
+    <Function_Name>Execute_Movement_Go_TO_Route</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
+  </Plan_Executive_Function>
+  <Plan_Executive_Function>
+    <Green_Name>GO_TO_Step</Green_Name>
+    <Function_Name>Execute_Movement</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
+  </Plan_Executive_Function>
+  <Plan_Executive_Function>
+    <Green_Name>Come_Back_to_City</Green_Name>
+    <Function_Name>Execute_Movement</Function_Name>
+    <Checked>0</Checked>
+    <Description></Description>
+  </Plan_Executive_Function>
+  <Plan_Executive_Function>
+    <Green_Name>Stay_in_Station</Green_Name>
+    <Function_Name>Execute_Movement</Function_Name>
+    <Checked>0</Checked>
+    <Description></Description>
+  </Plan_Executive_Function>
+  <Plan_Executive_Function>
+    <Green_Name>See Route Status</Green_Name>
+    <Function_Name>Acquire_Route_Status</Function_Name>
+    <Checked>0</Checked>
+    <Description></Description>
+  </Plan_Executive_Function>
+  <Plan_Executive_Function>
+    <Green_Name>Initialize_Way</Green_Name>
+    <Function_Name>Execute_Initialize_Way</Function_Name>
+    <Checked>-1</Checked>
+    <Description>Initialize the entering on a route</Description>
+  </Plan_Executive_Function>
+  <Plan_Executive_Function>
+    <Green_Name>Wait</Green_Name>
+    <Function_Name>Execute_Wait</Function_Name>
+    <Checked>-1</Checked>
+    <Description>The AV waits for a lot time untill the route is Green and so avaible</Description>
+  </Plan_Executive_Function>
+  <Plan_Executive_Function>
+    <Green_Name>Reverse_Direction</Green_Name>
+    <Function_Name>Execute_Reverse_Direction</Function_Name>
+    <Checked>-1</Checked>
+    <Description>This action reverses the direction of the AV</Description>
+  </Plan_Executive_Function>
+</Plan_Executive_Functions>

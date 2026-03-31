@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Quality_Desires>
+  <Quality_Desire>
+    <Quality_Desire_Name>QD_Panorama_is_Great</Quality_Desire_Name>
+    <Quality_Desire_Type>QDT_Panorama_is_Great</Quality_Desire_Type>
+    <Constraint>PRQ_Panorama_is_Great</Constraint>
+    <Saliency>0,6</Saliency>
+    <Reward>0,3</Reward>
+    <Relax_Preference>0,2</Relax_Preference>
+    <Satisfied>0</Satisfied>
+    <Description>The Quality Desire that wants to prefer to travel the Path with the highest Panorama</Description>
+  </Quality_Desire>
+  <Quality_Desire>
+    <Quality_Desire_Name>QD_Velocity_is_Moderate</Quality_Desire_Name>
+    <Quality_Desire_Type>QDT_Velocity_is_Moderate</Quality_Desire_Type>
+    <Constraint>PRQ_Velocity_is_Moderate</Constraint>
+    <Saliency>0,7</Saliency>
+    <Reward>0,4</Reward>
+    <Relax_Preference>0,1</Relax_Preference>
+    <Satisfied>0</Satisfied>
+    <Description>The Quality Desire that prefers to travel the Path with moderate Speeds.</Description>
+  </Quality_Desire>
+</Quality_Desires>

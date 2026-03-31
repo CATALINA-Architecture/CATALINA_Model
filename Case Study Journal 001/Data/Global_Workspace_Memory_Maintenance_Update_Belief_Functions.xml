@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Global_Workspace_Memory_Maintenance_Update_Belief_Functions>
+  <Global_Workspace_Memory_Maintenance_Update_Belief_Function>
+    <Belief_Type>BLTS_Stimulus_Danger_on_the_Route</Belief_Type>
+    <Function_Name>Update_Normal_Belief_from_BLTS_Stimulus_Danger_on_the_Route</Function_Name>
+    <Checked>-1</Checked>
+    <Description>It updates any Belief linked to Stimulus "BLTS_Stimulus_Danger_on_the_Route"</Description>
+  </Global_Workspace_Memory_Maintenance_Update_Belief_Function>
+</Global_Workspace_Memory_Maintenance_Update_Belief_Functions>

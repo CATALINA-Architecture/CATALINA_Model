@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Belief_Lists>
+  <Belief_List>
+    <List_Name>Beliefs_For_Reasoner_Destination_City</List_Name>
+    <Beliefs>
+      <Belief>BL_Closed_Routes</Belief>
+      <Belief>BL_Come_Back_to_City</Belief>
+      <Belief>BL_Current_Time</Belief>
+      <Belief>BL_Danger_on_the_Route</Belief>
+      <Belief>BL_Dangerous_Position_Route</Belief>
+      <Belief>BL_Map</Belief>
+      <Belief>BL_Next_Position_City</Belief>
+      <Belief>BL_Next_Position_Route</Belief>
+      <Belief>BL_Next_Position_Step</Belief>
+      <Belief>BL_Position_City</Belief>
+      <Belief>BL_Position_Route</Belief>
+      <Belief>BL_Position_Step</Belief>
+      <Belief>BL_Previous_Position_City</Belief>
+      <Belief>BL_Previous_Position_Route</Belief>
+      <Belief>BL_Previous_Position_Step</Belief>
+      <Belief>BL_Routes_performed_for_each_Practical_Desires</Belief>
+      <Belief>BL_Temporary_Closed_Routes</Belief>
+      <Belief>ST_Stimulus_Danger_on_the_Route</Belief>
+      <Belief>ST_Stimulus_Irrelevant</Belief>
+      <Belief>ST_Stimulus_Ok_Correct_Movement</Belief>
+      <Belief>ST_Stimulus_Route_Status</Belief>
+      <Belief>ST_Stimulus_Temporary_Closed_Route</Belief>
+    </Beliefs>
+    <Description></Description>
+  </Belief_List>
+</Belief_Lists>

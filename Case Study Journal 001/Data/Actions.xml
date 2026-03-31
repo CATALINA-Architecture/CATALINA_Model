@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actions>
+  <Action>
+    <Action_Name>Ask Danger Type on the road</Action_Name>
+    <Description>Ask the Danger Type and how much time the route is closed
+</Description>
+  </Action>
+  <Action>
+    <Action_Name>Come_Back_to_City</Action_Name>
+    <Description></Description>
+  </Action>
+  <Action>
+    <Action_Name>GO_TO_Route</Action_Name>
+    <Description></Description>
+  </Action>
+  <Action>
+    <Action_Name>GO_TO_Step</Action_Name>
+    <Description></Description>
+  </Action>
+  <Action>
+    <Action_Name>Initialize_Way</Action_Name>
+    <Description></Description>
+  </Action>
+  <Action>
+    <Action_Name>Reverse_Direction</Action_Name>
+    <Description>Reverse direction using the parallel direction in same route. In case study it has a different number route.
+</Description>
+  </Action>
+  <Action>
+    <Action_Name>See Route Status</Action_Name>
+    <Description></Description>
+  </Action>
+  <Action>
+    <Action_Name>Stay_in_Station</Action_Name>
+    <Description></Description>
+  </Action>
+  <Action>
+    <Action_Name>Wait</Action_Name>
+    <Description></Description>
+  </Action>
+</Actions>

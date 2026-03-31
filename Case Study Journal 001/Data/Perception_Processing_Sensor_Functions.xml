@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Perception_Processing_Sensor_Functions>
+  <Perception_Processing_Sensor_Function>
+    <Sensor_Name>Front_Virtual_Camera</Sensor_Name>
+    <Function_Name>See_Road_in_Front</Function_Name>
+    <Checked>-1</Checked>
+    <Description>The Agent turns on the Virtual Camera (a request for an input to user) to understand if a danger is on the route in fron to the Agent.
+Format Perceived Data: [ 
+1- String "Danger on the route!",
+2- TPosition_Train_Coords Precondition_Position
+3- TPosition_Train_Coords Postcondition_Position
+]</Description>
+  </Perception_Processing_Sensor_Function>
+  <Perception_Processing_Sensor_Function>
+    <Sensor_Name>Me</Sensor_Name>
+    <Function_Name>Undestand</Function_Name>
+    <Checked>0</Checked>
+    <Description>dslfkdslfksdlfjldskfdl</Description>
+  </Perception_Processing_Sensor_Function>
+  <Perception_Processing_Sensor_Function>
+    <Sensor_Name>GPS</Sensor_Name>
+    <Function_Name>Get_Current_Position_from_GPS</Function_Name>
+    <Checked>-1</Checked>
+    <Description>Get current Position:
+1- City: Integer
+2- Route: Integer
+3- Step: Integer</Description>
+  </Perception_Processing_Sensor_Function>
+</Perception_Processing_Sensor_Functions>

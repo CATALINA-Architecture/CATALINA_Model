@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Information_Extraction_Functions>
+  <Information_Extraction_Function>
+    <Sensor_Name>Front_Virtual_Camera</Sensor_Name>
+    <Function_Name>Manage_Stimulus_Danger_on_the_Route</Function_Name>
+    <Checked>-1</Checked>
+    <Description>It analyze the perception of a possibile danger on the route, the agent has to investigate. It can genererate a Stimulus to arise an Epistemic Desire
+Predicate Format of the Stimulus: 
+[[Integer City, Integer, Route, Integer Step], is, String "Damaged"]</Description>
+  </Information_Extraction_Function>
+  <Information_Extraction_Function>
+    <Sensor_Name>GPS</Sensor_Name>
+    <Function_Name>Manage_Positions_Acquired</Function_Name>
+    <Checked>0</Checked>
+    <Description></Description>
+  </Information_Extraction_Function>
+</Information_Extraction_Functions>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Green_Desires>
+  <Green_Desire>
+    <Green_Desire_Name>GD_Limited_Pollution_to_0.8</Green_Desire_Name>
+    <Green_Desire_Type>GDT_Limited_Pollution_to</Green_Desire_Type>
+    <Constraint>PRG_Limited_Pollution_to_0.8</Constraint>
+    <Saliency>0,7</Saliency>
+    <Reward>0,3</Reward>
+    <Relax_Preference>0,1</Relax_Preference>
+    <Fee>0,5</Fee>
+    <Satisfied>0</Satisfied>
+    <Description>The Green Desire that wants to limit AV pollution average to 0.8 on a Path to be traveled</Description>
+  </Green_Desire>
+</Green_Desires>

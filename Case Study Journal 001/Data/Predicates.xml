@@ -1,0 +1,1968 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Predicates>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Amsterdam</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Amsterdam</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Ancora</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Ancora</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Athina</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Athina</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Barcelona</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Barcelona</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Berlin</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Berlin</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Brest</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Brest</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Brindisi</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Brindisi</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Bruxelles</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Bruxelles</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Bucaresti</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Bucaresti</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Budapest</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Budapest</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Cadiz</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Cadiz</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Costantinople</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Costantinople</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Danzic</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Danzic</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Dieppe</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Dieppe</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Edinburgh</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Edinburgh</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Erzurum</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Erzurum</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Essen</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Essen</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Frankfurt</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Frankfurt</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Kharkov</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Kharkov</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Kodenilavn</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Kodenilavn</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Kyiv</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Kyiv</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Lisboa</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Lisboa</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_London</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>London</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Madrid</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Madrid</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>true</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Marseille</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Marseille</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Moskva</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Moskva</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Munchen</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Munchen</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Palermo</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Palermo</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Pamplona</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Pamplona</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Paris</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Paris</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Petrocrad</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Petrocrad</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Rica</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Rica</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Rome</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Rome</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Rostow</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Rostow</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Sarajevo</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Sarajevo</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Savastopol</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Savastopol</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Smolensk</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Smolensk</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Smyrna</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Smyrna</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Sochi</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Sochi</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Sofia</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Sofia</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Stockholm</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Stockholm</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Venice</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Venice</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Warszawa</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Warszawa</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Wien</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Wien</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Wilno</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Wilno</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Zacrab</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Zacrab</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_City_Visited_Zurich</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Zurich</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Closed_Routes</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Closed Routes</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>The Predicate in which the agent stores routes that are temporarily closed.
+In this version (0.3) the Predicate is: ["Closed Routes", is, HashSet&lt;int Route&gt;].
+In previous version the predicate was: [ArrayList&lt;int Route&gt;, is_Closed, null]</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Come_Back_to_City</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>-1</Object_Complement_Value>
+    <Description>The predicate that says that the Agent has to go to a city
+this Version (0.3): [String "Me", is, int city]
+Previous Version: [Me, go/goes, int city]</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Current_Time</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>DateTime</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Time</Object_Complement_Type>
+    <Object_Complement_Value>2024-02-09T16:00:00.000</Object_Complement_Value>
+    <Description>Trigger Condition for The Agent has to go to Frankfurt</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Danger_on_the_Route</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>-1</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>The Route has a type of danger
+This Version (0.3): [int route, is, String TType_Danger (Unknown, Roks_on_the_Road, Car_Accident_on_the_Road)]
+Previous versions: [int route, has_a_Danger, TType_Danger (Unknown, Roks_on_the_Road, Car_Accident_on_the_Road)]</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Dangerous_Position_Route</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>-1</Object_Complement_Value>
+    <Description>The position route where the danger is</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Initial_Position_City</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Madrid</Object_Complement_Value>
+    <Description>The Initial City position in a route where the Agent is.</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Map</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Map</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>The map of the environment in which the agent moves. The Objec_Complement is the map (TEnvironment)</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Next_Position_City</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>0</Object_Complement_Value>
+    <Description>The Next City position in a route where the Agent is.</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Next_Position_Route</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>0</Object_Complement_Value>
+    <Description>The NextRoute position where the Agent is. If it is 0, it means that the Agent is in a City</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Next_Position_Step</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>0</Object_Complement_Value>
+    <Description>The Next Step position in a route where the Agent is. If it is 0, it means that the Agent is in a City</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Numbered_City</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>57</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Predicate for the correspondence between city names and numbers
+Format Predicate: [ String "Correspondence_City_Number", is,
+Double_Object[ HashMap&lt;int, string&gt;, HashMap&lt;string, int&gt;</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Path_Taken_For_Destination_Frankfurt</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Frankfurt</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>All traveled routes to arrive in Frankfurt</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Path_Taken_For_Destination_Paris</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Paris</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>All traveled routes to arrive in Paris</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Path_Taken_For_Destination_Rome</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Rome</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>All traveled routes to arrive in Rome</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Position_City</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>1</Object_Complement_Value>
+    <Description>The City position in a route where the Agent is.
+The Integer is the City position on the map. You can see the corrispondence in enumeration TCity</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Position_Route</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>-1</Object_Complement_Value>
+    <Description>The Route position where the Agent is. If it is -1, it means that the Agent is in a City</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Position_Step</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>0</Object_Complement_Value>
+    <Description>The Step position in a route where the Agent is. If it is -1, it means that the Agent is in a City</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Previous_Position_City</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>0</Object_Complement_Value>
+    <Description>The Previous City position in a route where the Agent is.</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Previous_Position_Route</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>0</Object_Complement_Value>
+    <Description>The Previous Route position where the Agent is. If it is 0, it means that the Agent is in a City</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Previous_Position_Step</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>0</Object_Complement_Value>
+    <Description>The Previous Step position in a route where the Agent is. If it is 0, it means that the Agent is in a City</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_0</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>0</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_1</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>1</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_10</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>10</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_100</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>100</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_101</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>101</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_102</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>102</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_103</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>103</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_104</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>104</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_105</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>105</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_106</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>106</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_107</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>107</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_108</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>108</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_109</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>109</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_11</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>11</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_110</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>110</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_111</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>111</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_112</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>112</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_113</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>113</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_114</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>114</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_115</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>115</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_116</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>116</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_117</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>117</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_118</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>118</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_119</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>119</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_12</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>12</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_120</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>120</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_121</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>121</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_122</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>122</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_123</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>123</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_124</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>124</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_125</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>125</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_126</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>126</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_127</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>127</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_128</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>128</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_129</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>129</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_13</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>13</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_130</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>130</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_131</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>131</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_132</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>132</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_14</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>14</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_15</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>15</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_16</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>16</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_17</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>17</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_18</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>18</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_19</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>19</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_2</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>2</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_20</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>20</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_21</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>21</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_22</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>22</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_23</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>23</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_24</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>24</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_25</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>25</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_26</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>26</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_27</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>27</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_28</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>28</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_29</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>29</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_3</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>3</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_30</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>30</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_31</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>31</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_32</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>32</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_33</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>33</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_34</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>34</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_35</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>35</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_36</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>36</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_37</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>37</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_38</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>38</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_39</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>39</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_4</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>4</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_40</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>40</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_41</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>41</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_42</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>42</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_43</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>43</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_44</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>44</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_45</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>45</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_46</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>46</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_47</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>47</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_48</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>48</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_49</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>49</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_5</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>5</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_50</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>50</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_51</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>51</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_52</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>52</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_53</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>53</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_54</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>54</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_55</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>55</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_56</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>56</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_57</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>57</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_58</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>58</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_59</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>59</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_6</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>6</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_60</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>60</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_61</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>61</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_62</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>62</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_63</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>63</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_64</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>64</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_65</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>65</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_66</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>66</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_67</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>67</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_68</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>68</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_69</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>69</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_7</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>7</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_70</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>70</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_71</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>71</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_72</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>72</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_73</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>73</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_74</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>74</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_75</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>75</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_76</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>76</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_77</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>77</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_78</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>78</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_79</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>79</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_8</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>8</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_80</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>80</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_81</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>81</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_82</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>82</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_83</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>83</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_84</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>84</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_85</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>85</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_86</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>86</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_87</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>87</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_88</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>88</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_89</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>89</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_9</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>9</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_90</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>90</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_91</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>91</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_92</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>92</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_93</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>93</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_94</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>94</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_95</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>95</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_96</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>96</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_97</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>97</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_98</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>98</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Route_Status_99</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>99</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Green</Object_Complement_Value>
+    <Description>Tthis is a predicate of status of a Route Untill this version (0.3) , it is: [Int Route, is, String Type_Route_Status]. The Type_Route_Status can be (Unknown, Red, Green, Free, Used, Under_maintenance).</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Routes_performed_for_each_Practical_Desires</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Routes Performed</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>The Routes performed for each Practical Desires. The object complement is an HashMap&lt;String, TDouble_Object ([ArrayList&lt;TDouble&gt;, ArrayList&lt;TimeStamp&gt;])&gt;</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Temporary_Closed_Routes</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Temporary Closed Routes</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>The Predicate in which the agent stores routes that are temporarily closed.
+In this version (0.3) the Predicate is: ["Temporary Closed Routes", is, HashMap&lt;int Route, HashMap&lt;int Step, int duration&gt;&gt;].
+In previous version the predicate was: [HashMap&lt;int Route, int duration&gt;, is_Temporary_Closed, nul]</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRG_Limited_Pollution_to_0.8</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Pollution</Subject_Value>
+    <Relationship_Type>minor_equal</Relationship_Type>
+    <Object_Complement_Type>Double</Object_Complement_Type>
+    <Object_Complement_Value>100</Object_Complement_Value>
+    <Description>The Green Desire predicate that limits AV pollution to 0.8 average on a Path to be followed</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRP_Come_Back_to_City</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>-1</Object_Complement_Value>
+    <Description>The Aget wants to return to previous City.
+This version (0.3): [String "Me", is, int city]
+Previous versions: [String "Me", go/goes, int city]</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRP_Destination_Cadiz</Predicate_Name>
+    <Subject_Type>Belief</Subject_Type>
+    <Subject_Value>BL_Position_City</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Cadiz</Object_Complement_Value>
+    <Description>The Agent is in Cadiz</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRP_Destination_Frankfurt</Predicate_Name>
+    <Subject_Type>Belief</Subject_Type>
+    <Subject_Value>BL_Position_City</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Frankfurt</Object_Complement_Value>
+    <Description>The Agent is in Frankfurt</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRP_Destination_Paris</Predicate_Name>
+    <Subject_Type>Belief</Subject_Type>
+    <Subject_Value>BL_Position_City</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Paris</Object_Complement_Value>
+    <Description>The Agent is in Paris</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRP_Destination_Rome</Predicate_Name>
+    <Subject_Type>Belief</Subject_Type>
+    <Subject_Value>BL_Position_City</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Rome</Object_Complement_Value>
+    <Description>The Agent is in Rome</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRQ_Panorama_is_Great</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Panorama</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Highest</Object_Complement_Value>
+    <Description>The Quality Desire predicate that prefers to follow the Path with the highest Panorama</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRQ_Velocity_is_Moderate</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Speed</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Double</Object_Complement_Type>
+    <Object_Complement_Value>70</Object_Complement_Value>
+    <Description>The Quality Desire predicate that prefers to follow the Path with moderate Speeds.
+The double value is in km/h</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRS_Stimulus_Danger_on_the_Route</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>-1</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Damaged</Object_Complement_Value>
+    <Description>A danger has been perceived on the route, the agent has to investigate
+It arises an Epistemic Desire
+Predicate Format: [[Integer City, Integer, Route, Integer Step], is, String "Damaged"]</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRS_Stimulus_Irrelevant</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>"Me"</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>false</Object_Complement_Value>
+    <Description>This predicate says that tha agent perceived an irrelevant stimulus</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRS_Stimulus_Ok_Correct_Movement</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>The Stimulus predicate says the last movement is ok.
+Format Predicate: [String "Me", is, Double_Object [int Route, int step]]</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRS_Stimulus_Route_Status</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>-1</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>String</Object_Complement_Type>
+    <Object_Complement_Value>Unknown</Object_Complement_Value>
+    <Description>This predicate says that the status of a route is changed.
+If it is in a not inhibited regions it raises an Epistemic Desire.
+Predicate Format: [int Route, is, String of (Unknown, Red, Green, Free, Used, 	Under_maintenance)]</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRS_Stimulus_Temporary_Closed_Route</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>-1</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>0</Object_Complement_Value>
+    <Description>This predicate is used to signal that from a certain step a route is temporarily closed.
+This Stimulus is to update the "BL_Temporary_Closed_Routes".
+The Predicate is: [int route, is, integer duration]</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PTRC_Start_Visit_Frankfurt</Predicate_Name>
+    <Subject_Type>Belief</Subject_Type>
+    <Subject_Value>BL_City_Visited_Paris</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Boolean</Object_Complement_Type>
+    <Object_Complement_Value>true</Object_Complement_Value>
+    <Description>Trigger Condition for The Agent has to go to Frankfurt. When the Agent is in Paris, the Trigger Condition is arised</Description>
+  </Predicate>
+</Predicates>

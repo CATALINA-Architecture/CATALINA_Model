@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Means_End_Epistemic_Functions>
+  <Means_End_Epistemic_Function>
+    <Belief_Type>BLTS_Stimulus_Danger_on_the_Route</Belief_Type>
+    <Function_Name>Compute_Options_for_Stimulus_Danger_on_the_Route</Function_Name>
+    <Checked>-1</Checked>
+    <Description>It generates the one action:
+Action Name: Ask Danger Type on the road
+Params:
+0- Integer Route, where The agent and the Danger are</Description>
+  </Means_End_Epistemic_Function>
+  <Means_End_Epistemic_Function>
+    <Belief_Type>BLT_Destination_City</Belief_Type>
+    <Function_Name>Means_End_For_Belief_Destination_Station</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
+  </Means_End_Epistemic_Function>
+  <Means_End_Epistemic_Function>
+    <Belief_Type>BLT_Come_Back_to_City</Belief_Type>
+    <Function_Name>Reasoner_Function_for_Come_Back_to_City</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
+  </Means_End_Epistemic_Function>
+</Means_End_Epistemic_Functions>
