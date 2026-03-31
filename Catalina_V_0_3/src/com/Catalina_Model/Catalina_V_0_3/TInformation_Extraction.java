@@ -1,0 +1,54 @@
+package com.Catalina_Model.Catalina_V_0_3;
+
+import java.util.ArrayList;
+
+import com.Catalina_Model.Catalina_V_0_3.TInformation_Extraction_Function_Handler.Information_Extraction_Function;
+
+public class TInformation_Extraction
+{
+private TExecutive_Perception_Function Parent;
+	
+	protected TGeneric_Protected_List<TStimulus> Last_Generated_Stimuli;
+	private TInformation_Extraction_Function_Handler Information_Extraction_Function_Handler;
+	
+	public TInformation_Extraction(TExecutive_Perception_Function owner)
+	{
+		this.Parent = owner;
+		this.Information_Extraction_Function_Handler = 
+				new TInformation_Extraction_Function_Handler();
+		
+		this.Last_Generated_Stimuli = new TGeneric_Protected_List<TStimulus>();
+	}
+	
+	
+	public void Execute(ArrayList<TPerception> New_Perceptions, ArrayList<TBelief> Beliefs,
+    		ArrayList<TRegion> Regions)
+	{
+		this.Last_Generated_Stimuli.Clear();
+		for(TPerception Perception: New_Perceptions )
+		{
+			this.Last_Generated_Stimuli.Add_All
+			(
+				this.Information_Extraction_Function_Handler.
+				Execute_Function_For_Raw_Data(Perception.Get_Source(), Perception, Beliefs, Regions)
+			);
+		}
+	}
+	
+	public ArrayList<TStimulus> Get_Last_Stimuli()
+	{
+		return this.Last_Generated_Stimuli.Read_And_Clear();
+	}
+	
+	public void Register_Information_Extraction_Function(String Sensor, Information_Extraction_Function func) 
+    {
+       this.Information_Extraction_Function_Handler.Register_Function(Sensor, func);
+    }
+    
+    public boolean Unregister_Information_Extraction_Function(String Sensor) 
+    {
+        return this.Information_Extraction_Function_Handler.Unregister_Function(
+        		Sensor);
+    }
+	
+}
