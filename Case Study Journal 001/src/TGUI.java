@@ -19,6 +19,8 @@ public class TGUI extends JFrame
 {
 	public TMap_Panel Map_Panel;
 	public JButton btnSendSignal;
+	public JButton btnSendLowFuel;
+	
 	public JTextArea Log_Memo;
 	public Autonomous_Vehicle_Demo Demo;
 	public TFloat_Window GlobaL_Workspace_View;
@@ -93,7 +95,7 @@ public class TGUI extends JFrame
         });
         
         // 3. Creiamo e configuriamo il secondo bottone
-        btnSendSignal = new JButton("Block the route!");
+        btnSendSignal = new JButton("Signal: Block the route!");
 //        btnSaluta.addActionListener(e -> {
 //            // Usiamo la tua funzione Show_Message
 ////            Show_Message("Saluto", "Ciao mondo", JOptionPane.INFORMATION_MESSAGE);
@@ -102,6 +104,10 @@ public class TGUI extends JFrame
         
         btnSendSignal.setFont(new Font("Arial", Font.BOLD, 20));
         btnSendSignal.setPreferredSize(new Dimension(200, 50));
+        
+        btnSendLowFuel = new JButton("Signal: Low Fuel!");
+        btnSendLowFuel.setFont(new Font("Arial", Font.BOLD, 20));
+        btnSendLowFuel.setPreferredSize(new Dimension(200, 50));
         
         Log_Memo = new javax.swing.JTextArea();
         Log_Memo.setEditable(false); // Se vuoi che sia solo di lettura (come un log)
@@ -128,12 +134,30 @@ public class TGUI extends JFrame
 //        buttonPanel.add(btnSaluta);
         rightPanel.add(Move_Button);
         rightPanel.add(Move_Button2);
+        rightPanel.add(Move_Button3);
+        rightPanel.add(Move_Button4);
 //        rightPanel.add(Move_Button3);
         // Aggiungiamo un piccolo spazio vuoto tra i bottoni (opzionale)
         rightPanel.add(javax.swing.Box.createVerticalStrut(10)); 
         rightPanel.add(btnSendSignal);
-        rightPanel.add(Move_Button3);
-        rightPanel.add(Move_Button4);
+        rightPanel.add(btnSendLowFuel);
+        
+        
+        /**
+         * Fuel Level Section
+         */
+//        JPanel Fuel_Level_Panel = new JPanel();
+//        javax.swing.JTextField Fuel_Leve_lInput = new javax.swing.JTextField(20);
+//        Fuel_Level_Panel.add(Fuel_Leve_lInput);
+//        Fuel_Level_Panel.add(btnSendLowFuel);
+//        rightPanel.add(Fuel_Level_Panel);
+        
+        
+        
+        
+        
+//        rightPanel.add(Move_Button3);
+//        rightPanel.add(Move_Button4);
         
         
         rightPanel.add(javax.swing.Box.createVerticalStrut(20));
@@ -165,9 +189,13 @@ public class TGUI extends JFrame
             
             // Chiama la tua funzione
 //            ElaboraStringa(testoDigitato);
-            this.Demo.Functions_for_Plan_Execution.String_Response_Sended =
+//            this.Demo.Functions_for_Plan_Execution.String_Response_Sended =
+//            		txtInput.getText();
+//            this.Demo.Functions_for_Plan_Execution.Response_Sended = true;
+            
+            this.Demo.Perception_Processing_functions.Virtual_TCS.String_Response_Sended =
             		txtInput.getText();
-            this.Demo.Functions_for_Plan_Execution.Response_Sended = true;
+            this.Demo.Perception_Processing_functions.Virtual_TCS.Response_Sended = true;
             
             // Opzionale: Pulisci il campo dopo l'invio
             txtInput.setText(""); 

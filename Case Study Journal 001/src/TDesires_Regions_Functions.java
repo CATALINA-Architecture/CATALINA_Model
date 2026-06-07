@@ -112,6 +112,39 @@ public class TDesires_Regions_Functions
 		return result;
 	}
 	
+	public HashSet<String> Reasoner_Get_Regions_for_Refuel( HashMap<String, TBelief> Map_Beliefs)
+	{
+
+		HashSet<String> result = new HashSet<String>();
+		TBelief BL_Map = Map_Beliefs.get( "BL_Map");
+		
+		TEnvironment Map = (TEnvironment) BL_Map.Get_Predicate().Get_Object_Complement();
+		
+		TBelief BL_Position_City = Map_Beliefs.get("BL_Position_City");
+//		this.Common_Functions.Print_Colored_Text(City_position+" - "+BL_Position_City.Get_Predicate().Get_Object_Complement(), 2);
+		
+		TBelief BL_Position_Route = Map_Beliefs.get("BL_Position_Route");
+		TBelief BL_Next_Position_Route = Map_Beliefs.get("BL_Next_Position_Route");
+//		this.Common_Functions.Print_Colored_Text(Route_position+" - "+BL_Position_Route.Get_Predicate().Get_Object_Complement(), 2);
+		
+		TBelief BL_Position_Step = Map_Beliefs.get("BL_Position_Step");
+//		this.Common_Functions.Print_Colored_Text(Step_position+" - "+BL_Position_Step.Get_Predicate().Get_Object_Complement(), 2);
+		
+		Integer City_position = (Integer) BL_Position_City.Get_Predicate().Get_Object_Complement();
+		Integer Route_position = (Integer) BL_Position_Route.Get_Predicate().Get_Object_Complement();
+		Integer sStep_position = (Integer) BL_Position_Step.Get_Predicate().Get_Object_Complement();
+		
+		
+//		Integer Dangerous_Route_Value = (Integer) BL_Dangerous_Route.Get_Predicate().Get_Object_Complement();
+		Integer Dangerous_Route_Value = Route_position;
+		Integer Specular_Dangerous_Route_Value = Map.Get_Specular_Route( Dangerous_Route_Value );
+		
+		result.add("Route_"+Dangerous_Route_Value);
+		result.add("Route_"+Specular_Dangerous_Route_Value);
+		
+		return result;
+	}
+	
 	public HashSet<String> Inhibition_Regions_for_Come_Back( 
 			TIntention Intention, 
 			HashMap<String, TBelief> Map_Beliefs, 
@@ -130,6 +163,33 @@ public class TDesires_Regions_Functions
 		result.add("Route_"+Specular_Dangerous_Route_Value);
 		
 		result.add(BL_Dangerous_Route.Get_Name());
+		
+		return result;
+	}
+	
+	public HashSet<String> Inhibition_Regions_for_Refuel( 
+			TIntention Intention, 
+			HashMap<String, TBelief> Map_Beliefs, 
+			HashMap<String, TRegion> All_Map_Regions)
+	{
+		HashSet<String> result = new HashSet<String>();
+		TBelief BL_Map = Map_Beliefs.get( "BL_Map");
+		
+		TEnvironment Map = (TEnvironment) BL_Map.Get_Predicate().Get_Object_Complement();
+		
+		TBelief BL_Position_Route = Map_Beliefs.get( "BL_Position_Route");
+		Integer Route_position = (Integer) BL_Position_Route.Get_Predicate().Get_Object_Complement();
+		
+		if(Route_position == -1)
+		{
+			TBelief BL_Next_Position_Route = Map_Beliefs.get( "BL_Next_Position_Route");
+			Route_position = (Integer) BL_Next_Position_Route.Get_Predicate().Get_Object_Complement();
+		}
+		
+		Integer Specular_Dangerous_Route_Value = Map.Get_Specular_Route( Route_position );
+		
+		result.add("Route_"+Route_position);
+		result.add("Route_"+Specular_Dangerous_Route_Value);
 		
 		return result;
 	}

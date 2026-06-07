@@ -34,6 +34,7 @@ public class Autonomous_Vehicle_Demo
 	public TFunctions_for_Region_Inhibition_Function Functions_for_Region_Inhibition_Function;
 	public TFunctions_for_Option_Execution Functions_for_Plan_Execution;
 //	TFunctions_for_Means_End_Reasoner Means_End_Reasoner_Function;
+	public TFunctions_for_Perception_Processing Perception_Processing_functions;
 	public TFunctions_for_Means_End_Reasoner Means_End_Reasoner_Function;
 	
 	public TEnvironment Map;
@@ -189,7 +190,8 @@ public class Autonomous_Vehicle_Demo
 		/**
 		 *  Add Sensors and Function to Perception Processing
 		 */
-		TFunctions_for_Perception_Processing Perception_Processing_functions = 
+//		TFunctions_for_Perception_Processing Perception_Processing_functions = 
+		Perception_Processing_functions = 
 						new TFunctions_for_Perception_Processing( Demo );
 		
 		/**
@@ -205,6 +207,15 @@ public class Autonomous_Vehicle_Demo
 			Perception_Processing_functions.Send_A_Danger();
 	        	
 	        });
+		
+		this.Gui_Map.btnSendLowFuel.addActionListener(e -> {
+            // Usiamo la tua funzione Show_Message
+//            Show_Message("Saluto", "Ciao mondo", JOptionPane.INFORMATION_MESSAGE);
+		Perception_Processing_functions.Send_Low_Fuel_Signal();
+        	
+        });
+		
+		
 		
 		
 		/**
@@ -245,6 +256,30 @@ public class Autonomous_Vehicle_Demo
 		TFunctions_for_GW_Memory_Maintenance_Update_Belief_Function GWMMF =
 				new TFunctions_for_GW_Memory_Maintenance_Update_Belief_Function(Demo);
 		GWMMF.Add_Function_To_GW_Memory_Maintenance_Function(Memory_Maintenance_Function);
+		
+		
+		////////////////
+		/**
+		 * ****************************
+		 * ****************************
+		 * Belief Inhibition Function
+		 * ****************************
+		 * **************************** 
+		 */
+		Functions_for_Belief_Inhibition_Function = new TFunctions_for_Inhibition_Function( Demo );
+		Functions_for_Belief_Inhibition_Function.Set_Inhibition_Function( Inhibition_Function );
+		Functions_for_Belief_Inhibition_Function.Add_Inhibition_Functions();
+		
+		/**
+		 * ****************************
+		 * ****************************
+		 * Region Inhibition Function
+		 * ****************************
+		 * **************************** 
+		 */
+		TFunctions_for_Region_Inhibition_Function Functions_for_Region_Inhibition_Function = new TFunctions_for_Region_Inhibition_Function( Demo );
+		Functions_for_Region_Inhibition_Function.Set_Inhibition_Function( Inhibition_Function );
+		Functions_for_Region_Inhibition_Function.Add_Inhibition_Functions();
 		
 		
 		/**
@@ -294,27 +329,6 @@ public class Autonomous_Vehicle_Demo
 		TFunctions_for_Deliberation_Process DPF = new TFunctions_for_Deliberation_Process( Demo );
 		DPF.Add_Function_To_Means_End_Reasoner( Reasoner );
 		
-		/**
-		 * ****************************
-		 * ****************************
-		 * Belief Inhibition Function
-		 * ****************************
-		 * **************************** 
-		 */
-		Functions_for_Belief_Inhibition_Function = new TFunctions_for_Inhibition_Function( Demo );
-		Functions_for_Belief_Inhibition_Function.Set_Inhibition_Function( Inhibition_Function );
-		Functions_for_Belief_Inhibition_Function.Add_Inhibition_Functions();
-		
-		/**
-		 * ****************************
-		 * ****************************
-		 * Region Inhibition Function
-		 * ****************************
-		 * **************************** 
-		 */
-		TFunctions_for_Region_Inhibition_Function Functions_for_Region_Inhibition_Function = new TFunctions_for_Region_Inhibition_Function( Demo );
-		Functions_for_Region_Inhibition_Function.Set_Inhibition_Function( Inhibition_Function );
-		Functions_for_Region_Inhibition_Function.Add_Inhibition_Functions();
 		
 		/**
 		 * ****************************

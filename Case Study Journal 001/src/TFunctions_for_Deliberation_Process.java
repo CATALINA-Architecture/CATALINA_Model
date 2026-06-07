@@ -69,7 +69,7 @@ public class TFunctions_for_Deliberation_Process
 				Attentional_Desire.Set_Related_Intention( An_Intention );
 				An_Intention.Set_Desire( Attentional_Desire );
 				Selected_Intentions.add( An_Intention );
-				Common_Functions.Print("No Options for Desire: "+Attentional_Desire.Get_Name());
+				Common_Functions.Print("I have no option for Desire: "+Attentional_Desire.Get_Name());
 			}
 			else
 			{

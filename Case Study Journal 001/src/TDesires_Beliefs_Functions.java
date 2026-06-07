@@ -18,12 +18,16 @@ public class TDesires_Beliefs_Functions
 	private HashSet<String> List_For_Reasoner_Come_Back;
 	private HashSet<String> List_For_Reasoner_Destination_City;
 	private HashSet<String> List_For_Reasoner_Stimulus_Danger_on_the_Route;
+	private HashSet<String> List_For_Reasoner_Stimulus_Danger_Data_from_TCS;
+	private HashSet<String> List_For_Reasoner_Refuel;
 	
 	public TDesires_Beliefs_Functions()
 	{
 		this.List_For_Reasoner_Come_Back = new HashSet<String>();
 		this.List_For_Reasoner_Destination_City = new HashSet<String>();
 		this.List_For_Reasoner_Stimulus_Danger_on_the_Route = new HashSet<String>();
+		this.List_For_Reasoner_Stimulus_Danger_Data_from_TCS = new HashSet<String>();
+		this.List_For_Reasoner_Refuel = new HashSet<String>();
 		this.Initialize_Lists_Beliefs();
 	}
 	
@@ -32,6 +36,7 @@ public class TDesires_Beliefs_Functions
 		this.Initialize_List_For_Destination_City();
 		this.Initialize_List_For_Come_Back();
 		this.Initialize_List_For_Stimulus_Danger_on_the_Route();
+		this.Initialize_List_For_Refuel();
 	}
 	
 	private void Initialize_List_For_Come_Back()
@@ -62,6 +67,48 @@ public class TDesires_Beliefs_Functions
 		this.List_For_Reasoner_Come_Back.add("ST_Stimulus_Ok_Correct_Movement");
 		this.List_For_Reasoner_Come_Back.add("ST_Stimulus_Route_Status");
 		this.List_For_Reasoner_Come_Back.add("ST_Stimulus_Temporary_Closed_Route");
+		
+		this.List_For_Reasoner_Come_Back.add("BL_Fuel_Level");
+		this.List_For_Reasoner_Come_Back.add("ST_Stimulus_Low_Fuel");
+		this.List_For_Reasoner_Come_Back.add("BL_Low_Fuel_Level_Warning");
+		this.List_For_Reasoner_Come_Back.add("BL_Refuel_to_City");
+		this.List_For_Reasoner_Come_Back.add("BL_Low_Fuel_Level");
+	}
+	
+	private void Initialize_List_For_Refuel()
+	{
+		this.List_For_Reasoner_Refuel.clear();
+		this.List_For_Reasoner_Refuel.add("BL_Closed_Routes");
+		this.List_For_Reasoner_Refuel.add("BL_Temporary_Closed_Routes");
+		this.List_For_Reasoner_Refuel.add("BL_Dangerous_Position_Route");
+		this.List_For_Reasoner_Refuel.add("BL_Map");
+		this.List_For_Reasoner_Refuel.add("BL_Current_Time");
+		
+		this.List_For_Reasoner_Refuel.add("BL_Danger_on_the_Route");
+		this.List_For_Reasoner_Refuel.add("BL_Next_Position_City");
+		this.List_For_Reasoner_Refuel.add("BL_Next_Position_Route");
+		this.List_For_Reasoner_Refuel.add("BL_Next_Position_Step");
+		this.List_For_Reasoner_Refuel.add("BL_Position_City");
+		this.List_For_Reasoner_Refuel.add("BL_Position_Route");
+		this.List_For_Reasoner_Refuel.add("BL_Position_Step");
+		this.List_For_Reasoner_Refuel.add("BL_Previous_Position_City");
+		this.List_For_Reasoner_Refuel.add("BL_Previous_Position_Route");
+		this.List_For_Reasoner_Refuel.add("BL_Previous_Position_Step");
+		this.List_For_Reasoner_Refuel.add("BL_Routes_performed_for_each_Practical_Desires");
+		this.List_For_Reasoner_Refuel.add("BL_Temporary_Closed_Routes");
+		this.List_For_Reasoner_Refuel.add("ST_Stimulus_Danger_on_the_Route");
+		this.List_For_Reasoner_Refuel.add("ST_Stimulus_Irrelevant");
+		this.List_For_Reasoner_Refuel.add("ST_Stimulus_Ok_Correct_Movement");
+		this.List_For_Reasoner_Refuel.add("ST_Stimulus_Route_Status");
+		this.List_For_Reasoner_Refuel.add("ST_Stimulus_Temporary_Closed_Route");
+
+		this.List_For_Reasoner_Refuel.add("BL_Fuel_Level");
+		this.List_For_Reasoner_Refuel.add("ST_Stimulus_Low_Fuel");
+		this.List_For_Reasoner_Refuel.add("BL_Low_Fuel_Level_Warning");
+		this.List_For_Reasoner_Refuel.add("BLT_City_to_Refuel");
+		this.List_For_Reasoner_Refuel.add("BL_Refuel_to_City");
+		this.List_For_Reasoner_Refuel.add("BL_Low_Fuel_Level");
+		
 	}
 	
 	private void Initialize_List_For_Destination_City()
@@ -70,6 +117,7 @@ public class TDesires_Beliefs_Functions
 		this.List_For_Reasoner_Destination_City.add("BL_Closed_Routes");
 		this.List_For_Reasoner_Destination_City.add("BL_Temporary_Closed_Routes");
 		this.List_For_Reasoner_Destination_City.add("BL_Dangerous_Position_Route");
+													 
 		this.List_For_Reasoner_Destination_City.add("BL_Map");
 		this.List_For_Reasoner_Destination_City.add("BL_Come_Back_to_City");
 		this.List_For_Reasoner_Destination_City.add("BLT_Destination_City");
@@ -92,6 +140,22 @@ public class TDesires_Beliefs_Functions
 		this.List_For_Reasoner_Destination_City.add("ST_Stimulus_Ok_Correct_Movement");
 		this.List_For_Reasoner_Destination_City.add("ST_Stimulus_Route_Status");
 		this.List_For_Reasoner_Destination_City.add("ST_Stimulus_Temporary_Closed_Route");
+		
+		this.List_For_Reasoner_Destination_City.add("BL_Fuel_Level");
+		this.List_For_Reasoner_Destination_City.add("ST_Stimulus_Low_Fuel");
+		this.List_For_Reasoner_Destination_City.add("BL_Low_Fuel_Level_Warning");
+		this.List_For_Reasoner_Destination_City.add("BL_Refuel_to_City");
+		
+		this.List_For_Reasoner_Destination_City.add("BL_Current_Travel_Intention_Satisfaction_Time");
+		this.List_For_Reasoner_Destination_City.add("BL_Previous_Travel_Intention_Satisfaction_Time");
+		this.List_For_Reasoner_Destination_City.add("BL_Previous_Travel_Intention_Max_Satisfaction_Time");
+		this.List_For_Reasoner_Destination_City.add("BL_Temporary_Closed_Duration");
+		this.List_For_Reasoner_Destination_City.add("BL_Low_Fuel_Level");
+		
+		
+		
+//		
+//		
 	}
 	
 	private void Initialize_List_For_Stimulus_Danger_on_the_Route()
@@ -101,6 +165,8 @@ public class TDesires_Beliefs_Functions
 		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Dangerous_Position_Route");
 		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Come_Back_to_City");
 		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BLT_Destination_City");
+		
+		
 		
 		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Current_Time");
 		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Map");
@@ -116,6 +182,21 @@ public class TDesires_Beliefs_Functions
 		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("ST_Stimulus_Ok_Correct_Movement");
 		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("ST_Stimulus_Route_Status");
 		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("ST_Stimulus_Temporary_Closed_Route");
+		
+		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("ST_Stimulus_Danger_Data_from_TCS");
+		
+		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Fuel_Level");
+		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("ST_Stimulus_Low_Fuel");
+		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Low_Fuel_Level_Warning");
+		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Refuel_to_City");
+		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Low_Fuel_Level");
+
+		
+		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Current_Travel_Intention_Satisfaction_Time");
+		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Previous_Travel_Intention_Satisfaction_Time");
+		
+		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Previous_Travel_Intention_Max_Satisfaction_Time");
+		this.List_For_Reasoner_Stimulus_Danger_on_the_Route.add("BL_Temporary_Closed_Duration");
 	}
 	
 	
@@ -188,6 +269,34 @@ public class TDesires_Beliefs_Functions
 		return result;
 	}
 	
+	public HashSet<String> Inhibition_Beliefs_for_Refuel( 
+    		TAttentional_Desire Attentional_Desire, HashMap<String, TBelief> Map_Beliefs)
+	{
+		HashSet<String> result = new HashSet<String>();
+		
+		result.addAll( this.List_For_Reasoner_Refuel );
+		
+		TBelief BL_Map = Map_Beliefs.get( "BL_Map");
+		TEnvironment Map = (TEnvironment) BL_Map.Get_Predicate().Get_Object_Complement();
+		
+		TBelief BL_Position_Route = Map_Beliefs.get( "BL_Position_Route");
+		Integer Route_position = (Integer) BL_Position_Route.Get_Predicate().Get_Object_Complement();
+		
+		
+		if(Route_position == -1)
+		{
+			TBelief BL_Next_Position_Route = Map_Beliefs.get( "BL_Next_Position_Route");
+			Route_position = (Integer) BL_Next_Position_Route.Get_Predicate().Get_Object_Complement();
+		}
+		
+		Integer Specular_Dangerous_Route_Value = Map.Get_Specular_Route( Route_position );
+		
+		result.add("BL_Route_Status_"+Route_position);
+		result.add("BL_Route_Status_"+Specular_Dangerous_Route_Value);
+		
+		return result;
+	}
+	
 	public HashSet<String> Inhibition_Beliefs_for_Stimulus_Danger_on_the_Route( 
     		TAttentional_Desire Attentional_Desire, HashMap<String, TBelief> Map_Beliefs)
 	{
@@ -209,6 +318,15 @@ public class TDesires_Beliefs_Functions
 	}
 	
 	public HashSet<String> Reasoner_Beliefs_For_Come_Back(TPractical_Desire Desire)
+	{
+		HashSet<String> result = new HashSet<String>();
+		result.addAll( this.List_For_Reasoner_Come_Back);
+		
+		result.addAll( Get_Green_Quality_Beliefs_by_Desire( Desire ) );
+		return result;
+	}
+	
+	public HashSet<String> Reasoner_Beliefs_For_Refuel(TPractical_Desire Desire)
 	{
 		HashSet<String> result = new HashSet<String>();
 		result.addAll( this.List_For_Reasoner_Come_Back);

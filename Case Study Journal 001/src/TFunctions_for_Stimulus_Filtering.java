@@ -24,7 +24,21 @@ public class TFunctions_for_Stimulus_Filtering
 	public TStimulus Check_Danger_on_the_Road( TStimulus Stimulus, ArrayList<TRegion> Regions)
 	{
 		
+		Stimulus.Update_Saliency( 0.9 );
+		return Stimulus;
+	}
+	
+	public TStimulus Check_Danger_Data_from_TCS( TStimulus Stimulus, ArrayList<TRegion> Regions)
+	{
+		
 		Stimulus.Update_Saliency( 0.92 );
+		return Stimulus;
+	}
+	
+	public TStimulus Check_Low_Fuel_Level_Warning( TStimulus Stimulus, ArrayList<TRegion> Regions)
+	{
+		
+		Stimulus.Update_Saliency( 0.9 );
 		return Stimulus;
 	}
 	
@@ -32,6 +46,8 @@ public class TFunctions_for_Stimulus_Filtering
 	{
 		MMF.Load_Saliencies_for_Stimuli( this.Demo.Data_Directory );
 		MMF.Register_Stimulus_Filtering_Function("BLTS_Stimulus_Danger_on_the_Route", this::Check_Danger_on_the_Road);
+		MMF.Register_Stimulus_Filtering_Function("BLTS_Stimulus_Danger_Data_from_TCS", this::Check_Danger_Data_from_TCS);
+		MMF.Register_Stimulus_Filtering_Function("BLTS_Stimulus_Low_Fuel", this::Check_Low_Fuel_Level_Warning);
 	}
 
 }

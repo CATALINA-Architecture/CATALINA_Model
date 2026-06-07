@@ -43,11 +43,11 @@ public class TFunctions_for_Information_Extraction
 	{
 		ArrayList<TStimulus> Stimuli = new ArrayList<TStimulus>();
 
-//		HashSet<String> Types_to_Consider = new HashSet<String>();
-//		Types_to_Consider.add( "BLTS_Stimulus_Danger_on_the_Route" );
-//		Types_to_Consider.add( "BLT_Position_City" );
-//		Types_to_Consider.add( "BLT_Position_Route" );
-//		Types_to_Consider.add( "BLT_Position_Step" );
+		HashSet<String> Types_to_Consider = new HashSet<String>();
+		Types_to_Consider.add( "BLTS_Stimulus_Danger_on_the_Route" );
+		Types_to_Consider.add( "BLT_Position_City" );
+		Types_to_Consider.add( "BLT_Position_Route" );
+		Types_to_Consider.add( "BLT_Position_Step" );
 //		TStimulus Stimulus = (TStimulus)Beliefs.stream() // 1. Crea uno stream
 //	            						.filter(belief -> belief.getType_Belief().equals()) // 2. Filtra per tipo
 //	            						.findFirst() // 3. Prendi il primo risultato (e si ferma qui)
@@ -100,7 +100,7 @@ public class TFunctions_for_Information_Extraction
 					+ "the BLT_Position_Step.", 2);
 		}
 		
-		TBelief Belief_City=  Map_Uninhibited_Beliefs.get( "BL_Position_City" );
+		TBelief Belief_City=  Useful_Belief.get( "BLT_Position_City" );
 		
 		int City_Position = -1;
 		if( Belief_City != null)
@@ -137,69 +137,9 @@ public class TFunctions_for_Information_Extraction
         return Stimuli;
 	}
 	
-	public ArrayList<TStimulus> Manage_Stimulus_Danger_Data_Acquired( TPerception Perception, 
-			HashMap<String, TBelief> Map_Uninhibited_Beliefs,
-    		HashMap<String, TRegion> Map_Uninhibited_Regions )
-	{
-		ArrayList<TStimulus> Stimuli = new ArrayList<TStimulus>();
-		
-		TStimulus Stimulus = (TStimulus) Map_Uninhibited_Beliefs.get( "ST_Stimulus_Danger_Data_from_TCS" );
-		/**
-		 * Danger_Data Index:
-		 * 0 - Information = "Danger_Data_Acquired!"
-		 * 1 - City_position
-		 * 2 - Route_position
-		 * 3 - Step_position
-		 * 4 - Dangeroues_Route_position
-		 * 5 - Type_Danger.ordinal()
-		 * 6 - Duration
-		 */
-		if( Stimulus != null)
-		{
-			TPredicate Predicate = Stimulus.Get_Predicate();
-			Predicate.Set_Subject( Perception.Get_Perceived_Data().getFirst() );
-			Predicate.set_Object_Complement( Perception);
-			Stimuli.add( Stimulus );
-		}
-		else
-		{
-			this.Common_Functions.Print_Colored_Text(
-					"An Error occours in 'Manage_Stimulus_Danger_on_the_Route' when AV gets "
-					+ "the Stimulus.", 2);
-		}
-		
-		return Stimuli;
-	}
-	
-	public ArrayList<TStimulus> Mangage_Low_Fuel_Level_Signal( TPerception Perception, 
-			HashMap<String, TBelief> Map_Uninhibited_Beliefs,
-    		HashMap<String, TRegion> Map_Uninhibited_Regions )
-	{
-		ArrayList<TStimulus> Stimuli = new ArrayList<TStimulus>();
-		
-		TStimulus Stimulus = (TStimulus) Map_Uninhibited_Beliefs.get( "ST_Stimulus_Low_Fuel" );
-		
-		if( Stimulus != null)
-		{
-			Stimuli.add( Stimulus );
-		}
-		else
-		{
-			this.Common_Functions.Print_Colored_Text(
-					"An Error occours in 'Mangage_Low_Fuel_Level_Signal' when AV gets "
-					+ "the Stimulus.", 2);
-		}
-		
-		return Stimuli; 
-		
-	}
-	
-	
 	public void Add_Function_To_Information_Extraction(TExecutive_Perception_Function MMF)
 	{
 		MMF.Register_Information_Extraction_Function("Front_Virtual_Camera", this::Manage_Stimulus_Danger_on_the_Route);
-		MMF.Register_Information_Extraction_Function("Traffic_Control_Service", this::Manage_Stimulus_Danger_Data_Acquired);
-		MMF.Register_Information_Extraction_Function("Fuel_Sensor", this::Mangage_Low_Fuel_Level_Signal);
 //		Manage_Positions_Acquired
 	}
 

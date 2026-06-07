@@ -17,6 +17,8 @@ public class TFunctions_for_Perception_Processing
 	private Autonomous_Vehicle_Demo Demo;
 	private TCommon_Functions Common_Functions;
 	private Boolean See_A_Danger;
+	private Boolean Low_Fuel_Signal;
+	public TTrafficControlService Virtual_TCS;
 	
 	public TFunctions_for_Perception_Processing(Autonomous_Vehicle_Demo demo)
 	{
@@ -25,13 +27,19 @@ public class TFunctions_for_Perception_Processing
 		
 		this.Sensors = new HashSet();
 		this.Sensors.add("Front_Virtual_Camera");
+		this.Sensors.add("Traffic_Control_Service");
+		this.Sensors.add("Fuel_Sensor");
 		this.Sensors_avaible = new HashMap<String, Boolean>();
 		this.Sensors_avaible.put("Front_Virtual_Camera", true);
+		this.Sensors_avaible.put("Traffic_Control_Service", true);
+		this.Sensors_avaible.put("Fuel_Sensor", true);
 //		this.Sensors.add("Me");
 		
 		//I set some variable
 		this.See_A_Danger = false;
+		this.Low_Fuel_Signal = false;
 		this.Virtual_GPS = new TVirtual_GPS(this.Demo.Agent);
+		this.Virtual_TCS = new TTrafficControlService(demo);
 	}
 	
 	private void Add_Sensor_to_Perception_Processing(TExecutive_Perception_Function MMF)
@@ -88,12 +96,39 @@ public class TFunctions_for_Perception_Processing
         return Perceptions;
 	}
 	
+	public ArrayList<TPerception> Get_Low_Fuel_Signal(String sensor)
+	{
+		ArrayList<TPerception> Perceptions = new ArrayList<TPerception>();
+		
+		if (this.Low_Fuel_Signal)
+        {
+			this.Low_Fuel_Signal = false;
+			ArrayList<Object> perceived_Data = new ArrayList<Object>();
+        	/**
+        	 * We simulate the value signal for the fuel level.
+        	 * Range Fuel Level: 0 to 100
+        	 */
+			Integer Low_Fuel = 24;
+        	perceived_Data.add( Low_Fuel );
+        	TPerception Perception = new TPerception(LocalDateTime.now(), perceived_Data, sensor);
+        	
+        	Perceptions.add( Perception );
+        }
+		
+		return Perceptions;
+	}
+	
+	
 	public void Add_Function_To_Perception_Processing(TExecutive_Perception_Function MMF)
 	{
 		Add_Sensor_to_Perception_Processing( MMF );
 //		System.out.print(MMF.Get_Sensors());
 		MMF.Register_Perception_Function("Front_Virtual_Camera", this::See_Road_in_Front);
 		MMF.Register_Perception_Function("GPS", this::Get_Current_Position_from_GPS);
+		MMF.Register_Perception_Function("Traffic_Control_Service", this::Get_Danger_Data_from_TCS);
+		MMF.Register_Perception_Function("Fuel_Sensor", this::Get_Low_Fuel_Signal);
+		
+		
 	}
 	
 	public void Reset_Sensor(String Sensor_Name)
@@ -104,6 +139,29 @@ public class TFunctions_for_Perception_Processing
 	public void Send_A_Danger()
 	{
 		this.See_A_Danger = true;
+	}
+	
+	public void Send_Low_Fuel_Signal()
+	{
+		this.Low_Fuel_Signal = true;
+	}
+	
+	public ArrayList<TPerception> Get_Danger_Data_from_TCS(String sensor)
+	{
+		ArrayList<TPerception> Perceptions = new ArrayList<TPerception>();
+		
+		ArrayList<Object> perceived_Data = new ArrayList<Object>();
+		perceived_Data.addAll( this.Virtual_TCS.Get_Danger_Data());
+		if (perceived_Data.size() > 0)
+		{
+			
+			String Information = "Danger_Data_Acquired!";
+	    	perceived_Data.addFirst(Information);
+	    	TPerception Perception = new TPerception(LocalDateTime.now(), perceived_Data, sensor);
+	    	
+	    	Perceptions.add( Perception );
+		}
+		return Perceptions;
 	}
 
 }
