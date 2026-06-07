@@ -1,5 +1,6 @@
 package com.Catalina_Model.Catalina_V_0_3;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,11 +11,13 @@ public class TAction_Execution_Result
 	private HashMap<String, Object> Beliefs_to_Change;
 	private ArrayList<TPractical_Desire_Data> Practical_Desires;
 	private ArrayList<TStimulus> Stimuli;
+	private HashMap<String, LocalDateTime> Beliefs_to_Wait;
 	
 	public TAction_Execution_Result()
 	{
 		this.Result = false;
 		this.Beliefs_to_Change = new HashMap<String, Object>();
+		this.Beliefs_to_Wait = new HashMap<String, LocalDateTime>();
 		
 		this.Practical_Desires = new ArrayList<TPractical_Desire_Data>();
 		this.Stimuli = new ArrayList<TStimulus>();
@@ -46,6 +49,13 @@ public class TAction_Execution_Result
 		this.Beliefs_to_Change.putAll( value );
 	}
 	
+	public void Set_Beliefs_to_Wait(HashMap<String, LocalDateTime> value)
+	{
+		this.Beliefs_to_Wait.clear();
+		this.Beliefs_to_Wait.putAll( value );
+	}
+	
+	
 	public void Set_Practical_Desires(ArrayList<TPractical_Desire_Data> value)
 	{
 		this.Practical_Desires.clear();
@@ -71,6 +81,12 @@ public class TAction_Execution_Result
 	{
 		return this.Beliefs_to_Change;
 	}
+	
+	public HashMap<String, LocalDateTime> Get_Beliefs_to_Wait()
+	{
+		return this.Beliefs_to_Wait;
+	}
+	
 	
 	public ArrayList<TPractical_Desire_Data> Get_Practical_Desires()
 	{

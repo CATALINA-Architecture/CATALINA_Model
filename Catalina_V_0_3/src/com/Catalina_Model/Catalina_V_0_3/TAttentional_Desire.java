@@ -59,7 +59,10 @@ public class TAttentional_Desire extends TDesire{
 	 * @param list_Green_Standing_Desire
 	 * @param list_Quality_Standing_Desire
 	 */
-	public TAttentional_Desire(String name, Double saliency, TPropositional_Formula trigger_Condition, Double reward, Double relax_Preference, ArrayList<TGreen_Desire> list_Green_Standing_Desire,
+	public TAttentional_Desire(String name, Double saliency, 
+			TPropositional_Formula trigger_Condition, 
+			Double reward, Double relax_Preference, 
+			ArrayList<TGreen_Desire> list_Green_Standing_Desire,
 			ArrayList<TQuality_Desire> list_Quality_Standing_Desire,
 			ArrayList<String> beliefs_Reasoner, 
 			ArrayList<String> regions_Reasoner)

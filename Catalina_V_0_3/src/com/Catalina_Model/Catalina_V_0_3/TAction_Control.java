@@ -8,7 +8,7 @@ import com.Catalina_Model.Catalina_V_0_3.TAction_Execution_Function_Handler.Plan
 public class TAction_Control extends TAgent_Base_Thread
 {
 
-	private TGlobal_Workspace Global_Workspace;
+	protected TGlobal_Workspace Global_Workspace;
 	private TAgent Owner;
 	private Boolean Result;
 	private HashMap<String, TBelief> Map_Beliefs;

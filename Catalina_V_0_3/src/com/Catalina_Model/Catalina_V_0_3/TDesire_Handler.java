@@ -7,6 +7,8 @@ import java.util.Iterator;
 import java.util.function.Function;
 
 import com.Catalina_Model.Catalina_V_0_3.TEndogenous_Desire_Promotion.Get_Unhinibited_Regions_for_Desire;
+import com.Catalina_Model.Catalina_V_0_3.TExogenous_Attentional_Desires_Function_Handler.Exogenous_Attentional_Desires_Promotion_Function;
+import com.Catalina_Model.Catalina_V_0_3.TGlobal_Workspace.TIRecall_Beliefs;
 import com.Catalina_Model.Catalina_V_0_3.TMap_Exogenous_Functions_Handler.Stimulus_To_Epistemic_Function;
 
 
@@ -197,9 +199,20 @@ public class TDesire_Handler extends TAgent_Base_Thread
 		this.Exogenous_Desire_Promotion.Register_Epistemic_Function( Stimulus_Type, func );
 	}
 	
+	public void Register_Practical_Function(String Stimulus_Type, 
+			Exogenous_Attentional_Desires_Promotion_Function func) 
+	{
+		this.Exogenous_Desire_Promotion.Register_Practical_Function(Stimulus_Type, func);
+	}
+	
 	public void UnRegister_Epistemic_Function(String Stimulus_Type) 
 	{
 		this.Exogenous_Desire_Promotion.UnRegister_Epistemic_Function( Stimulus_Type ); 
+    }
+	
+	public void UnRegister_Practical_Function(String Stimulus_Type) 
+	{
+		this.Exogenous_Desire_Promotion.UnRegister_Practical_Function(Stimulus_Type); 
     }
 	
 	protected Double Get_Saliency_Threshold()

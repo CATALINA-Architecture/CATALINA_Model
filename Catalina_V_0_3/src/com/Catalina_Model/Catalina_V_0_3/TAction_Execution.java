@@ -6,14 +6,17 @@ import com.Catalina_Model.Catalina_V_0_3.TAction_Execution_Function_Handler.Plan
 
 public class TAction_Execution
 {
-	public TAction_Control Parent;
+	public TAction_Control Owner;
 	private TAction_Execution_Function_Handler Plan_Executive_Function_Handler;
 	
 	public TAction_Execution(TAction_Control own)
 	{
-		this.Parent = own;
+		this.Owner = own;
 		
 		this.Plan_Executive_Function_Handler = new TAction_Execution_Function_Handler();
+		this.Plan_Executive_Function_Handler.Set_Global_Workspace(
+				this.Owner.Global_Workspace);
+		
 	}
 	
 //	public TAction_Execution_Result Execute(TIntention Selected_Intention, HashMap<String, TBelief> Beliefs)

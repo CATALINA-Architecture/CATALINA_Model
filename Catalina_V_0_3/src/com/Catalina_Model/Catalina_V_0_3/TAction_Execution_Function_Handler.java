@@ -21,8 +21,11 @@ public class TAction_Execution_Function_Handler
 //	    }
 		public interface Plan_Executive_Function {
 //			TDouble_Object apply(	TAction Action, HashMap<String, TBelief> Beliefs );
-			TAction_Execution_Result apply(	TAction Action, HashMap<String, TBelief> Beliefs );
+			TAction_Execution_Result apply(TGlobal_Workspace Global_Workspace,	
+					TAction Action, HashMap<String, TBelief> Beliefs );
 	    }
+		
+		private TGlobal_Workspace Global_Workspace;
 		
 		private final HashMap<String, Plan_Executive_Function> Registered_Functions;
 
@@ -86,7 +89,8 @@ public class TAction_Execution_Function_Handler
 	        {
 //	            return func.apply(practical_desire, beliefs, regions, intentions);
 //	        	return func.apply( Action, beliefs);
-	        	TAction_Execution_Result Temp_result = func.apply( Action, Beliefs );
+	        	TAction_Execution_Result Temp_result = func.apply( 
+	        			this.Global_Workspace, Action, Beliefs );
 	        	if (Temp_result != null)
 	        	{ 
 	        		result = Temp_result;
@@ -95,10 +99,18 @@ public class TAction_Execution_Function_Handler
 	        } 
 	        else 
 	        {
-//	            System.out.println("\nWARN: No Plan Execution Function registered for the Action Name: '" + Action_Name + "'.");
+	            System.out.println("\nWARN: No Plan Execution Function registered for the Action Name: '" + Action_Name + "'.");
 	            return result;
 //	        }
 	    }
-
+	        
 	}
+	    
+    public void Set_Global_Workspace(TGlobal_Workspace GW)
+    {
+    	if( GW != null)
+		{
+    		this.Global_Workspace = GW;
+		}
+    }
 }
