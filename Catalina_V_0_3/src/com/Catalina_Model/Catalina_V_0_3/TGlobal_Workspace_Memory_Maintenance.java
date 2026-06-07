@@ -29,8 +29,14 @@ public class TGlobal_Workspace_Memory_Maintenance
 		this.Global_Workspace = global_workspace;
 		this.Global_Workspace_Memory_Maintenance_Update_Normal_Belief_Function_Handler = 
 				new TGlobal_Workspace_Memory_Maintenance_Update_Belief_Function_Handler();
+		this.Global_Workspace_Memory_Maintenance_Update_Normal_Belief_Function_Handler.Set_Recall_Belief(
+				this.Global_Workspace::Recal_Beliefs);
+		
 		this.Global_Workspace_Memory_Maintenance_Update_Critical_Belief_Function_Handler = 
 				new TGlobal_Workspace_Memory_Maintenance_Update_Belief_Function_Handler();
+		
+		this.Global_Workspace_Memory_Maintenance_Update_Critical_Belief_Function_Handler.Set_Recall_Belief(
+				this.Global_Workspace::Recal_Beliefs);
 	}
 	/**
 	 * This function executes two actions:
@@ -174,6 +180,12 @@ public class TGlobal_Workspace_Memory_Maintenance
 			
 			Updated_Beliefs = Updated_Beliefs | Temp_Updated_Beliefs.Get_Result();
 			
+			if(Temp_Updated_Beliefs.Get_Beliefs_To_Change().size() > 0)
+			{
+				this.Global_Workspace.Update_Uninhibited_Conscious_Beliefs
+					(Temp_Updated_Beliefs.Get_Beliefs_To_Change());
+			}
+			
 //			Practical_desires.addAll( Temp_Updated_Beliefs.Get_Practical_Desires_Data() );
 			
 //			All_Stimuli.addAll( Temp_Updated_Beliefs.Get_Stimuli());
@@ -185,6 +197,12 @@ public class TGlobal_Workspace_Memory_Maintenance
 						
 			Temp_Updated_Critical_Beliefs = this.Global_Workspace_Memory_Maintenance_Update_Critical_Belief_Function_Handler.
 					Execute_Function_For_Update_Belief(Stimulus, Map_Important_Beliefs);
+			
+			if(Temp_Updated_Critical_Beliefs.Get_Beliefs_To_Change().size() > 0)
+			{
+				this.Global_Workspace.Update_Uninhibited_Conscious_Beliefs
+					(Temp_Updated_Critical_Beliefs.Get_Beliefs_To_Change());
+			}
 			
 			Updated_Critical_Beliefs = Updated_Critical_Beliefs | Temp_Updated_Critical_Beliefs.Get_Result();
 //			Practical_desires.addAll( Temp_Updated_Critical_Beliefs.Get_Practical_Desires_Data() );

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.function.Function;
 
+import com.Catalina_Model.Catalina_V_0_3.TExogenous_Attentional_Desires_Function_Handler.Exogenous_Attentional_Desires_Promotion_Function;
 import com.Catalina_Model.Catalina_V_0_3.TMap_Exogenous_Functions_Handler.Stimulus_To_Epistemic_Function;
 
 /**
@@ -46,6 +47,10 @@ public class TExogenous_Desire_Promotion
 		this.Map_Stimulus_To_Epistemic_Desires = new TMap_Exogenous_Functions_Handler();
 		this.Exogenous_Attentional_Desires_Function_Handler = new TExogenous_Attentional_Desires_Function_Handler();
 		
+		this.Exogenous_Attentional_Desires_Function_Handler.Set_Recall_Belief(
+				this.Global_Workspace::Recal_Beliefs);
+		
+		
 		this.Exogenous_Epistemic_Desire = new HashSet<TAttentional_Desire>();
 		this.Exogenous_Practical_Desire = new HashSet<TAttentional_Desire>();
 		this.Computed_New_Exogenous_Desire = false;
@@ -70,6 +75,7 @@ public class TExogenous_Desire_Promotion
 			
 			
 			HashSet<TStimulus> Stimuli = new HashSet<TStimulus>();
+			HashSet<TStimulus> New_Stimuli = new HashSet<TStimulus>();
 //			this.Global_Workspace.Get_Stimuli();
 			
 			ArrayList<TAttentional_Desire> Exogenous_Epistemic_Desires = new ArrayList<TAttentional_Desire>();
@@ -79,13 +85,14 @@ public class TExogenous_Desire_Promotion
 //			Epistemic_Desires_To_Promote.clear();
 			
 			Stimuli.addAll( this.Global_Workspace.Get_Stimuli( ));
+			New_Stimuli.addAll( Stimuli);
 			
-			for(TStimulus Stimulus: this.Global_Workspace.Get_Stimuli())
+			for(TStimulus Stimulus: New_Stimuli)
 			{
 				Desires_raised = this.Exogenous_Attentional_Desires_Function_Handler.
 						Execute_Function_For_Desire_to_raise(Stimulus, Map_Beliefs);
 				Stimuli.addAll( Desires_raised.Get_Stimuli() );
-				
+
 				Exogenous_Practical_desires.addAll( Desires_raised.Get_Practical_Desires_Data() );
 			}
 			
@@ -99,7 +106,11 @@ public class TExogenous_Desire_Promotion
 //				TEpistemic_Desire Epistemic_Desire = this.Stimulus_to_Desire(Stimulus);
 				TEpistemic_Desire Epistemic_Desire = this.Map_Stimulus_To_Epistemic_Desires
 								.Execute_Epistemic_Function(this.Global_Workspace, Stimulus);
-				Exogenous_Epistemic_Desires.add(Epistemic_Desire);
+				if (Epistemic_Desire != null)
+				{
+					Exogenous_Epistemic_Desires.add(Epistemic_Desire);
+				}
+				
 			}
 			
 			this.Exogenous_Epistemic_Desire.addAll( Exogenous_Epistemic_Desires );
@@ -125,6 +136,17 @@ public class TExogenous_Desire_Promotion
 	public void UnRegister_Epistemic_Function(String Stimulus_Type) 
 	{
 		this.Map_Stimulus_To_Epistemic_Desires.UnRegister_Epistemic_Function( Stimulus_Type ); 
+    }
+	
+	public void Register_Practical_Function(String Stimulus_Type, 
+			Exogenous_Attentional_Desires_Promotion_Function func) 
+	{
+		this.Exogenous_Attentional_Desires_Function_Handler.Register_Function(Stimulus_Type, func);
+	}
+	
+	public void UnRegister_Practical_Function(String Stimulus_Type) 
+	{
+		this.Exogenous_Attentional_Desires_Function_Handler.Unregister_Function( Stimulus_Type ); 
     }
 	
 	public Boolean Has_New_Exogenous_Desire()

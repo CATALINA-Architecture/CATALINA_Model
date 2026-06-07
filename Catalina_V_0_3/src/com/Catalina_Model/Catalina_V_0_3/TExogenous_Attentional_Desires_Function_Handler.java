@@ -2,6 +2,8 @@ package com.Catalina_Model.Catalina_V_0_3;
 
 import java.util.HashMap;
 
+import com.Catalina_Model.Catalina_V_0_3.TGlobal_Workspace.TIRecall_Beliefs;
+
 
 /**
  * This Class executes a function associated to a Stimulus to arise a list od
@@ -17,7 +19,8 @@ public class TExogenous_Attentional_Desires_Function_Handler
 //    }
 	public interface Exogenous_Attentional_Desires_Promotion_Function
     {
-		TExogenous_Attentional_Desires_Promotion_Function_Result apply(TStimulus Stimulus, HashMap<String, TBelief> Beliefs);
+		TExogenous_Attentional_Desires_Promotion_Function_Result apply(TStimulus Stimulus, 
+				HashMap<String, TBelief> Beliefs, TIRecall_Beliefs Recall_Belief);
 		
     }
 	
@@ -25,6 +28,8 @@ public class TExogenous_Attentional_Desires_Function_Handler
 	
 	private final HashMap<String, 
 			Exogenous_Attentional_Desires_Promotion_Function> Registered_Functions;
+			
+	private TIRecall_Beliefs Recall_Belief_Function;
 
     public TExogenous_Attentional_Desires_Function_Handler() 
     {
@@ -67,7 +72,9 @@ public class TExogenous_Attentional_Desires_Function_Handler
 
         if (func != null) 
         {
-        	TExogenous_Attentional_Desires_Promotion_Function_Result temp_result = func.apply( Stimulus, Beliefs);
+        	TExogenous_Attentional_Desires_Promotion_Function_Result temp_result = func.apply( Stimulus, Beliefs,
+        			this.Recall_Belief_Function);
+        	
         	if( temp_result != null)
         	{
         		result = temp_result;
@@ -79,6 +86,14 @@ public class TExogenous_Attentional_Desires_Function_Handler
 //        	System.out.println("\nWARN: No Stimulus Function registered for the Stimulus Type: '" + Stimulus.Get_Type_Belief() + "'.");
             return result;
         }
+    }
+    
+    public void Set_Recall_Belief(TIRecall_Beliefs Recall_Belief)
+    {
+    	if(Recall_Belief != null)
+    	{
+    		this.Recall_Belief_Function = Recall_Belief;
+    	}
     }
 
 }

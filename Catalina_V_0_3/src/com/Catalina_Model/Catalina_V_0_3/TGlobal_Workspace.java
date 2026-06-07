@@ -10,7 +10,14 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import com.Catalina_Model.Catalina_V_0_3.TBelief_Inhibition_Function_Handler.TBelief_Inhibition_Function;
 import com.Catalina_Model.Catalina_V_0_3.TRegion_Inhibition_Function_Handler.TRegion_Inhibition_Function;
 
-public class TGlobal_Workspace {
+public class TGlobal_Workspace implements IGW_Data{
+	
+	@FunctionalInterface
+    public interface TIRecall_Beliefs
+    {
+		HashMap<String, TBelief> apply(HashSet<String> Beliefs_Names);
+    }
+	
 	private TAgent Agent;
 	public TGLITTER_Trie Plan_Library;
 	private TAttention_Selection Attention_Modulation_Component;
@@ -95,7 +102,7 @@ public class TGlobal_Workspace {
 		for(TType_Update_Contract Type_Update_Contract: TType_Update_Contract.values())
 		{
 			this.Update_Contracts.put( Type_Update_Contract , new HashSet<Object>());
-		}
+		} 
 
 		this.Message_Handler = new TBase_Message_Handler();
 		this.Default_Saliency_Threshold = new TDouble_Protected_Object(0.3);
@@ -1665,78 +1672,82 @@ public class TGlobal_Workspace {
 	public void Update_Uninhibited_Conscious_Beliefs(
 			HashMap<String, Object> Beliefs_to_Change) 
 	{
-		this.Write_Lock_Uninhibited_Data.lock();
-		Boolean In_List_Importan_Belief = false;
-		try 
+		if( Beliefs_to_Change.size() > 0)
 		{
-			ArrayList<TBelief> Temp_Important_Belief = this.List_Important_Beliefs.Read();
-			/**
-			 * HashMap<String, Object> Beliefs_To_Change = new HashMap<String, Object>();
-			 * Beliefs_To_Change.put(Belief_Name,
-			 *  			new ArrayList<>(Arrays.asList("Subject or Object_Complement", Object_Value)));
-			 */
-			HashSet<String> temp_Belief_Name = new HashSet<String>();
-			temp_Belief_Name.addAll(Beliefs_to_Change.keySet());
-			HashMap<String, TBelief> temp_Map_Belief= new HashMap<String, TBelief>();
-			temp_Map_Belief.putAll( this.Get_Selected_Beliefs_from_LTM( temp_Belief_Name ) );
-			this.Map_Uninhibited_Beliefs.putAll( temp_Map_Belief );
-			
-			
-			for(String Belief_Name: Beliefs_to_Change.keySet())
+			this.Write_Lock_Uninhibited_Data.lock();
+			Boolean In_List_Importan_Belief = false;
+			try 
 			{
-				TBelief Belief = this.Map_Uninhibited_Beliefs.get( Belief_Name );
-//				if( Type == "Subject")
-				if(Belief ==null)
+				ArrayList<TBelief> Temp_Important_Belief = this.List_Important_Beliefs.Read();
+				/**
+				 * HashMap<String, Object> Beliefs_To_Change = new HashMap<String, Object>();
+				 * Beliefs_To_Change.put(Belief_Name,
+				 *  			new ArrayList<>(Arrays.asList("Subject or Object_Complement", Object_Value)));
+				 */
+				HashSet<String> temp_Belief_Name = new HashSet<String>();
+				temp_Belief_Name.addAll(Beliefs_to_Change.keySet());
+				HashMap<String, TBelief> temp_Map_Belief= new HashMap<String, TBelief>();
+				temp_Map_Belief.putAll( this.Get_Selected_Beliefs_from_LTM( temp_Belief_Name ) );
+				this.Map_Uninhibited_Beliefs.putAll( temp_Map_Belief );
+				
+				
+				for(String Belief_Name: Beliefs_to_Change.keySet())
 				{
-					System.out.println("Error when Update_Uninhibited_Conscious_Beliefs on Belief_Name: ");
-					System.out.println("Belief_Name: "+Belief_Name);
-				}
-				else
-				{
-					ArrayList<Object> Object_Value_and_Type = 
-							(ArrayList<Object>) Beliefs_to_Change.get( Belief_Name ) ;
-					String Type = (String) Object_Value_and_Type.get( 0 );
-					Object Value = Object_Value_and_Type.get( 1 );
-					if( Type.equals("Subject") )
+					TBelief Belief = this.Map_Uninhibited_Beliefs.get( Belief_Name );
+	//				if( Type == "Subject")
+					if(Belief ==null)
 					{
-						Belief.Get_Predicate().Set_Subject(Object_Value_and_Type.get( 1 ));
+						System.out.println("Error when Update_Uninhibited_Conscious_Beliefs on Belief_Name: ");
+						System.out.println("Belief_Name: "+Belief_Name);
 					}
 					else
-					// Type = "Object_Complement"
 					{
-//						if(Belief ==null)
-//						{
-//							System.out.println("Error when Update_Uninhibited_Conscious_Beliefs on Belief_Name: ");
-//							System.out.println("Belief_Name: "+Belief_Name);
-//						}
-						Belief.Get_Predicate().set_Object_Complement( Object_Value_and_Type.get( 1 ) );
+						ArrayList<Object> Object_Value_and_Type = 
+								(ArrayList<Object>) Beliefs_to_Change.get( Belief_Name ) ;
+						String Type = (String) Object_Value_and_Type.get( 0 );
+						Object Value = Object_Value_and_Type.get( 1 );
+						if( Type.equals("Subject") )
+						{
+							Belief.Get_Predicate().Set_Subject(Object_Value_and_Type.get( 1 ));
+						}
+						else
+						// Type = "Object_Complement"
+						{
+	//						if(Belief ==null)
+	//						{
+	//							System.out.println("Error when Update_Uninhibited_Conscious_Beliefs on Belief_Name: ");
+	//							System.out.println("Belief_Name: "+Belief_Name);
+	//						}
+							Belief.Get_Predicate().set_Object_Complement( Object_Value_and_Type.get( 1 ) );
+						}
+						Belief.Set_Truth(true);
+						Belief.Set_Time_Stamp( LocalDateTime.now() ); 
+						In_List_Importan_Belief = 
+								In_List_Importan_Belief || Temp_Important_Belief.contains( Belief );
 					}
-					Belief.Set_Truth(true);
-					Belief.Set_Time_Stamp( LocalDateTime.now() ); 
-					In_List_Importan_Belief = 
-							In_List_Importan_Belief || Temp_Important_Belief.contains( Belief );
 				}
-			}
-			
-//			this.Uninhibited_Consious_Data.Write( 
-//				this.List_Preconditions.Read(), this.List_Uninhibited_Beliefs.Read(), 
-//				this.List_Uninhibited_Desires.Read(), this.List_Uninhibited_Regions.Read() );
-			ArrayList<TBelief> temp_belief_2 = new ArrayList<TBelief>();
-			temp_belief_2.addAll( this.Map_Uninhibited_Beliefs.values() );
-			this.Uninhibited_Consious_Data.Write( 
-					this.List_Preconditions.Read(), temp_belief_2, 
-					this.List_Uninhibited_Desires.Read(), this.List_Uninhibited_Regions.Read() );
-
-			
-			this.Broadcast_Signal(TType_Update_Contract.Updated_Beliefs);
-			if( In_List_Importan_Belief )
+				
+	//			this.Uninhibited_Consious_Data.Write( 
+	//				this.List_Preconditions.Read(), this.List_Uninhibited_Beliefs.Read(), 
+	//				this.List_Uninhibited_Desires.Read(), this.List_Uninhibited_Regions.Read() );
+				ArrayList<TBelief> temp_belief_2 = new ArrayList<TBelief>();
+				temp_belief_2.addAll( this.Map_Uninhibited_Beliefs.values() );
+				this.Uninhibited_Consious_Data.Write( 
+						this.List_Preconditions.Read(), temp_belief_2, 
+						this.List_Uninhibited_Desires.Read(), this.List_Uninhibited_Regions.Read() );
+	
+				
+				this.Broadcast_Signal(TType_Update_Contract.Updated_Beliefs);
+				if( In_List_Importan_Belief )
+				{
+					this.Broadcast_Signal(TType_Update_Contract.Updated_Critical_Beliefs);				
+				}
+				
+			} 
+			finally 
 			{
-				this.Broadcast_Signal(TType_Update_Contract.Updated_Critical_Beliefs);				
+				Write_Lock_Uninhibited_Data.unlock();
 			}
-		} 
-		finally 
-		{
-			Write_Lock_Uninhibited_Data.unlock();
 		}
 	}
 	
@@ -1749,6 +1760,18 @@ public class TGlobal_Workspace {
 ////			result.put(Clone_Belief.Get_Name(), Clone_Belief);
 //			result.put(Belief.Get_Name(), Belief);
 //		}
+		if(this.Map_Uninhibited_Beliefs ==null)
+		{
+			int oo = 2;
+		}
+		if(this.Map_Uninhibited_Beliefs.containsKey(null))
+		{
+			int oo = 2;
+		}
+		if(this.Map_Uninhibited_Beliefs.containsValue(null))
+		{
+			int oo = 2;
+		}
 		result.putAll( this.Map_Uninhibited_Beliefs );
 		return result;
 	}
@@ -1850,6 +1873,10 @@ public class TGlobal_Workspace {
 
 		for (TAttentional_Desire Attentional_Desire: Desires_To_Promote)
 		{
+			if(Attentional_Desire==null)
+			{
+				int oo =2;
+			}
 			switch(Attentional_Desire)
 			{
 				// PRACTICAL DESIRES
@@ -1954,5 +1981,83 @@ public class TGlobal_Workspace {
 	{
     	return this.Plan_Library.Get_Plans( Attentional_Desire, Preconditions );
 	}
+    
+    public HashMap<String, TBelief> Recal_Beliefs(HashSet<String> Beliefs_Names)
+    {
+    	
+    	HashMap<String, TBelief> result = new HashMap<String, TBelief>();
+    	this.Write_Lock_Uninhibited_Data.lock();
+		try 
+		{
+			
+//			this.Write_Lock_Uninhibited_Preconditions.lock();
+//			try
+//			{
+//				this.List_Preconditions.Add_All( Pre_Conditions );
+//			}
+//			finally 
+//			{
+//				Write_Lock_Uninhibited_Preconditions.unlock();
+//			}
+			ArrayList<TBelief> Uninhibited_Beliefs = new ArrayList<TBelief>();
+			Uninhibited_Beliefs.addAll(
+					this.Get_Selected_Beliefs_from_LTM( Beliefs_Names ).values() );
+			
+					
+			this.List_Uninhibited_Beliefs.Add_All( Uninhibited_Beliefs );
+//			this.List_Uninhibited_Desires.Add_All( Uninhibited_Desires );
+//			this.List_Uninhibited_Regions.Add_All( Uninhibited_Regions );
+			
+//			this.Map_Uninhibited_Rgions.clear();
+//			for(TRegion Region: Uninhibited_Regions)
+//			{
+//				this.Map_Uninhibited_Rgions.put(Region.Get_Name(), Region);
+//			}
+			
+			this.Map_Uninhibited_Beliefs.clear();
+//			this.Map_Uninhibited_Beliefs = this.List_Uninhibited_Beliefs.Read().stream()
+//				    .collect(Collectors.toMap(
+//				        TBelief::Get_Name,          // 1. Chiave
+//				        belief -> belief,           // 2. Valore
+//				        (esistente, nuovo) -> nuovo, // 3. Gestione duplicati (l'ultimo vince)
+//				        HashMap::new                // 4. FORZA la creazione di una HashMap
+//				    ));
+//			for(TBelief Belief: this.List_Uninhibited_Beliefs.Read())
+			for(TBelief Belief: this.List_Uninhibited_Beliefs.Read())
+			{
+				this.Map_Uninhibited_Beliefs.put(Belief.Get_Name(), Belief);
+			}
+			
+//			this.Map_Uninhibited_Rgions.clear();
+//			for(TRegion Region: this.List_Uninhibited_Regions.Read())
+//			{
+//				this.Map_Uninhibited_Rgions.put(Region.Get_Name(), Belief);
+//			}
+			
+			this.Uninhibited_Consious_Data.Write( 
+					this.List_Preconditions.Read(), 
+					this.List_Uninhibited_Beliefs.Read(), 
+					this.List_Uninhibited_Desires.Read(), 
+					this.List_Uninhibited_Regions.Read());
+			
+			this.Executive_Memory_Maintenance_Function.Get_LT_Memory_Maintenance().
+				Remove_Inhibited_Data( 
+						this.List_Uninhibited_Desires.Read(), 
+						this.List_Uninhibited_Beliefs.Read(), 
+						this.List_Uninhibited_Regions.Read());
+			
+			
+			result.putAll( this.Map_Uninhibited_Beliefs );
+			
+//			this.Broadcast_Signal(TType_Update_Contract.Updated_Uninhibited_Data);
+		} 
+		finally 
+		{
+			Write_Lock_Uninhibited_Data.unlock();
+		}
+    	
+		return result;
+    	
+    }
 	
 }

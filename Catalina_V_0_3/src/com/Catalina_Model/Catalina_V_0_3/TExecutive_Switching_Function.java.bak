@@ -276,9 +276,9 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 											this.Option_Advancement_Evaluation.Evaluate_Pre_Conditions( Selected_Intention, 
 													this.Map_Uninhibited_Beliefs );
 											Execute_Action = this.Option_Advancement_Evaluation.Get_Evaluation_Pre_Conditions_Result();
-//											if( Execute_Action == TType_Intention_Evaluated.To_Delete)
-//											{
-//												int oo=2;
+											//if( Execute_Action == TType_Intention_Evaluated.To_Delete)
+											//{
+												//int oo=2;
 //											}
 										}
 										else

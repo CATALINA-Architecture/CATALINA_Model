@@ -95,4 +95,14 @@ public class TGW_Memory_Maintenance_Update_Belief_Function_Result
 			this.Beliefs_To_Change.putAll( values );
 		}
 	}
+	
+	public HashMap<String, Object> Get_Beliefs_To_Change()
+	{
+		HashMap<String, Object> result = new HashMap<String, Object>();		
+		if(Beliefs_To_Change.size() > 0)
+		{
+			result.putAll( this.Beliefs_To_Change );
+		}
+		return result;
+	}
 }

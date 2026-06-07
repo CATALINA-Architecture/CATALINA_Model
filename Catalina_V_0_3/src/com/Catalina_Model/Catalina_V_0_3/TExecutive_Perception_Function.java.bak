@@ -170,7 +170,6 @@ public class TExecutive_Perception_Function extends TAgent_Base_Thread
 				{
 					this.Global_Workspace.Set_Filtered_Stimuli( this.Filtered_Stimuli );
 				}
-			}
 		}
 	}
 

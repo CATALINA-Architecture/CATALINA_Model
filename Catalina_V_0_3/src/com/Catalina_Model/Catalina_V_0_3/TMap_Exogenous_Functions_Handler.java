@@ -67,8 +67,8 @@ public class TMap_Exogenous_Functions_Handler
         } 
         else 
         {
-            System.out.println("No TEpistemic_Desire functions registered for the key '" +
-            		Type_Belief + "' in 'TStimulus_to_Function_Manager'.");
+//            System.out.println("No TEpistemic_Desire functions registered for the key '" +
+//            		Type_Belief + "' in 'TStimulus_to_Function_Manager'.");
 //            System.exit(0);
             return null;
         }

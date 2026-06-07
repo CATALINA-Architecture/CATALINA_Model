@@ -8,7 +8,7 @@ import javax.swing.text.StyledEditorKit.BoldAction;
 
 import com.Catalina_Model.Catalina_V_0_3.BooleanExpressionSorter.SortedResult;
 
-public class TGLITTER_Trie 
+public class TGLITTER_Trie implements IPlanner 
 {
 	private TTrieNode Root;
 	
@@ -202,6 +202,14 @@ public class TGLITTER_Trie
 		}
 		TPractical_Desire Desire = (TPractical_Desire) Intention.Get_Active_Desire();
 		Integer Option_Id = Intention.Get_Selected_Option_Id();
+		if( Desire == null)
+		{
+			return false;
+		}
+		if( Option_Id <0)
+		{
+			return false;
+		}
 		TOption Option = Desire.Get_List_Options().get( Option_Id);
 		
 		ArrayList<String> L_Goals = new ArrayList<String>();

@@ -3,6 +3,8 @@ package com.Catalina_Model.Catalina_V_0_3;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.Catalina_Model.Catalina_V_0_3.TGlobal_Workspace.TIRecall_Beliefs;
+
 public class TGlobal_Workspace_Memory_Maintenance_Update_Belief_Function_Handler 
 {
 	
@@ -13,13 +15,16 @@ public class TGlobal_Workspace_Memory_Maintenance_Update_Belief_Function_Handler
 //    }
 	public interface Global_Workspace_Memory_Maintenance_Update_Belief_Function
     {
-		TGW_Memory_Maintenance_Update_Belief_Function_Result apply(TStimulus Stimulus, HashMap<String, TBelief> Beliefs);
+		TGW_Memory_Maintenance_Update_Belief_Function_Result apply(TStimulus Stimulus, HashMap<String, TBelief> Beliefs,
+				TIRecall_Beliefs Recall_Belief);
     }
 	
 //	
 	
 	private final HashMap<String, 
 					Global_Workspace_Memory_Maintenance_Update_Belief_Function> Registered_Functions;
+					
+	private TIRecall_Beliefs Recall_Belief;
 
     public TGlobal_Workspace_Memory_Maintenance_Update_Belief_Function_Handler() 
     {
@@ -62,7 +67,8 @@ public class TGlobal_Workspace_Memory_Maintenance_Update_Belief_Function_Handler
 
         if (func != null) 
         {
-        	TGW_Memory_Maintenance_Update_Belief_Function_Result temp_result = func.apply( Stimulus, Beliefs);
+        	TGW_Memory_Maintenance_Update_Belief_Function_Result temp_result = 
+        			func.apply( Stimulus, Beliefs, this.Recall_Belief);
         	if( temp_result != null)
         	{
         		result = temp_result;
@@ -74,6 +80,14 @@ public class TGlobal_Workspace_Memory_Maintenance_Update_Belief_Function_Handler
 //        	System.out.println("\nWARN GW: No Stimulus Function registered for the Stimulus Type: '" + Stimulus.Get_Type_Belief() + "'.");
             return result;
         }
+    }
+    
+    public void Set_Recall_Belief(TIRecall_Beliefs Func)
+    {
+    	if( Func != null )
+    	{
+    		this.Recall_Belief = Func;
+    	}
     }
 
 }

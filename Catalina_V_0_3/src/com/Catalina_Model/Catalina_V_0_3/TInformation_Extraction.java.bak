@@ -34,8 +34,7 @@ private TExecutive_Perception_Function Parent;
 			this.Last_Generated_Stimuli.Add_All
 			(
 				this.Information_Extraction_Function_Handler.
-				Execute_Function_For_Raw_Data(Perception.Get_Source(), Perception, 
-						Map_Uninhibited_Beliefs, Map_Uninhibited_Regions)
+				Execute_Function_For_Raw_Data(Perception.Get_Source(), Perception, Beliefs, Regions)
 			);
 		}
 	}

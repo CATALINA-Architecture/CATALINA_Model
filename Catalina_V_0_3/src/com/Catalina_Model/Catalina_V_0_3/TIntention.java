@@ -25,6 +25,11 @@ public class TIntention {
 	{
 		return this.Desire;
 	}
+	
+	public TAttentional_Desire Get_Attentional_Desire() 
+	{
+		return (TAttentional_Desire) this.Desire;
+	}
 
 	public void Set_Desire(TDesire desire)
 	{

@@ -188,11 +188,11 @@ public class TExecutive_Reasoner_Function extends TAgent_Base_Thread
 					this.Map_Beliefs.clear();
 					this.Map_Beliefs.putAll( this.Global_Workspace.Get_Map_Uninhibited_Beliefs() );
 					
-					/**
-					 * This ensures all beliefs for each Desires.
-					 * The developer is responsible for each lists 
-					 */
-					this.Map_Beliefs.putAll( this.Ensures_Beliefs_for_Desires( Active_Desires ));
+//					/**
+//					 * This ensures all beliefs for each Desires.
+//					 * The developer is responsible for each lists 
+//					 */
+//					this.Map_Beliefs.putAll( this.Ensures_Beliefs_for_Desires( Active_Desires ));
 					
 					
 					this.Regions.clear();
@@ -214,6 +214,12 @@ public class TExecutive_Reasoner_Function extends TAgent_Base_Thread
 				}
 				
 				// MEANS-END Reasoner
+				/**
+				 * This ensures all beliefs for each Desires.
+				 * The developer is responsible for each lists 
+				 */
+				this.Map_Beliefs.putAll( this.Ensures_Beliefs_for_Desires( Active_Desires ));
+				
 				this.Means_End_Reasoner.Execute( Active_Desires );
 
 				this.Desires_To_Filter.addAll( this.Means_End_Reasoner.Get_Desires_To_Filter() );

@@ -59,7 +59,7 @@ public class TInformation_Extraction_Function_Handler
 
         if (func != null) 
         {
-        	Temp_Stimuli = func.apply( Perception, Map_Uninhibited_Beliefs, Map_Uninhibited_Regions );
+        	Temp_Stimuli = func.apply( Perception, Beliefs, Regions );
         	if(Temp_Stimuli != null)
         	{
         		Last_Stimuli.addAll( Temp_Stimuli );

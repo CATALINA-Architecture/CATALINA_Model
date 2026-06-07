@@ -47,11 +47,11 @@ public class TInformation_Extraction_old
 		this.Last_Generated_Stimuli.Clear();
 		for(TPerception Perception: New_Perceptions )
 		{
-			this.Last_Generated_Stimuli.Add_All
-			(
-				this.Information_Extraction_Function_Handler.
-				Execute_Function_For_Raw_Data(Perception.Get_Source(), Perception, Beliefs, Regions)
-			);
+//			this.Last_Generated_Stimuli.Add_All
+//			(
+//				this.Information_Extraction_Function_Handler.
+//				Execute_Function_For_Raw_Data(Perception.Get_Source(), Perception, Beliefs, Regions)
+//			);
 		}
 	}
 	

@@ -13,7 +13,8 @@ public class TMeans_End_Epistemic_Functions_Handler
         ArrayList<TOption> apply(TEpistemic_Desire epistemic_Desire,
 				        		 HashMap<String, TBelief> beliefs,
 				                 HashMap<String, TRegion> regions,
-                                 ArrayList<TIntention> intentions);
+                                 ArrayList<TIntention> intentions,
+                                 IPlanner Planner);
 //                                 TMeans_End_Reasoner_Data_Getter Means_End_Reasoner_Data_Getter);
     }
 	
@@ -47,6 +48,7 @@ public class TMeans_End_Epistemic_Functions_Handler
             HashMap<String, TBelief> beliefs,
             HashMap<String, TRegion> regions,
             ArrayList<TIntention> intentions,
+            IPlanner Planner,
             TMeans_End_Reasoner_Data_Getter Means_End_Reasoner_Data_Getter) 
     {
 
@@ -71,7 +73,7 @@ public class TMeans_End_Epistemic_Functions_Handler
         {
         	ArrayList<TOption> temp_result = func.apply(epistemic_desire, beliefs, regions, 
 //        													intentions, Means_End_Reasoner_Data_Getter);
-        													intentions);
+        													intentions, Planner);
         	if( temp_result != null)
         	{
         		result.addAll( temp_result );
