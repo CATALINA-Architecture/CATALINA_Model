@@ -6,4 +6,16 @@
     <Checked>-1</Checked>
     <Description>If a danger is on the road, it generates a Stimulus "ST_Stimulus_Danger_on_the_Route". Otherwise, if the danger is on another route where the agent does not to travel then it generates a Stimulus "ST_Stimulus_Irrelevant".</Description>
   </Stimulus_Filtering_Manipulate_Stimulus_Function>
+  <Stimulus_Filtering_Manipulate_Stimulus_Function>
+    <Belief_Type>BLTS_Stimulus_Danger_Data_from_TCS</Belief_Type>
+    <Function_Name>Check_Danger_Data_from_TCS</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
+  </Stimulus_Filtering_Manipulate_Stimulus_Function>
+  <Stimulus_Filtering_Manipulate_Stimulus_Function>
+    <Belief_Type>BLT_Low_Fuel_Level_Warning</Belief_Type>
+    <Function_Name>Check_Low_Fuel_Level_Warning</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
+  </Stimulus_Filtering_Manipulate_Stimulus_Function>
 </Stimulus_Filtering_Manipulate_Stimulus_Functions>

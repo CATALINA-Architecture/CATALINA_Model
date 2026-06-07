@@ -26,4 +26,17 @@ Format Perceived Data: [
 2- Route: Integer
 3- Step: Integer</Description>
   </Perception_Processing_Sensor_Function>
+  <Perception_Processing_Sensor_Function>
+    <Sensor_Name>Traffic_Control_Service</Sensor_Name>
+    <Function_Name>Get_Danger_Data_from_TCS</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
+  </Perception_Processing_Sensor_Function>
+  <Perception_Processing_Sensor_Function>
+    <Sensor_Name>Fuel_Sensor</Sensor_Name>
+    <Function_Name>Get_Low_Fuel_Signal</Function_Name>
+    <Checked>-1</Checked>
+    <Description>The Agent turns on the Virtual Camera (a request for an input to user) to understand if a danger is on the route in fron to the Agent.
+Format Perceived Data: Integer: Fuelm level [0,100]</Description>
+  </Perception_Processing_Sensor_Function>
 </Perception_Processing_Sensor_Functions>

@@ -1,2 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Epistemic_Desires/>
+<Epistemic_Desires>
+  <Epistemic_Desire>
+    <Epistemic_Name>Inquiry_Estimated_Delay_prove</Epistemic_Name>
+    <Stimulus_Name>ST_Stimulus_Danger_on_the_Route</Stimulus_Name>
+    <Saliency>0,9</Saliency>
+    <Reward>0,3</Reward>
+    <Relax_Preference>0</Relax_Preference>
+    <Satisfied>0</Satisfied>
+    <List_Green_Desires/>
+    <List_Quality_Desires/>
+    <Beliefs_for_Reasoner>
+      <Belief_for_Reasoner>BL_Come_Back_to_City</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Current_Intention_Satisfaction_Time</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Current_Time</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Danger_on_the_Route</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Dangerous_Position_Route</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Fuel_Level</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Map</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Next_Position_City</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Next_Position_Route</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Next_Position_Step</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Position_City</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Position_Route</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Position_Step</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Previous_Intention_Satisfaction_Time</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Temporary_Closed_Routes</Belief_for_Reasoner>
+      <Belief_for_Reasoner>ST_Stimulus_Danger_Data_from_TCS</Belief_for_Reasoner>
+      <Belief_for_Reasoner>ST_Stimulus_Danger_on_the_Route</Belief_for_Reasoner>
+      <Belief_for_Reasoner>ST_Stimulus_Irrelevant</Belief_for_Reasoner>
+      <Belief_for_Reasoner>ST_Stimulus_Low_Fuel</Belief_for_Reasoner>
+      <Belief_for_Reasoner>ST_Stimulus_Ok_Correct_Movement</Belief_for_Reasoner>
+      <Belief_for_Reasoner>ST_Stimulus_Route_Status</Belief_for_Reasoner>
+      <Belief_for_Reasoner>ST_Stimulus_Temporary_Closed_Route</Belief_for_Reasoner>
+    </Beliefs_for_Reasoner>
+    <Description></Description>
+  </Epistemic_Desire>
+</Epistemic_Desires>

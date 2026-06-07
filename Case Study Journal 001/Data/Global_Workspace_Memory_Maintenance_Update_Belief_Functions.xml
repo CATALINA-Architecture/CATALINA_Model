@@ -6,4 +6,16 @@
     <Checked>-1</Checked>
     <Description>It updates any Belief linked to Stimulus "BLTS_Stimulus_Danger_on_the_Route"</Description>
   </Global_Workspace_Memory_Maintenance_Update_Belief_Function>
+  <Global_Workspace_Memory_Maintenance_Update_Belief_Function>
+    <Belief_Type>BLTS_Stimulus_Danger_Data_from_TCS</Belief_Type>
+    <Function_Name>Update_Normal_Beliefs_from_Danger_Data_from_TCS</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
+  </Global_Workspace_Memory_Maintenance_Update_Belief_Function>
+  <Global_Workspace_Memory_Maintenance_Update_Belief_Function>
+    <Belief_Type>BLTS_Stimulus_Low_Fuel</Belief_Type>
+    <Function_Name>Update_Normal_Belief_from_BLTS_Stimulus_Low_Fuel</Function_Name>
+    <Checked>0</Checked>
+    <Description></Description>
+  </Global_Workspace_Memory_Maintenance_Update_Belief_Function>
 </Global_Workspace_Memory_Maintenance_Update_Belief_Functions>

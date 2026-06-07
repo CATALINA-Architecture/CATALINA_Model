@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Beliefs>
   <Belief>
+    <Belief_Name>BL_City_to_Refuel</Belief_Name>
+    <Belief_Type>BLT_City_to_Refuel</Belief_Type>
+    <Associated_Predicate>PR_City_to_Refuel</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>false</Truth>
+    <Description></Description>
+  </Belief>
+  <Belief>
     <Belief_Name>BL_City_Visited_Amsterdam</Belief_Name>
     <Belief_Type>BLT_City_Visited</Belief_Type>
     <Associated_Predicate>PR_City_Visited_Amsterdam</Associated_Predicate>
@@ -455,6 +464,15 @@ The Agent considers the passage of time thanks to this belief.
 Its format is "2025-10-20T11:37:16.590" (year-month-dateThour:minute:second.milliseconds)</Description>
   </Belief>
   <Belief>
+    <Belief_Name>BL_Current_Travel_Intention_Satisfaction_Time</Belief_Name>
+    <Belief_Type>BLT_Current_Travel_Intention_Satisfaction_Time</Belief_Type>
+    <Associated_Predicate>PR_Current_Travel_Intention_Satisfaction_Time</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>false</Truth>
+    <Description></Description>
+  </Belief>
+  <Belief>
     <Belief_Name>BL_Danger_on_the_Route</Belief_Name>
     <Belief_Type>BLT_Danger_on_the_Route</Belief_Type>
     <Associated_Predicate>PR_Danger_on_the_Route</Associated_Predicate>
@@ -513,6 +531,33 @@ Belief for a Practical Desire</Description>
     <Truth>false</Truth>
     <Description>The Agent was in Rome
 Belief for a Practical Desire</Description>
+  </Belief>
+  <Belief>
+    <Belief_Name>BL_Fuel_Level</Belief_Name>
+    <Belief_Type>BLT_Fuel_Level</Belief_Type>
+    <Associated_Predicate>PR_Fuel_Level</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>false</Truth>
+    <Description></Description>
+  </Belief>
+  <Belief>
+    <Belief_Name>BL_Low_Fuel_Level</Belief_Name>
+    <Belief_Type>BLT_Low_Fuel_Level</Belief_Type>
+    <Associated_Predicate>PR_Low_Fuel_Level</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>false</Truth>
+    <Description></Description>
+  </Belief>
+  <Belief>
+    <Belief_Name>BL_Low_Fuel_Level_Warning</Belief_Name>
+    <Belief_Type>BLT_Low_Fuel_Level_Warning</Belief_Type>
+    <Associated_Predicate>PR_Low_Fuel_Level_Warning</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>false</Truth>
+    <Description></Description>
   </Belief>
   <Belief>
     <Belief_Name>BL_Map</Belief_Name>
@@ -641,6 +686,33 @@ Double_Object[ HashMap&lt;int, string&gt;, HashMap&lt;string, int&gt;</Descripti
     <Time_Stamp>null</Time_Stamp>
     <Truth>false</Truth>
     <Description>The Previous Step position in a route where the Agent is. If it is 0, it means that the Agent is in a City</Description>
+  </Belief>
+  <Belief>
+    <Belief_Name>BL_Previous_Travel_Intention_Max_Satisfaction_Time</Belief_Name>
+    <Belief_Type>BLT_Previous_Travel_Intention_Max_Satisfaction_Time</Belief_Type>
+    <Associated_Predicate>PR_Previous_Travel_Intention_Max_Satisfaction_Time</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>false</Truth>
+    <Description></Description>
+  </Belief>
+  <Belief>
+    <Belief_Name>BL_Previous_Travel_Intention_Satisfaction_Time</Belief_Name>
+    <Belief_Type>BLT_Previous_Travel_Intention_Satisfaction_Time</Belief_Type>
+    <Associated_Predicate>PR_Previous_Travel_Intention_Satisfaction_Time</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>false</Truth>
+    <Description></Description>
+  </Belief>
+  <Belief>
+    <Belief_Name>BL_Refuel_to_City</Belief_Name>
+    <Belief_Type>BLT_Fuel_Level</Belief_Type>
+    <Associated_Predicate>PRP_Refuel_to_City</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>false</Truth>
+    <Description></Description>
   </Belief>
   <Belief>
     <Belief_Name>BL_Route_Status_0</Belief_Name>
@@ -1849,6 +1921,15 @@ Double_Object[ HashMap&lt;int, string&gt;, HashMap&lt;string, int&gt;</Descripti
     <Description>The Routes performed for each Practical Desires. Each Practical Desire (for e destination city), has a routes performed.. This belief stores each routes performed for each Desires with final state "destination city"</Description>
   </Belief>
   <Belief>
+    <Belief_Name>BL_Temporary_Closed_Duration</Belief_Name>
+    <Belief_Type>BLT_Temporary_Closed_Duration</Belief_Type>
+    <Associated_Predicate>PR_Temporary_Closed_Duration</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>true</Truth>
+    <Description>The City position in a route where the Agent is.</Description>
+  </Belief>
+  <Belief>
     <Belief_Name>BL_Temporary_Closed_Routes</Belief_Name>
     <Belief_Type>BLT_Temporary_Closed_Routes</Belief_Type>
     <Associated_Predicate>PR_Temporary_Closed_Routes</Associated_Predicate>
@@ -1866,6 +1947,15 @@ In this version (0.3) the Predicate is: ["Temporary Closed Routes", is, HashMap&
     <Time_Stamp>null</Time_Stamp>
     <Truth>false</Truth>
     <Description>Trigger Condition for The Agent has to go to Frankfurt. When the Agent is in Paris, the Trigger Condition is arised</Description>
+  </Belief>
+  <Belief>
+    <Belief_Name>ST_Stimulus_Danger_Data_from_TCS</Belief_Name>
+    <Belief_Type>BLTS_Stimulus_Danger_Data_from_TCS</Belief_Type>
+    <Associated_Predicate>PRS_Stimulus_Danger_Data_from_TCS</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>false</Truth>
+    <Description></Description>
   </Belief>
   <Belief>
     <Belief_Name>ST_Stimulus_Danger_on_the_Route</Belief_Name>
@@ -1886,6 +1976,15 @@ It arises an Epistemic Desire</Description>
     <Truth>false</Truth>
     <Description>Stimulus: it says tha agent perceived an irrelevant stimulus
 It does "NOT" arise an Epistemic Desire</Description>
+  </Belief>
+  <Belief>
+    <Belief_Name>ST_Stimulus_Low_Fuel</Belief_Name>
+    <Belief_Type>BLTS_Stimulus_Low_Fuel</Belief_Type>
+    <Associated_Predicate>PRS_Stimulus_Low_Fuel</Associated_Predicate>
+    <Information_Source>Developer</Information_Source>
+    <Time_Stamp>null</Time_Stamp>
+    <Truth>false</Truth>
+    <Description></Description>
   </Belief>
   <Belief>
     <Belief_Name>ST_Stimulus_Ok_Correct_Movement</Belief_Name>

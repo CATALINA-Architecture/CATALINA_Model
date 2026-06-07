@@ -14,4 +14,18 @@ Predicate Format of the Stimulus:
     <Checked>0</Checked>
     <Description></Description>
   </Information_Extraction_Function>
+  <Information_Extraction_Function>
+    <Sensor_Name>Traffic_Control_Service</Sensor_Name>
+    <Function_Name>Manage_Stimulus_Danger_Data_Acquired</Function_Name>
+    <Checked>-1</Checked>
+    <Description>It analyze the perception of a possibile danger on the route, the agent has to investigate. It can genererate a Stimulus to arise an Epistemic Desire
+Predicate Format of the Stimulus: 
+</Description>
+  </Information_Extraction_Function>
+  <Information_Extraction_Function>
+    <Sensor_Name>Fuel_Sensor</Sensor_Name>
+    <Function_Name>Mangage_Low_Fuel_Level_Signal</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
+  </Information_Extraction_Function>
 </Information_Extraction_Functions>

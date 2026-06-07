@@ -24,7 +24,7 @@ This function gives a TDouble_Object:
   <Plan_Executive_Function>
     <Green_Name>Come_Back_to_City</Green_Name>
     <Function_Name>Execute_Movement</Function_Name>
-    <Checked>0</Checked>
+    <Checked>-1</Checked>
     <Description></Description>
   </Plan_Executive_Function>
   <Plan_Executive_Function>
@@ -56,5 +56,17 @@ This function gives a TDouble_Object:
     <Function_Name>Execute_Reverse_Direction</Function_Name>
     <Checked>-1</Checked>
     <Description>This action reverses the direction of the AV</Description>
+  </Plan_Executive_Function>
+  <Plan_Executive_Function>
+    <Green_Name>Decide_To_Continue_or_Not</Green_Name>
+    <Function_Name>Execute_Decision</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
+  </Plan_Executive_Function>
+  <Plan_Executive_Function>
+    <Green_Name>Refuelling</Green_Name>
+    <Function_Name>Execute_Refuelling</Function_Name>
+    <Checked>-1</Checked>
+    <Description></Description>
   </Plan_Executive_Function>
 </Plan_Executive_Functions>

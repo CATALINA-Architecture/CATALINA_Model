@@ -22,13 +22,15 @@
       <Belief_Temporal_Propositional_Formula>BL_Destination_Frankfurt</Belief_Temporal_Propositional_Formula>
     </Beliefs_Temporal_Propositional_Formula>
     <Finally_Start_Time>2024-02-10T14:00:00.000</Finally_Start_Time>
-    <Finally_End_Time>2024-02-10T23:00:00.000</Finally_End_Time>
+    <Finally_End_Time>2024-02-11T04:00:00.000</Finally_End_Time>
     <Beliefs_for_Reasoner>
       <Belief_for_Reasoner>BL_Closed_Routes</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Come_Back_to_City</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Current_Intention_Satisfaction_Time</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Current_Time</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Danger_on_the_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Dangerous_Position_Route</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Fuel_Level</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Map</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Next_Position_City</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Next_Position_Route</Belief_for_Reasoner>
@@ -36,6 +38,7 @@
       <Belief_for_Reasoner>BL_Position_City</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Position_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Position_Step</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Previous_Intention_Satisfaction_Time</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Previous_Position_City</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Previous_Position_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Previous_Position_Step</Belief_for_Reasoner>
@@ -43,6 +46,7 @@
       <Belief_for_Reasoner>BL_Temporary_Closed_Routes</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Danger_on_the_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Irrelevant</Belief_for_Reasoner>
+      <Belief_for_Reasoner>ST_Stimulus_Low_Fuel</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Ok_Correct_Movement</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Route_Status</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Temporary_Closed_Route</Belief_for_Reasoner>
@@ -74,9 +78,11 @@
     <Beliefs_for_Reasoner>
       <Belief_for_Reasoner>BL_Closed_Routes</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Come_Back_to_City</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Current_Intention_Satisfaction_Time</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Current_Time</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Danger_on_the_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Dangerous_Position_Route</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Fuel_Level</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Map</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Next_Position_City</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Next_Position_Route</Belief_for_Reasoner>
@@ -84,6 +90,7 @@
       <Belief_for_Reasoner>BL_Position_City</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Position_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Position_Step</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Previous_Intention_Satisfaction_Time</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Previous_Position_City</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Previous_Position_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Previous_Position_Step</Belief_for_Reasoner>
@@ -91,6 +98,7 @@
       <Belief_for_Reasoner>BL_Temporary_Closed_Routes</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Danger_on_the_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Irrelevant</Belief_for_Reasoner>
+      <Belief_for_Reasoner>ST_Stimulus_Low_Fuel</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Ok_Correct_Movement</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Route_Status</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Temporary_Closed_Route</Belief_for_Reasoner>
@@ -125,9 +133,11 @@ The trigger condition is that the Agent must have gone to Paris.</Description>
     <Beliefs_for_Reasoner>
       <Belief_for_Reasoner>BL_Closed_Routes</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Come_Back_to_City</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Current_Intention_Satisfaction_Time</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Current_Time</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Danger_on_the_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Dangerous_Position_Route</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Fuel_Level</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Map</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Next_Position_City</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Next_Position_Route</Belief_for_Reasoner>
@@ -135,6 +145,7 @@ The trigger condition is that the Agent must have gone to Paris.</Description>
       <Belief_for_Reasoner>BL_Position_City</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Position_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Position_Step</Belief_for_Reasoner>
+      <Belief_for_Reasoner>BL_Previous_Intention_Satisfaction_Time</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Previous_Position_City</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Previous_Position_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>BL_Previous_Position_Step</Belief_for_Reasoner>
@@ -142,6 +153,7 @@ The trigger condition is that the Agent must have gone to Paris.</Description>
       <Belief_for_Reasoner>BL_Temporary_Closed_Routes</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Danger_on_the_Route</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Irrelevant</Belief_for_Reasoner>
+      <Belief_for_Reasoner>ST_Stimulus_Low_Fuel</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Ok_Correct_Movement</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Route_Status</Belief_for_Reasoner>
       <Belief_for_Reasoner>ST_Stimulus_Temporary_Closed_Route</Belief_for_Reasoner>

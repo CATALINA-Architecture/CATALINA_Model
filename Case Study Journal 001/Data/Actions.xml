@@ -10,6 +10,10 @@
     <Description></Description>
   </Action>
   <Action>
+    <Action_Name>Decide_To_Continue_or_Not</Action_Name>
+    <Description></Description>
+  </Action>
+  <Action>
     <Action_Name>GO_TO_Route</Action_Name>
     <Description></Description>
   </Action>
@@ -19,6 +23,10 @@
   </Action>
   <Action>
     <Action_Name>Initialize_Way</Action_Name>
+    <Description></Description>
+  </Action>
+  <Action>
+    <Action_Name>Refuelling</Action_Name>
     <Description></Description>
   </Action>
   <Action>

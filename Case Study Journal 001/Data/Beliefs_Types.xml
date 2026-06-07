@@ -5,6 +5,10 @@
     <Description></Description>
   </Belief_Type>
   <Belief_Type>
+    <Belief_Name>BLT_City_to_Refuel</Belief_Name>
+    <Description></Description>
+  </Belief_Type>
+  <Belief_Type>
     <Belief_Name>BLT_City_Visited</Belief_Name>
     <Description></Description>
   </Belief_Type>
@@ -27,6 +31,10 @@ Its format is "2025-10-20T11:37:16.590" (year-month-dateThour:minute:second.mill
 </Description>
   </Belief_Type>
   <Belief_Type>
+    <Belief_Name>BLT_Current_Travel_Intention_Satisfaction_Time</Belief_Name>
+    <Description></Description>
+  </Belief_Type>
+  <Belief_Type>
     <Belief_Name>BLT_Danger_on_the_Route</Belief_Name>
     <Description>The Route has a type of danger
 This Version (0.3): [int route, is, String TType_Danger (Unknown, Roks_on_the_Road, Car_Accident_on_the_Road)]
@@ -43,6 +51,20 @@ Previous versions: [int route, has_a_Danger, TType_Danger (Unknown, Roks_on_the_
     <Description>The Destination City for the Agent. It is used by a Practical Desire. In version 0.3 is has the structure: ["Me", is, "Station_Name"]
 In previous versions is has the structure: [Station, visited_by, Me]
 </Description>
+  </Belief_Type>
+  <Belief_Type>
+    <Belief_Name>BLT_Fuel_Level</Belief_Name>
+    <Description></Description>
+  </Belief_Type>
+  <Belief_Type>
+    <Belief_Name>BLT_Low_Fuel_Level</Belief_Name>
+    <Description>Indicate when the fuel is minor or equal to the low level warning
+Format: [ Belief "BL_Fuel_Level", "majorn_equal", Belief "BL_Low_Fuel_Level_Warning"]
+</Description>
+  </Belief_Type>
+  <Belief_Type>
+    <Belief_Name>BLT_Low_Fuel_Level_Warning</Belief_Name>
+    <Description></Description>
   </Belief_Type>
   <Belief_Type>
     <Belief_Name>BLT_Map</Belief_Name>
@@ -106,11 +128,34 @@ Double_Object[ HashMap&lt;int, string&gt;, HashMap&lt;string, int&gt;
 </Description>
   </Belief_Type>
   <Belief_Type>
+    <Belief_Name>BLT_Previous_Travel_Intention_Max_Satisfaction_Time</Belief_Name>
+    <Description></Description>
+  </Belief_Type>
+  <Belief_Type>
+    <Belief_Name>BLT_Previous_Travel_Intention_Satisfaction_Time</Belief_Name>
+    <Description></Description>
+  </Belief_Type>
+  <Belief_Type>
+    <Belief_Name>BLT_Refuel_to_City</Belief_Name>
+    <Description>It says that the Agent has to go to a city
+this Version (0.3): [String "Me", is, int city]
+Previous Version: [Me, go/goes, int city]
+</Description>
+  </Belief_Type>
+  <Belief_Type>
     <Belief_Name>BLT_Route_Status</Belief_Name>
     <Description></Description>
   </Belief_Type>
   <Belief_Type>
     <Belief_Name>BLT_Routes_performed_for_each_Practical_Desires</Belief_Name>
+    <Description></Description>
+  </Belief_Type>
+  <Belief_Type>
+    <Belief_Name>BLT_Stimulus_Low_Fuel</Belief_Name>
+    <Description></Description>
+  </Belief_Type>
+  <Belief_Type>
+    <Belief_Name>BLT_Temporary_Closed_Duration</Belief_Name>
     <Description></Description>
   </Belief_Type>
   <Belief_Type>
@@ -124,6 +169,12 @@ Double_Object[ HashMap&lt;int, string&gt;, HashMap&lt;string, int&gt;
 </Description>
   </Belief_Type>
   <Belief_Type>
+    <Belief_Name>BLTS_Stimulus_Danger_Data_from_TCS</Belief_Name>
+    <Description>Stimulus: it says the type and the duration of the perceived danger on the route, the agent has to update soma information on memory
+It updates soma information
+</Description>
+  </Belief_Type>
+  <Belief_Type>
     <Belief_Name>BLTS_Stimulus_Danger_on_the_Route</Belief_Name>
     <Description>Stimulus: it says a danger has been perceived on the route, the agent hast to investigate
 It arises an Epistemic Desire
@@ -134,6 +185,10 @@ It arises an Epistemic Desire
     <Description>Stimulus: it says tha agent perceived an irrelevant stimulus
 It does "NOT" arise an Epistemic Desire
 </Description>
+  </Belief_Type>
+  <Belief_Type>
+    <Belief_Name>BLTS_Stimulus_Low_Fuel</Belief_Name>
+    <Description></Description>
   </Belief_Type>
   <Belief_Type>
     <Belief_Name>BLTS_Stimulus_Ok_Correct_Movement</Belief_Name>

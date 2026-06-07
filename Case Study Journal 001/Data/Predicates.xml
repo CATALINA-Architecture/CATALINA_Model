@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Predicates>
   <Predicate>
+    <Predicate_Name>PR_City_to_Refuel</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>-1</Object_Complement_Value>
+    <Description>The Aget wants to go to a city to refuel.
+This version (0.3): [String "Me", is, int city]</Description>
+  </Predicate>
+  <Predicate>
     <Predicate_Name>PR_City_Visited_Amsterdam</Predicate_Name>
     <Subject_Type>String</Subject_Type>
     <Subject_Value>Amsterdam</Subject_Value>
@@ -455,6 +465,16 @@ Previous Version: [Me, go/goes, int city]</Description>
     <Description>Trigger Condition for The Agent has to go to Frankfurt</Description>
   </Predicate>
   <Predicate>
+    <Predicate_Name>PR_Current_Travel_Intention_Satisfaction_Time</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value></Subject_Value>
+    <Relationship_Type>equal</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>Subject= Current Desire Name
+Obecj = LcalDateTime</Description>
+  </Predicate>
+  <Predicate>
     <Predicate_Name>PR_Danger_on_the_Route</Predicate_Name>
     <Subject_Type>Integer</Subject_Type>
     <Subject_Value>-1</Subject_Value>
@@ -475,6 +495,15 @@ Previous versions: [int route, has_a_Danger, TType_Danger (Unknown, Roks_on_the_
     <Description>The position route where the danger is</Description>
   </Predicate>
   <Predicate>
+    <Predicate_Name>PR_Fuel_Level</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value></Subject_Value>
+    <Relationship_Type>equal</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>100</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
     <Predicate_Name>PR_Initial_Position_City</Predicate_Name>
     <Subject_Type>String</Subject_Type>
     <Subject_Value>Me</Subject_Value>
@@ -484,6 +513,27 @@ Previous versions: [int route, has_a_Danger, TType_Danger (Unknown, Roks_on_the_
     <Description>The Initial City position in a route where the Agent is.</Description>
   </Predicate>
   <Predicate>
+    <Predicate_Name>PR_Low_Fuel_Level</Predicate_Name>
+    <Subject_Type>Belief</Subject_Type>
+    <Subject_Value>BL_Fuel_Level</Subject_Value>
+    <Relationship_Type>minor_equal</Relationship_Type>
+    <Object_Complement_Type>Belief</Object_Complement_Type>
+    <Object_Complement_Value>BL_Low_Fuel_Level_Warning</Object_Complement_Value>
+    <Description>Indicate when the fuel is minor or equal to the low level warning
+Format: [ Belief "BL_Fuel_Level", "majorn_equal", Belief "BL_Low_Fuel_Level_Warning"]
+
+</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Low_Fuel_Level_Warning</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value></Subject_Value>
+    <Relationship_Type>equal</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>24</Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
     <Predicate_Name>PR_Map</Predicate_Name>
     <Subject_Type>String</Subject_Type>
     <Subject_Value>Map</Subject_Value>
@@ -491,6 +541,16 @@ Previous versions: [int route, has_a_Danger, TType_Danger (Unknown, Roks_on_the_
     <Object_Complement_Type>Object</Object_Complement_Type>
     <Object_Complement_Value></Object_Complement_Value>
     <Description>The map of the environment in which the agent moves. The Objec_Complement is the map (TEnvironment)</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Max_Time_Previous_Travel_Intention_Satisfation</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value></Subject_Value>
+    <Relationship_Type>equal</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>Subject= Current Desire Name
+Obecj = LcalDateTime</Description>
   </Predicate>
   <Predicate>
     <Predicate_Name>PR_Next_Position_City</Predicate_Name>
@@ -611,6 +671,26 @@ The Integer is the City position on the map. You can see the corrispondence in e
     <Object_Complement_Type>Integer</Object_Complement_Type>
     <Object_Complement_Value>0</Object_Complement_Value>
     <Description>The Previous Step position in a route where the Agent is. If it is 0, it means that the Agent is in a City</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Previous_Travel_Intention_Max_Satisfaction_Time</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value></Subject_Value>
+    <Relationship_Type>equal</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>Subject= Current Desire Name
+Obecj = LcalDateTime</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PR_Previous_Travel_Intention_Satisfaction_Time</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value></Subject_Value>
+    <Relationship_Type>equal</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>Subject= Current Desire Name
+Obecj = LcalDateTime</Description>
   </Predicate>
   <Predicate>
     <Predicate_Name>PR_Route_Status_0</Predicate_Name>
@@ -1819,6 +1899,15 @@ The Integer is the City position on the map. You can see the corrispondence in e
     <Description>The Routes performed for each Practical Desires. The object complement is an HashMap&lt;String, TDouble_Object ([ArrayList&lt;TDouble&gt;, ArrayList&lt;TimeStamp&gt;])&gt;</Description>
   </Predicate>
   <Predicate>
+    <Predicate_Name>PR_Temporary_Closed_Duration</Predicate_Name>
+    <Subject_Type>String</Subject_Type>
+    <Subject_Value>Me</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description></Description>
+  </Predicate>
+  <Predicate>
     <Predicate_Name>PR_Temporary_Closed_Routes</Predicate_Name>
     <Subject_Type>String</Subject_Type>
     <Subject_Value>Temporary Closed Routes</Subject_Value>
@@ -1886,6 +1975,18 @@ Previous versions: [String "Me", go/goes, int city]</Description>
     <Description>The Agent is in Rome</Description>
   </Predicate>
   <Predicate>
+    <Predicate_Name>PRP_Refuel_to_City</Predicate_Name>
+    <Subject_Type>Belief</Subject_Type>
+    <Subject_Value>BL_Fuel_Level</Subject_Value>
+    <Relationship_Type>major</Relationship_Type>
+    <Object_Complement_Type>Belief</Object_Complement_Type>
+    <Object_Complement_Value>BL_Low_Fuel_Level_Warning</Object_Complement_Value>
+    <Description>Fuel level that is considered useful to continue to satisfy the agent's desires.
+Format: [ Belief "BL_Fuel_Level", "majorn_equal", Belief "BL_Low_Fuel_Level_Warning"]
+
+</Description>
+  </Predicate>
+  <Predicate>
     <Predicate_Name>PRQ_Panorama_is_Great</Predicate_Name>
     <Subject_Type>String</Subject_Type>
     <Subject_Value>Panorama</Subject_Value>
@@ -1903,6 +2004,17 @@ Previous versions: [String "Me", go/goes, int city]</Description>
     <Object_Complement_Value>70</Object_Complement_Value>
     <Description>The Quality Desire predicate that prefers to follow the Path with moderate Speeds.
 The double value is in km/h</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRS_Stimulus_Danger_Data_from_TCS</Predicate_Name>
+    <Subject_Type>Integer</Subject_Type>
+    <Subject_Value>-1</Subject_Value>
+    <Relationship_Type>is</Relationship_Type>
+    <Object_Complement_Type>Object</Object_Complement_Type>
+    <Object_Complement_Value></Object_Complement_Value>
+    <Description>Danger data perceived from TCS
+It updates some informations
+Predicate Format: [[Integer City, Integer, Route, Integer Step], is, String "Damaged"]</Description>
   </Predicate>
   <Predicate>
     <Predicate_Name>PRS_Stimulus_Danger_on_the_Route</Predicate_Name>
@@ -1923,6 +2035,15 @@ Predicate Format: [[Integer City, Integer, Route, Integer Step], is, String "Dam
     <Object_Complement_Type>Boolean</Object_Complement_Type>
     <Object_Complement_Value>false</Object_Complement_Value>
     <Description>This predicate says that tha agent perceived an irrelevant stimulus</Description>
+  </Predicate>
+  <Predicate>
+    <Predicate_Name>PRS_Stimulus_Low_Fuel</Predicate_Name>
+    <Subject_Type>Belief</Subject_Type>
+    <Subject_Value>BL_Fuel_Level</Subject_Value>
+    <Relationship_Type>minor</Relationship_Type>
+    <Object_Complement_Type>Integer</Object_Complement_Type>
+    <Object_Complement_Value>25</Object_Complement_Value>
+    <Description></Description>
   </Predicate>
   <Predicate>
     <Predicate_Name>PRS_Stimulus_Ok_Correct_Movement</Predicate_Name>
