@@ -8,5 +8,6 @@ public enum TType_Intention_Evaluated
 	To_Delete,
 	Correct_Executed,
 	Full_Executed,
-	Satisfied
+	Satisfied,
+	Not_Satisfied
 }

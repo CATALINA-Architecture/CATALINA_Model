@@ -12,6 +12,7 @@ public class TOption_Advancement_Evaluation
 	private int Active_Intentions;
 	private TType_Intention_Evaluated Evaluation_Pre_Conditions_Result;
 	private TType_Intention_Evaluated Evaluation_Post_Conditions_Result;
+	private TType_Intention_Evaluated Evaluation_Desire_Satisfation;
 
 	public TOption_Advancement_Evaluation(TExecutive_Switching_Function Owner)
 	{
@@ -19,6 +20,7 @@ public class TOption_Advancement_Evaluation
 		
 		this.Active_Intentions = 0;
 		this.Max_Intentions_at_time = 1;
+		this.Evaluation_Desire_Satisfation = TType_Intention_Evaluated.Not_Satisfied;
 	}
 	
 	public void Initialize_Active_Intentions()
@@ -333,7 +335,36 @@ public class TOption_Advancement_Evaluation
 		Boolean Truth = ((TBelief) Condition.Get_Subject()).Is_Truth();
 		Object Subject_Value = 
 				((TBelief) Condition.Get_Subject()).Get_Predicate().Get_Object_Complement();
-		Object Value_to_Compare = Condition.Get_Object_Complement();
+		Object Value_to_Compare = null;
+		switch(Condition.Get_Object_Complement())
+		{
+			case TBelief b ->
+			{
+//				Value_to_Compare = ((TBelief) Condition.Get_Object_Complement())
+//						.Get_Predicate().Get_Object_Complement();
+				Value_to_Compare = b.Get_Predicate().Get_Object_Complement();
+			}
+			case TPredicate p ->
+			{
+				Value_to_Compare = p.Get_Object_Complement();
+			}
+				
+			default -> 
+			{
+				Value_to_Compare = Condition.Get_Object_Complement();
+		    }
+		}
+//		if(Condition.Get_Object_Complement() instanceof TBelief)
+//		{
+//			Value_to_Compare = ((TBelief) Condition.Get_Object_Complement())
+//						.Get_Predicate().Get_Object_Complement();
+//			
+//		}
+//		else
+//		{
+//			Value_to_Compare = Condition.Get_Object_Complement();
+//		}
+		
 		TType_Relationship Relationship = Condition.Get_Relationship();
 		switch (Relationship) 
 		{
@@ -406,6 +437,11 @@ public class TOption_Advancement_Evaluation
 		return this.Evaluation_Post_Conditions_Result;
 	}
 	
+	public TType_Intention_Evaluated Get_Evaluation_Desire_Satisfation_Result()
+	{
+		return this.Evaluation_Desire_Satisfation;
+	}
+	
 	public void Evaluate_Post_Conditions(TIntention Selected_Intention, 
 			HashMap<String, TBelief> Uninhibited_Beliefs)
 	{
@@ -436,4 +472,19 @@ public class TOption_Advancement_Evaluation
 	}
 	this.Evaluation_Post_Conditions_Result = Evaluated_Result;
 	}
+	
+	public void Evaluate_Desire_Satisfaction(TIntention Selected_Intention, 
+			HashMap<String, TBelief> Uninhibited_Beliefs)
+	{
+		if(Selected_Intention.Get_Selected_Option().Actions_Completed())
+		{
+			if(Selected_Intention.Get_Attentional_Desire() instanceof 
+					TEpistemic_Desire)
+			{
+				this.Evaluation_Desire_Satisfation = TType_Intention_Evaluated.Satisfied;
+			}
+				
+		}
+	}
+	
 }

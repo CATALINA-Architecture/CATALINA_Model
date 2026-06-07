@@ -25,7 +25,7 @@ public class TMeans_End_Reasoner
 	public TMeans_End_Reasoner(TExecutive_Reasoner_Function Owner)
 	{
 		this.Owner = Owner;
-		this.Global_Workspace = Global_Workspace;
+		this.Global_Workspace = this.Owner.Get_Global_Workspace();
 		this.Means_End_Epistemic_Functions_Handler = new TMeans_End_Epistemic_Functions_Handler();
 		this.Means_End_Practical_Functions_Handler = new TMeans_End_Practical_Functions_Handler();
 		
@@ -85,7 +85,8 @@ public class TMeans_End_Reasoner
 										Practical_Desire, 
 										this.Owner.Get_Map_Beliefs(), 
 										this.Owner.Get_Map_Regions(), 
-										this.Owner.Get_Intentions() ));
+										this.Owner.Get_Intentions(),
+										this.Global_Workspace.Plan_Library));
 //										Means_End_Reasoner_Data_Getter) );
 						break;
 						
@@ -99,6 +100,7 @@ public class TMeans_End_Reasoner
 										this.Owner.Get_Map_Beliefs(), 
 										this.Owner.Get_Map_Regions(), 
 										this.Owner.Get_Intentions(),
+										this.Global_Workspace.Plan_Library,
 										Means_End_Reasoner_Data_Getter
 										) );
 						break;

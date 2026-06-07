@@ -29,11 +29,17 @@ public class TPractical_Desire extends TAttentional_Desire{
 	private volatile LocalDateTime Until_End;
 
 
-	public TPractical_Desire(String name, TTemporal_Propositional_Formula final_state, TPropositional_Formula trigger_Condition, Double saliency, Double reward, Double relax_Preference,
-			ArrayList<TGreen_Desire> list_Green_Goal, ArrayList<TQuality_Desire> list_Quality_Goal,
-			LocalDateTime finally_Start, LocalDateTime finally_End, LocalDateTime global_Start, LocalDateTime global_End, 
+	public TPractical_Desire(String name, 
+			TTemporal_Propositional_Formula final_state, 
+			TPropositional_Formula trigger_Condition, 
+			Double saliency, Double reward, Double relax_Preference,
+			ArrayList<TGreen_Desire> list_Green_Goal, 
+			ArrayList<TQuality_Desire> list_Quality_Goal,
+			LocalDateTime finally_Start, LocalDateTime finally_End, 
+			LocalDateTime global_Start, LocalDateTime global_End, 
 			LocalDateTime untill_Start, LocalDateTime until_End,
-			ArrayList<String> beliefs_Reasoner, ArrayList<String> regions_Reasoner)
+			ArrayList<String> beliefs_Reasoner, 
+			ArrayList<String> regions_Reasoner)
 	{
 		super(name, saliency, trigger_Condition, reward, relax_Preference, 
 				list_Green_Goal, list_Quality_Goal,

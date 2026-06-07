@@ -7,7 +7,7 @@ import com.Catalina_Model.Catalina_V_0_3.TStimulus_Filtering_Manipulate_Stimulus
 
 public class TStimulus_Filtering
 {
-	private TExecutive_Perception_Function Parent;
+	private TExecutive_Perception_Function Owner;
 	protected ArrayList<TBelief> Inhibited_Beliefs;
 	protected ArrayList<TRegion> Inhibited_Regions;
 	
@@ -23,7 +23,7 @@ public class TStimulus_Filtering
 	
 	public TStimulus_Filtering(TExecutive_Perception_Function Owner)
 	{
-		this.Parent = Owner;
+		this.Owner = Owner;
 		this.Inhibited_Beliefs = new ArrayList<TBelief>();
 		this.Inhibited_Regions = new ArrayList<TRegion>();
 		this.Survived_Stimuli = new ArrayList<TStimulus>();

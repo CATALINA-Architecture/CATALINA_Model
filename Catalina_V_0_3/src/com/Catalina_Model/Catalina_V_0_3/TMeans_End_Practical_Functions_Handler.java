@@ -11,7 +11,8 @@ public class TMeans_End_Practical_Functions_Handler
         ArrayList<TOption> apply(TPractical_Desire practical_Desire,
                                  HashMap<String, TBelief> beliefs,
                                  HashMap<String, TRegion> regions,
-                                 ArrayList<TIntention> intentions);
+                                 ArrayList<TIntention> intentions,
+                                 IPlanner Planner);
 //                                 TMeans_End_Reasoner_Data_Getter Means_End_Reasoner_Data_Getter);
     }
 	
@@ -44,7 +45,8 @@ public class TMeans_End_Practical_Functions_Handler
             TPractical_Desire practical_desire,
             HashMap<String, TBelief> beliefs,
             HashMap<String, TRegion> regions,
-            ArrayList<TIntention> intentions) 
+            ArrayList<TIntention> intentions,
+            IPlanner Planner) 
     {
 
     	ArrayList<TOption> result = new ArrayList<TOption>();
@@ -67,7 +69,7 @@ public class TMeans_End_Practical_Functions_Handler
         if (func != null) 
         {
         	ArrayList<TOption> temp_result = func.apply(practical_desire, beliefs, regions,
-        													intentions);	
+        													intentions, Planner);	
 //        													intentions, Means_End_Reasoner_Data_Getter);
         	if( temp_result != null)
         	{

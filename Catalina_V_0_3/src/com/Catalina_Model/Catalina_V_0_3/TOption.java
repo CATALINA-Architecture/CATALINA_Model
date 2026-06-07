@@ -52,6 +52,11 @@ public class TOption
 		this.ID_Current_Action++;
 	}
 	
+	public Boolean Actions_Completed()
+	{
+		return (this.ID_Current_Action >= this.Plan_Actions.size());
+	}
+	
 	public Boolean is_Satisfied()
 	{
 //		Integer Size = this.Plan_Actions.size();
