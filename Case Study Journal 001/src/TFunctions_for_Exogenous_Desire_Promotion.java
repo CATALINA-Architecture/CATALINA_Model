@@ -247,7 +247,7 @@ public class TFunctions_for_Exogenous_Desire_Promotion
 		
 		//I insert Means End Reasoner Function
 		Practical_Desire_Data.Set_Means_End_Reasoner_Function(
-				this.Demo.Means_End_Reasoner_Function::Reasoner_Function_for_Refuel_new_2
+				this.Demo.Means_End_Reasoner_Function::Reasoner_Function_for_Refuel
 //				this.Demo.Means_End_Reasoner_Function::Reasoner_Function_for_Refuel
 //					Get_Desires_Executive_Funtions()::Means_End_Function_Come_Back
 				);
