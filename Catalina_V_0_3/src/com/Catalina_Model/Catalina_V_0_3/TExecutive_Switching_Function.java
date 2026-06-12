@@ -253,6 +253,7 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 							/**
 							 * If the Intention is not to abort
 							 */
+							TAction Action_Evaluated = null;
 							if(!Intentions_To_Abort.contains( Selected_Intention ))
 							{
 								/**
@@ -260,6 +261,7 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 								 */
 								TAttentional_Desire Attentional_Desire = (TAttentional_Desire) Selected_Intention.Get_Active_Desire();
 //								if ((TAttentional_Desire)Selected_Intention.Get_Active_Desire()).siz > -1)
+								
 								if(  Attentional_Desire !=null)
 								{
 //									Attentional_Desire2 = Attentional_Desire;
@@ -273,6 +275,7 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 															get(Selected_Intention.Get_Selected_Option_Id());
 										if( Option.Get_Plan_Actions().size() > 0 )
 										{
+											Action_Evaluated = Selected_Intention.Get_Selected_Option().Get_Current_Action();
 											this.Option_Advancement_Evaluation.Evaluate_Pre_Conditions( Selected_Intention, 
 													this.Map_Uninhibited_Beliefs );
 											Execute_Action = this.Option_Advancement_Evaluation.Get_Evaluation_Pre_Conditions_Result();
@@ -280,6 +283,10 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 //											{
 //												int oo=2;
 //											}
+											if (Execute_Action != TType_Intention_Evaluated.To_Execute)
+											{
+												int ii=2;
+											}
 										}
 										else
 										{ 
@@ -302,7 +309,7 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 								Execute_Action = TType_Intention_Evaluated.To_Delete;
 							}
 							
-							
+							TAction_Execution_Result result = null;
 							switch( Execute_Action )
 							{
 								case TType_Intention_Evaluated.To_Execute:
@@ -320,9 +327,12 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 									 * 			Second: List of Preconditions to insert
 									 * Fourth: 
 									 */
-									TAction_Execution_Result result = 
+									result = 
 											this.Option_Execution.Execute(Selected_Intention, this.Map_Uninhibited_Beliefs);
-									
+//									System.out.println("Performed Active Action: "+result.Action);
+//									System.out.println("------------");
+//									System.out.println("------------");
+//									System.out.println("------------");
 									
 										
 //										ArrayList<Object> Beliefs_to_Change = new ArrayList<Object>();
@@ -336,10 +346,10 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 														Beliefs_To_Change);
 										}
 										
-										if(result.Get_Beliefs_to_Wait().size() > 0)
+										if(result.Get_Beliefs_to_Monitor().size() > 0)
 										{
 											HashMap<String, LocalDateTime> Beliefs_to_wait = new HashMap<String, LocalDateTime>();
-											Beliefs_to_wait.putAll( result.Get_Beliefs_to_Wait() );
+											Beliefs_to_wait.putAll( result.Get_Beliefs_to_Monitor() );
 											while( Beliefs_to_wait.size() > 0 )
 											{
 //												for(result.Get_Beliefs_to_Wait())
@@ -349,7 +359,7 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 												{
 													
 												}
-												for(String belief_name: result.Get_Beliefs_to_Wait().keySet())
+												for(String belief_name: result.Get_Beliefs_to_Monitor().keySet())
 												{
 													if(!Objects.equals(Beliefs_to_wait.get( belief_name ),
 															this.Map_Uninhibited_Beliefs.get( belief_name).
@@ -444,6 +454,9 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 								{
 									this.Satisfied_Attentional_Desires.add( (TAttentional_Desire) 
 																		Selected_Intention.Get_Active_Desire() );
+//									System.out.println("Desire Satisfied: "+Selected_Intention.Get_Active_Desire().Get_Name());
+//									System.out.println("++++++++++++++++++");
+//									System.out.println("++++++++++++++++++");
 									break;
 								}
 								case TType_Intention_Evaluated.To_Delete:
@@ -451,6 +464,20 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 //									System.out.println("Some precondition for an action is bad!\nI delete my intention");
 //									System.out.println("Intention: "+Selected_Intention.Get_Name()+ " - Attentional Dresire: "+Attentional_Desire2.Get_Name()); 
 									this.Intentions_to_Delete.add( Selected_Intention );
+//									System.out.println("Desire deleted: "+Selected_Intention.Get_Active_Desire().Get_Name());
+									if(result != null)
+									{
+//										System.out.println("Action aborted: "+result.Action.Get_Action_Name()+ " - ID:"+result.Action.Get_ID());	
+									}
+									if(Action_Evaluated != null)
+									{
+//										System.out.println("Evaluated Action aborted: "+ Action_Evaluated.Get_Action_Name()+ " - ID:"+Action_Evaluated.Get_ID());	
+									}
+										
+									
+//									System.out.println("++++++++++++++++++");
+//									System.out.println("++++++++++++++++++");
+									
 									break;
 								}
 								case TType_Intention_Evaluated.Not_to_Execute:
@@ -462,14 +489,21 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 							if( Execute_Action == TType_Intention_Evaluated.To_Execute)
 							{
 								HashMap<String, TBelief> Temp_Uninhibited_Beliefs = new HashMap<String, TBelief>();
-								
-								while((!this.Message_Handler.Read_Updated_Beliefs() && 
-														!this.Message_Handler.Read_Updated_Unhinibited_Beliefs())
-										)
+								if(result == null)
 								{
-//									Temp_Uninhibited_Beliefs.clear();
-//									Temp_Uninhibited_Beliefs.putAll(this.Global_Workspace.Map_Uninhibited_Beliefs);
+									int oo=2;
 								}
+								if(result.Get_Beliefs_to_Change().size() > 0)
+								{
+									while((!this.Message_Handler.Read_Updated_Beliefs() && 
+											!this.Message_Handler.Read_Updated_Unhinibited_Beliefs())
+											)
+									{
+				//						Temp_Uninhibited_Beliefs.clear();
+				//						Temp_Uninhibited_Beliefs.putAll(this.Global_Workspace.Map_Uninhibited_Beliefs);
+									}
+								}
+								
 								Temp_Uninhibited_Beliefs.clear();
 //								Temp_Uninhibited_Beliefs.putAll(this.Global_Workspace.Map_Uninhibited_Beliefs);
 								Temp_Uninhibited_Beliefs.putAll(this.Global_Workspace.Get_Map_Uninhibited_Beliefs());

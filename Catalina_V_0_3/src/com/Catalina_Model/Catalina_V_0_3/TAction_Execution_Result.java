@@ -11,13 +11,14 @@ public class TAction_Execution_Result
 	private HashMap<String, Object> Beliefs_to_Change;
 	private ArrayList<TPractical_Desire_Data> Practical_Desires;
 	private ArrayList<TStimulus> Stimuli;
-	private HashMap<String, LocalDateTime> Beliefs_to_Wait;
+	private HashMap<String, LocalDateTime> Beliefs_to_Monitor;
+	public TAction Action = null;
 	
 	public TAction_Execution_Result()
 	{
 		this.Result = false;
 		this.Beliefs_to_Change = new HashMap<String, Object>();
-		this.Beliefs_to_Wait = new HashMap<String, LocalDateTime>();
+		this.Beliefs_to_Monitor = new HashMap<String, LocalDateTime>();
 		
 		this.Practical_Desires = new ArrayList<TPractical_Desire_Data>();
 		this.Stimuli = new ArrayList<TStimulus>();
@@ -51,8 +52,8 @@ public class TAction_Execution_Result
 	
 	public void Set_Beliefs_to_Wait(HashMap<String, LocalDateTime> value)
 	{
-		this.Beliefs_to_Wait.clear();
-		this.Beliefs_to_Wait.putAll( value );
+		this.Beliefs_to_Monitor.clear();
+		this.Beliefs_to_Monitor.putAll( value );
 	}
 	
 	
@@ -82,9 +83,9 @@ public class TAction_Execution_Result
 		return this.Beliefs_to_Change;
 	}
 	
-	public HashMap<String, LocalDateTime> Get_Beliefs_to_Wait()
+	public HashMap<String, LocalDateTime> Get_Beliefs_to_Monitor()
 	{
-		return this.Beliefs_to_Wait;
+		return this.Beliefs_to_Monitor;
 	}
 	
 	
