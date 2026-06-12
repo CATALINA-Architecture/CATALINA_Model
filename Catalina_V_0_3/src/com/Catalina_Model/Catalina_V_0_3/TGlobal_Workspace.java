@@ -1760,19 +1760,27 @@ public class TGlobal_Workspace implements IGW_Data{
 ////			result.put(Clone_Belief.Get_Name(), Clone_Belief);
 //			result.put(Belief.Get_Name(), Belief);
 //		}
-		if(this.Map_Uninhibited_Beliefs ==null)
+//		if(this.Map_Uninhibited_Beliefs ==null)
+//		{
+//			int oo = 2;
+//		}
+//		if(this.Map_Uninhibited_Beliefs.containsKey(null))
+//		{
+//			int oo = 2;
+//		}
+//		if(this.Map_Uninhibited_Beliefs.containsValue(null))
+//		{
+//			int oo = 2;
+//		}
+		this.Write_Lock_Uninhibited_Data.lock();
+		try 
 		{
-			int oo = 2;
-		}
-		if(this.Map_Uninhibited_Beliefs.containsKey(null))
+			result.putAll( this.Map_Uninhibited_Beliefs );
+		} 
+		finally 
 		{
-			int oo = 2;
+			Write_Lock_Uninhibited_Data.unlock();
 		}
-		if(this.Map_Uninhibited_Beliefs.containsValue(null))
-		{
-			int oo = 2;
-		}
-		result.putAll( this.Map_Uninhibited_Beliefs );
 		return result;
 	}
 	

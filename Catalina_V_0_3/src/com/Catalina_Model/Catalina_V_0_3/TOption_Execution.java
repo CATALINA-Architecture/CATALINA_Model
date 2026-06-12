@@ -42,6 +42,7 @@ public class TOption_Execution
 //		TAction_Execution_Result result = this.Plan_Executive_Function_Handler.Execute_Function_For_Desire(
 //												Active_Action, Beliefs);
 		TAction_Execution_Result result = this.Action_Execution.Execute(Active_Action, Beliefs);
+		result.Action = Active_Action;
 		
 		if ( result.Get_Result() )
 		{
