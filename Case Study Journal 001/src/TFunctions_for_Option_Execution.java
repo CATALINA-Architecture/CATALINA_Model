@@ -39,6 +39,7 @@ public class TFunctions_for_Option_Execution
 	private TCommon_Functions Common_Functions;
 	private Float Global_Time_to_Move  ;
 	private TFunctions_for_Inhibition_Function Belief_Inhibition_Functions;
+	private Integer contatore = 0;
 	
 	public Boolean Response_Sended;
 	public String String_Response_Sended;
@@ -82,7 +83,7 @@ public class TFunctions_for_Option_Execution
 		Action_Control.Register_Plan_Execution_Funtion_to_Execute(
 				"Refuelling", this::Execute_Refuelling);
 		Action_Control.Register_Plan_Execution_Funtion_to_Execute(
-				"Declare_the_Refuel", this::Execute_Declaration_of_Refuel);
+				"Declare_the_Refuel", this::Execute_Declare_the_Refuel);
 		
 		
 		
@@ -822,21 +823,21 @@ public class TFunctions_for_Option_Execution
 	{
 		TAction_Execution_Result result = new TAction_Execution_Result();
 		
-		TPredicate Precondition_City_Position = Action.Get_Pre_conditions().get(0);
-		TPredicate Precondition_Route_Position = Action.Get_Pre_conditions().get(1);
-		TPredicate Precondition_Step_Position = Action.Get_Pre_conditions().get(2);
+//		TPredicate Precondition_City_Position = Action.Get_Pre_conditions().get(0);
+//		TPredicate Precondition_Route_Position = Action.Get_Pre_conditions().get(1);
+//		TPredicate Precondition_Step_Position = Action.Get_Pre_conditions().get(2);
 		
 		TPredicate Postcondition_City_Position = Action.Get_Post_conditions().get(0);
 		TPredicate Postcondition_Route_Position = Action.Get_Post_conditions().get(1);
 		TPredicate Postcondition_Step_Position = Action.Get_Post_conditions().get(2);
 		
-		Integer Integer_Start_City = (Integer) Precondition_City_Position.Get_Object_Complement();
+//		Integer Integer_Start_City = (Integer) Precondition_City_Position.Get_Object_Complement();
 		Integer Integer_End_City = (Integer) Postcondition_City_Position.Get_Object_Complement();
 		
-		Integer Integer_Start_Route = (Integer) Precondition_Route_Position.Get_Object_Complement();
+//		Integer Integer_Start_Route = (Integer) Precondition_Route_Position.Get_Object_Complement();
 		Integer Integer_End_Route = (Integer) Postcondition_Route_Position.Get_Object_Complement();
 		
-		Integer Integer_Start_Step = (Integer) Precondition_Step_Position.Get_Object_Complement();
+//		Integer Integer_Start_Step = (Integer) Precondition_Step_Position.Get_Object_Complement();
 		Integer Integer_End_Step = (Integer) Postcondition_Step_Position.Get_Object_Complement();
 		
 //		String City_Name = TCity.values()[Integer_End_City].toString();
@@ -871,9 +872,9 @@ public class TFunctions_for_Option_Execution
 		Beliefs_To_Change.put("BL_Position_Route", new ArrayList<>(Arrays.asList("Object_Complement", Integer_End_Route, "Me")));
 		Beliefs_To_Change.put("BL_Position_Step", new ArrayList<>(Arrays.asList("Object_Complement", Integer_End_Step, "Me")));
 		
-		Beliefs_To_Change.put("BL_Previous_Position_City", new ArrayList<>(Arrays.asList("Object_Complement", Integer_Start_City, "Me")));
-		Beliefs_To_Change.put("BL_Previous_Position_Route", new ArrayList<>(Arrays.asList("Object_Complement", Integer_Start_Route, "Me")));
-		Beliefs_To_Change.put("BL_Previous_Position_Step", new ArrayList<>(Arrays.asList("Object_Complement", Integer_Start_Step, "Me")));
+//		Beliefs_To_Change.put("BL_Previous_Position_City", new ArrayList<>(Arrays.asList("Object_Complement", Integer_Start_City, "Me")));
+//		Beliefs_To_Change.put("BL_Previous_Position_Route", new ArrayList<>(Arrays.asList("Object_Complement", Integer_Start_Route, "Me")));
+//		Beliefs_To_Change.put("BL_Previous_Position_Step", new ArrayList<>(Arrays.asList("Object_Complement", Integer_Start_Step, "Me")));
 		
 		Data.add( Beliefs_To_Change );
 
@@ -908,7 +909,8 @@ public class TFunctions_for_Option_Execution
 		Integer Integer_End_Route = (Integer) Postcondition_Route_Position.Get_Object_Complement();
 		Integer Integer_End_Step = (Integer) Postcondition_Step_Position.Get_Object_Complement();
 		
-		TEnvironment Map = (TEnvironment) Map_Beliefs.get("BL_Map").Get_Predicate()
+		TBelief BL_Map = Map_Beliefs.get("BL_Map");
+		TEnvironment Map = (TEnvironment) BL_Map.Get_Predicate()
 									.Get_Object_Complement();
 
 		Integer Integer_Route_For_Map = 0;
@@ -920,7 +922,7 @@ public class TFunctions_for_Option_Execution
 		{
 			Integer_Route_For_Map = Integer_End_Route;
 		}
-		Common_Functions.Print("I enter Route: "+Action.Get_Params());
+		this.Common_Functions.Print("I enter Route: "+Action.Get_Params());
 		
 		TRoute the_route = Map.Get_Route(Integer_Route_For_Map);
 		Integer Max_Steps = the_route.Get_Route_Speed();
@@ -983,7 +985,7 @@ public class TFunctions_for_Option_Execution
 			String Belief_Name = "BL_City_Visited_"+City_Name;
 			
 			Beliefs_To_Change.put(Belief_Name, new ArrayList<>(Arrays.asList("Object_Complement", true, "Me")));
-			Common_Functions.Print("I'm arrived in "+City_Name);
+			this.Common_Functions.Print("I'm arrived in "+City_Name);
 			for(TBelief Belief: Map_Beliefs.values())
 			{
 				if( Belief.Get_Type_Belief().equals( "BLT_Destination_City" ))
@@ -991,7 +993,7 @@ public class TFunctions_for_Option_Execution
 					TPredicate Predicate =Belief.Get_Predicate();
 					if( Predicate.Get_Object_Complement().equals( City_Name ))
 					{
-						Common_Functions.Print("Practical Desire satisfied! I arrived in: "+City_Name);
+						this.Common_Functions.Print("Practical Desire satisfied! I arrived in: "+City_Name);
 					}
 				}
 			}
@@ -1012,8 +1014,6 @@ public class TFunctions_for_Option_Execution
 		
 		TBelief BL_Previous_Travel_Intention_Max_Satisfaction_Time = 
 				Map_Beliefs.get("BL_Previous_Travel_Intention_Max_Satisfaction_Time");
-		
-		
 		
 		return result;
 		
@@ -1053,9 +1053,16 @@ public class TFunctions_for_Option_Execution
 			Minus = -1;
 		}
 		
-		TEnvironment Map = (TEnvironment) Map_Beliefs.get("BL_Map").Get_Predicate()
-									.Get_Object_Complement();
+		TBelief BL_Map = Map_Beliefs.get("BL_Map");
 		
+		TEnvironment Map = (TEnvironment) BL_Map.Get_Predicate()
+									.Get_Object_Complement();
+		TBelief BL_Correct_Route = Map_Beliefs.get("BL_Next_Position_Route");
+		Integer Integer_Correct_Start_Route = (Integer) BL_Correct_Route.Get_Predicate().Get_Object_Complement();
+		if(Integer_Start_Route <0 )
+		{
+			Integer_Start_Route = Integer_Correct_Start_Route;
+		}
 		TRoute the_route = Map.Get_Route(Integer_Start_Route);
 		Integer Max_Steps = the_route.Get_Route_Speed();
 		Float Time_to_Move = this.Global_Time_to_Move ;
@@ -1115,7 +1122,7 @@ public class TFunctions_for_Option_Execution
 		{
 			
 			Beliefs_To_Change.put(Belief_Name, new ArrayList<>(Arrays.asList("Object_Complement", true, "Me")));
-			Common_Functions.Print("I'm arrived in "+City_Name);
+			this.Common_Functions.Print("I'm arrived in "+City_Name);
 			for(TBelief Belief: Map_Beliefs.values())
 			{
 				if( Belief.Get_Type_Belief().equals( "BLT_Destination_City" ))
@@ -1123,7 +1130,7 @@ public class TFunctions_for_Option_Execution
 					TPredicate Predicate =Belief.Get_Predicate();
 					if( Predicate.Get_Object_Complement().equals( City_Name ))
 					{
-						Common_Functions.Print("Practical Desire satisfied! I arrived in: "+City_Name);
+						this.Common_Functions.Print("Practical Desire satisfied! I arrived in: "+City_Name);
 					}
 				}
 				
@@ -1618,27 +1625,76 @@ public class TFunctions_for_Option_Execution
 	
 	TAction_Execution_Result Execute_Refuelling(
 			TGlobal_Workspace Global_Workspace,
-			TAction Action, HashMap<String, TBelief> Beliefs_Cloned )
+			TAction Action, HashMap<String, TBelief> Map_Beliefs )
 	{
 		TAction_Execution_Result result = new TAction_Execution_Result();
-		Common_Functions.Print("I've reached the nearest town!\nNow I'm going to get fuel!");
-		Common_Functions.Print("Now, I'm refueling");
-		this.Wait_A_Time(1);
-		Common_Functions.Print("I refueled!");
-		Common_Functions.Print("Now I continue to fulfill my desires, if there are any");
+//		String City_to_refuel = (String) Action.Get_Params().getFirst();
+//		this.Common_Functions.Print("My fuel is low! I need to refuel.\nI go in "+ City_to_refuel  + " to refuel!");
+//		this.Wait_A_Time(1);
+		this.Common_Functions.Print("I've reached the nearest town!\nNow I'm going to get fuel!");
+		this.Common_Functions.Print("Now, I'm refueling");
+//		this.Wait_A_Time(1);
+		TBelief BL_Low_Fuel_Level_Warning = Map_Beliefs.get("BL_Low_Fuel_Level_Warning");
+		HashMap<String, Object> Beliefs_To_Change = new HashMap<String, Object>();
+		Integer Fuel_Level = (Integer) Action.Get_Params().getFirst();
+		Integer Position_City_Number = (Integer) Action.Get_Params().get(1);
+		
+		Beliefs_To_Change.put("BL_Fuel_Level", new ArrayList<>(Arrays.asList("Object_Complement", Fuel_Level)));
+		Beliefs_To_Change.put("BL_Refuel_to_City", new ArrayList<>(Arrays.asList("Object_Complement", BL_Low_Fuel_Level_Warning)));
+		Beliefs_To_Change.put("BL_Position_City", new ArrayList<>(Arrays.asList("Object_Complement", Position_City_Number)));
+		Beliefs_To_Change.put("BL_Position_Route", new ArrayList<>(Arrays.asList("Object_Complement", -1)));
+		Beliefs_To_Change.put("BL_Position_Step", new ArrayList<>(Arrays.asList("Object_Complement", 0)));
+		
+		
+		ArrayList<Object> Data = new ArrayList<Object>();
+		Data.add( Beliefs_To_Change );
+		
+		this.Common_Functions.Print("I refueled!");
+		this.Common_Functions.Print("Now I continue to fulfill my desires, if there are any");
 		result.Set_Result(true);
+		result.Set_Beliefs_to_Change( Beliefs_To_Change );
 		return result;
 	}
 	
-	TAction_Execution_Result Execute_Declaration_of_Refuel(
+	TAction_Execution_Result Execute_Declare_the_Refuel(
 			TGlobal_Workspace Global_Workspace,
-			TAction Action, HashMap<String, TBelief> Beliefs_Cloned )
+			TAction Action, HashMap<String, TBelief> Map_Beliefs )
 	{
 		TAction_Execution_Result result = new TAction_Execution_Result();
-		String City_to_refuel = ((TCity) Action.Get_Params().getFirst()).name();
-		Common_Functions.Print("My fuel is low! I need to refuel.\n"
-				+ "I go in "+ City_to_refuel  + " to refuel!");
+		Integer City_Number = (Integer) Action.Get_Params().getFirst();
+		TCity Next_Station = TCity.values()[City_Number];
+		String City_to_refuel = Next_Station.name();
+		this.contatore++;
+		this.Common_Functions.Print_Colored_Text("My fuel is low! I need to refuel.\nI go in "+ City_to_refuel  + " to refuel!",
+				2);
+//		this.Common_Functions.Print("My fuel is low! I need to refuel.\nI go in "+ City_to_refuel  + " to refuel!");
+//		this.Wait_A_Time(1000);
+		HashMap<String, Object> Beliefs_To_Change = new HashMap<String, Object>();
+		
+		TBelief BL_Next_Position_City = Map_Beliefs.get("BL_Next_Position_City");
+		TBelief BL_Position_City = Map_Beliefs.get("BL_Position_City");
+		TBelief BL_Position_Step = Map_Beliefs.get("BL_Position_Step");
+		TBelief BL_Position_Route = Map_Beliefs.get("BL_Position_Route");
+		TBelief BL_Next_Position_Route = Map_Beliefs.get("BL_Next_Position_Route");
+		TBelief BL_Next_Position_Step = Map_Beliefs.get("BL_Next_Position_Step");
+		
+		Integer Position_City = (Integer) BL_Position_City.Get_Predicate().Get_Object_Complement();
+		Integer Position_Step = (Integer) BL_Position_Step.Get_Predicate().Get_Object_Complement();
+		Integer Position_Route = (Integer) BL_Position_Route.Get_Predicate().Get_Object_Complement();
+		
+		Integer Next_Position_City = (Integer) BL_Next_Position_City.Get_Predicate().Get_Object_Complement();
+		Integer Next_Position_Route = (Integer) BL_Next_Position_Route.Get_Predicate().Get_Object_Complement();
+		Integer Next_Position_Step = (Integer) BL_Next_Position_Step.Get_Predicate().Get_Object_Complement();
+
+
+		ArrayList<Object> Params = new ArrayList<Object>();
+		Params.addAll( Action.Get_Params());
+
+		
+		Beliefs_To_Change.put("BL_Next_Position_City", new ArrayList<>(Arrays.asList("Object_Complement", City_Number)));
+		
 		result.Set_Result(true);
+		result.Set_Beliefs_to_Change( Beliefs_To_Change );
 		return result;
 	}
 	
