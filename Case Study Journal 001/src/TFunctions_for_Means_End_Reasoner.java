@@ -971,6 +971,7 @@ public class TFunctions_for_Means_End_Reasoner {
 		
 		int Minute_of_Hours = 0;
 		int Minutes = 0;
+		int Time = 0;
 //		LocalDateTime Temp_Time = Actual_Time.plusMinutes(Minutes);
 		
 //		Paths = Finally_Operator(Paths, Current_Time, 
@@ -989,7 +990,7 @@ public class TFunctions_for_Means_End_Reasoner {
 		{
 			Temp_Route_Number = -1;
 		}
-//		System.out.println("Temp_Route_Number: "+Temp_Route_Number);
+//		System.out.println("Temp_♣Route_Number: "+Temp_Route_Number);
 		if(Temp_Route_Number == -1)
 		{
 			Temp_Route_Number = (Integer) BL_Next_Position_Route.Get_Predicate()
@@ -1167,6 +1168,7 @@ public class TFunctions_for_Means_End_Reasoner {
 		//GO_TO_Step
 	 	for(Integer Step = 1; Step <= Rounds_Time; Step++)
 		{
+	 		Time++;
 	 		Other_Step++;
 			TPosition_Coords Precondition_Position_AV_Coords;
 			TPosition_Coords Postcondition_Position_AV_Coords;
@@ -1330,7 +1332,7 @@ public class TFunctions_for_Means_End_Reasoner {
 //					TType_Relationship.is, Position_Start_Route);
 //			Precondition_Step = new TPredicate("Position_Step", BL_Current_Position_Step, 
 //					TType_Relationship.is, Position_Start_Step);
-			
+			Time++;
 			String Function_To_Invoke = "Refuelling";
 			
 			
@@ -1388,8 +1390,9 @@ public class TFunctions_for_Means_End_Reasoner {
 		An_Option.Path.Copy_Plan(plan);
 		
 		// I update the time to satisfy the plan option
-		Minute_of_Hours = plan.Path_Time.intValue();
-		Minutes = (int)(Minute_of_Hours*60);
+		//Minute_of_Hours = plan.Path_Time.intValue();
+//		Minutes = (int)(Minute_of_Hours*60);
+		Minutes = (int)(Time*60);
 		
 	//	LocalDateTime Temp_Time = Current_Time.plusMinutes(Minutes);
 		An_Option.Set_Satisfied_Time( Current_Time.plusMinutes(Minutes) );
