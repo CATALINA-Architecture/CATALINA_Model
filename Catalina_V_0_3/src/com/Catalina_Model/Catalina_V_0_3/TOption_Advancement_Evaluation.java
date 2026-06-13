@@ -131,10 +131,10 @@ public class TOption_Advancement_Evaluation
 					{
 						Result = TType_Intention_Evaluated.Satisfied ;
 					}
-//					else if ( Active_Action_ID == 0)
-//					{
-//						Result = TType_Intention_Evaluated.To_Execute ;
-//					}
+					else if ( Active_Action_ID == 0)
+					{
+						Result = TType_Intention_Evaluated.To_Execute ;
+					}
 					else
 					{
 						Active_Action = Option.Get_Plan_Actions().get( Active_Action_ID );
