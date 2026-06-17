@@ -906,6 +906,7 @@ public class TFunctions_for_Means_End_Reasoner {
 		
 		
 		
+		
 		//I get the Current City to compute the path
 		TBelief BL_Position_City = Beliefs.get("BL_Position_City");
 		
@@ -980,7 +981,33 @@ public class TFunctions_for_Means_End_Reasoner {
 		ArrayList<TOption> Option_List =  new ArrayList<TOption>();
 		ArrayList<TAction> Plans = new ArrayList<TAction>();
 		
+		
+		ArrayList<TAction> Planner_Actions = new ArrayList<TAction>();
+		ArrayList<TPredicate> Planner_Predicates = new ArrayList<TPredicate>();
+		{
+			TPredicate Precondition_City;
+			TPredicate Precondition_Route;
+			TPredicate Precondition_Step;
+			int Position_Start_Step = Temp_Step_Number;
+			int Position_Start_Route = Temp_Route_Number;
+			int Position_Start_City = City_Number;
+			
+			Precondition_City = new TPredicate("Position_City", BL_Position_City, 
+					TType_Relationship.is, Position_Start_City);
+			Precondition_Route = new TPredicate("Position_Route", BL_Position_Route, 
+					TType_Relationship.is, Position_Start_Route);
+			Precondition_Step = new TPredicate("Position_Step", BL_Position_Step, 
+					TType_Relationship.is, Position_Start_Step);
+			
+			Planner_Predicates.add(Precondition_City);
+			Planner_Predicates.add(Precondition_Route);
+			Planner_Predicates.add(Precondition_Step);
+		}
+		
 
+		Planner_Actions.addAll(Planner.Get_Plans(Practical_Desire, Planner_Predicates));
+		ArrayList<TAction> Actions = new ArrayList<TAction>();
+		
 		//Now, Action stores only a Route at a time
 		// An Action => A step for a Route
 
@@ -996,8 +1023,8 @@ public class TFunctions_for_Means_End_Reasoner {
 			Temp_Route_Number = (Integer) BL_Next_Position_Route.Get_Predicate()
 					.Get_Object_Complement();	
 		}
-		TRoute A_Route = Map.All_Routes.get(Temp_Route_Number);
 		
+		TRoute A_Route = Map.All_Routes.get(Temp_Route_Number);
 		
 		int Route_Speed = A_Route.Get_Route_Speed();
 		int Steps_Number_on_Route = A_Route.Get_Steps_Number();
@@ -1005,366 +1032,385 @@ public class TFunctions_for_Means_End_Reasoner {
 		//Total actions + the action to reverse the direction of the route
 		int Rounds_Time = (int) Math.ceil( 
 				(double) ( (Steps_Number_on_Route - Temp_Step_Number )) / Route_Speed );
-		
-		double middle_on_route = (double) ((double)Steps_Number_on_Route/(double)2);
-		Boolean Make_inversion = true;
-		if((double)Temp_Step_Number >= middle_on_route)
+		if(Planner_Actions.size()>0)
 		{
-			Make_inversion = false;
+			Actions.addAll(Planner_Actions);
 		}
-//		 
-		
-		//I get the correct Station
-		TCity A_Departure_Station;
-		TCity A_Destination_Station;
-		TCity A_Destination_Station_in_PostCondition;
-
-		A_Departure_Station = City_Name; //A_Route.Get_Departure();
-		A_Destination_Station = City_Name; //A_Route.Get_Destination();
-		
-		int Position_Start_Step = Temp_Step_Number;
-		int Position_Start_Route = Temp_Route_Number;
-		int Position_Start_City = City_Number;
-		
-		int Position_End_Step = Specular_Step_Number;
-		int Position_End_Route = Specular_Route_Number;
-		int Position_End_City = City_Number;
-//		int Position_End_Step = Temp_Step_Number;
-//		int Position_End_Route = Temp_Route_Number;
-//		int Position_End_City = City_Number;
-		
-		int Action_ID = 0;
-		ArrayList<TAction> Actions = new ArrayList<TAction>();
-//		int Route_Number = Specular_Route_Number;
-		
-		// I create the first action to reverse the direction of the route.
-		//Reverse_Direction
+		else
 		{
 			
 			
-			String Function_To_Invoke = "Declare_the_Refuel";
+			double middle_on_route = (double) ((double)Steps_Number_on_Route/(double)2);
+			Boolean Make_inversion = true;
+			if((double)Temp_Step_Number >= middle_on_route)
+			{
+				Make_inversion = false;
+			}
+//			 
 			
+			//I get the correct Station
+			TCity A_Departure_Station;
+			TCity A_Destination_Station;
+			TCity A_Destination_Station_in_PostCondition;
+
+			A_Departure_Station = City_Name; //A_Route.Get_Departure();
+			A_Destination_Station = City_Name; //A_Route.Get_Destination();
 			
-			ArrayList<Object> Params = new ArrayList<Object>();
+//			int Position_Start_Step = Temp_Step_Number;
+//			int Position_Start_Route = Temp_Route_Number;
+//			int Position_Start_City = City_Number;
+			int Position_Start_Step = Temp_Step_Number;
+			int Position_Start_Route = Temp_Route_Number;
+			int Position_Start_City = City_Number;
 			
-			Action_ID++;
+			int Position_End_Step = Specular_Step_Number;
+			int Position_End_Route = Specular_Route_Number;
+			int Position_End_City = City_Number;
+//			int Position_End_Step = Temp_Step_Number;
+//			int Position_End_Route = Temp_Route_Number;
+//			int Position_End_City = City_Number;
 			
-			TAction An_Action = new TAction();
+			int Action_ID = 0;
+//			ArrayList<TAction> Actions = new ArrayList<TAction>();
+//			int Route_Number = Specular_Route_Number;
 			
-			An_Action.Set_Action_Name( Function_To_Invoke );
-			An_Action.Set_ID( Action_ID);
-			
-			
-//			An_Action.Set_Action_Name("Initialize_Way");
-			An_Action.Set_ID(Action_ID);
-			
-			Params.add(Destination_City.ordinal());
-			Params.add(Position_Start_City);
-			Params.add(Position_Start_Route);
-			Params.add(Position_Start_Step);
-			
-			Params.add(Position_End_City);
-			Params.add(Position_End_Route);
-			Params.add(Position_End_Step);
-			
-			Params.add(Temp_Next_City_Number);
-			Params.add(Temp_Next_Route_Number);
-			Params.add(Temp_Next_Step_Number);
-			
-			
-			
-			
-			
-			
-			An_Action.Set_Params( Params );
-			
-//			An_Action.Add_Pre_condition(Precondition_City);
-//			An_Action.Add_Pre_condition(Precondition_Route);
-//			An_Action.Add_Pre_condition(Precondition_Step);
-			
-//			An_Action.Add_Post_condition(Precondition_City);
-//			An_Action.Add_Post_condition(Precondition_Route);
-//			An_Action.Add_Post_condition(Precondition_Step);
-			
-			Actions.add(An_Action);
+			// I create the first action to reverse the direction of the route.
+			//Reverse_Direction
+			{
 				
-		}
-		
-//		if(Make_inversion)
-		{
-			Position_End_Step = Specular_Step_Number;
-			Position_End_Route = Specular_Route_Number;
-			Position_End_City = City_Number;
-			
-			TPredicate Precondition_City;
-			TPredicate Precondition_Route;
-			TPredicate Precondition_Step;
-			TPredicate Precondition_Route_Status;
-			TPredicate Postcondition_City;
-			TPredicate Postcondition_Route;
-			TPredicate Postcondition_Step;
-			String Function_To_Invoke = "Reverse_Direction";
-			
-			// PRECONDITIONS
-			Precondition_City = new TPredicate("Position_City", BL_Position_City, 
-					TType_Relationship.is, Position_Start_City);
-			Precondition_Route = new TPredicate("Position_Route", BL_Position_Route, 
-					TType_Relationship.is, Position_Start_Route);
-			Precondition_Step = new TPredicate("Position_Step", BL_Position_Step, 
-					TType_Relationship.is, Position_Start_Step);
-			
-			// POSTCONDITIONS
-			Postcondition_City = new TPredicate(null, BL_Position_City, 
-					TType_Relationship.is, Position_End_City);
-			Postcondition_Route = new TPredicate(null, BL_Position_Route, 
-					TType_Relationship.is, Position_End_Route);
-			Postcondition_Step = new TPredicate(null, BL_Position_Step, 
-					TType_Relationship.is, Position_End_Step);
-			
-			ArrayList<Object> Params = new ArrayList<Object>();
-			
-			Action_ID++;
-			
-			TAction An_Action = new TAction();
-			An_Action.Set_Action_Name( Function_To_Invoke );
-			An_Action.Set_ID( Action_ID);
-			
-			Params.add( Specular_Route_Number );
-			
-			
-			Params.add(Position_Start_City);
-			Params.add(Position_Start_Route);
-			Params.add(Position_Start_Step);
-			
-//			Params.add(Position_End_City);
-//			Params.add(Position_End_Route);
-//			Params.add(Position_End_Step);
-			
-			An_Action.Set_Params( Params );
-//			An_Action.Add_Pre_condition(Precondition_City);
-//			An_Action.Add_Pre_condition(Precondition_Route);
-//			An_Action.Add_Pre_condition(Precondition_Step);
-			
-			An_Action.Add_Post_condition(Postcondition_City);
-			An_Action.Add_Post_condition(Postcondition_Route);
-			An_Action.Add_Post_condition(Postcondition_Step);
-			
-			Actions.add(An_Action);
-		}
-		
-
-		int step_position = Position_End_Step;
-		int Start_route_position = Position_End_Route;
-		int End_route_position = -1;
-		
-		Integer Other_Step = 0;
-		if (!Start_New_Travel)
-		{
-			Other_Step =1;
-		}
-		//this line is useful to adjust the calculi
-		Position_Start_Step = Specular_Step_Number - Route_Speed;
-		Integer Last_Step=0;
-		//GO_TO_Step
-	 	for(Integer Step = 1; Step <= Rounds_Time; Step++)
-		{
-	 		Time++;
-	 		Other_Step++;
-			TPosition_Coords Precondition_Position_AV_Coords;
-			TPosition_Coords Postcondition_Position_AV_Coords;
-			TPredicate Precondition_City;
-			TPredicate Precondition_Route;
-			TPredicate Precondition_Step;
-			TPredicate Precondition_Route_Status;
-			TPredicate Postcondition_City;
-			TPredicate Postcondition_Route;
-			TPredicate Postcondition_Step;
-			TPredicate Postcondition_Route_Status;
-
-//			TBelief BL_Precondition_Route_Status;
-//			TBelief BL_Precondition_Specular_Route_Status;
-//			TBelief BL_Postcondition_Route_Status;
-//			TBelief BL_Postcondition_Specular_Route_Status;
-			
-			String Function_To_Invoke;
-			
-			//First I reverse the direction of the AV
-			{
-				Function_To_Invoke = "GO_TO_Step";
-				Start_route_position = Position_End_Route;
 				
-				Position_Start_City = City_Position;
-				Position_Start_Route = Specular_Route_Number;
-				Position_Start_Step += Route_Speed;
-//				if ((Other_Step == 2) & (Start_New_Travel == false))
-//				{
-//					if (Specular_Route_Number == Position_Start_Route)
-//					{
-//						Position_Start_Step = Specular_Step_Number;
-//					}
-//					
-//				}
+				String Function_To_Invoke = "Declare_the_Refuel";
 				
-				Position_End_City = City_Position;
-				Position_End_Route = Specular_Route_Number;
-				Position_End_Step = Position_Start_Step + Route_Speed;
-			}
-			
-			Precondition_Position_AV_Coords = new TPosition_Coords( City_Position, 
-					Start_route_position, step_position);
-			
-			step_position = step_position + A_Route.Get_Route_Speed();
-			
-			//I set ending precondition data
-			A_Destination_Station_in_PostCondition = A_Departure_Station;
-			
-			if (step_position > A_Route.Get_Steps_Number())
-			{
-				A_Destination_Station_in_PostCondition = A_Destination_Station;
-				//If I arrive in next Station, I set the Route to -1 and the
-				End_route_position = -1;
-				step_position = 0;
-			}
-			else
-			{
-				End_route_position = Start_route_position;
-			}
-			
-			if( Position_End_Step > Steps_Number_on_Route)
-			{
-				Position_End_City = City_Position;
-				Position_End_Route = -1;
-				Position_End_Step = 0;
-			}
-			else
-			{
-				Position_End_Route = Specular_Route_Number;
-			}
-
-			Postcondition_Position_AV_Coords = new TPosition_Coords(
-					A_Destination_Station_in_PostCondition.ordinal(), End_route_position, step_position);
-			
-			Precondition_City = new TPredicate("Position_City", BL_Position_City, 
-					TType_Relationship.is, Position_Start_City);
-			Precondition_Route = new TPredicate("Position_Route", BL_Position_Route, 
-					TType_Relationship.is, Position_Start_Route);
-			Precondition_Step = new TPredicate("Position_Step", BL_Position_Step, 
-					TType_Relationship.is, Position_Start_Step);
-			
-			Integer Route_Precondition = Precondition_Position_AV_Coords.Get_Route();
-//			BL_Precondition_Route_Status = Beliefs.get("BL_Route_Status_"+ Position_Start_Route);
-			
-			Postcondition_City = new TPredicate(null, BL_Position_City, 
-					TType_Relationship.is, Position_End_City);
-			Postcondition_Route = new TPredicate(null, BL_Position_Route, 
-					TType_Relationship.is, Position_End_Route);
-			Postcondition_Step = new TPredicate(null, BL_Position_Step, 
-					TType_Relationship.is, Position_End_Step);
-			Last_Step = Position_End_Step;
-			
-			Integer Route_Postcondition = Postcondition_Position_AV_Coords.Get_Route();
-//			BL_Postcondition_Route_Status = Beliefs.get("BL_Route_Status_"+Position_End_Route);
-			
-			Action_ID++;
-			ArrayList<Object> Params = new ArrayList<Object>();
-//			if(Function_To_Invoke.equals("GO_TO_Route"))
-//			{
-//				TAction An_Action = new TAction();
+				
+				ArrayList<Object> Params = new ArrayList<Object>();
+				
+				Action_ID++;
+				
+				TAction An_Action = new TAction();
+				
+				An_Action.Set_Action_Name( Function_To_Invoke );
+				An_Action.Set_ID( Action_ID);
+				
+				
 //				An_Action.Set_Action_Name("Initialize_Way");
-//				An_Action.Set_ID( Action_ID);
+				An_Action.Set_ID(Action_ID);
+				
+				Params.add(Destination_City.ordinal());
+				Params.add(Position_Start_City);
+				Params.add(Position_Start_Route);
+				Params.add(Position_Start_Step);
+				
+				Params.add(Position_End_City);
+				Params.add(Position_End_Route);
+				Params.add(Position_End_Step);
+				
+				Params.add(Temp_Next_City_Number);
+				Params.add(Temp_Next_Route_Number);
+				Params.add(Temp_Next_Step_Number);
+				
+				An_Action.Set_Params( Params );
+				
+				TPredicate Precondition_City;
+				TPredicate Precondition_Route;
+				TPredicate Precondition_Step;
+				
+				Precondition_City = new TPredicate("Position_City", BL_Position_City, 
+						TType_Relationship.is, Position_Start_City);
+				Precondition_Route = new TPredicate("Position_Route", BL_Position_Route, 
+						TType_Relationship.is, Position_Start_Route);
+				Precondition_Step = new TPredicate("Position_Step", BL_Position_Step, 
+						TType_Relationship.is, Position_Start_Step);
+				
+				An_Action.Add_Pre_condition(Precondition_City);
+				An_Action.Add_Pre_condition(Precondition_Route);
+				An_Action.Add_Pre_condition(Precondition_Step);
+				// PRECONDITIONS
+							
+				
+//				An_Action.Add_Post_condition(Precondition_City);
+//				An_Action.Add_Post_condition(Precondition_Route);
+//				An_Action.Add_Post_condition(Precondition_Step);
+				
+				Actions.add(An_Action);
+					
+			}
+			
+//			if(Make_inversion)
+			{
+				Position_End_Step = Specular_Step_Number;
+				Position_End_Route = Specular_Route_Number;
+				Position_End_City = City_Number;
+				
+				TPredicate Precondition_City;
+				TPredicate Precondition_Route;
+				TPredicate Precondition_Step;
+				TPredicate Precondition_Route_Status;
+				TPredicate Postcondition_City;
+				TPredicate Postcondition_Route;
+				TPredicate Postcondition_Step;
+				String Function_To_Invoke = "Reverse_Direction";
+				
+				// PRECONDITIONS
+				Precondition_City = new TPredicate("Position_City", BL_Position_City, 
+						TType_Relationship.is, Position_Start_City);
+				Precondition_Route = new TPredicate("Position_Route", BL_Position_Route, 
+						TType_Relationship.is, Position_Start_Route);
+				Precondition_Step = new TPredicate("Position_Step", BL_Position_Step, 
+						TType_Relationship.is, Position_Start_Step);
+				
+				// POSTCONDITIONS
+				Postcondition_City = new TPredicate(null, BL_Position_City, 
+						TType_Relationship.is, Position_End_City);
+				Postcondition_Route = new TPredicate(null, BL_Position_Route, 
+						TType_Relationship.is, Position_End_Route);
+				Postcondition_Step = new TPredicate(null, BL_Position_Step, 
+						TType_Relationship.is, Position_End_Step);
+				
+				ArrayList<Object> Params = new ArrayList<Object>();
+				
+				Action_ID++;
+				
+				TAction An_Action = new TAction();
+				An_Action.Set_Action_Name( Function_To_Invoke );
+				An_Action.Set_ID( Action_ID);
+				
+				Params.add( Specular_Route_Number );
+				
+				
+				Params.add(Position_Start_City);
+				Params.add(Position_Start_Route);
+				Params.add(Position_Start_Step);
+				
 //				Params.add(Position_End_City);
 //				Params.add(Position_End_Route);
 //				Params.add(Position_End_Step);
-//				An_Action.Set_Params( Params );
-//				Actions.add(An_Action);
-//				
-//				Action_ID++;
-//				Params.clear();
-//			}
-			TAction An_Action = new TAction();
-			An_Action.Set_ID( Action_ID);
-			Params.add(Specular_Route_Number);
-//			Params.add(Position_End_City);
-//			Params.add(Position_End_Route);
-//			Params.add(Position_End_Step);
-			
-			An_Action.Set_Params( Params );
-			An_Action.Add_Pre_condition(Precondition_City);
-			An_Action.Add_Pre_condition(Precondition_Route);
-			An_Action.Add_Pre_condition(Precondition_Step);
-//			if( BL_Precondition_Route_Status != null)
-//			{
-//				Precondition_Route_Status = new TPredicate(
-//						"BL_Route_Status_"+Position_Start_Route, BL_Precondition_Route_Status, 
-//						TType_Relationship.is, "Green");
-//				An_Action.Add_Pre_condition(Precondition_Route_Status);
-//			}
-			
-			An_Action.Add_Post_condition(Postcondition_City);
-			An_Action.Add_Post_condition(Postcondition_Route);
-			An_Action.Add_Post_condition(Postcondition_Step);
-//			if( BL_Postcondition_Route_Status != null)
-//			{
-//				Postcondition_Route_Status = new TPredicate(
-//						"BL_Route_Status_"+Position_End_Route, BL_Postcondition_Route_Status, 
-//						TType_Relationship.is, "Green");
-//				An_Action.Add_Post_condition(Postcondition_Route_Status);
-//			}
-			
-			// I define "Use_Route" as a function to go from a departure to a destination station
-			An_Action.Set_Action_Name(Function_To_Invoke);
-			Actions.add(An_Action);
-		}
-	 	
-	 	{
-			TPredicate Precondition_City;
-			TPredicate Precondition_Route;
-			TPredicate Precondition_Step;
-			TPredicate Precondition_Route_Status;
-			TPredicate Postcondition_City;
-			TPredicate Postcondition_Route;
-			TPredicate Postcondition_Step;
-			
-			// PRECONDITIONS
-//			Precondition_City = new TPredicate("Position_City", BL_Current_Position_City, 
-//					TType_Relationship.is, Position_Start_City);
-//			Precondition_Route = new TPredicate("Position_Route", BL_Current_Position_Route, 
-//					TType_Relationship.is, Position_Start_Route);
-//			Precondition_Step = new TPredicate("Position_Step", BL_Current_Position_Step, 
-//					TType_Relationship.is, Position_Start_Step);
-			Time++;
-			String Function_To_Invoke = "Refuelling";
-			
-			
-			ArrayList<Object> Params = new ArrayList<Object>();
-			Integer Fuel_Level = 100;
-			Params.add(Fuel_Level);
-			
-//			if(Last_Step > 0)
-			{
-				Params.add(A_Destination_Station.ordinal());
+				
+				An_Action.Set_Params( Params );
+//				An_Action.Add_Pre_condition(Precondition_City);
+//				An_Action.Add_Pre_condition(Precondition_Route);
+//				An_Action.Add_Pre_condition(Precondition_Step);
+				
+				An_Action.Add_Post_condition(Postcondition_City);
+				An_Action.Add_Post_condition(Postcondition_Route);
+				An_Action.Add_Post_condition(Postcondition_Step);
+				
+				Actions.add(An_Action);
 			}
 			
-			Action_ID++;
+
+			int step_position = Position_End_Step;
+			int Start_route_position = Position_End_Route;
+			int End_route_position = -1;
 			
-			TAction An_Action = new TAction();
-			
-			An_Action.Set_Action_Name( Function_To_Invoke );
-			An_Action.Set_ID( Action_ID);
-			
-			An_Action.Set_Params( Params );
-			
-//			An_Action.Add_Pre_condition(Precondition_City);
-//			An_Action.Add_Pre_condition(Precondition_Route);
-//			An_Action.Add_Pre_condition(Precondition_Step);
-			
-//			An_Action.Add_Post_condition(Precondition_City);
-//			An_Action.Add_Post_condition(Precondition_Route);
-//			An_Action.Add_Post_condition(Precondition_Step);
-			
-			Actions.add(An_Action);
+			Integer Other_Step = 0;
+			if (!Start_New_Travel)
+			{
+				Other_Step =1;
+			}
+			//this line is useful to adjust the calculi
+			Position_Start_Step = Specular_Step_Number - Route_Speed;
+			Integer Last_Step=0;
+			//GO_TO_Step
+		 	for(Integer Step = 1; Step <= Rounds_Time; Step++)
+			{
+		 		Time++;
+		 		Other_Step++;
+				TPosition_Coords Precondition_Position_AV_Coords;
+				TPosition_Coords Postcondition_Position_AV_Coords;
+				TPredicate Precondition_City;
+				TPredicate Precondition_Route;
+				TPredicate Precondition_Step;
+				TPredicate Precondition_Route_Status;
+				TPredicate Postcondition_City;
+				TPredicate Postcondition_Route;
+				TPredicate Postcondition_Step;
+				TPredicate Postcondition_Route_Status;
+
+//				TBelief BL_Precondition_Route_Status;
+//				TBelief BL_Precondition_Specular_Route_Status;
+//				TBelief BL_Postcondition_Route_Status;
+//				TBelief BL_Postcondition_Specular_Route_Status;
+				
+				String Function_To_Invoke;
+				
+				//First I reverse the direction of the AV
+				{
+					Function_To_Invoke = "GO_TO_Step";
+					Start_route_position = Position_End_Route;
+					
+					Position_Start_City = City_Position;
+					Position_Start_Route = Specular_Route_Number;
+					Position_Start_Step += Route_Speed;
+//					if ((Other_Step == 2) & (Start_New_Travel == false))
+//					{
+//						if (Specular_Route_Number == Position_Start_Route)
+//						{
+//							Position_Start_Step = Specular_Step_Number;
+//						}
+//						
+//					}
+					
+					Position_End_City = City_Position;
+					Position_End_Route = Specular_Route_Number;
+					Position_End_Step = Position_Start_Step + Route_Speed;
+				}
+				
+				Precondition_Position_AV_Coords = new TPosition_Coords( City_Position, 
+						Start_route_position, step_position);
+				
+				step_position = step_position + A_Route.Get_Route_Speed();
+				
+				//I set ending precondition data
+				A_Destination_Station_in_PostCondition = A_Departure_Station;
+				
+				if (step_position > A_Route.Get_Steps_Number())
+				{
+					A_Destination_Station_in_PostCondition = A_Destination_Station;
+					//If I arrive in next Station, I set the Route to -1 and the
+					End_route_position = -1;
+					step_position = 0;
+				}
+				else
+				{
+					End_route_position = Start_route_position;
+				}
+				
+				if( Position_End_Step > Steps_Number_on_Route)
+				{
+					Position_End_City = City_Position;
+					Position_End_Route = -1;
+					Position_End_Step = 0;
+				}
+				else
+				{
+					Position_End_Route = Specular_Route_Number;
+				}
+
+				Postcondition_Position_AV_Coords = new TPosition_Coords(
+						A_Destination_Station_in_PostCondition.ordinal(), End_route_position, step_position);
+				
+				Precondition_City = new TPredicate("Position_City", BL_Position_City, 
+						TType_Relationship.is, Position_Start_City);
+				Precondition_Route = new TPredicate("Position_Route", BL_Position_Route, 
+						TType_Relationship.is, Position_Start_Route);
+				Precondition_Step = new TPredicate("Position_Step", BL_Position_Step, 
+						TType_Relationship.is, Position_Start_Step);
+				
+				Integer Route_Precondition = Precondition_Position_AV_Coords.Get_Route();
+//				BL_Precondition_Route_Status = Beliefs.get("BL_Route_Status_"+ Position_Start_Route);
+				
+				Postcondition_City = new TPredicate(null, BL_Position_City, 
+						TType_Relationship.is, Position_End_City);
+				Postcondition_Route = new TPredicate(null, BL_Position_Route, 
+						TType_Relationship.is, Position_End_Route);
+				Postcondition_Step = new TPredicate(null, BL_Position_Step, 
+						TType_Relationship.is, Position_End_Step);
+				Last_Step = Position_End_Step;
+				
+				Integer Route_Postcondition = Postcondition_Position_AV_Coords.Get_Route();
+//				BL_Postcondition_Route_Status = Beliefs.get("BL_Route_Status_"+Position_End_Route);
+				
+				Action_ID++;
+				ArrayList<Object> Params = new ArrayList<Object>();
+//				if(Function_To_Invoke.equals("GO_TO_Route"))
+//				{
+//					TAction An_Action = new TAction();
+//					An_Action.Set_Action_Name("Initialize_Way");
+//					An_Action.Set_ID( Action_ID);
+//					Params.add(Position_End_City);
+//					Params.add(Position_End_Route);
+//					Params.add(Position_End_Step);
+//					An_Action.Set_Params( Params );
+//					Actions.add(An_Action);
+//					
+//					Action_ID++;
+//					Params.clear();
+//				}
+				TAction An_Action = new TAction();
+				An_Action.Set_ID( Action_ID);
+				Params.add(Specular_Route_Number);
+//				Params.add(Position_End_City);
+//				Params.add(Position_End_Route);
+//				Params.add(Position_End_Step);
+				
+				An_Action.Set_Params( Params );
+				An_Action.Add_Pre_condition(Precondition_City);
+				An_Action.Add_Pre_condition(Precondition_Route);
+				An_Action.Add_Pre_condition(Precondition_Step);
+//				if( BL_Precondition_Route_Status != null)
+//				{
+//					Precondition_Route_Status = new TPredicate(
+//							"BL_Route_Status_"+Position_Start_Route, BL_Precondition_Route_Status, 
+//							TType_Relationship.is, "Green");
+//					An_Action.Add_Pre_condition(Precondition_Route_Status);
+//				}
+				
+				An_Action.Add_Post_condition(Postcondition_City);
+				An_Action.Add_Post_condition(Postcondition_Route);
+				An_Action.Add_Post_condition(Postcondition_Step);
+//				if( BL_Postcondition_Route_Status != null)
+//				{
+//					Postcondition_Route_Status = new TPredicate(
+//							"BL_Route_Status_"+Position_End_Route, BL_Postcondition_Route_Status, 
+//							TType_Relationship.is, "Green");
+//					An_Action.Add_Post_condition(Postcondition_Route_Status);
+//				}
+				
+				// I define "Use_Route" as a function to go from a departure to a destination station
+				An_Action.Set_Action_Name(Function_To_Invoke);
+				Actions.add(An_Action);
+			}
+		 	
+		 	{
+				TPredicate Precondition_City;
+				TPredicate Precondition_Route;
+				TPredicate Precondition_Step;
+				TPredicate Precondition_Route_Status;
+				TPredicate Postcondition_City;
+				TPredicate Postcondition_Route;
+				TPredicate Postcondition_Step;
+				
+				// PRECONDITIONS
+//				Precondition_City = new TPredicate("Position_City", BL_Current_Position_City, 
+//						TType_Relationship.is, Position_Start_City);
+//				Precondition_Route = new TPredicate("Position_Route", BL_Current_Position_Route, 
+//						TType_Relationship.is, Position_Start_Route);
+//				Precondition_Step = new TPredicate("Position_Step", BL_Current_Position_Step, 
+//						TType_Relationship.is, Position_Start_Step);
+				Time++;
+				String Function_To_Invoke = "Refuelling";
+				
+				
+				ArrayList<Object> Params = new ArrayList<Object>();
+				Integer Fuel_Level = 100;
+				Params.add(Fuel_Level);
+				
+//				if(Last_Step > 0)
+				{
+					Params.add(A_Destination_Station.ordinal());
+				}
+				
+				Action_ID++;
+				
+				TAction An_Action = new TAction();
+				
+				An_Action.Set_Action_Name( Function_To_Invoke );
+				An_Action.Set_ID( Action_ID);
+				
+				An_Action.Set_Params( Params );
+				
+//				An_Action.Add_Pre_condition(Precondition_City);
+//				An_Action.Add_Pre_condition(Precondition_Route);
+//				An_Action.Add_Pre_condition(Precondition_Step);
+				
+//				An_Action.Add_Post_condition(Precondition_City);
+//				An_Action.Add_Post_condition(Precondition_Route);
+//				An_Action.Add_Post_condition(Precondition_Step);
+				
+				Actions.add(An_Action);
+			}
 		}
-	 	
+		
 	 	
 	 	
 //	}
