@@ -493,7 +493,7 @@ public class TExecutive_Switching_Function extends TAgent_Base_Thread
 								{
 									int oo=2;
 								}
-//								if(result.Get_Beliefs_to_Change().size() > 0)
+								if(result.Get_Beliefs_to_Change().size() > 0)
 								{
 									while((!this.Message_Handler.Read_Updated_Beliefs() && 
 											!this.Message_Handler.Read_Updated_Unhinibited_Beliefs())
