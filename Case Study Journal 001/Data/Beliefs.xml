@@ -2433,7 +2433,7 @@ It does "NOT" arise an Epistemic Desire</Description>
     <Truth>false</Truth>
     <Description>Stimulus: it says the last executed move is correct, saliency is low.
 It does "NOT" arise an Epistemic Desire</Description>
-    <Confidence>0,60</Confidence>
+    <Confidence>0.60</Confidence>
     <Is_Stimulus>true</Is_Stimulus>
   </Belief>
   <Belief>
