@@ -836,6 +836,8 @@ public class TLong_Memory {
         String Time_Stamp_Text = "";
         LocalDateTime Time_Stamp = null;
         Boolean Truth = false;
+        Boolean Is_Stimulus = false;
+        Double  Confidence = 0.0; 
         //String Description = "";
         
         ArrayList<String> To_Do_Later = new ArrayList<String>();
@@ -874,9 +876,13 @@ public class TLong_Memory {
                 
                 Truth = Boolean.parseBoolean( this.Get_Element_Text_Content(element, "Truth" ));
                 
-                if(Belief_Type.startsWith("BLTS_"))
+                Is_Stimulus = Boolean.parseBoolean( this.Get_Element_Text_Content(element, "Is_Stimulus" ));
+                Confidence = Double.parseDouble( this.Get_Element_Text_Content(element, "Confidence" ));
+                //if(Belief_Type.startsWith("BLTS_"))
+                if(Is_Stimulus)
                 {
-                	TStimulus Stimulus = new TStimulus(Belief_Name, Associated_Predicate, 0.0, Truth, Information_Source, 
+                	
+                	TStimulus Stimulus = new TStimulus(Belief_Name, Associated_Predicate, 0.0, Confidence, Truth, Information_Source, 
 							Time_Stamp, Belief_Type );
                 	Loaded_Beliefs.add( Stimulus );
                 	
